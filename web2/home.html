@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="utf-8">
+<!--首頁-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>home page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="boostrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!--導覽列顏色-->
+    <style>
+        .bg-amos {
+            background-color: #9898da;
+        }
+
+        body {
+            background-color: #b1b1ec;
+        }
+
+        i {
+            font-size: x-large;
+        }
+
+        /*介紹*/
+        .rwd-table {
+            width: 90%;
+            margin: auto;
+            border: none;
+        }
+
+        tr {
+            display: block;
+            border: 1px;
+            margin-bottom: 20px;
+
+        }
+
+        td {
+            display: block;
+            text-align: left;
+            border: none;
+            padding-left: 2em;
+        }
+
+        .img-cor {
+            width: 100%;
+        }
+
+        @media screen and (min-width: 992px) {
+            .img-cor {
+                width: 30%;
+            }
+        }
+
+        /*手機*/
+        .img-top {
+            width: 80px;
+            height: 40px;
+            object-fit: cover;
+            object-position: 50% 100%;
+        }
+
+        /*平板*/
+        @media screen and (min-width: 768px) {
+            .bg-log {
+                width: 60%;
+            }
+        }
+
+        /*電腦*/
+        @media screen and (min-width: 992px) {
+            .img-top {
+                width: 1280px;
+                height: 250px;
+                object-fit: cover;
+                object-position: 50% 100%;
+            }
+        }
+
+
+        .box {
+            width: 100%;
+            background: #aaa;
+            overflow: hidden;
+        }
+
+        img {
+            transition: .5s;
+        }
+
+        .box:hover img {
+            transform: scale(1.2);
+        }
+
+        .cover-fit {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+
+
+    <!--導覽列-->
+    <nav class="navbar navbar-expand-lg navbar-darks bg-amos">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="color:#ffffff"><strong>學生資源平台</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active link-light" aria-current="page" href="home.html"
+                            style="font-size:large">首頁</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link link-dark" href="vol.html">志工</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link link-dark" href="student.html">學生</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-dark" href="school.html">校方</a>
+                    </li>
+                </ul>
+                <!--icon-->
+                <div class="btn-group">
+                    <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static"
+                        aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-xl-end">
+                        <li><a class="dropdown-item" href="login.html">登入</a></li>
+                        <li><a class="dropdown-item" href="register.html">註冊</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!--介紹-->
+    <div class="container rounded p-4">
+        <div class="row">
+            <div class="container col-xl-8 ms-1" style="border-style:dashed;">
+                <i class="bi bi-people"></i><strong style="font-size:x-large;">平台願景</strong>
+                <table class="rwd-table ">
+                    <thead>
+                        <tr>
+                            <th>一、前言<br></th>
+                            <td data-title="前言">
+                                幫助弱勢學生在課輔、導護等方面的協助，在校方志工
+                                與家長間互相配合讓學生有更良好的學習幫助。
+                                平台提供三方聯絡使學校可以提供學生資訊給志工，志
+                                工再將學生一些不同的問題回饋給家長，讓家長可以有
+                                渠道了解孩子的學業、心理等狀況。
+                            </td>
+                            <th>二、 現況<br></th>
+                            <td>
+                                目前.....
+                            </td>
+                            <th> 三、平台展望<br></th>
+                            <td>
+                                為了...
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <!--輪播圖-->
+            <div class="container img-cor">
+                <h6 class="text-start"><i class="bi bi-image"></i>&nbsp;<strong>活動照片</strong></h6>
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+
+                    <div class="carousel-inner ">
+                        <div class="carousel-item box active">
+                            <a href="#"><img src="pic/act_1.jpg" class="cover-fit d-block w-100" alt="..."></a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="#"><img src="/pic/vol_2.jpg" class="d-block w-100" alt="..."></a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="#"><img src="/pic/vol_1.jpg" class="d-block w-100" alt="..."></a>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--下方欄位-->
+    <footer role="contentinfo ">
+        <div class="p-5 container-fluid">
+            <div class="footerlinks row-fluid ">
+                <hr>
+                <span class="copy" style="color: #ffffff;">TEST</span>
+                <div class="footnote span12">
+                    <p style="text-align: center;"><span style="color: #ffffff;"></span></p>
+                    <span class="col-4" style="color: #ffffff;"> 聯絡資訊</span><br>
+                    <!--<p style="text-align: center ;"></p>-->
+                    <span style="color: #ffffff;"> 電話：0912345678</span>
+
+                    <p style="text-align: center;"><span style="color: #ffffff;"></span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
