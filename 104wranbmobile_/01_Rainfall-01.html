@@ -1,0 +1,1000 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+<meta  http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>每日水情</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/elmo1.css" rel="stylesheet"/>
+<link href="css/WaterRegimen.css" rel="stylesheet" />
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/include.js"></script>
+<script src="js/rainfall.js"></script>
+<script src="js/highstock.js"></script>
+</head>
+<body onload="initialize();">
+<div class="row"> 
+    <div id="pageFirst">
+        <div class="nav-tabsWrap">
+            <ul id="myTab" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#tab1" id="tab1-tab" role="tab" data-toggle="tab" aria-controls="tab1" aria-expanded="false">石門</a></li>
+                <li role="presentation"><a href="#tab2"  id="tab2-tab" role="tab" data-toggle="tab" aria-controls="tab2" aria-expanded="true">三峽河</a></li>
+                <li role="presentation"><a href="#tab3" id="tab3-tab" role="tab" data-toggle="tab" aria-controls="tab3" aria-expanded="false">鳶山堰</a></li>
+                <li role="presentation"><a href="#tab4" id="tab4-tab" role="tab" data-toggle="tab" aria-controls="tab4" aria-expanded="false">桃灌</a></li>
+                <li role="presentation"><a href="#tab5" id="tab5-tab" role="tab" data-toggle="tab" aria-controls="tab5" aria-expanded="false">石灌</a></li>
+                <li role="presentation"><a href="#tab8" id="tab8-tab" role="tab" data-toggle="tab" aria-controls="tab8" aria-expanded="false">隆恩堰</a></li>
+                <li role="presentation"><a href="#tab6" id="tab6-tab" role="tab" data-toggle="tab" aria-controls="tab6" aria-expanded="false">上坪堰</a></li>
+                <li role="presentation"><a href="#tab7" id="tab7-tab" role="tab" data-toggle="tab" aria-controls="tab7" aria-expanded="false">雲圖</a></li>
+            </ul>
+        </div><!-- tabsWrap end -->
+            <h3 id="timeblock" class="Dateh3-s margin-L5 ">
+                <span id="timeicon" class="glyphicon glyphicon-search" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></span>
+                <span id="dDate" class="font13 margin-T5" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></span>
+            </h3>
+            <div class="SEACHLEFT" style="top:75px;">
+                <div class="collapse" id="collapseExample" aria-expanded="false">
+                    <div class="well">
+                        <h4>
+                            <label><span id="sSDate" class="glyphicon glyphicon-calendar"></span>&nbsp;開始日期</label>
+                            <input id="sSDateText" type="text" value="" placeholder="ooo年oo月oo日">
+                        </h4>
+                        <h4>
+                            <label><span id="sSDate" class="glyphicon glyphicon-calendar"></span>&nbsp;結束日期</label>
+                            <input id="eSDateText" type="text" value="" placeholder="ooo年oo月oo日">
+                        </h4>
+                        <hr>
+                        <h4>
+                            <label><span id="" class="glyphicon glyphicon-calendar"></span>&nbsp;歷史事件</label>
+                            <select class="TyphoonYear" style="width: 75px;">
+                                <option value="defalt_year">年度</option>
+                            </select>
+                            <select class="TyphoonEvent" style="width: 75px;">
+                                <option value="">事件</option>
+                            </select>
+                        </h4>
+                        <div class=" text-center"><button id="search" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-search"></span>&nbsp;查詢</button>   &nbsp;<button id="clear" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span>&nbsp;退出</button> </div>
+                    </div>
+                </div>
+            </div>  
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpane1" class="tab-pane fade  active in" id="tab1" aria-labelledby="tab1-tab">
+                    <!--
+                        <div class="alert alert-info fade in" style="margin-bottom: 0px;"><img src="img/FooterNav01.svg" style="width:40px; margin-right:5px;"> <span>本月雨量累計</span><span class="pull-right text-primary font22"><span id="dTotalM" style="color:white;">0</span> <span class="font14 storm-cloud">mm</span></span></div>
+                        <div class="alert alert-info fade in" style="margin-bottom: 0px;"><img src="img/FooterNav01.svg" style="width:40px; margin-right:5px;"> <span>本年雨量累計</span><span class="pull-right text-primary font22"><span id="dTotalY" style="color:white;">0</span> <span class="font14 storm-cloud">mm</span></span></div>
+                    -->
+                    <div class="alert alert-info fade in"><img src="img/FooterNav01.svg" style="width:40px; margin-right:5px;"> <span id="dTitle">歷時雨量</span>
+                    
+                        <div class="btn-group dropdown  pull-right">
+                            <button id="btnTitle" type="button" class="btn btn-default">今日累積雨量</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul id="rainFallList" class="dropdown-menu" role="menu">
+                                <li value="0"><a href="#">今日累積雨量</a></li>
+                                <li value="1"><a href="#">10分鐘</a></li>
+                                <li value="2"><a href="#">1小時</a></li>
+                                <li value="3"><a href="#">3小時</a></li>
+                                <li value="4"><a href="#">6小時</a></li>
+                                <li value="5"><a href="#">12小時</a></li>
+                                <li value="6"><a href="#">24小時</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h4><b>集水區平均雨量</b><span class="pull-right text-primary font22 MarginR3px"><span id="avgFall">0</span> <span class="font14 storm-cloud">mm</span></span></h4>
+                    <hr>
+                    <h4>石門站<span class="pull-right text-primary font22 MarginR3px"><span id="shemen">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shemen_Shemen" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg"/>--></span></h4>
+                    <hr>
+                    <h4>霞雲站<span class="pull-right text-primary font22 MarginR3px"><span id="clouds">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shemen_Clouds" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg"/>--></span></h4>
+                    <hr>
+                    <h4>高義站<span class="pull-right text-primary font22 MarginR3px"><span id="high">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shemen_High" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg"/>--></span></h4>
+                    <hr>
+                    <h4>巴陵站<span class="pull-right text-primary font22 MarginR3px"><span id="bar">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shemen_Bar" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg"/>--></span></h4>
+                    <hr>
+                    <h4>嘎拉賀站<span class="pull-right text-primary font22 MarginR3px"><span id="scrunch">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shemen_Scrunch" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg"/>--></span></h4>
+                    <hr>
+                    <h4>玉峰站<span class="pull-right text-primary font22 MarginR3px"><span id="jade">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shemen_Jade" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg"/>--></span></h4>
+                    <hr>
+                    <h4>白石站<span class="pull-right text-primary font22 MarginR3px"><span id="white">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shemen_White" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg"/>--></span></h4>
+                    <hr>
+                    <h4>鎮西堡站<span class="pull-right text-primary font22 MarginR3px"><span id="burg">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shemen_Burg" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg"/>--></span></h4>
+                    <hr>
+                    <h4>西丘斯山站<span class="pull-right text-primary font22 MarginR3px"><span id="west">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shemen_West" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg"/>--></span></h4>
+                    <hr>
+                    <h4>池端站<span class="pull-right text-primary font22 MarginR3px"><span id="mere">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shemen_Mere" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg"/>--></span></h4>
+                    <hr>
+                    <!-- 本日累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            今日集水區平均雨量
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalAD0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本日累計 info_green end-->
+                    <div id="stationAD0" style="height: 240px"></div>
+                    <!-- 本月累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            <span id="shemen-range-text">本月集水區平均雨量累計</span>
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalAM0" id="rainTotalAM0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本月累計 info_green end-->
+                    <div class="zoom_controls" xIndex="98">
+                        <!--<a href="#" data-chart="line" data-range="1m" class="active">當月</a>-->
+                        <a href="#" data-chart="line" data-range="1m" data-recount="true"  data-site="shemen-rain-range" class="active"  id="shemen_thisMonth_btn">本月</a>
+                        <a href="#" data-chart="line" data-range="2m" data-recount="true"  data-site="shemen-rain-range">2個月</a>
+                        <a href="#" data-chart="line" data-range="3m" data-recount="true"  data-site="shemen-rain-range">3個月</a>
+                        <a href="#" data-chart="line" data-range="1y" data-recount="true"  data-site="shemen-rain-range">今年</a>
+                        <a href="#" data-chart="line" data-range="last1y" data-recount="true"  data-site="shemen-rain-range">去年</a>
+                        <a style="width: 65px;" href="#" data-chart="line" data-range="last5y" data-recount="true"  data-site="shemen-rain-range">過去5年</a>
+                        <!--<a href="#" data-chart="line" data-range="6m">半年</a>-->
+                    </div>
+                    <div id="stationAM0" style="height: 240px"></div>
+                    <div id="stationAM0_Year" style="height: 240px; display: none;"></div>
+                    <br>
+                    <!-- 本年累計  (20210430 拿掉)--> 
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;margin-top: 30px; display: none;" >
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            當年集水區平均雨量累計
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalAY0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <div id="stationAY0" style="height: 240px; display: none;"></div>
+                </div>  <!-- /.main col-sm-9 col-md-9  content-->
+                <div role="tabpane1" class="tab-pane fade " id="tab2" aria-labelledby="tab2-tab">
+                    <div class="alert alert-info fade in">
+                        <img src="img/FooterNav01.svg"/ style="width:40px; margin-right:5px;"> <span id="dTitle1">歷時雨量</span>
+                        <div class="btn-group dropdown  pull-right">
+                            <button id="btnTitle1" type="button" class="btn btn-default">今日累積雨量</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul id="rainFallList1" class="dropdown-menu" role="menu">
+                                <li value="0"><a href="#">今日累積雨量</a></li>
+                                <li value="1"><a href="#">10分鐘</a></li>
+                                <li value="2"><a href="#">1小時</a></li>
+                                <li value="3"><a href="#">3小時</a></li>
+                                <li value="4"><a href="#">6小時</a></li>
+                                <li value="5"><a href="#">12小時</a></li>
+                                <li value="6"><a href="#">24小時</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h4><b>集水區平均雨量</b><span class="pull-right text-primary font22 MarginR3px"><span id="avgFall1">0</span> <span class="font14 storm-cloud">mm</span> </span></h4>
+                    <hr>
+                    <h4>熊空山<span class="pull-right text-primary font22 MarginR3px"><span id="AG10">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_sanxia_01AG10" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>大豹<span class="pull-right text-primary font22 MarginR3px"><span id="A210">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_sanxia_01A210" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <!-- 本日累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            今日集水區平均雨量
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalSXAD0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本日累計 info_green end-->
+                    <div id="stationSXAD0" style="height: 240px"></div>
+                    <!-- 本月累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            
+                            <span id="sanxia-range-text">本月集水區平均雨量累計</span>
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalSXAM0" id="rainTotalSXAM0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本月累計 info_green end-->
+                    <div class="zoom_controls" xIndex="298">
+                        <!--<a href="#" data-chart="line" data-range="1m" class="active">當月</a>-->
+                        <a href="#" data-chart="line" data-range="1m" data-recount="true"  data-site="sanxia-rain-range" class="active" id="sanxia_thisMonth_btn">本月</a>
+                        <a href="#" data-chart="line" data-range="2m" data-recount="true"  data-site="sanxia-rain-range" >2個月</a>
+                        <a href="#" data-chart="line" data-range="3m" data-recount="true"  data-site="sanxia-rain-range">3個月</a>
+                        <a href="#" data-chart="line" data-range="1y" data-recount="true"  data-site="sanxia-rain-range">今年</a>
+                        <!-- 2022-06-28 只要石門就好 -->
+                        <!-- <a href="#" data-chart="line" data-range="last1y" data-recount="true"  data-site="sanxia-rain-range">去年</a> -->
+                        <!-- <a style="width: 65px;" href="#" data-chart="line" data-range="last5y" data-recount="true"  data-site="sanxia-rain-range">過去5年</a> -->
+                        <!--<a href="#" data-chart="line" data-range="6m">半年</a>-->
+                    </div>
+                    <div id="stationSXAM0" style="height: 240px"></div>
+                    <!-- 2022-06-28 只要石門就好 -->
+                    <!-- <div id="stationSXAM0_Year" style="height: 240px; display: none;"></div> -->
+                    <br>
+                    <!-- 本年累計 (20210430 拿掉) -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;margin-top: 30px; display: none;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            當年集水區平均雨量累計
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalSXAY0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <div id="stationSXAY0" style="height: 240px; display: none;"></div>
+                </div><!--.tab2-->
+                <div role="tabpanel" class="tab-pane fade" id="tab3" aria-labelledby="tab3-tab">
+                    <div class="alert alert-info fade in">
+                        <img src="img/FooterNav01.svg"/ style="width:40px; margin-right:5px;"> <span id="dTitle2">歷時雨量</span>
+                        <div class="btn-group dropdown  pull-right">
+                            <button id="btnTitle2" type="button" class="btn btn-default">今日累積雨量</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul id="rainFallList2" class="dropdown-menu" role="menu">
+                                <li value="0"><a href="#">今日累積雨量</a></li>
+                                <li value="1"><a href="#">10分鐘</a></li>
+                                <li value="2"><a href="#">1小時</a></li>
+                                <li value="3"><a href="#">3小時</a></li>
+                                <li value="4"><a href="#">6小時</a></li>
+                                <li value="5"><a href="#">12小時</a></li>
+                                <li value="6"><a href="#">24小時</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h4><b>集水區平均雨量</b><span class="pull-right text-primary font22 MarginR3px"><span id="avgFall2">--</span> <span class="font14 storm-cloud">mm</span></span></h4>
+                    <hr>
+                    <h4>八德國小<span class="pull-right text-primary font22 MarginR3px"><span id="C490">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_yuanshan_C0C490" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>員樹林國小<span class="pull-right text-primary font22 MarginR3px"><span id="C630">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_yuanshan_C0C630" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>鶯歌國小<span class="pull-right text-primary font22 MarginR3px"><span id="AD50">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_yuanshan_C0AD50" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <!-- 本日累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            今日集水區平均雨量
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalYSAD0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本日累計 info_green end-->
+                    <div id="stationYSAD0" style="height: 240px"></div>
+                    <!-- 本月累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            <span id="yuanshan-range-text">本月集水區平均雨量累計</span>
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalYSAM0" id="rainTotalYSAM0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本月累計 info_green end-->
+                    <div class="zoom_controls" xIndex="398">
+                        <!--<a href="#" data-chart="line" data-range="1m" class="active">當月</a>-->
+                        <a href="#" data-chart="line" data-range="1m" data-recount="true"  data-site="yuanshan-rain-range" class="active" id="yuanshan_thisMonth_btn">本月</a>
+                        <a href="#" data-chart="line" data-range="2m" data-recount="true"  data-site="yuanshan-rain-range">2個月</a>
+                        <a href="#" data-chart="line" data-range="3m" data-recount="true"  data-site="yuanshan-rain-range">3個月</a>
+                        <a href="#" data-chart="line" data-range="1y" data-recount="true"  data-site="yuanshan-rain-range">今年</a>
+                        <!-- 2022-06-28 只要石門就好 -->
+                        <!-- <a href="#" data-chart="line" data-range="last1y" data-recount="true"  data-site="yuanshan-rain-range">去年</a> -->
+                        <!-- <a style="width: 65px;" href="#" data-chart="line" data-range="last5y" data-recount="true"  data-site="yuanshan-rain-range">過去5年</a> -->
+                        <!--<a href="#" data-chart="line" data-range="6m">半年</a>-->
+                    </div>
+                    <div id="stationYSAM0" style="height: 240px"></div>
+                    <!-- 2022-06-28 只要石門就好 -->
+                    <!-- <div id="stationYSAM0_Year" style="height: 240px; display: none;"></div> -->
+                    <br>
+                    <!-- 本年累計 (20210430 拿掉)-->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;margin-top: 30px; display: none;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            當年集水區平均雨量累計
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalYSAY0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <div id="stationYSAY0" style="height: 240px; display: none;"></div>
+                </div><!--.tab3-->
+                <div role="tabpanel" class="tab-pane fade" id="tab4" aria-labelledby="tab4-tab">
+                    <div class="alert alert-info fade in">
+                        <img src="img/FooterNav01.svg"/ style="width:40px; margin-right:5px;"> <span id="dTitle4">歷時雨量</span>
+                        <div class="btn-group dropdown  pull-right">
+                            <button id="btnTitle3" type="button" class="btn btn-default">今日累積雨量</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul id="rainFallList3" class="dropdown-menu" role="menu">
+                                <li value="0"><a href="#">今日累積雨量</a></li>
+                                <li value="1"><a href="#">10分鐘</a></li>
+                                <li value="2"><a href="#">1小時</a></li>
+                                <li value="3"><a href="#">3小時</a></li>
+                                <li value="4"><a href="#">6小時</a></li>
+                                <li value="5"><a href="#">12小時</a></li>
+                                <li value="6"><a href="#">24小時</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h4><b>集水區平均雨量</b><span class="pull-right text-primary font22 MarginR3px"><span id="avgFall3">--</span> <span class="font14 storm-cloud">mm</span></span></h4>
+                    <hr>
+                    <h4>新屋<span class="pull-right text-primary font22 MarginR3px"><span id="E467050">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_taoguan_467050" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>觀音<span class="pull-right text-primary font22 MarginR3px"><span id="C0C590">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_taoguan_C0C590" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>中壢<span class="pull-right text-primary font22 MarginR3px"><span id="C0C700">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_taoguan_C0C700" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>埔心<span class="pull-right text-primary font22 MarginR3px"><span id="C0C540">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_taoguan_C0C540" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>桃園<span class="pull-right text-primary font22 MarginR3px"><span id="C0C480">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_taoguan_C0C480" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>蘆竹<span class="pull-right text-primary font22 MarginR3px"><span id="C0C620">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_taoguan_C0C620" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <!-- 本日累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            今日集水區平均雨量
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalTGAD0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本日累計 info_green end-->
+                    <div id="stationTGAD0" style="height: 240px"></div>
+                    <!-- 本月累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            <span id="taoguan-range-text">本月集水區平均雨量累計</span>
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalTGAM0" id="rainTotalTGAM0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本月累計 info_green end-->
+                    <div class="zoom_controls" xIndex="498">
+                        <!--<a href="#" data-chart="line" data-range="1m" class="active">當月</a>-->
+                        <a href="#" data-chart="line" data-range="1m" data-recount="true"  data-site="taoguan-rain-range" class="active" id="taoguan_thisMonth_btn">本月</a>
+                        <a href="#" data-chart="line" data-range="2m" data-recount="true"  data-site="taoguan-rain-range">2個月</a>
+                        <a href="#" data-chart="line" data-range="3m" data-recount="true"  data-site="taoguan-rain-range">3個月</a>
+                        <a href="#" data-chart="line" data-range="1y" data-recount="true"  data-site="taoguan-rain-range">今年</a>
+                        <!-- 2022-06-28 只要石門就好 -->
+                        <!-- <a href="#" data-chart="line" data-range="last1y" data-recount="true"  data-site="taoguan-rain-range">去年</a> -->
+                        <!-- <a style="width: 65px;" href="#" data-chart="line" data-range="last5y" data-recount="true"  data-site="taoguan-rain-range">過去5年</a> -->
+                        <!--<a href="#" data-chart="line" data-range="6m">半年</a>-->
+                    </div>
+                    <div id="stationTGAM0" style="height: 240px"></div>
+                    <!-- 2022-06-28 只要石門就好 -->
+                    <!-- <div id="stationTGAM0_Year" style="height: 240px; display: none;"></div> -->
+                    <br>
+                    <!-- 本年累計 (20210430 拿掉) -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;margin-top: 30px; display: none;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            當年集水區平均雨量累計
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalTGAY0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <div id="stationTGAY0" style="height: 240px; display: none;"></div>
+                </div><!--.tab5-->
+                <div role="tabpanel" class="tab-pane fade" id="tab5" aria-labelledby="tab5-tab">
+                    <div class="alert alert-info fade in">
+                        <img src="img/FooterNav01.svg"/ style="width:40px; margin-right:5px;"> <span id="dTitle5">歷時雨量</span>
+                        <div class="btn-group dropdown  pull-right">
+                            <button id="btnTitle4" type="button" class="btn btn-default">今日累積雨量</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul id="rainFallList4" class="dropdown-menu" role="menu">
+                                <li value="0"><a href="#">今日累積雨量</a></li>
+                                <li value="1"><a href="#">10分鐘</a></li>
+                                <li value="2"><a href="#">1小時</a></li>
+                                <li value="3"><a href="#">3小時</a></li>
+                                <li value="4"><a href="#">6小時</a></li>
+                                <li value="5"><a href="#">12小時</a></li>
+                                <li value="6"><a href="#">24小時</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h4><b>集水區平均雨量</b><span class="pull-right text-primary font22 MarginR3px"><span id="avgFall4">--</span> <span class="font14 storm-cloud">mm</span></span></h4>
+                    <hr>
+                    <h4>湖口<span class="pull-right text-primary font22 MarginR3px"><span id="C0D650">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shiguan_C0D650" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>楊梅<span class="pull-right text-primary font22 MarginR3px"><span id="C0C660">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shiguan_C0C660" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>中壢<span class="pull-right text-primary font22 MarginR3px"><span id="FC0C700">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shiguan_C0C700" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>八德<span class="pull-right text-primary font22 MarginR3px"><span id="FC0C490">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shiguan_C0C490" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>水尾<span class="pull-right text-primary font22 MarginR3px"><span id="C1C510">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shiguan_C1C510" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>平鎮<span class="pull-right text-primary font22 MarginR3px"><span id="C0C650">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shiguan_C0C650" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <!-- 本日累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            今日集水區平均雨量
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalSGAD0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本日累計 info_green end-->
+                    <div id="stationSGAD0" style="height: 240px"></div>
+                    <!-- 本月累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            <span id="shihguan-range-text">本月集水區平均雨量累計</span>
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalSGAM0" id="rainTotalSGAM0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本月累計 info_green end-->
+                    <div class="zoom_controls" xIndex="598">
+                        <!--<a href="#" data-chart="line" data-range="1m" class="active">當月</a>-->
+                        <a href="#" data-chart="line" data-range="1m" data-recount="true"  data-site="shihguan-rain-range" class="active" id="shihguan_thisMonth_btn">本月</a>
+                        <a href="#" data-chart="line" data-range="2m" data-recount="true"  data-site="shihguan-rain-range">2個月</a>
+                        <a href="#" data-chart="line" data-range="3m" data-recount="true"  data-site="shihguan-rain-range">3個月</a>
+                        <a href="#" data-chart="line" data-range="1y" data-recount="true"  data-site="shihguan-rain-range">今年</a>
+                        <!-- 2022-06-28 只要石門就好 -->
+                        <!-- <a href="#" data-chart="line" data-range="last1y" data-recount="true"  data-site="shihguan-rain-range">去年</a> -->
+                        <!-- <a style="width: 65px;" style="width: 65px;" href="#" data-chart="line" data-range="last5y" data-recount="true"  data-site="shihguan-rain-range">過去5年</a> -->
+                        <!--<a href="#" data-chart="line" data-range="6m">半年</a>-->
+                    </div>
+                    <div id="stationSGAM0" style="height: 240px"></div>
+                    <!-- 2022-06-28 只要石門就好 -->
+                    <!-- <div id="stationSGAM0_Year" style="height: 240px; display: none;"></div> -->
+                    <br>
+                    <!-- 本年累計 (20210430 拿掉) -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;margin-top: 30px; display: none;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            當年集水區平均雨量累計
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalSGAY0" id="rainTotalSGAY0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <div id="stationSGAY0" style="height: 240px; display: none;"></div>
+                </div><!--.tab6-->
+                <!-- 龍恩堰開始 -->
+                <div role="tabpane1" class="tab-pane fade " id="tab8" aria-labelledby="tab8-tab">
+                    <div class="alert alert-info fade in">
+                        <img src="img/FooterNav01.svg"/ style="width:40px; margin-right:5px;"> <span id="dTitle7">歷時雨量</span>
+                        <div class="btn-group dropdown  pull-right">
+                            <button id="btnTitle6" type="button" class="btn btn-default">今日累積雨量</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul id="rainFallList6" class="dropdown-menu" role="menu">
+                                <li value="0"><a href="#">今日累積雨量</a></li>
+                                <li value="1"><a href="#">10分鐘</a></li>
+                                <li value="2"><a href="#">1小時</a></li>
+                                <li value="3"><a href="#">3小時</a></li>
+                                <li value="4"><a href="#">6小時</a></li>
+                                <li value="5"><a href="#">12小時</a></li>
+                                <li value="6"><a href="#">24小時</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h4><b>集水區平均雨量</b><span class="pull-right text-primary font22 MarginR3px"><span id="avgFall6">0</span> <span class="font14 storm-cloud">mm</span> </span></h4>
+                    <hr>
+                    <h4>竹東(支流上坪溪)<span class="pull-right text-primary font22 MarginR3px"><span id="C0D560">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_sanxia_01AG10" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>飛鳳山(支流大坑溪)<span class="pull-right text-primary font22 MarginR3px"><span id="C1D630">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_sanxia_01A210" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>橫山(支流油羅溪)<span class="pull-right text-primary font22 MarginR3px"><span id="C0D540">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_sanxia_01A210" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <!-- 本日累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            今日集水區平均雨量
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalLNAD0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本日累計 info_green end-->
+                    <div id="stationLNAD0" style="height: 240px"></div>
+                    <!-- 本月累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            
+                            <span id="lonn-range-text">本月集水區平均雨量累計</span>
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalLNAM0" id="rainTotalLNAM0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本月累計 info_green end-->
+                    <div class="zoom_controls" xIndex="698">
+                        <!--<a href="#" data-chart="line" data-range="1m" class="active">當月</a>-->
+                        <a href="#" data-chart="line" data-range="1m" data-recount="true"  data-site="lonn-rain-range" class="active" id="lonn_thisMonth_btn">本月</a>
+                        <a href="#" data-chart="line" data-range="2m" data-recount="true"  data-site="lonn-rain-range" >2個月</a>
+                        <a href="#" data-chart="line" data-range="3m" data-recount="true"  data-site="lonn-rain-range">3個月</a>
+                        <a href="#" data-chart="line" data-range="1y" data-recount="true"  data-site="lonn-rain-range">今年</a>
+                        <!-- 2022-06-28 只要石門就好 -->
+                        <!-- <a href="#" data-chart="line" data-range="last1y" data-recount="true"  data-site="lonn-rain-range">去年</a> -->
+                        <!-- <a style="width: 65px;" href="#" data-chart="line" data-range="last5y" data-recount="true"  data-site="lonn-rain-range">過去5年</a> -->
+                        <!--<a href="#" data-chart="line" data-range="6m">半年</a>-->
+                    </div>
+                    <div id="stationLNAM0" style="height: 240px"></div>
+                    <!-- 2022-06-28 只要石門就好 -->
+                    <!-- <div id="stationLNAM0_Year" style="height: 240px; display: none;"></div> -->
+                    <br>
+                    <!-- 20210610新增隆恩堰，已不需要 -->
+                    <!-- <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;margin-top: 30px; display: none;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            當年集水區平均雨量累計
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalSXAY0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <div id="stationSXAY0" style="height: 240px; display: none;"></div> -->
+                </div><!--.tab2-->
+                <!-- 隆恩堰結束 -->
+                <div role="tabpanel" class="tab-pane fade" id="tab6" aria-labelledby="tab6-tab">
+                    <div class="alert alert-info fade in">
+                        <img src="img/FooterNav01.svg"/ style="width:40px; margin-right:5px;"> <span id="dTitle6">歷時雨量</span>
+                        <div class="btn-group dropdown  pull-right">
+                            <button id="btnTitle5" type="button" class="btn btn-default">今日累積雨量</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul id="rainFallList5" class="dropdown-menu" role="menu">
+                                <li value="0"><a href="#">今日累積雨量</a></li>
+                                <li value="1"><a href="#">10分鐘</a></li>
+                                <li value="2"><a href="#">1小時</a></li>
+                                <li value="3"><a href="#">3小時</a></li>
+                                <li value="4"><a href="#">6小時</a></li>
+                                <li value="5"><a href="#">12小時</a></li>
+                                <li value="6"><a href="#">24小時</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h4><b>集水區平均雨量</b><span class="pull-right text-primary font22 MarginR3px"><span id="avgFall5">0</span> <span class="font14 storm-cloud">mm</span></span></h4>
+                    <hr>
+                    <h4>雪霸<span class="pull-right text-primary font22 MarginR3px"><span id="D550">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shangping_C0D550" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>白蘭<span class="pull-right text-primary font22 MarginR3px"><span id="D410">0</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shangping_C1D410" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <h4>太閣南<span class="pull-right text-primary font22 MarginR3px"><span id="D420">--</span> <span class="font14 storm-cloud">mm</span> <!--<img class="rmIcon_shangping_C1D420" style="margin-top:-5px; margin-right:0px;" src="img/map_icon.svg" />--></span></h4>
+                    <hr>
+                    <!-- 本日累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            今日集水區平均雨量
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalSPAD0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本日累計 info_green end-->
+                    <div id="stationSPAD0" style="height: 240px"></div>
+                    <!-- 本月累計 -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            <span id="shangping-range-text">本月集水區平均雨量累計</span>
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalSPAM0" id="rainTotalSPAM0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <!--本月累計 info_green end-->
+                    <div class="zoom_controls" xIndex="198">
+                        <!--<a href="#" data-chart="line" data-range="1m" class="active">當月</a>-->
+                        <a href="#" data-chart="line" data-range="1m" data-recount="true"  data-site="shangping-rain-range" class="active" id="shangping_thisMonth_btn">本月</a>
+                        <a href="#" data-chart="line" data-range="2m" data-recount="true"  data-site="shangping-rain-range">2個月</a>
+                        <a href="#" data-chart="line" data-range="3m" data-recount="true"  data-site="shangping-rain-range">3個月</a>
+                        <a href="#" data-chart="line" data-range="1y" data-recount="true"  data-site="shangping-rain-range">今年</a>
+                        <!-- 2022-06-28 只要石門就好 -->
+                        <!-- <a href="#" data-chart="line" data-range="last1y" data-recount="true"  data-site="shangping-rain-range">去年</a> -->
+                        <!-- <a style="width: 65px;" href="#" data-chart="line" data-range="last5y" data-recount="true"  data-site="shangping-rain-range">過去5年</a> -->
+                        <!--<a href="#" data-chart="line" data-range="6m">半年</a>-->
+                    </div>
+                    <div id="stationSPAM0" style="height: 240px"></div>
+                    <!-- 2022-06-28 只要石門就好 -->
+                    <!-- <div id="stationSPAM0_Year" style="height: 240px; display: none;"></div> -->
+                    <br>
+                    <!-- 本年累計 (20210430 拿掉) -->
+                    <div class="info_base info_purple" style="border-color: #11a9cc; background: #57b5e3;margin-top: 30px; display: none;">
+                        <h4 style="background: #57b5e3;margin-top: 0px;">
+                            當年集水區平均雨量累計
+                            <span class="pull-right font22 margin-R5 ">
+                                <span class="rainTotalSPAY0"></span>
+                                <span class="font14 ">mm</span>
+                            </span>
+                        </h4>
+                    </div>
+                    <div id="stationSPAY0" style="height: 240px; display: none;"></div>
+                </div><!--.tab4-->
+                <div role="tabpanel" class="tab-pane fade" id="tab7" aria-labelledby="tab7-tab">
+                    <div style="width:100%;height:100%;overflow:scroll !important;-webkit-overflow-scrolling:touch !important">
+                        
+                        <!-- 雷達回波圖 -->
+                        <div id="Radar">
+                            雷達回波圖
+                            <br>
+                            <span style="color: red;">Time:</span>
+                            <input class="CDsDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="CDsHours" style="font-size: 10px;">
+                            </select>
+                            時~
+                            <input  class="CDeDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="CDeHours" style="font-size: 10px;">
+                            </select>
+                            <input type="button" class="CDquery" value="確定" style="font-size: 10px;"><input type="button" class="defaultTime" value="預設時間" style="font-size: 10px;">
+                            <br>
+                            <a class="PlaceCD" id="PlaceD1" data-content="#PlaceD1">鄰近區域</a>
+                            <a class="PlaceCD" id="PlaceD2" data-content="#PlaceD2">較大範圍</a>
+                            <!-- <select class="Doption" style="font-size: 10px;"> -->
+                            <select class="Doption CDoption" style="font-size: 10px;">
+                            </select>
+                            <input type="button" id="startD" class="CDstart" value="播放" style="font-size: 10px;">
+                            <input type="button" id="stopD"value="停止" style="font-size: 10px;" disabled="true">
+                            <div id="D1" class="ImgPlace">
+                            </div>
+                            <div id="D2" class="ImgPlace" style="display: none;">
+                            </div>
+                            <br>
+                            <!-- <img id="testimg" style="width: 100%;" src="" alt=""> -->
+                        </div>
+                        <!-- 雷達回波圖 END-->
+                        <!-- <br><br><br><br> -->
+                        <!-- 累積雨量圖 -->
+                        <div id="Rain">
+                            累積雨量圖
+                            <br>
+                            <span style="color: red;">Time:</span>
+                            <input class="CDsDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="CDsHours" style="font-size: 10px;">
+                            </select>
+                            時~
+                            <input  class="CDeDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="CDeHours" style="font-size: 10px;">
+                            </select>
+                            <input type="button" class="CDquery" value="確定" style="font-size: 10px;"><input type="button" class="defaultTime" value="預設時間" style="font-size: 10px;">
+                            <br>
+                            <a class="PlaceCD" id="PlaceR1" data-content="#PlaceR1">一日累積</a>
+                            <a class="PlaceCD" id="PlaceR2" data-content="#PlaceR2">二日累積</a>
+                            <a class="PlaceCD" id="PlaceR3" data-content="#PlaceR3">三日累積</a>
+                            <select class="Roption CDoption" style="font-size: 10px;">
+                            </select>
+                            <input type="button" id="startR" value="播放" class="CDstart" style="font-size: 10px;">
+                            <input type="button" id="stopR"value="停止" style="font-size: 10px;" disabled="true">
+                            <div id="R1" class="ImgPlace">
+                            </div>
+                            <div id="R2" class="ImgPlace" style="display: none;">
+                            </div>
+                            <div id="R3" class="ImgPlace" style="display: none;">
+                            </div>
+                            <br>
+                            <!-- <img id="testimg" style="width: 100%;" src="" alt=""> -->
+                        </div>
+                        <!-- 累積雨量圖 END-->
+                        <!-- 氣象雲圖 -->
+                        <div id="Cloud">
+                            氣象雲圖
+                            <br>
+                            <span style="color: red;">Time:</span>
+                            <input class="CDsDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="CDsHours" style="font-size: 10px;">
+                            </select>
+                            時~
+                            <input  class="CDeDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="CDeHours" style="font-size: 10px;">
+                            </select>
+                            <input type="button" class="CDquery" value="確定" style="font-size: 10px;"><input type="button" class="defaultTime" value="預設時間" style="font-size: 10px;">
+                            <br>
+                            <a class="PlaceCD" id="PlaceC1" data-content="#PlaceC1">台灣</a>
+                            <a class="PlaceCD" id="PlaceC2" data-content="#PlaceC2">東亞</a>
+                            <a class="PlaceCD" id="PlaceC3" data-content="#PlaceC3">全球</a>
+                            <select class="Coption CDoption" style="font-size: 10px;">
+                            </select>
+                            <input type="button" id="startC" value="播放" class="CDstart" style="font-size: 10px;">
+                            <input type="button" id="stopC"value="停止" style="font-size: 10px;" disabled="true">
+                            <div id="C1" class="ImgPlace">
+                            </div>
+                            <div id="C2" class="ImgPlace" style="display: none;">
+                            </div>
+                            <div id="C3" class="ImgPlace" style="display: none;">
+                            </div>
+                            <br>
+                            <!-- <img id="testimg" style="width: 100%;" src="" alt=""> -->
+                        </div>
+                        <!-- 氣象雲圖 END-->
+                        <!-- 色調強化圖 -->
+                        <div id="Sateline">
+                            色調強化圖
+                            <br>
+                            <span style="color: red;">Time:</span>
+                            <input class="CDsDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="CDsHours" style="font-size: 10px;">
+                            </select>
+                            時~
+                            <input  class="CDeDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="CDeHours" style="font-size: 10px;">
+                            </select>
+                            <input type="button" class="CDquery" value="確定" style="font-size: 10px;"><input type="button" class="defaultTime" value="預設時間" style="font-size: 10px;">
+                            <br>
+                            <a class="PlaceCD" id="PlaceS1" data-content="#PlaceS1">台灣</a>
+                            <a class="PlaceCD" id="PlaceS2" data-content="#PlaceS2">東亞</a>
+                            <a class="PlaceCD" id="PlaceS3" data-content="#PlaceS3">全球</a>
+                            <select class="Soption CDoption" style="font-size: 10px;">
+                            </select>
+                            <input type="button" id="startS" value="播放" class="CDstart" style="font-size: 10px;">
+                            <input type="button" id="stopS"value="停止" style="font-size: 10px;" disabled="true">
+                            <div id="S1" class="ImgPlace">
+                            </div>
+                            <div id="S2" class="ImgPlace" style="display: none;">
+                            </div>
+                            <div id="S3" class="ImgPlace" style="display: none;">
+                            </div>
+                            <br>
+                            <!-- <img id="testimg" style="width: 100%;" src="" alt=""> -->
+                        </div>
+                        <!-- 色調強化圖 END-->
+                        <!-- 降雨預報 -->
+                        <div id="">
+                            6小時定量降水預報
+                            <br>
+                            <select id="RainForecast">
+                                <option value="0">定量降水預報1</option>
+                                <option value="1">定量降水預報2</option>
+                                <option value="2">定量降水預報3</option>
+                                <option value="3">定量降水預報4</option>
+                            </select>
+                            <input type="button" id="startRF" class="" value="播放" style="font-size: 10px;">
+                            <input type="button" id="stopRF"value="停止" style="font-size: 10px;" disabled="true">
+
+                            <!-- <input type="button" id="startD" class="CDstart" value="播放" style="font-size: 10px;">
+                            <input type="button" id="stopD"value="停止" style="font-size: 10px;" disabled="true"> -->
+
+                            <img id="rainforecast_0" style="max-width: 100%" src="https://www.cwb.gov.tw/Data/fcst_img/QPF_ChFcstPrecip_6_06.png?v=1104"  alt="">
+                            <img id="rainforecast_1" style="max-width: 100%; display: none;" src="https://www.cwb.gov.tw/Data/fcst_img/QPF_ChFcstPrecip_6_12.png?v=1104"  alt="">
+                            <img id="rainforecast_2" style="max-width: 100%; display: none;" src="https://www.cwb.gov.tw/Data/fcst_img/QPF_ChFcstPrecip_6_18.png?v=1104"  alt="">
+                            <img id="rainforecast_3" style="max-width: 100%; display: none;" src="https://www.cwb.gov.tw/Data/fcst_img/QPF_ChFcstPrecip_6_24.png?v=1104"  alt="">
+                        </div>
+                        <!-- 降雨預報 END-->
+                        
+                        
+
+
+                        <!-- new add -->
+                        <!-- <div id="Rain_Station">
+                            累積雨量圖
+                            <br>
+                            <span style="color: red;">Time:</span>
+                            <input class="CDsDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="CDsHours" style="font-size: 10px;">
+                            </select>
+                            時~
+                            <input class="CDeDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="CDeHours" style="font-size: 10px;">
+                            </select>
+                            <input type="button" value="確定" style="font-size: 10px;"><input type="button" class="defaultTime" value="預設時間" style="font-size: 10px;">
+                            <br>
+                            <a >一小時累積</a>
+                            <a >二小時累積</a>
+                            <a >三小時累積</a>
+                            <select class="sDoption" style="font-size: 10px;">
+                                <option>2021/08/16 下午01:12:00</option>
+                                <option>2021/08/16 下午02:12:00</option>
+                                <option selected >2021/08/16 下午03:12:00</option>
+                                <option>2021/08/16 下午04:12:00</option>
+                                <option>2021/08/16 下午05:12:00</option>
+                                <option>2021/08/16 下午06:12:00</option>
+                            </select>
+                            <input type="button" value="播放" style="font-size: 10px;">
+                            <input type="button" value="停止" style="font-size: 10px;">
+                            <div>
+                                一小時累積圖片
+                            </div>
+                            <div>
+                                二小時累積圖片
+                            </div>
+                            <div>
+                                三小時累積圖片
+                            </div>
+                            <br>
+                            <img id="test2img" style="width: 100%;" src="" alt="">
+                        </div> -->
+                        <!-- new add end-->
+                        <!-- <div id="Cloud_Station">
+                            氣象雲圖
+                            <br>
+                            <span style="color: red;">Time:</span>
+                            <input class="CDsDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="ScloudHR CDsHours" style="font-size: 10px;">
+                            </select>
+                            時~
+                            <input class="CDeDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="EcloudHR CDeHours" style="font-size: 10px;">
+                            </select>
+                            <input type="button" value="確定" style="font-size: 10px;"><input type="button" class="defaultTime" value="預設時間" style="font-size: 10px;">
+                            <br>
+                            <a >一小時累積</a>
+                            <a >二小時累積</a>
+                            <a >三小時累積</a>
+                            <select class="sDoption" style="font-size: 10px;">
+                                <option>2021/08/16 下午01:12:00</option>
+                                <option>2021/08/16 下午02:12:00</option>
+                                <option selected >2021/08/16 下午03:12:00</option>
+                                <option>2021/08/16 下午04:12:00</option>
+                                <option>2021/08/16 下午05:12:00</option>
+                                <option>2021/08/16 下午06:12:00</option>
+                            </select>
+                            <input type="button" value="播放" style="font-size: 10px;">
+                            <input type="button" value="停止" style="font-size: 10px;">
+                            <div>
+                                台灣
+                            </div>
+                            <div>
+                                東南亞
+                            </div>
+                            <div>
+                                全球
+                            </div>
+                            <br>
+                            <img id="test3img" style="width: 100%;" src="" alt="">
+                        </div> -->
+                        <!-- new add end-->
+                        <!-- <div id="Cloud_Station">
+                            色調強化圖
+                            <br>
+                            <span style="color: red;">Time:</span>
+                            <input class="CDsDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="ScloudHR CDsHours" style="font-size: 10px;">
+                            </select>
+                            時~
+                            <input class="CDeDateText" type="text" value="" placeholder="" style="width: 80px; font-size: 10px;">
+                            <select class="EcloudHR CDeHours" style="font-size: 10px;">
+                            </select>
+                            <input type="button" value="確定" style="font-size: 10px;"><input type="button" class="defaultTime" value="預設時間" style="font-size: 10px;">
+                            <br>
+                            <a >一小時累積</a>
+                            <a >二小時累積</a>
+                            <a >三小時累積</a>
+                            <select class="sDoption" style="font-size: 10px;">
+                                <option>2021/08/16 下午01:12:00</option>
+                                <option>2021/08/16 下午02:12:00</option>
+                                <option selected >2021/08/16 下午03:12:00</option>
+                                <option>2021/08/16 下午04:12:00</option>
+                                <option>2021/08/16 下午05:12:00</option>
+                                <option>2021/08/16 下午06:12:00</option>
+                            </select>
+                            <input type="button" value="播放" style="font-size: 10px;">
+                            <input type="button" value="停止" style="font-size: 10px;">
+                            <div>
+                                台灣
+                            </div>
+                            <div>
+                                東南亞
+                            </div>
+                            <div>
+                                全球
+                            </div>
+                            <br>
+                            <img id="test4img" style="width: 100%;" src="" alt="">
+                        </div> -->
+                        <!-- new add end-->
+
+                        <!-- <iframe id="linkA" class="frame" scrolling="yes" frameborder="0" src=""></iframe>
+                        <br>
+                        累積雨量圖
+                        <br>
+                        <iframe id="linkB" class="frame" scrolling="yes" style="width:100%;height:550px" frameborder="0" src=""></iframe>
+                        <br>
+                        氣象雲圖
+                        <br>
+                        <iframe id="linkC" class="frame" scrolling="yes" style="width:100%;height:550px" frameborder="0" src="" style=" border:none" width="100" height="400"></iframe>
+                        <br>
+                        色調強化圖
+                        <br>
+                        <iframe id="linkD" class="frame" scrolling="yes" style="width:100%;height:550px" frameborder="0" src=""></iframe> -->
+
+                    </div>
+                   
+                </div><!--.tab7-->
+            </div>
+    </div>
+    <div id="pageSecond" style="display:none;">
+        <h3 class="Dateh3 " style=" color:#666;  padding:- 10px; text-align:center;"><button id="btnRT" class="btn btn-default pull-left">返回</button><span class="glyphicon glyphicon-calendar"></span> <span id="a_date"></span></h3>
+        <hr class="Datehr">
+        <div class="alert alert-success fade in" ><img src="img/FooterNav01.svg"/ style="width:40px; margin-right:5px;"><span id="stationTitle"></span><span id="stName"></span>歷時雨量  </div>
+        <!--各時段雨量列表-->
+        <h4> <span class="glyphicon glyphicon-time"></span> 今日累積雨量<span class="pull-right text-primary font22"><span id="now">0</span> <span class="font14 storm-cloud">mm</span></span></h4>
+        <hr>
+        <h4> <span class="glyphicon glyphicon-time"></span> 10分鐘<span class="pull-right text-primary font22"><span id="m10">0</span> <span class="font14 storm-cloud">mm</span></span></h4>
+        <hr>
+        <h4> <span class="glyphicon glyphicon-time"></span> 1小時<span class="pull-right text-primary font22"><span id="h1">0</span> <span class="font14 storm-cloud">mm</span></span></h4>
+        <hr>
+        <h4> <span class="glyphicon glyphicon-time"></span> 3小時<span class="pull-right text-primary font22"><span id="h3">0</span> <span class="font14 storm-cloud">mm</span></span></h4>
+        <hr>
+        <h4> <span class="glyphicon glyphicon-time"></span> 6小時<span class="pull-right text-primary font22"><span id="h6">0</span> <span class="font14 storm-cloud">mm</span></span></h4>
+        <hr>
+   
+        <h4> <span class="glyphicon glyphicon-time"></span> 12小時<span class="pull-right text-primary font22"><span id="h12">0</span> <span class="font14 storm-cloud">mm</span></span></h4>
+        <hr>
+        <h4> <span class="glyphicon glyphicon-time"></span> 24小時<span class="pull-right text-primary font22"><span id="h24">0</span> <span class="font14 storm-cloud">mm</span></span></h4>
+        <hr>
+    <!--/.各時段雨量列表-->
+    <!--西丘斯山站每10分鐘雨量
+    <div class="panel panel-success  ">
+    <div class="panel-heading"><img src="img/FooterNav01.svg"/ style="width:38px; margin-right:5px; margin-top:-5px; ">西丘斯山站每10分鐘雨量</div>
+    <div class="panel-body">    放圖表    </div>
+    </div>-->
+    <!--/.每10分鐘雨量 panel panel-default-->
+
+    </div>
+
+    <div id="pageSearch" style="display:none;">
+        <h3 class="Dateh3 " style=" color:#666; padding:- 10px; text-align:center;"><button id="btnRTs" class="btn btn-default pull-left">返回</button><span class="glyphicon glyphicon-calendar"></span> <span id="b_date"></span></h3>
+        <!-- 合計 -->
+        <div class="alert-base alert-blue  fade in ">
+            <img src="img/FooterNav07.svg" style="width:40px;">
+            合計
+            <span class="pull-right font22 margin-R5 ">
+                <span class="totalAll"></span>
+                <span class="font14 ">mm</span>
+            </span>
+        </div>
+        <div id="searchall" style="height: 240px"></div>
+    </div>
+
+    <button onclick="javascript:window.location='mailto:how@gis.tw;waynelin@gis.tw;aaron@gis.tw?subject=雨量 - 每日水情意見回報&body=姓名：%0d%0a單位：%0d%0a意見說明：%0d%0a'" class="btn btn-lg btn-warning pull-right margin-T15" title="回報問題"><span class="glyphicon glyphicon-envelope"> </span> &nbsp;回報問題</button>
+</div>
+
+<ul class="footer-nav-6">
+    <li class="active"><a href="01_Rainfall-01.html"><img src="img/FooterNav01.svg"/><br/>雨量</a></li>
+    <li><a href="02_WaterRegimen-02.html"><img src="img/FooterNav02.svg"/><br/>水情</a></li>
+    <li><a href="07_Electricity-01.html"><img src="img/FooterNav07.svg"/><br/>發電</a></li>
+    <li><a href="04_Quality.html"><img src="img/FooterNav04.svg"/><br/>濁度</a></li>
+    <li><a href="05_Engineering-01.html"><img src="img/FooterNav05.svg"/><br/>工程</a></li>
+    <li><a href="06_Earthquake-01.html"><img src="img/FooterNav06.svg"/><br/>地震</a></li>
+</ul>
+
+<script type="text/javascript">
+$(function () {
+  	$('.navbar-toggle-sidebar').click(function () {
+  		$('.navbar-nav').toggleClass('slide-in');
+  		$('.side-body').toggleClass('body-slide-in');
+  		$('#search').removeClass('in').addClass('collapse').slideUp(200);
+  	});
+
+  	$('#search-trigger').click(function () {
+  		$('.navbar-nav').removeClass('slide-in');
+  		$('.side-body').removeClass('body-slide-in');
+  		$('.search-input').focus();
+  	});
+  });
+</script>
+</body>
+</html>

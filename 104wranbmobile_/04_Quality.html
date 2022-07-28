@@ -1,0 +1,363 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+<meta  http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>每日水情</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/elmo1.css" rel="stylesheet"/>
+<link href="css/WaterRegimen.css" rel="stylesheet" />
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/include.js"></script>
+<script src="js/quality.js"></script>
+<script src="js/highstock.js"></script>
+
+</head>
+<body onload="initialize();">
+<div class="row"> 
+    <div >
+        <div id="myTabContent" class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#tab1" id="tab1-tab" role="tab" data-toggle="tab" aria-controls="tab1" aria-expanded="false">石門</a></li>
+                <li role="presentation"><a href="#tab2"  id="tab2-tab" role="tab" data-toggle="tab" aria-controls="tab2" aria-expanded="true">寶二</a></li>
+                <li role="presentation"><a href="#tab3"  id="tab3-tab" role="tab" data-toggle="tab" aria-controls="tab3" aria-expanded="true">石門(人工)</a></li>
+                <li role="presentation"><a href="#tab4"  id="tab4-tab" role="tab" data-toggle="tab" aria-controls="tab4" aria-expanded="true">各水處</a></li>
+                <li role="presentation"><a href="#tab5"  id="tab5-tab" role="tab" data-toggle="tab" aria-controls="tab5" aria-expanded="true">泥沙濃度</a></li>
+            </ul>
+            <!-- <h3 id="timeblock" class="Dateh3-s margin-L5" style="line-height:30px">
+                <span class="glyphicon glyphicon-time" style="display: none;"></span><span id="qualityDate" style="color: white;"></span>
+                <button id="btnRange" class="btn  btn-default btn-success" style="padding-top:0px;padding-bottom:0px;margin-left:10px;font-size:14px;position: absolute; right: 0;">即時統計</button>
+            </h3>  -->
+            <div class="tab-content">
+                <div role="tabpane1" class="tab-pane fade  active in" id="tab1" aria-labelledby="tab1-tab">
+                    <h3 id="timeblock" class="Dateh3-s margin-L5" style="line-height:30px; margin-top: 10px;">
+                        <span class="glyphicon glyphicon-time" style="display: none;"></span><span id="qualityDate" style="color: white;"></span>
+                        <button id="btnRange" class="btn  btn-default btn-success" style="padding-top:0px;padding-bottom:0px;margin-left:10px;font-size:14px;position: absolute; right: 0;">即時統計</button>
+                    </h3> 
+                    <!--上游-->
+                    <ul class="list-group width100 ">
+                        <li href="#" class="list-group-item bg-themethirdcolor white h4">上游</li>
+                        <li href="#" class="list-group-item font16  ">秀巒 <span class="pull-right text-primary font22"><span id="a0">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_278458_2723090" src="img/map_icon.svg"/></span></span><span id="at0" class="font12" style="display:block" ></span></li>
+                        <li href="#" style="display: none!important;" class="list-group-item  bg-ivory font16">玉峰 <span class="pull-right text-primary font22"><span id="a1">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_280982_2727423" src="img/map_icon.svg"/></span></span><span id="at1" class="font12" style="display:block" ></span></li>
+                        <li href="#" style="display: none!important;" class="list-group-item font16 ">稜角 <span class="pull-right text-primary font22"><span id="a2">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_288787_2730141"  src="img/map_icon.svg"/></span></span><span id="at2" class="font12" style="display:block" ></span></li>
+                        <li href="#" style="display: none!important;" class="list-group-item bg-ivory font16">高義 <span class="pull-right text-primary font22"><span id="a3">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_286029.3_2734394.2"  src="img/map_icon.svg"/></span></span><span id="at3" class="font12" style="display:block" ></span></li>
+                        <li href="#" style="display: none!important;" class="list-group-item font16 ">榮華壩 <span class="pull-right text-primary font22"><span id="a4">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_285462_2736733"  src="img/map_icon.svg"/></span></span><span id="at4" class="font12" style="display:block" ></span></li>
+                        <li href="#" class="list-group-item bg-ivory font16">霞雲 <span class="pull-right text-primary font22"><span id="a5">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_285813.3_2740336.8"  src="img/map_icon.svg"/></span></span><span id="at5" class="font12" style="display:block" ></span></li>
+                    </ul><!--/.上游 list-group-->
+                    <!--庫區-->
+                    <ul class="list-group width100 ">
+                        <li href="#" class="list-group-item bg-themefourthcolor white h4">庫區</li>
+                        <li href="#" class="list-group-item bg-yellow2 font16  "><img id="bip0" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>羅浮 <span class="pull-right text-primary font22"><span id="b0">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_287029_2743814"  src="img/map_icon.svg"/></span></span><span id="bt0" class="font12" style="display:block" ></span></li>
+                        <li href="#" class="list-group-item font16"><img id="bip1" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>龍珠灣(表層) <span class="pull-right text-primary font22"><span id="b1">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;"  class="qmIcon_Shemen_278934.81_2745392.62"  src="img/map_icon.svg"/></span></span><span id="bt1" class="font12" style="display:block" ></span></li>
+                        <li href="#" class="list-group-item bg-yellow2 font16 "><img id="bip2" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>龍珠灣(底層) <span class="pull-right text-primary font22"><span id="b2">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;"  class="qmIcon_Shemen_278934.81_2745392.62"  src="img/map_icon.svg"/></span></span><span id="bt2" class="font12" style="display:block" ></span></li>
+                        <!-- <li href="#" class="list-group-item font16"><img id="bip3" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>排砂隧道 <span class="lightred font13">EL.173</span> <span class="pull-right text-primary font22"><span id="b3">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_274778.68_2745111.96"  src="img/map_icon.svg"/></span></span><span id="bt3" class="font12" style="display:block" ></span></li> -->
+                        <!-- <li href="#" class="list-group-item bg-ivory font16 "><img id="bip4" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>永久河道 <span class="lightred font13">EL.169.5</span><span class="pull-right text-primary font22"><span id="b4">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_274826.6_2745109.5"  src="img/map_icon.svg"/></span></span><span id="bt4" class="font12" style="display:block" ></span></li> -->
+                        <li href="#" style="display: none!important;" class="list-group-item  font16">壩區<span class="pull-right text-primary font22"> <span class="font14 storm-cloud"></span></span>
+                            <ul class="s-list">
+                                <li href="#" class="font14">上層 <span class="lightred font13">EL.236</span><span class="pull-right text-primary font14"><span id="b5">0</span> <span class="font12 storm-cloud">NTU <img style="margin-top:0px; margin-right:-10px; display:none;" class="qmIcon_Shemen_274650_2744831"  src="img/map_icon.svg"/></span></span><span id="bt5" class="font12" style="display:block" ></span></li>
+                                <li href="#" class="font14">中層 <span class="lightred font13">EL.228</span><span class="pull-right text-primary font14"><span id="b6">0</span> <span class="font12 storm-cloud">NTU <img style="margin-top:0px; margin-right:-10px; display:none;" class="qmIcon_Shemen_274650_2744831"  src="img/map_icon.svg"/></span></span><span id="bt6" class="font12" style="display:block" ></span></li>
+                                <li href="#" class="font14">下層 <span class="lightred font13">EL.220</span><span class="pull-right text-primary font14"><span id="b7">0</span> <span class="font12 storm-cloud">NTU <img style="margin-top:0px; margin-right:-10px; display:none;" class="qmIcon_Shemen_274650_2744831"  src="img/map_icon.svg"/></span></span><span id="bt7" class="font12" style="display:block" ></span></li>
+                                <!-- <li href="#" class="font14 ">底層 <span class="lightred font13">EL.196</span> <span class="pull-right text-primary font14"><span id="b8">0</span> <span class="font12 storm-cloud">NTU <img style="margin-top:0px; margin-right:-10px; display:none;" class="qmIcon_Shemen_274650_2744831"  src="img/map_icon.svg"/></span></span><span id="bt8" class="font12" style="display:block" ></span></li> -->
+                            </ul>
+                        </li>
+                        <li href="#" class="list-group-item bg-yellow2 font16"><img id="bip14" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>壩前浮台 <span class="lightred font13">EL228m</span> <span class="pull-right text-primary font22"><span id="b14">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_274509.3_2744628.67"  src="img/map_icon.svg"/></span></span><span id="bt14" class="font12" style="display:block" ></span></li>
+                        <li href="#" class="list-group-item font16 "><img id="bip9" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>電廠取水塔 <span class="lightred font13">EL196m</span><span class="pull-right text-primary font22"><span id="b8">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_278934.81_2745392.62"  src="img/map_icon.svg"/></span></span><span id="bt8" class="font12" style="display:block" ></span></li>
+                        <li href="#" style="display: none!important;" class="list-group-item font16"><img id="bip9" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>石門水庫大壩 <span class="pull-right text-primary font22"><span id="b9">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_274509.3_2744628.67"  src="img/map_icon.svg"/></span></span><span id="bt9" class="font12" style="display:block" ></span></li>
+                        <!-- <li href="#" class="list-group-item bg-ivory font16 "><img id="bip10" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>壓力鋼管 <span class="lightred font13">EL.173</span> <span class="pull-right text-primary font22"><span id="b10">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_273816_2745308"  src="img/map_icon.svg"/></span></span><span id="bt10" class="font12" style="display:block" ></span></li> -->
+                        <!-- <li href="#" class="list-group-item bg-yellow2 font16"><img id="bip11" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>石門大圳(退水路)  <span class="lightred font13">EL.193.5</span><span class="pull-right text-primary font22"><span id="b11">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_273427_2747200"  src="img/map_icon.svg"/></span></span><span id="bt11" class="font12" style="display:block" ></span></li> -->
+                        <li href="#" style="display: none!important;" class="list-group-item bg-yellow2 font16">分層取水工(石圳圳頭1)<span class="pull-right text-primary font22"><span id="b15">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_274524.04_2746612.69"  src="img/map_icon.svg"/></span></span><span id="bt15" class="font12" style="display:block" ></span></li>
+                        <li href="#" style="display: none!important;" class="list-group-item font16 ">後池右岸(排洪道出口) <span class="pull-right text-primary font22"><span id="b12">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_275122.5_2745539.3"  src="img/map_icon.svg"/></span></span><span id="bt12" class="font12" style="display:block" ></span></li>
+                        <!-- <li href="#" class="list-group-item bg-yellow2 font16"><img id="bip16" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>後池二抽閘閥室<span class="pull-right text-primary font22"><span id="b16">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_275381.2_2746396.03"  src="img/map_icon.svg"/></span></span><span id="bt16" class="font12" style="display:block" ></span></li> -->
+                        <li href="#" style="display: none!important;" class="list-group-item font16">後池堰排砂道 <span class="pull-right text-primary font22"><span id="b13">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_275434.69_2746330.79"  src="img/map_icon.svg"/></span></span><span id="bt13" class="font12" style="display:block" ></span></li>
+                    </ul><!--/.庫區 list-group-->
+                    <!-- 放流口 -->
+                    <ul class="list-group width100 ">
+                        <li href="#" class="list-group-item bg-themeprimary white h4">放流口</li>
+                        <li href="#" class="list-group-item bg-ivory font16 "><img id="bip10" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>發電鋼管<span class="pull-right text-primary font22"><span id="b10">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_273816_2745308"  src="img/map_icon.svg"/></span></span><span id="bt10" class="font12" style="display:block" ></span></li>
+                        <li href="#" class="list-group-item font16"><img id="bip3" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>排砂隧道 <span class="lightred font13">EL.173</span> <span class="pull-right text-primary font22"><span id="b3">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_274778.68_2745111.96"  src="img/map_icon.svg"/></span></span><span id="bt3" class="font12" style="display:block" ></span></li>
+                        <li href="#" class="list-group-item bg-ivory font16 "><img id="bip4" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>永久河道放流口<span class="pull-right text-primary font22"><span id="b4">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_274826.6_2745109.5"  src="img/map_icon.svg"/></span></span><span id="bt4" class="font12" style="display:block" ></span></li>
+                        <li href="#" class="list-group-item bg-yellow2 font16"><img id="bip11" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>石門大圳(石圳退水路)<span class="pull-right text-primary font22"><span id="b11">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_273427_2747200"  src="img/map_icon.svg"/></span></span><span id="bt11" class="font12" style="display:block" ></span></li>
+                        <li href="#" class="list-group-item bg-yellow2 font16"><img id="bip16" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>後池二抽閘閥室<span class="pull-right text-primary font22"><span id="b16">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_275381.2_2746396.03"  src="img/map_icon.svg"/></span></span><span id="bt16" class="font12" style="display:block" ></span></li>
+                        
+
+                    </ul><!--/.放流口 list-group-->
+                    <!--下游-->
+                    <ul class="list-group width100 ">
+                        <li href="#" class="list-group-item bg-themefifthcolor white h4">下游</li>
+                        <li href="#" class="list-group-item font16  ">大溪橋 <span class="pull-right text-primary font22"><span id="c0">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_278384.99_2753123.72"  src="img/map_icon.svg"/></span></span><span id="ct0" class="font12" style="display:block" ></span></li>
+                        <li href="#" class="list-group-item bg-yellow2 font16">中庄攔河堰(中庄引水路取水口)<span class="pull-right text-primary font22"><span id="c2">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_279386.18_2754291.97"  src="img/map_icon.svg"/></span></span><span id="ct2" class="font12" style="display:block" ></span></li>
+                        <li href="#" class="list-group-item bg-yellow2 font16"><img id="bip23" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>鳶山堰<span class="pull-right text-primary font22"><span id="c3">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_282964_2758333"  src="img/map_icon.svg"/></span></span><span id="ct3" class="font12" style="display:block" ></span></li>
+                        <li href="#" style="display: none!important;" class="list-group-item bg-yellow2 font16">三峽河<span class="pull-right text-primary font22"><span id="c4">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_287770.36_2754262.92"  src="img/map_icon.svg"/></span></span><span id="ct4" class="font12" style="display:block" ></span></li>
+                        <li href="#" style="display: none!important;" class="list-group-item bg-yellow2 font16"><img id="bip25" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>新海橋<span class="pull-right text-primary font22"><span id="c5">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_295883.45_2769629.72"  src="img/map_icon.svg"/></span></span><span id="ct5" class="font12" style="display:block" ></span></li>
+                        <li href="#" style="display: none!important;" class="list-group-item bg-yellow2 font16"><img id="bip26" src="img/PEOPLE.svg" class="pull-left margin-T-5 margin-L-20" width="50" height="50"/>台北橋<span class="pull-right text-primary font22"><span id="c6">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_301325.43_2773357.72"  src="img/map_icon.svg"/></span></span><span id="ct6" class="font12" style="display:block" ></span></li>
+                        <li href="#" style="display: none!important;" class="list-group-item font16">桃園大圳缺子站 <span class="pull-right text-primary font22"><span id="c1">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; display:none;" class="qmIcon_Shemen_278256_2755437"  src="img/map_icon.svg"/></span></span><span id="ct1" class="font12" style="display:block" ></span></li>
+       
+        
+                    </ul><!--/.下游 list-group-->
+   
+
+                </div> <!--.tab1-->
+                <div role="tabpane1" class="tab-pane fade "id="tab2" aria-labelledby="tab2-tab">
+                    <h3  class="Dateh3-s margin-L5" style="line-height:30px">
+                        <!-- <p style="color: white;">1</p> -->
+                        <!-- <span class="glyphicon glyphicon-time" style="display: none;"></span><span id="qualityDate" style="color: white;"></span> -->
+                        <!-- <button id="btnRange" class="btn  btn-default btn-success" style="padding-top:0px;padding-bottom:0px;margin-left:10px;font-size:14px;position: absolute; right: 0;">即時統計</button> -->
+                    </h3> 
+                    <ul class="list-group width100 ">
+                        <li href="#" class="list-group-item font16  ">寶二水庫取水塔(水深1M) <span class="pull-right text-primary font22"><span id="d0">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; " class="qmIcon_Bao_254428.362_2734662.173"  src="img/map_icon.svg"/></span></span><span id="dt0" class="font12" style="display:block" ></span></li>
+                        <li href="#" class="list-group-item  bg-ivory font16">寶二水庫取水塔(EL 125M) <span class="pull-right text-primary font22"><span id="d1">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; " class="qmIcon_Bao_254428.362_2734662.173"  src="img/map_icon.svg"/></span></span><span id="dt1" class="font12" style="display:block" ></span></li>
+                        <!-- <li style="display: none;" href="#" class="list-group-item font16 ">寶二水庫放水口 <span class="pull-right text-primary font22"><span id="d2">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; " class="qmIcon_Bao_254155.748_2734732.85"  src="img/map_icon.svg"/></span></span><span id="dt2" class="font12" style="display:block" ></span></li> -->
+                        <li href="#" class="list-group-item bg-ivory font16">上坪堰進水口 <span class="pull-right text-primary font22"><span id="d3">0</span> <span class="font14 storm-cloud">NTU <img style="margin-top:-5px; margin-right:-12px; " class="qmIcon_Bao_260512.426_2731815.288"  src="img/map_icon.svg"/></span></span><span id="dt3" class="font12" style="display:block" ></span></li>
+                    </ul><!--/.上游 list-group-->
+                </div><!--.tab2-->
+                <div role="tabpane1" class="tab-pane fade "id="tab3" aria-labelledby="tab3-tab">
+                    <h3  class="Dateh3-s margin-L5" style="line-height:30px">
+                        <!-- <p style="color: white;">1</p> -->
+                        <!-- <span class="glyphicon glyphicon-time" style="display: none;"></span><span id="qualityDate" style="color: white;"></span> -->
+                        <!-- <button id="btnRange" class="btn  btn-default btn-success" style="padding-top:0px;padding-bottom:0px;margin-left:10px;font-size:14px;position: absolute; right: 0;">即時統計</button> -->
+                    </h3> 
+                    <ul id="manualSite" class="list-group width100 ">
+                    </ul><!--/.上游 list-group-->
+                </div><!--.tab3-->
+                <div role="tabpane1" class="tab-pane fade "id="tab4" aria-labelledby="tab4-tab">
+                </div><!--.tab3-->
+                <div role="tabpane1" class="tab-pane fade "id="tab5" aria-labelledby="tab5-tab">
+                    <h3  class="Dateh3-s margin-L5" style="line-height:30px; margin-top: 10px;">
+                        <!-- <p style="color: white;">1</p> -->
+                        <!-- <span class="glyphicon glyphicon-time" style="display: none;"></span><span id="qualityDate" style="color: white;"></span> -->
+                        <!-- <button id="btnRange" class="btn  btn-default btn-success" style="padding-top:0px;padding-bottom:0px;margin-left:10px;font-size:14px;position: absolute; right: 0;">即時統計</button> -->
+                    </h3> 
+                    <ul class="list-group width100">
+                        <li class="list-group-item bg-themethirdcolor white h4">入庫羅浮站</li>
+                        <li id="qa217" class="list-group-item font16 ">羅浮觀測樁S32L EL242.85
+                            <span class="pull-right text-primary font22"></span>
+                            <span class="font12" style="display:block"></span>
+                        </li>
+                    </ul>
+                    <ul class="list-group width100">
+                        <li class="list-group-item bg-themethirdcolor white h4">庫區測站</li>
+                        <li  id="qa166" class="list-group-item font16">S12R-大灣坪CH7
+                            <span class="pull-right text-primary font22"></span>
+                            <span class="font12" style="display:block"></span>
+                        </li>
+                        <li id="qa164" class="list-group-item font16 bg-ivory">S12L-大灣坪CH7
+                            <span class="pull-right text-primary font22"></span>
+                            <span class="font12" style="display:block"></span>
+                        </li>
+                        <li id="qa42" class="list-group-item font16">S07-排洪隧道前CH7
+                            <span class="pull-right text-primary font22"></span>
+                            <span class="font12" style="display:block"></span>
+                        </li>
+                    </ul>
+                    <ul class="list-group width100">
+                        <li class="list-group-item bg-themethirdcolor white h4">水庫各排放口</li>
+                        <li id="qa220" class="list-group-item font16 ">石門大圳CH1
+                            <span class="pull-right text-primary font22"></span>
+                            <span class="font12" style="display:block"></span>
+                        </li>
+                        <li id="qm6" class="list-group-item font16 bg-ivory">石門電廠EL173
+                            <span class="pull-right text-primary font22"></span>
+                            <span class="font12" style="display:block"></span>
+                        </li>
+                        <li id="qm5" class="list-group-item font16 ">排砂隧道EL173
+                            <span class="pull-right text-primary font22"></span>
+                            <span class="font12" style="display:block"></span>
+                        </li>
+                        <li id="qm13" class="list-group-item font16 bg-ivory">溢洪道左側EL235
+                            <span class="pull-right text-primary font22"></span>
+                            <span class="font12" style="display:block"></span>
+                        </li>
+                        <li id="qm14" class="list-group-item font16 ">溢洪道中間EL235
+                            <span class="pull-right text-primary font22"></span>
+                            <span class="font12" style="display:block"></span>
+                        </li>
+                        <li id="qm15" class="list-group-item font16 bg-ivory">溢洪道右側EL235
+                            <span class="pull-right text-primary font22"></span>
+                            <span class="font12" style="display:block"></span>
+                        </li>
+                    </ul>
+                </div><!--.tab3-->
+            </div><!--.myTabContent-->
+        </div><!--.bs-example bs-example-tabs-->
+        <div id="pageSecond" class="bs-example bs-example-tabs" style="display:none;">
+            <ul id="myTab" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#tabD1" id="tab1-tab" role="tab" data-toggle="tab" aria-controls="tabD1" aria-expanded="false">大壩上游</a></li>
+                <li role="presentation"><a href="#tabD2" id="tabD2-tab" role="tab" data-toggle="tab" aria-controls="tabD2" aria-expanded="true">庫區</a></li>
+                <li role="presentation"><a href="#tabD3" id="tabD3-tab" role="tab" data-toggle="tab" aria-controls="tabD3" aria-expanded="true">放流口</a></li>
+                <li role="presentation"><a href="#tabD4" id="tabD4-tab" role="tab" data-toggle="tab" aria-controls="tabD4" aria-expanded="true">大壩下游</a></li>
+                <!-- <div style="float:right;">
+                    
+                    <button id="btnRTRealtime" class="btn btn-default pull-left">返回</button>
+                </div> -->
+            </ul>
+            <div style="margin-left: 0px; margin-top: 10px; ">
+                <div class="zoom_controls zoom_controls_day">
+                    <a href="#" data-chart="realtime" data-range="1d" data-index="0" class="active">當日</a>
+                    <a href="#" data-chart="realtime" data-range="2d" data-index="0">2日</a>
+                    <a href="#" data-chart="realtime" data-range="3d" data-index="0">3日</a>
+                    <a href="#" data-chart="realtime" data-range="10d" data-index="0">10日</a>
+
+                    <button id="btnRTRealtime" class="btn btn-default" style="float: right; padding: 5px 12px !important;">返回</button>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div role="tabpane1" class="tab-pane fade  active in" id="tabD1" aria-labelledby="tabD1-tab">
+                    <!-- <div style="height:33px;"></div> -->
+                    <div style="height:33px;"></div>
+                    <div class="alert-base alert-green  fade in ">
+                        <img src="" style="width:40px;">
+                        <font id="stationRainRD"></font>玉峰
+                        <div id="spNW08" style="float: right;">
+                            <span class="font12"></span>
+                            <span class="totalAll">--</span>
+                            <span class="font14 ">NTU</span>
+                        </div>
+                    </div>
+                    <div id="picNW08" style="min-width: 375px;min-height: 200px"></div>
+                    <br />
+                    <div class="alert-base alert-green  fade in ">
+                        <img src="" style="width:40px;">
+                        <font id="stationRainRD"></font>霞雲
+                        <div id="spNW23" style="float: right;">
+                            <span class="font12"></span>
+                            <span class="totalAll">--</span>
+                            <span class="font14 ">NTU</span>
+                        </div>
+                    </div>
+                    <div id="picNW23" style="min-width: 375px;min-height: 200px"></div>
+                    <br />
+                </div>
+                <div role="tabpane1" class="tab-pane fade " id="tabD2" aria-labelledby="tabD2-tab">
+                    <div style="height:33px;"></div>
+                    <div class="alert-base alert-green  fade in ">
+                        <img src="" style="width:40px;">
+                        <font id="stationRainRD"></font>電廠取水塔<span style="font-size: 15px;">(EL196m)</span>
+                        <div id="spNW17" style="float: right;">
+                            <span class="font12"></span>
+                            <span class="totalAll">--</span>
+                            <span class="font14 ">NTU</span>
+                        </div>
+                    </div>
+                    <div id="picNW17" style="min-width: 375px;min-height: 200px"></div>
+                    <br />
+                    <div class="alert-base alert-green  fade in ">
+                        <img src="" style="width:40px;">
+                        <font id="stationRainRD"></font>羅浮
+                        <div id="spNW11" style="float: right;">
+                            <span class="font12"></span>
+                            <span class="totalAll">--</span>
+                            <span class="font14 ">NTU</span>
+                        </div>
+                    </div>
+                    <div id="picNW11" style="min-width: 375px;min-height: 200px"></div>
+                    <br />
+                    <div class="alert-base alert-green  fade in ">
+                        <img src="" style="width:40px;">
+                        <font id="stationRainRD"></font>壩前浮台<span style="font-size: 15px;">(EL228m)</span>
+                        <div id="spNW15b" style="float: right;">
+                            <span class="font12"></span>
+                            <span class="totalAll">--</span>
+                            <span class="font14 ">NTU</span>
+                        </div>
+                    </div>
+                    <div id="picNW15b" style="min-width: 375px;min-height: 200px"></div>
+                    <br />
+                </div><!--.tab3-->
+                <div role="tabpane1" class="tab-pane fade " id="tabD3" aria-labelledby="tabD3-tab">
+                    <div style="height:33px;"></div>
+                    <div class="alert-base alert-green  fade in ">
+                        <img src="" style="width:40px;">
+                        <font id="stationRainRD"></font>石門大圳
+                        <div id="spNW14" style="float: right;">
+                            <span class="font12"></span>
+                            <span class="totalAll">--</span>
+                            <span class="font14 ">NTU</span>
+                        </div>
+                    </div>
+                    <div id="picNW14" style="min-width: 375px;min-height: 200px"></div>
+                    <br />
+                    <div class="alert-base alert-green  fade in ">
+                        <img src="" style="width:40px;">
+                        <font id="stationRainRD"></font>後池閘閥室
+                        <div id="spNW37" style="float: right;">
+                            <span class="font12"></span>
+                            <span class="totalAll">--</span>
+                            <span class="font14 ">NTU</span>
+                        </div>
+                    </div>
+                    <div id="picNW37" style="min-width: 375px;min-height: 200px"></div>
+                    <br />
+                </div><!--.tab3-->
+                <div role="tabpane1" class="tab-pane fade " id="tabD4" aria-labelledby="tabD4-tab">
+                    <div style="height:33px;"></div>
+                    <div class="alert-base alert-green  fade in ">
+                        <img src="" style="width:40px;">
+                        <font id="stationRainRD"></font>大溪橋
+                        <div id="spNW31" style="float: right;">
+                            <span class="font12"></span>
+                            <span class="totalAll">--</span>
+                            <span class="font14 ">NTU</span>
+                        </div>
+                    </div>
+                    <div id="picNW31" style="min-width: 375px;min-height: 200px"></div>
+                    <br />
+                    <div class="alert-base alert-green  fade in ">
+                        <img src="" style="width:40px;">
+                        <font id="stationRainRD"></font>鳶山堰
+                        <div id="spNW30" style="float: right;">
+                            <span class="font12"></span>
+                            <span class="totalAll">--</span>
+                            <span class="font14 ">NTU</span>
+                        </div>
+                    </div>
+                    <div id="picNW30" style="min-width: 375px;min-height: 200px"></div>
+                    <br>
+                    <div class="alert-base alert-green  fade in ">
+                        <img src="" style="width:40px;">
+                        <font id="stationRainRD"></font>中庄攔河堰
+                        <div id="spNW33" style="float: right;">
+                            <span class="font12"></span>
+                            <span class="totalAll">--</span>
+                            <span class="font14 ">NTU</span>
+                        </div>
+                    </div>
+                    <div id="picNW33" style="min-width: 375px;min-height: 200px"></div>
+                    <br>
+                </div><!--.tab3-->
+            </div><!--.col-sm-12 col-md-12 col-lg-12-->
+            </div>
+        
+            <button onclick="javascript: window.location = 'mailto:how@gis.tw;waynelin@gis.tw;aaron@gis.tw?subject=濁度 - 每日水情意見回報&body=姓名：%0d%0a單位：%0d%0a意見說明：%0d%0a'" class="btn btn-lg btn-warning pull-right margin-T15" title="回報問題"><span class="glyphicon glyphicon-envelope"> </span> &nbsp;回報問題</button>
+        </div>
+<!-- /.container-fluid main-container--> 
+
+<ul class="footer-nav-6">
+    <li><a href="01_Rainfall-01.html"><img src="img/FooterNav01.svg"/><br/>雨量</a></li>
+    <li><a href="02_WaterRegimen-02.html"><img src="img/FooterNav02.svg"/><br/>水情</a></li>
+    <li><a href="07_Electricity-01.html"><img src="img/FooterNav07.svg" /><br />發電</a></li>
+    <li class="active"><a href="04_Quality.html"><img src="img/FooterNav04.svg"/><br/>濁度</a></li>
+    <li><a href="05_Engineering-01.html"><img src="img/FooterNav05.svg"/><br/>工程</a></li>
+    <li><a href="06_Earthquake-01.html"><img src="img/FooterNav06.svg"/><br/>地震</a></li>
+</ul>
+  
+
+<script type="text/javascript">
+$(function () {
+  	$('.navbar-toggle-sidebar').click(function () {
+  		$('.navbar-nav').toggleClass('slide-in');
+  		$('.side-body').toggleClass('body-slide-in');
+  		$('#search').removeClass('in').addClass('collapse').slideUp(200);
+  	});
+
+  	$('#search-trigger').click(function () {
+  		$('.navbar-nav').removeClass('slide-in');
+  		$('.side-body').removeClass('body-slide-in');
+  		$('.search-input').focus();
+  	});
+  });
+</script>
+</body>
+</html>

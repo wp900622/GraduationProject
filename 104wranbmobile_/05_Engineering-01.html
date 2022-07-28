@@ -1,0 +1,827 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+<meta  http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>每日水情</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/elmo1.css" rel="stylesheet"/>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/include.js"></script>
+
+<script src="js/charts/beyond.min.js"></script> 
+<script src="js/charts/jquery.easypiechart.js"></script> 
+<script src="js/charts/easypiechart-init.js"></script>
+<script src="js/highcharts.js"></script>
+<script src="js/dredg.js"></script>
+<script src="js/eng.js"></script>
+</head>
+
+<body onload="initialize();">
+<div id="page1" class="row"> 
+  
+  <!--頁籤-->
+  <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+    <ul id="myTab" class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#tab1" id="tab1-tab" role="tab" data-toggle="tab" aria-controls="tab1" aria-expanded="false">進度統計</a></li>
+        
+      <!--<li role="presentation"><a href="#tab2"  id="tab2-tab" role="tab" data-toggle="tab" aria-controls="tab2" aria-expanded="true">狀態統計</a></li>
+      <li role="presentation"><a href="#tab3"  id="tab3-tab" role="tab" data-toggle="tab" aria-controls="tab3" aria-expanded="true">經費統計</a></li>-->
+        <li role="presentation"><a href="#tab4" id="tab4-tab" role="tab" data-toggle="tab" aria-controls="tab4" aria-expanded="false">清淤</a></li>
+        <div class="SEACH">
+      <button class="btn btn-info collapsed" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <span class="glyphicon glyphicon-search font16"></span>
+        
+      </button>
+      
+      <div class="collapse" id="collapseExample" aria-expanded="false">
+      <div class="well">
+        <h4><label><span class="glyphicon glyphicon-calendar"></span>&nbsp;年&nbsp;&nbsp;&nbsp;度</label><select id="year">
+          <option value="">在建工程</option>
+          <option value="103">103年度</option>
+          <option value="104">104年度</option>
+          <option value="105">105年度</option>
+        </select></h4>
+      
+        <h4><label><span class="glyphicon glyphicon-tag"></span>&nbsp;關鍵字</label><input id="keywords" type="text" value=""/></h4>
+        <hr>
+          <div class=" text-center"><button id="search" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-search"></span>&nbsp;查詢</button>   &nbsp;<button id="clear" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-remove"></span>&nbsp;清除</button> </div>
+      </div>
+    </div>
+     </div>
+    </ul>
+    <div id="btnBack2Area" style="display:none;">
+        <h3 class="Dateh3 margin-L10" >
+        <button id="btnBack2" class="btn btn-default pull-left btn-sm " >返回</button>
+        <span class="glyphicon"></span></h3>
+        <div class="alert alert-info fade in"><span class="glyphicon glyphicon-th-large"></span>&nbsp;<font id="engNameHeader"></font>
+
+        </div>
+        <p class=" red font12 alignL margin-T-15 margin-L5">資料來源:公共工程標案管理系統</p>
+    </div>
+    <h3 class="Dateh3-s  margin-R5px ">
+<table id="dstatus" style="width:100%"><tr><td><font id="dprog"></font>進度統計</td><td align="right">資料來源：標案管理系統 <font class="engDate"></font></td></tr></table>
+</h3>
+    <div id="myTabContent" class="tab-content">
+      <div role="tabpane1" class="tab-pane fade  active in" id="tab1" aria-labelledby="tab1-tab">
+        <div class="portlet">
+          <div class="portlet-title">
+            <ul class="nav nav-tabs">
+              <li class="all active"> <a href="#portlet_tab1" data-toggle="tab" aria-expanded="true"><span id="state_0" class="badge-O badge-all"></span>&nbsp;全部</a> </li>
+              <li class="i-behind"> <a href="#portlet_tab2" data-toggle="tab" aria-expanded="false"><span id="state_1" class="badge-O badge-behind "></span>&nbsp;落後</a> </li>
+              <li class=" i-conform"> <a href="#portlet_tab3" data-toggle="tab" aria-expanded="false"><span id="state_2" class="badge-O badge-conform "></span>&nbsp;符合</a> </li>
+              <li class="i-lead"> <a href="#portlet_tab4" data-toggle="tab" aria-expanded="false"><span id="state_3" class="badge-O badge-lead"></span>&nbsp;超前</a> </li>
+            </ul>
+            <!--.nav nav-tabs--> 
+          </div>
+          <!--.portlet-title-->
+          
+          <div class="portlet-body">
+            <div class="tab-content"> 
+              <!--進度統計 tab1-->
+              <div class="tab-pane active" id="portlet_tab1">
+                <div class="list-group" id="engList"></div>
+                <!--.list-group--> 
+              </div>
+              <!--.tab1-->
+              
+              <div class="tab-pane" id="portlet_tab2">
+                <div class="list-group" id="engList2"></div>
+                <!--.list-group--> 
+              </div>
+              <!--.tab2-->
+              <div class="tab-pane" id="portlet_tab3">
+                <div class="list-group" id="engList3"></div>
+                <!--.list-group--> 
+              </div>
+              <!--.tab3-->
+              <div class="tab-pane" id="portlet_tab4">
+                <div class="list-group" id="engList4"></div>
+                <!--.list-group--> 
+              </div>
+              <!--.tab4--> 
+            </div>
+            <!--.tab-content--> 
+          </div>
+          <!--.portlet-body--> 
+        </div>
+        <!--.portlet--> 
+      </div>
+      <!--.tabpane1--> 
+      <!--.進度統計tab1--> 
+      
+      <!--狀態統計tab2-->
+      <div role="tabpane1" class="tab-pane fade "id="tab2" aria-labelledby="tab2-tab">
+        <ul class="ES_nav">
+          <li class="ES_nav_01"> <a href="#"><span id="stateAll"></span><br />
+            全部工程</a><span class="slash"></span></li>
+          <li class="ES_nav_02"> <a href="#"><span id="stateA"></span><br />
+            已發包</a><span class="slash"></span></li>
+          <li class="ES_nav_03"> <a href="#"><span id="stateB"></span><br />
+            已完工</a><span class="slash"></span></li>
+          <li class="ES_nav_04"> <a href="#"><span id="stateC"></span><br />
+            已驗收</a></li>
+        </ul>
+        <h3 class="h3-bluegray"><span class="glyphicon glyphicon-tasks"></span> 各預算科目執行狀態數量統計圖 </h3>
+        <!--圖表顏色請參考 http://jsfiddle.net/5mL12h7c/1/ 謝謝!-->
+        <div id="engStatusTitle"></div> <br />
+       
+        <!--執行狀態工程名稱tab-->
+        <div class="ES_detailTab ">
+          <div class="ES_detailTab-title">
+            <ul class="nav nav-tabs">
+              <li class="ES_detailTab_tab1 active"> <a href="#ES_detailTab_tab1" data-toggle="tab" aria-expanded="true"><span id="stateAll2" class="badge-O badge-all"></span>&nbsp;全部</a> </li>
+              <li class="ES_detailTab_tab2"> <a href="#ES_detailTab_tab2" data-toggle="tab" aria-expanded="false"><span id="stateA2" class="badge-O badge-behind "></span>&nbsp;已發包</a> </li>
+              <li class="ES_detailTab_tab3"> <a href="#ES_detailTab_tab3" data-toggle="tab" aria-expanded="false"><span id="stateB2" class="badge-O badge-conform "></span>&nbsp;已完工</a> </li>
+              <li class="ES_detailTab_tab4"> <a href="#ES_detailTab_tab4" data-toggle="tab" aria-expanded="false"><span id="stateC2" class="badge-O badge-lead"></span>&nbsp;已驗收</a> </li>
+            </ul>
+            <!--.nav nav-tabs--> 
+          </div>
+          <!--.portlet-title-->
+          
+          <div class="ES_detailTab-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="ES_detailTab_tab1">
+                <div class="list-group"></div>
+                <!--.list-group--> 
+              </div>
+              <!--.tab1-->
+              
+              <div class="tab-pane" id="ES_detailTab_tab2">
+                <div class="list-group"></div>
+                <!--.list-group--> 
+              </div>
+              <!--.tab2-->
+              <div class="tab-pane" id="ES_detailTab_tab3">
+                <div class="list-group"></div>
+                <!--.list-group--> 
+              </div>
+              <!--.tab3-->
+              <div class="tab-pane" id="ES_detailTab_tab4">
+                <div class="list-group"></div>
+                <!--.list-group--> 
+              </div>
+              <!--.tab4--> 
+            </div>
+            <!--.tab-content--> 
+          </div>
+          <!--.portlet-body--> 
+        </div>
+        <!--.portlet--> 
+        
+        <!-- <div id="toTop" class="btn btn-info" style="display: block;"><span class="glyphicon glyphicon-chevron-up"></span> Back to Top</div>--> 
+        
+      </div>
+      <!--.狀態統計tab2--> 
+      
+      <!--經費統計tab3-->
+      
+      <div role="tabpane1" class="tab-pane fade  "id="tab3" aria-labelledby="tab3-tab">
+      <div align="right" style="line-height: 16px; color: #656E99; font-size: 12px;">資料來源：標案管理系統 <font class="engDate"></font></div>
+        <div class="top_dashboard" id="feeHeader">
+        
+          <div class="col-xs-4 col-sm-4 col-md-4 ">
+          <div class="img-container">
+          <img src="img/total_pic.svg"/>
+          </div>
+            <div class="fund Total_fund">
+              <h3 class="text-center"><font id="feeTotalBudget"></font><br />
+                <span>(千元)</span></h3>
+              <p class="text-center "><strong>計畫總經費</strong></p>
+            </div>
+          </div>
+          
+          <div class="col-xs-4 col-sm-4 col-md-4  ">
+          <div class="img-container">
+          <img  src="img/reach_pic.svg"/>
+          </div>
+            <div class="fund reach_fund">
+              <h3 class="text-center"><font id="feeActualTotalAmount"></font><br />
+                <span>(千元)</span></h3>
+              <p class="text-center "><strong>目前執行經費</strong></p>
+            </div>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+          <div class="img-container">
+          <img  src="img/payable_pic.svg"/>
+          </div>
+            <div class="fund payable_fund">
+              <h3><font id="feeUnPayable"></font><br />
+                <span>(千元)</span></h3>
+              <p><strong>應付未付數</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="top_dashboard" id="feeHeader2" style="display:none">
+        
+          <div class="col-xs-4 col-sm-4 col-md-4 ">
+          <div class="img-container">
+          <img src="img/total_pic.svg"/>
+          </div>
+            <div class="fund Total_fund">
+              <h3 class="text-center"><font id="feeTotalBudget2"></font><br />
+                <span>(千元)</span></h3>
+              <p class="text-center "><strong>計畫總經費</strong></p>
+            </div>
+          </div>
+          
+          <div class="col-xs-4 col-sm-4 col-md-4  ">
+          <div class="img-container">
+          <img  src="img/reach_pic.svg"/>
+          </div>
+            <div class="fund reach_fund">
+              <h3 class="text-center"><font id="feeActualTotalAmount2"></font><br />
+                <span>(千元)</span></h3>
+              <p class="text-center "><strong>目前執行經費</strong></p>
+            </div>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+          <div class="img-container">
+          <img  src="img/payable_pic.svg"/>
+          </div>
+            <div class="fund payable_fund">
+              <h3><font id="feeUnPayable2"></font><br />
+                <span>(千元)</span></h3>
+              <p><strong>應付未付數</strong></p>
+            </div>
+          </div>
+        </div>
+        <!--.top_dashboard-->
+        
+        <div class="bottom_dashboard" id="activeHeader">
+          <div class="col-xs-6 col-sm-6 col-md-6  ">
+            <div class="execution">
+              <div id="ExecutionRateO" data-toggle="easypiechart" class="easyPieChart margin-auto" data-barcolor="#40bcbc" data-linecap="butt" data-percent="" data-animate="500" data-linewidth="8" data-size="100" data-trackcolor="#c6c6c6" style="width: 100px; height: 100px; "> <span id="ExecutionRate" class="execution_NO font150"></span> </div>
+              <!--.easypiechart --> 
+              
+              <span class="lightcarbon  "><strong >目前執行狀況</strong></span> </div>
+            <!--.reach--> 
+            
+          </div>
+          <!--.col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+          
+          <div class="col-xs-6 col-sm-6 col-md-6  ">
+            <div class="reach">
+              <div id="ConversionRateO" data-toggle="easypiechart" class="easyPieChart margin-auto" data-barcolor="#4670c4 " data-linecap="butt" data-percent="" data-animate="500" data-linewidth="8" data-size="100" data-trackcolor="#c6c6c6" style="width: 100px; height: 100px; "> <span id="ConversionRate" class="reach_NO font150"></span> </div>
+              <!--.easypiechart --> 
+              
+              <span class="lightcarbon margin-T5"><strong>目前達成率</strong></span> </div>
+            <!--.reach--> 
+            
+          </div>
+          <!--.col-xs-6 col-sm-6 col-md-6 col-lg-6 --> 
+        </div>
+        <div class="bottom_dashboard" id="activeHeader2" style="display:none">
+          <div class="col-xs-6 col-sm-6 col-md-6  ">
+            <div class="execution">
+              <div id="ExecutionRateO2" data-toggle="easypiechart" class="easyPieChart margin-auto" data-barcolor="#40bcbc" data-linecap="butt" data-percent="" data-animate="500" data-linewidth="8" data-size="100" data-trackcolor="#c6c6c6" style="width: 100px; height: 100px; "> <span id="ExecutionRate2" class="execution_NO font150"></span> </div>
+              <!--.easypiechart --> 
+              
+              <span class="lightcarbon  "><strong >目前執行狀況</strong></span> </div>
+            <!--.reach--> 
+            
+          </div>
+          <!--.col-xs-6 col-sm-6 col-md-6 col-lg-6 -->
+          
+          <div class="col-xs-6 col-sm-6 col-md-6  ">
+            <div class="reach">
+              <div id="ConversionRateO2" data-toggle="easypiechart" class="easyPieChart margin-auto" data-barcolor="#4670c4 " data-linecap="butt" data-percent="" data-animate="500" data-linewidth="8" data-size="100" data-trackcolor="#c6c6c6" style="width: 100px; height: 100px; "> <span id="ConversionRate2" class="reach_NO font150"></span> </div>
+              <!--.easypiechart --> 
+              
+              <span class="lightcarbon margin-T5"><strong>目前達成率</strong></span> </div>
+            <!--.reach--> 
+            
+          </div>
+          <!--.col-xs-6 col-sm-6 col-md-6 col-lg-6 --> 
+        </div>
+        <!--.bottom_dashboard-->
+        
+        <hr class="dashed_hr">
+        <div id="feePage">
+            <h3 class="h3-bluegray2"><span class="glyphicon glyphicon-tasks"></span> 各預算科目執行經費<!--及進度統計--></h3>
+            <!--圖表顏色請參考 http://jsfiddle.net/8au7qu9L/5/ 謝謝!-->        
+            <div id="engFeeTitle"></div> <br />
+        
+        
+            <h3 class="h3_purple">預算科目</h3>
+            <div class="list-group" id="engFeeTitleList"> 
+            </div><!--.list-group--> 
+        </div>
+        <div id="engNamePage" style="display:none;">
+            <h3 class="h3-bluegray2"><span class="glyphicon glyphicon-tasks"></span> 各預算科目執行經費及進度統計</h3>
+            <!--圖表顏色請參考 http://jsfiddle.net/8au7qu9L/5/ 謝謝!-->        
+            <div id="engNameTitle"></div> <br />
+        
+        
+            <h3 class="h3_purple">工程名稱</h3>
+            <div class="list-group" id="engNameTitleList"> 
+            
+            </div>
+        </div>
+      </div>
+      <!--.經費統計tab3--> 
+      
+        <div role="tabpane1" class="tab-pane fade" id="tab4" aria-labelledby="tab4-tab" style="min-height: 300px">
+
+            <div id="pageFirst">
+                <h3 class="Dateh3"><span class="glyphicon glyphicon-time"></span> <span id="dDate"></span></h3>
+                <div class="alert alert-info fade in  "><img src="img/FooterNav03.svg" style="width:38px; margin-right:5px;" />  石門水庫每日清淤量   <span class="pull-right"><button id="dredgingHistory" class="btn btn-xs btn-peach margin-R5px ">歷史統計</button></span> </div>
+                <!-- 義興壩 -->
+                <ul class="list-group width100 ">
+                    <li href="#" class="list-group-item bg-themethirdcolor white h4">義興壩<span class="pull-right"><button id="toSecondPage0" class="btn btn-xs btn-peach margin-T-5 ">詳細資料</button></span></li>
+                    <li href="#" class="list-group-item font16  ">清淤量: <span class="pull-right text-primary font22"><span id="dredgingCnt0">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                    <li href="#" class="list-group-item  bg-ivory font16">清淤車次: <span class="pull-right text-primary font22"><span id="dredgingCar0">0</span> <span class="font14 storm-cloud">車次</span></span></li>
+                    <li href="#" class="list-group-item font16 ">當月清淤量: <span class="pull-right text-primary font22"><span id="dredgingTotalM0">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                    <li href="#" class="list-group-item bg-ivory font16">當年度清淤量: <span class="pull-right text-primary font22"><span id="dredgingTotalY0">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                </ul>
+                <!-- /.義興壩 -->
+                <!-- 羅浮橋 -->
+                <ul class="list-group width100 ">
+                    <li href="#" class="list-group-item bg-themefourthcolor white h4">羅浮橋<span class="pull-right"><button id="toSecondPage1" class="btn btn-xs btn-peach margin-T-5 ">詳細資料</button></span></li>
+                    <li href="#" class="list-group-item font16  ">清淤量: <span class="pull-right text-primary font22"><span id="dredgingCnt1">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                    <li href="#" class="list-group-item  bg-ivory font16">清淤車次: <span class="pull-right text-primary font22"><span id="dredgingCar1">0</span> <span class="font14 storm-cloud">車次</span></span></li>
+                    <li href="#" class="list-group-item font16 ">當月清淤量: <span class="pull-right text-primary font22"><span id="dredgingTotalM1">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                    <li href="#" class="list-group-item bg-ivory font16">當年度清淤量: <span class="pull-right text-primary font22"><span id="dredgingTotalY1">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                </ul>
+                <!-- /.羅浮橋 -->
+                <!-- 阿姆坪 -->
+                <ul class="list-group width100 ">
+                    <li href="#" class="list-group-item bg-themefifthcolor white h4">阿姆坪<span class="pull-right"><button id="toSecondPage2" class="btn btn-xs btn-peach margin-T-5 ">詳細資料</button></span></li>
+                    <li href="#" class="list-group-item font16  ">清淤量: <span class="pull-right text-primary font22"><span id="dredgingCnt2">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                    <li href="#" class="list-group-item  bg-ivory font16">清淤車次: <span class="pull-right text-primary font22"><span id="dredgingCar2">0</span> <span class="font14 storm-cloud">車次</span></span></li>
+                    <li href="#" class="list-group-item font16 ">當月清淤量: <span class="pull-right text-primary font22"><span id="dredgingTotalM2">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                    <li href="#" class="list-group-item bg-ivory font16">當年度清淤量: <span class="pull-right text-primary font22"><span id="dredgingTotalY2">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                </ul>
+                <!-- /.阿姆坪 -->
+                <!-- 抽泥浚渫 -->
+                <ul class="list-group width100 ">
+                    <li href="#" class="list-group-item bg-themeprimary  white h4">抽泥浚渫<span class="pull-right"><button id="toSecondPage3" class="btn btn-xs btn-peach margin-T-5 ">詳細資料</button></span></li>
+                    <li href="#" class="list-group-item font16  ">清淤量: <span class="pull-right text-primary font22"><span id="dredgingCnt3">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                    <li href="#" class="list-group-item  bg-ivory font16">清淤時數: <span class="pull-right text-primary font22"><span id="dredgingCar3">0</span> <span class="font14 storm-cloud">時數</span></span></li>
+                    <li href="#" class="list-group-item font16 ">當月清淤量: <span class="pull-right text-primary font22"><span id="dredgingTotalM3">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                    <li href="#" class="list-group-item bg-ivory font16">當年度清淤量: <span class="pull-right text-primary font22"><span id="dredgingTotalY3">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                </ul>
+                <!-- /.抽泥浚渫 -->
+                <!-- 沉澱池清運 -->
+                <ul class="list-group width100 ">
+                    <li href="#" class="list-group-item bg-purple white h4">沉澱池清運<span class="pull-right"><button id="toSecondPage4" class="btn btn-xs btn-peach margin-T-5 ">詳細資料</button></span></li>
+                    <li href="#" class="list-group-item font16  ">清淤量: <span class="pull-right text-primary font22"><span id="dredgingCnt4">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                    <li href="#" class="list-group-item  bg-ivory font16">清淤車次: <span class="pull-right text-primary font22"><span id="dredgingCar4">0</span> <span class="font14 storm-cloud">車次</span></span></li>
+                    <li href="#" class="list-group-item font16 ">當月清淤量: <span class="pull-right text-primary font22"><span id="dredgingTotalM4">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                    <li href="#" class="list-group-item bg-ivory font16">當年度清淤量: <span class="pull-right text-primary font22"><span id="dredgingTotalY4">0</span> <span class="font14 storm-cloud">立方公尺</span></span></li>
+                </ul>
+                <!-- /.沉澱池清運 -->
+
+
+
+
+
+
+            </div>  <!-- /.各測站資訊  col-sm-9 col-md-9 -->
+
+            <div id="pageSecond" class="col-sm-12 col-md-12 col-lg-12" style="display:none">
+                <h3 class="Dateh3 " style=" color:#666; padding:- 10px; text-align:center;"><button id="btnRT" class="btn btn-default pull-left">返回</button><span class="glyphicon glyphicon-calendar"></span> <span id="a_date"></span></h3>
+                <hr class="Datehr">
+                <!--當日清淤-->
+                <div class="col-sm-12 col-md-12">
+                    <div class="col-sm-12 col-md-6 ">
+                        <h3 class="h3-blue"><span class="glyphicon glyphicon-star"></span> <font id="nameStation"></font><span class="date" style="float:right;"><span class="glyphicon glyphicon-time" style="vertical-align:middle; margin-top:-1px;"></span> <font id="dateDredging"></font></span></h3>
+                        <div class=" col-lg-6 col-sm-12 col-md-6 text-center">
+                            <div class="D-block">
+                                <img src="img/excavato-blue.svg" />
+                                <p><font id="cntDredging">0</font><br /><span class="DYspan">清淤量(立方公尺)</span></p>
+                            </div><!--D-Y-block-->
+                        </div><!--D-Dredging-->
+
+
+                        <div class=" col-lg-6 col-sm-12 col-md-6 text-center ">
+                            <div class="D-block">
+                                <img src="img/truck-blue.svg" />
+
+                                <p><font id="carDredging">0</font><br /> <span class="DYspan car">清淤車次</span> </p>
+                            </div><!--D-Y-block-->
+                        </div><!---Truck-->
+
+
+
+                    </div> <!-- /. 當日清淤 col-sm-6 col-md-6-->
+                    <!--本年度結至目前-->
+                    <div class="col-sm-12 col-md-6 ">
+
+
+                        <h3 class="h3-green"><span class="glyphicon glyphicon-calendar"></span> 本年度截至目前為止</h3>
+                        <div class=" col-lg-6 col-sm-12 col-md-6 text-center">
+                            <div class="Y-block">
+                                <img src="img/excavato-green.svg" />
+                                <p class="p-green"><font id="cntTotalDredging">0</font><br /><span class="DYspan">清淤量(立方公尺)</span></p>
+                            </div><!--D-Y-block-->
+                        </div><!--Y-Dredging-->
+
+
+
+                        <div class="col-lg-6  col-sm-12  col-md-6  text-center">
+                            <div class="Y-block">
+                                <img src="img/truck-green.svg" />
+                                <p class="p-green"><font id="carTotalDredging">0</font><br /><span class="DYspan car">清淤車次</span></p>
+                            </div><!--D-Y-block-->
+                        </div><!--/Y.Truck-->
+
+                    </div>  <!-- /.本年度結至目前 col-sm-6 col-md-6-->
+
+                </div>  <!--col-sm-12 col-md-12-->
+
+
+                <div class="col-sm-12 col-md-12">
+                    <!--每月累積清淤量統計-->
+                    <div class="panel panel-success ">
+                        <div id="titleCntDredgingDetail" class="panel-heading"><img src="img/excavato-white.svg" class="w-img" /> <font id="textCntDredging"></font>年清淤量統計</div>
+                        <div id="chartCntDredgingDetail" class="panel-body"></div>
+                    </div><!--/.每月累積清淤量統計 panel panel-default-->
+                    <!--每年累積清淤車次統計-->
+                    <div class="panel panel-success ">
+                        <div id="titleCarDredgingDetail" class="panel-heading"><img src="img/truck-white.svg" class="w-img" /> <font id="textCarDredging"></font><font class="car">年累積清淤車次統計</font></div>
+                        <div id="chartCarDredgingDetail" class="panel-body"></div>
+                    </div><!--/.每年累積清淤車次統計 panel panel-default-->
+
+                </div>
+
+
+
+
+
+
+
+            </div>  <!-- /.main col-sm-9 col-md-9  content-->
+            <button onclick="javascript: window.location = 'mailto:how@gis.tw;waynelin@gis.tw;aaron@gis.tw?subject=清淤 - 每日水情意見回報&body=姓名：%0d%0a單位：%0d%0a意見說明：%0d%0a'" class="btn btn-lg btn-warning pull-right margin-T15" title="回報問題"><span class="glyphicon glyphicon-envelope"> </span> &nbsp;回報問題</button>
+
+        </div>
+    </div>
+    <!--.myTabContent--> 
+  </div>
+  <!--.bs-example bs-example-tabs--> 
+  <!--.頁籤--> 
+  
+</div>
+
+<div id="page2" class="row" style="display:none;">
+<h3 class="Dateh3 margin-L10" >
+  <button id="btnBack" class="btn btn-default pull-left btn-sm " >返回</button>
+  <span class="glyphicon"></span></h3>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default eng-list">
+      <div class="panel-heading" role="tab" id="heading1">
+        <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1" style="display:block;"> 基本資料  <span class="label label-warning label-85">工程會</span> <img id="engIcon" class="pull-right" src="img/map_icon.svg"/></a> </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+        <div class="panel-body">
+          <table class="eng-table">
+            <tbody>
+              <tr>
+                <th>編號</th>
+                <td id="ProjectNo"></td>
+              </tr>
+              <tr>
+                <th>執行機關</th>
+                <td id="ExecutingUnit"></td>
+              </tr>
+              <tr>
+                <th>標案名稱</th>
+                <td id="ProjectName"></td>
+              </tr>
+              <tr>
+                <th>工程類別</th>
+                <td id="ProjectCategory"></td>
+              </tr>
+              <tr>
+                <th>縣市鄉鎮</th>
+                <td id="CountyProjectLocation"></td>
+              </tr>
+              <tr>
+                <th>坐標</th>
+                <td id="Coordinates"></td>
+              </tr>
+              <tr>
+                <th>施工地點</th>
+                <td id="ProjectLocation"></td>
+              </tr>
+              <tr>
+                <th>主管機關</th>
+                <td id="ProjectCompetentAuthority"></td>
+              </tr>
+              <tr>
+                <th>主辦機關</th>
+                <td id="ProjectExecuteAuthority"></td>
+              </tr>
+              <tr>
+                <th>經費來源機關</th>
+                <td id="ProjectInChargeEntity"></td>
+              </tr>
+              <tr>
+                <th>聯絡人員姓名</th>
+                <td id="ProjectAdministrator_Name"></td>
+              </tr>
+              <tr>
+                <th>聯絡人員電話</th>
+                <td id="ProjectAdministrator_Telephone"></td>
+              </tr>
+              <tr>
+                <th>聯絡人員電子郵件</th>
+                <td id="ProjectAdministrator_EmailAddress"></td>
+              </tr>
+              <tr>
+                <th>工程概要</th>
+                <td id="ProjectSummary"></td>
+              </tr>
+              <tr>
+                <th>總天數</th>
+                <td id="ContractDuration"></td>
+              </tr>
+              <tr>
+                <th>工期說明</th>
+                <td id="NoteContractDuration"></td>
+              </tr>
+              <tr>
+                <th>規劃單位</th>
+                <td id="Planner"></td>
+              </tr>
+              <tr>
+                <th>設計單位</th>
+                <td id="Designer"></td>
+              </tr>
+              <tr>
+                <th>監造單位</th>
+                <td id="Supervisory"></td>
+              </tr>
+              <tr>
+                <th>承攬廠商</th>
+                <td id="Contractor"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+      <div class="panel panel-default  eng-list">
+    <div class="panel-heading" role="tab" id="heading2">
+      <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2" style="display:block;"> 預定排程  <span class="label label-warning label-85 ">工程會</span> </a></h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+      <div class="panel-body"> 
+       <table class="eng-table">
+        <tbody>
+          <tr>
+            <th>預定決標日期</th>
+            <td id="ScheduledDateTenderAwarding"></td>
+          </tr>
+          <tr>
+            <th>預定開工日期</th>
+            <td id="ScheduledCommencementDate"></td>
+          </tr>
+          <tr>
+            <th>預定完工日期</th>
+            <td id="ScheduledCompletionDate"></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default  eng-list">
+    <div class="panel-heading" role="tab" id="heading3">
+      <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3" style="display:block;"> 執行狀況 <span class="label label-warning label-85 ">工程會</span> </a> </h4>
+    </div>
+    <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+      <div class="panel-body">
+       <table class="eng-table">
+        <tbody>
+          <tr>
+            <th>實際公告日期</th>
+            <td id="ActualDatePublication"></td>
+          </tr>
+          <tr>
+            <th>實際開標日期</th>
+            <td id="ActualDateTenderOpening"></td>
+          </tr>
+          <tr>
+            <th>實際決標日期</th>
+            <td id="ActualDateTenderAwarding"></td>
+          </tr>
+          <tr>
+            <th>實際開工日期</th>
+            <td id="ActualCommencementDate"></td>
+          </tr>
+          <tr>
+            <th>實際完工日期</th>
+            <td id="ActualCompletionDate"></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default  eng-list">
+    <div class="panel-heading" role="tab" id="heading4">
+      <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4" style="display:block;"> 預算經費 <span class="label label-warning label-85 ">工程會</span>  </a></h4>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+      <div class="panel-body">
+      
+       <table class="eng-table">
+        <tbody>
+          <tr>
+            <th>工程總預算</th>
+            <td id="TotalBudget"></td>
+          </tr>
+          <tr>
+            <th>發包預算</th>
+            <td id="ContractBudget"></td>
+          </tr>
+          <tr>
+            <th>決標金額</th>
+            <td id="TenderAwardingValue"></td>
+          </tr>
+          <tr>
+            <th>預算科目</th>
+            <td id="AccountingTitle"></td>
+          </tr>
+          <tr>
+            <th>預算來源</th>
+            <td id="BudgetSource"></td>
+          </tr>
+          <tr>
+            <th>預算類別</th>
+            <td id="BudgetCategory"></td>
+          </tr>
+          <tr>
+            <th>法定預算數</th>
+            <td id="EstimatedBasePrice"></td>
+          </tr>
+          <tr>
+            <th>變更後契約金額</th>
+            <td id="AuthorizedBasePrice"></td>
+          </tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div class="panel panel-default  eng-list">
+    <div class="panel-heading" role="tab" id="heading5">
+      <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5" style="display:block;"> 經費支用 <span class="label label-warning label-85">工程會</span>  </a></h4>
+    </div>
+    <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+      <div class="panel-body">
+      <table class="eng-table">
+        <tbody>
+          <tr>
+            <th>資料時間</th>
+            <td id="UpdateDate"></td>
+          </tr>
+          <tr>
+            <th>總累計預定完成金額</th>
+            <td id="ScheduledTotalAmount"></td>
+          </tr>
+          <tr>
+            <th>總累計實際完成金額</th>
+            <td id="ActualTotalAmount"></td>
+          </tr>
+          <tr>
+            <th>年累計預定完成金額</th>
+            <td id="ScheduledYearAmount"></td>
+          </tr>
+          <tr>
+            <th>年累計實際完成金額</th>
+            <td id="ActualYearAmount"></td>
+          </tr>
+          <tr>
+            <th>應付未付數</th>
+            <td id="UnPayable"></td>
+          </tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div class="panel panel-default  eng-list">
+    <div class="panel-heading" role="tab" id="heading6">
+      <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6" style="display:block;"> 施工進度 <span class="label label-warning label-85 ">工程會</span>  </a></h4>
+    </div>
+    <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+      <div class="panel-body"><table class="eng-table">
+        <tbody>
+          <tr>
+            <th>資料時間</th>
+            <td id="UpdateDate2"></td>
+          </tr>
+          <tr>
+            <th>總累計預定進度</th>
+            <td id="ScheduledTotalProgress"></td>
+          </tr>
+          <tr>
+            <th>總累計實際進度</th>
+            <td id="ActualTotalProgress"></td>
+          </tr>
+          <tr>
+            <th>年累計預定進度</th>
+            <td id="ScheduledYearProgress"></td>
+          </tr>
+          <tr>
+            <th>年累計實際進度</th>
+            <td id="ActualYearProgress"></td>
+          </tr>
+          <tr>
+            <th>實際執行摘要</th>
+            <td id="ActualExecutiveSummary"></td>
+          </tr>
+          <tr>
+            <th>執行狀態</th>
+            <td id="ExecutingState"></td>
+          </tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div class="panel panel-default  eng-list">
+    <div class="panel-heading" role="tab" id="heading7">
+      <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7" style="display:block;"> 施工進度 <span class="label label-info label-85">監造系統</span>  </a></h4>
+    </div>
+    <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+      <div class="panel-body"> <table class="eng-table">
+        <tbody>
+          <tr>
+            <th>資料時間</th>
+            <td id="date"></td>
+          </tr>
+          <tr>
+            <th>預定施工進度</th>
+            <td id="design_percent"></td>
+          </tr>
+          <tr>
+            <th>實際施工進度</th>
+            <td id="act_percent"></td>
+          </tr>
+          <tr>
+            <th>預定監工進度</th>
+            <td id="design_percent2"></td>
+          </tr>
+          <tr>
+            <th>實際監工進度</th>
+            <td id="act_percent2"></td>
+          </tr>
+        </tbody>
+      </table> </div>
+    </div>
+  </div>
+  <div class="panel panel-default  eng-list">
+    <div class="panel-heading" role="tab" id="heading8">
+      <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8" style="display:block;"> 落後資訊 <span class="label label-warning label-85">工程會</span> </a> </h4>
+    </div>
+    <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+      <div class="panel-body"><table class="eng-table">
+        <tbody>
+          <tr>
+            <th>資料時間</th>
+            <td id="UpdateDate3"></td>
+          </tr>
+          <tr>
+            <th>落後因素</th>
+            <td id="BehindFactors"></td>
+          </tr>
+          <tr>
+            <th>原因分析</th>
+            <td id="AnalyzeFactor"></td>
+          </tr>
+          <tr>
+            <th>解決辦法</th>
+            <td id="Solutions"></td>
+          </tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div class="panel panel-default  eng-list">
+    <div class="panel-heading" role="tab" id="heading9">
+      <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9" style="display:block;"> 工程照片 <span class="label label-info label-85">監造系統</span> </a></h4>
+    </div>
+    <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
+      <div class="panel-body"> <table class="eng-table">
+        <tbody id="photo">
+        </tbody>
+      </table> </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- /.row -->
+
+<ul class="footer-nav-6">
+    <li><a href="01_Rainfall-01.html"><img src="img/FooterNav01.svg"/><br/>雨量</a></li>
+    <li><a href="02_WaterRegimen-02.html"><img src="img/FooterNav02.svg"/><br/>水情</a></li>
+    <li><a href="07_Electricity-01.html"><img src="img/FooterNav07.svg" /><br />發電</a></li>
+    <li><a href="04_Quality.html"><img src="img/FooterNav04.svg"/><br/>濁度</a></li>
+    <li class="active"><a href="05_Engineering-01.html"><img src="img/FooterNav05.svg"/><br/>工程</a></li>
+    <li><a href="06_Earthquake-01.html"><img src="img/FooterNav06.svg"/><br/>地震</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+<meta  http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>每日水情</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/elmo1.css" rel="stylesheet">
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/include.js"></script>
+<script src="js/earthquake.js"></script>
+</head>
+<body onload="initialize();">
+<div class="row"> 
+    <div id="pageFirst">
+        <!--頁籤-->
+        <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+        <ul id="myTab" class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#tab1" id="tab1-tab" role="tab" data-toggle="tab"  aria-expanded="false">石門</a></li>
+            <li role="presentation"><a href="#tab1"  id="tab2-tab" role="tab" data-toggle="tab" aria-expanded="true">寶二</a></li>
+            <li role="presentation"><a href="#tab1"  id="tab3-tab" role="tab" data-toggle="tab" aria-expanded="true">榮華壩</a></li>
+            <li role="presentation"><a href="#tab1" id="tab4-tab" role="tab" data-toggle="tab" aria-expanded="true">義興</a></li>
+            <li role="presentation"><a href="#tab1" id="tab5-tab" role="tab" data-toggle="tab" aria-expanded="true">中庄</a></li>
+            <li role="presentation"><a href="#tab1" id="tab6-tab" role="tab" data-toggle="tab" aria-expanded="true">羅東堰</a></li>
+            <li role="presentation"><a href="#tab1" id="tab7-tab" role="tab" data-toggle="tab" aria-expanded="true">氣象局</a></li>
+        </ul>
+        <!--<h3 class="Dateh3-s alignR margin-R5 " ><span class="glyphicon glyphicon-time"></span> 105年03月01日</h3>-->
+        <div id="myTabContent" class="tab-content">
+            <div role="tabpane1" class="tab-pane fade  active in" id="tab1" aria-labelledby="tab1-tab">
+                <div class="alert alert-info fade in" style="margin-bottom:0px;">
+                    <img src="img/FooterNav06.svg" style="width:40px; margin-top:-5px;"/> 地震儀 
+                </div>
+                <div id="earthquakeSite"></div>
+                <div class="Earthquake_img"><img src="img/Earthquake_img.jpg"/><br/><img src="" /></div>
+            </div>
+        </div>
+        <!--.myTabContent--> 
+        </div>
+    </div>
+    <div id="pageSecond" style="display:none;">
+        <h3 class="Dateh3 margin-L10" ><button id="bk2Earthquake" class="btn btn-default pull-left btn-sm ">返回</button><br/></h3>
+        <div class="alert alert-success fade in"><img src="img/FooterNav06.svg"/ style="width:40px; margin-top:-5px;"> <font id="earthquakeSiteName"></font> </div>
+        <h4 class="margin-R5">地震發生時間<span id="EqStartTime" class="pull-right text-primary font16"></span></h4><hr>
+        <h4 class="margin-R5">地震結束時間<span id="EqEndTime" class="pull-right text-primary  font16"></span></h4><hr>
+        <h4 class="margin-R5">震度(級)<span class="pull-right text-primary font22"><font id="MagnitudeMax"></font><span class="font14 storm-cloud">&nbsp;級</span></span></h4><hr>
+        <h4 class="margin-R5">加速度-X向<span class="pull-right text-primary font22"><font id="PGAX"></font><span class="font14 storm-cloud">&nbsp;gal</span></span></h4><hr>
+        <h4 class="margin-R5">加速度-Y向<span class="pull-right text-primary font22"><font id="PGAY"></font><span class="font14 storm-cloud">&nbsp;gal</span></span></h4><hr>
+        <h4 class="margin-R5">加速度-Z向<span class="pull-right text-primary font22"><font id="PGAZ"></font><span class="font14 storm-cloud">&nbsp;gal</span></span></h4><hr>
+        <h4 class="margin-R5">最大加速度<span class="pull-right text-primary font22"><font id="PGAMax"></font><span class="font14 storm-cloud">&nbsp;gal</span></span></h4><hr>
+        <h4 class="margin-R5 ">三軸向加速度地震歷時圖<p>&nbsp;</p>
+        <div class="Earthquake_img"><img id="Seismogram"/></div></h4><hr>
+    </div>
+    <!--.bs-example bs-example-tabs--> 
+    <!--.頁籤-->
+  
+  <button onclick="javascript: window.location = 'mailto:how@gis.tw;waynelin@gis.tw;aaron@gis.tw?subject=地震 - 每日水情意見回報&body=姓名：%0d%0a單位：%0d%0a意見說明：%0d%0a'" class="btn btn-lg btn-warning pull-right margin-T15" title="回報問題"><span class="glyphicon glyphicon-envelope"> </span> &nbsp;回報問題</button>
+</div>
+<!-- /.row -->
+
+<ul class="footer-nav-6">
+  <li><a href="01_Rainfall-01.html"><img src="img/FooterNav01.svg"/><br />
+    雨量</a></li>
+  <li><a href="02_WaterRegimen-02.html"><img src="img/FooterNav02.svg"/><br />
+    水情</a></li>
+  <li><a href="07_Electricity-01.html"><img src="img/FooterNav07.svg" /><br />發電</a></li>
+  <li><a href="04_Quality.html"><img src="img/FooterNav04.svg"/><br />
+    濁度</a></li>
+  <li><a href="05_Engineering-01.html"><img src="img/FooterNav05.svg"/><br />
+    工程</a></li>
+  <li class="active"><a href="06_Earthquake-01.html"><img src="img/FooterNav06.svg"/><br />
+    地震</a></li>
+
+</ul>
+<script type="text/javascript">
+$(function () {
+  	$('.navbar-toggle-sidebar').click(function () {
+  		$('.navbar-nav').toggleClass('slide-in');
+  		$('.side-body').toggleClass('body-slide-in');
+  		$('#search').removeClass('in').addClass('collapse').slideUp(200);
+  	});
+
+  	$('#search-trigger').click(function () {
+  		$('.navbar-nav').removeClass('slide-in');
+  		$('.side-body').removeClass('body-slide-in');
+  		$('.search-input').focus();
+  	});
+  });
+</script>
+</body>
+</html>

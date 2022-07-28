@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+<meta  http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>每日水情</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/elmo1.css" rel="stylesheet"/>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/include.js"></script>
+<script src="js/waterdetail.js"></script>
+<script src="js/highcharts.js"></script>
+
+</head>
+<body onload="initialize();">
+<div class="row"> 
+    <div id="pageFirst">
+        <ul id="myTab" class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#tab1" id="tab1-tab" role="tab" data-toggle="tab" aria-controls="tab1" aria-expanded="false">石門水情</a></li>
+            <li role="presentation"><a href="#tab2" id="tab2-tab" role="tab" data-toggle="tab" aria-controls="tab2" aria-expanded="true">石門供水</a></li>
+            <li role="presentation"><a href="#tab3" id="tab3-tab" role="tab" data-toggle="tab" aria-controls="tab3" aria-expanded="true">寶二水情</a></li>
+            <li role="presentation"><a href="#tab5" id="tab5-tab" role="tab" data-toggle="tab" aria-controls="tab5" aria-expanded="true">防災資訊</a></li>
+        </ul>
+        <h3 class="Dateh3-s alignR margin-R5 " ><span class="glyphicon glyphicon-time"></span><span id="a_date" class="font13 margin-T5"></span><span id="b_date" class="font13 margin-T5" style="display:none;"></span><span id="c_date" class="font13 margin-T5" style="display:none;"></h3> 
+        <div id="myTabContent" class="tab-content">
+    	
+            <div role="tabpane1" class="tab-pane fade  active in" id="tab1" aria-labelledby="tab1-tab">
+            	<div class="alert alert-info fade in " style="border-color:#39F;background:#39F;margin-bottom:0px;"><img src="img/FooterNav02.svg" style="width:40px;"/>  石門水庫 <button type="button" class="btn btn-danger btnSMDetail" style="float:right;">詳細資訊</button></div>
+                <div class=" bg-lightblue ">
+			        <hr class="h4-line"/>
+                    <h4 class="h4-blue">集水區雨量<span class="pull-right  font22 margin-R5"><span class="SM_RAIN">0.0</span> <span class="font14 ">mm</span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-blue">水位(當日24時)<span class="pull-right  font22 margin-R5 " style="position:relative; top:-7px;"><span class="SM_LEVEL">0.0</span> <span class="font14 ">m</span> <label><span id="d_SM_LEVEL">0</span><span id="s_SM_LEVEL"></span></label></span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-blue">蓄水量<span class="pull-right  font22 margin-R5" style="position:relative; top:-7px;"><span class="SM_CAPACITY">0.0</span> <span class="font14 ">萬噸</span> <label><span id="d_SM_CAPACITY">0</span><span id="s_SM_CAPACITY"></span></label></span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-blue">蓄水率<span class="pull-right  font22 margin-R5"><span class="SM_RATIO">0.0</span> <span class="font14 ">%</span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-blue">入流量<span class="pull-right  font22 margin-R5"><span class="SM_INPUT">0.0</span> <span class="font14 ">萬噸</span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-blue">取水量<span class="pull-right  font22 margin-R5"><span class="SM_ALL">0.0</span> <span class="font14 ">萬噸</span></h4>
+			        <h4 class="SM_ALLBOX" style="display:none;">分層取水工<span class="pull-right text-primary font22 margin-R5px"><span class="SMGETALLA">0.00</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>水公司二區處(平鎮、大湳)<span class="pull-right text-primary font14"><span class="SMGET_layerDIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>中山<span class="pull-right  text-primary  font14 "><span class="SMGET_layerCSIST">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>中油<span class="pull-right  text-primary font14 "><span class="SMGET_layerCPC">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>石門水利會<span class="pull-right  text-primary  font14"><span class="SMGET_layerSMIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>桃園水利會(光復)<span class="pull-right  text-primary  font14"><span class="SMGET_layerTYIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			            </ul>
+			        </h4>
+			        <hr class="lineinfo">
+			        <h4 class="SM_ALLBOX" style="display:none;">石門大圳<span class="pull-right text-primary font22 margin-R5px"><span class="SMGETALLB">0.00</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>水公司二區處(石門、龍潭、平鎮)<span class="pull-right text-primary font14"><span class="SMGET_szDIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>中山<span class="pull-right  text-primary  font14 "><span class="SMGET_szCSIST">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>石門水利會<span class="pull-right  text-primary  font14"><span class="SMGET_szSMIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			            </ul>
+			        </h4>
+			      	<hr class="h4-line"/>
+                    <h4 class="h4-blue">發電用水量<span class="pull-right  font22 margin-R5"><span class="SM_POWER">0.0</span> <span class="font14 ">萬噸</span></h4>
+			      	<hr class="h4-line"/>
+                    <h4 class="h4-blue">PRO放水量<span class="pull-right  font22 margin-R5"><span class="SM_PRO">0.0</span> <span class="font14 ">萬噸</span></h4>
+			      	<hr class="h4-line"/><h4 class="h4-blue">其他放流量<span class="pull-right  font22 margin-R5"><span class="SM_OTHER">0.0</span> <span class="font14 ">萬噸</span></h4>
+			    </div>
+			    <br/>
+			    <div class="alert alert-success fade in " style="border-color:#93d676;background:#93d676;margin-bottom:0px;"><img src="img/FooterNav02.svg" style="width:40px;"/>  後池 <button type="button" class="btn btn-danger btnHCDetail" style="float:right;">詳細資訊</button></div>
+			    <div class=" bg-lightgreen">
+			        <hr class="h4-line"/>
+                    <h4 class="h4-lightgreen">水位(當日24時)<span class="pull-right  font22 margin-R5" style="position:relative; top:-7px;"><span class="HC_LEVEL">0.0</span> <span class="font14 ">m</span>  <label><span id="d_HC_LEVEL">0</span><span id="s_HC_LEVEL"></span></label></span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-lightgreen">蓄水量<span class="pull-right  font22 margin-R5" style="position:relative; top:-7px;"><span class="HC_CAPACITY">0.0</span> <span class="font14 ">萬噸</span>  <label><span id="d_HC_CAPACITY">0</span><span id="s_HC_CAPACITY"></span></label></span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-lightgreen">入流量<span class="pull-right  font22 margin-R5"><span class="HC_INPUT">0.0</span> <span class="font14 ">萬噸</span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-lightgreen">取水量<span class="pull-right  font22 margin-R5"><span class="HC_GET">0.0</span> <span class="font14 ">萬噸</span></h4>
+                    <h4 class="HC_GETBOX" style="display:none;">第二抽水站(二區處-平鎮)<span class="pull-right text-primary font22 margin-R5"><span class="HCGET_pumpDIV2">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			        <hr class="linelightgreen">
+			        <h4 class="HC_GETBOX" style="display:none;">桃園大圳<span class="pull-right text-primary font22 margin-R5"><span class="HC_TAO">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>水公司二區處(大湳)<span class="pull-right text-primary font14"><span class="HCGET_tzDIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>中山<span class="pull-right  text-primary  font14 "><span class="HCGET_tzCSIST">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>中油<span class="pull-right  text-primary  font14"><span class="HCGET_tzCPC">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>桃園水利會(光復)<span class="pull-right  text-primary  font14"><span class="HCGET_tzTYIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			            </ul>
+			        </h4>
+			        <hr class="linelightgreen"/>
+			        <h4 class="HC_GETBOX" style="display:none;">溪洲圳<span class="pull-right text-primary font22 margin-R5"><span class="HCGET_xz">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-lightgreen">沖刷道放流(計量)<span class="pull-right  font22 margin-R5"><span class="HC_OutflowQuan">0.0</span> <span class="font14 ">萬噸</span></h4>
+                    <h4 class="HC_OutBOX" style="display:none;">桃園水利會(下游灌區)<span class="pull-right text-primary font22 margin-R5"><span class="HC_TYIA">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			        <h4 class="HC_OutBOX" style="display:none;">中庄攔河堰<span class="pull-right text-primary font22 margin-R5"><span class="HC_CCWEIR">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			        <h4 class="HC_OutBOX" style="display:none;">鳶山堰二區處配水<span class="pull-right text-primary font22 margin-R5"><span class="YSGET_DIV2">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			        <h4 class="HC_OutBOX" style="display:none;">鳶山堰十二區處配水<span class="pull-right text-primary font22 margin-R5"><span class="YSGET_DIV12">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			        
+			        <hr class="h4-line"/>
+                    <h4 class="h4-lightgreen">沖刷道放流(經閘)<span class="pull-right  font22 margin-R5"><span class="HC_OutflowGate">0.0</span> <span class="font14 ">萬噸</span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-lightgreen">後池堰溢流(經堰)<span class="pull-right  font22 margin-R5"><span class="HC_Overflow">0.0</span> <span class="font14 ">萬噸</span></h4>
+			    </div>
+			    <br/>
+			    <div class="alert alert-success fade in " style="border-color:#ffce55;background:#ffce55;margin-bottom:0px;"><img src="img/FooterNav02.svg" style="width:40px;"/>  中庄調整池 <button type="button" class="btn btn-danger btnCCDetail" style="float:right;">詳細資訊</button></div>
+			    <div class="bg-yellow2">
+			        <hr class="h4-line"/>
+                    <h4 class="h4-gold">水位(當日24時)<span class="pull-right  font22 margin-R5" style="position:relative; top:-7px;"><span class="CC_LEVEL">0.0</span> <span class="font14 ">m</span> <label><span id="d_CC_LEVEL">0</span><span id="s_CC_LEVEL"></span></label></span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-gold">蓄水量<span class="pull-right  font22 margin-R5" style="position:relative; top:-7px;"><span class="CC_CAPACITY">0.0</span> <span class="font14 ">萬噸</span> <label><span id="d_CC_CAPACITY">0</span><span id="s_CC_CAPACITY"></span></label></span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-gold">入流量<span class="pull-right  font22 margin-R5"><span class="CC_INPUT">0.0</span> <span class="font14 ">萬噸</span></span></h4>
+			        <hr class="h4-line"/>
+                    <h4 class="h4-gold">取水量<span class="pull-right  font22 margin-R5"><span class="CC_GET">0.0</span> <span class="font14">萬噸</span></span></h4>
+                    <h4 class="CC_GETBOX" style="display:none;">水公司二區處(大湳)<span class="pull-right text-primary font22 margin-R5"><span class="CCGET_DIV2">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+                    <h4 class="CC_GETBOX" style="display:none;">水公司十二區處(板新)<span class="pull-right text-primary font22 margin-R5"><span class="CCGET_DIV12">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			    </div>
+			    <br/>
+			    <div class="alert alert-success fade in " style="border-color:#39F;background:#39F;margin-bottom:0px;"><img src="img/FooterNav02.svg" style="width:40px;"/>  鳶山堰</div>
+			    <div class=" bg-lightblue ">
+			    	<hr class="h4-line"/>
+                    <h4 class="h4-blue">水位(當日24時)<span class="pull-right  font22 margin-R5" style="position:relative; top:-7px;"><span class="YS_LEVEL">0.0</span> <span class="font14 ">m</span> <label><span id="d_YS_LEVEL">0</span><span id="s_YS_LEVEL"></span></label></span></h4>
+			    	<hr class="h4-line"/>
+                    <h4 class="h4-blue">蓄水量<span class="pull-right  font22 margin-R5" style="position:relative; top:-7px;"><span class="YS_CAPACITY">0.0</span> <span class="font14 ">萬噸</span> <label><span id="d_YS_CAPACITY">0</span><span id="s_YS_CAPACITY"></span></label></span></h4>
+                    <hr class="h4-line"/>
+                    <h4 class="h4-blue">取水量<span class="pull-right  font22 margin-R5"><span class="YS_GET">0.0</span> <span class="font14">萬噸</span></span></h4>
+			    </div>
+            </div>
+            <div role="tabpane1" class="tab-pane fade" id="tab2" aria-labelledby="tab2-tab" style="min-height: 300px">
+                <div class="alert alert-info fade in ">  帳面供水 <span class="pull-right  font22 margin-R5"><span class="billAll">0.0</span> <span class="font14 ">萬噸</span></span></div>
+			    <div class=" bg-lightgreen">
+			    	<h4 class="h4-lightgreen">農業用水<span class="pull-right  font22 margin-R5"><span class="SSMGETHI">0.0</span> <span class="font14 ">萬噸</span></span></h4>
+			        <h4>石門水利會<span class="pull-right text-primary font22 margin-R5"><span class="SSMGETH">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>分層取水工<span class="pull-right text-primary font14"><span class="SMGET_layerSMIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>石門大圳<span class="pull-right text-primary font14"><span class="SMGET_szSMIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			            </ul>
+			        </h4>
+			        <hr class="linelightgreen">
+			        <h4>桃園水利會<span class="pull-right text-primary font22 margin-R5"><span class="SSMGETI">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>分層取水工<span class="pull-right text-primary font14"><span class="SMGET_layerTYIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>桃園大圳<span class="pull-right  text-primary  font14 "><span class="HCGET_tzTYIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>溪洲圳<span class="pull-right  text-primary  font14"><span class="HCGET_xz">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>下游灌區<span class="pull-right  text-primary  font14"><span class="HC_TYIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			            </ul>
+			        </h4>
+			    </div>
+			    <br/>
+			    <div class=" bg-yellow2 ">
+			    	<h4 class="h4-gold">公共給水<span class="pull-right  font22 margin-R5"><span class="YS_GETLM">0.0</span> <span class="font14 ">m</span></span></h4>
+			        <h4>水公司二區處<span class="pull-right text-primary font22 margin-R5"><span class="YS_GETL">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>分層取水工<span class="pull-right text-primary font14"><span class="SMGET_layerDIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>石門大圳<span class="pull-right  text-primary  font14 "><span class="SMGET_szDIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>第二抽水站<span class="pull-right  text-primary  font14 "><span class="HCGET_pumpDIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>桃園大圳<span class="pull-right  text-primary  font14 "><span class="HCGET_tzDIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>調整池<span class="pull-right  text-primary  font14 "><span class="CCGET_DIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>鳶山堰(水庫供水)<span class="pull-right  text-primary  font14 "><span class="YSGET_DIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			            </ul>
+			        </h4>
+				    <hr class="linegold">
+				    <h4>水公司十二區處<span class="pull-right text-primary font22 margin-R5"><span class="YS_GETM">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>調整池<span class="pull-right text-primary font14"><span class="CCGET_DIV12">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>鳶山堰(水庫供水)<span class="pull-right  text-primary  font14 "><span class="YSGET_DIV12">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			            </ul>
+			        </h4>
+				    <hr class="linegold">
+			    </div>
+			    <br/>
+			    <div class=" bg-lightpurple ">
+			        <h4 class="h4-purple">個別工業用水<span class="pull-right  font22 margin-R5"><span class="CC_GETJK">0.0</span> <span class="font14 ">萬噸</span></span></h4>
+			        <h4>中山<span class="pull-right text-primary font22 margin-R5"><span class="CC_GETJ">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>分層取水工<span class="pull-right text-primary font14"><span class="SMGET_layerCSIST">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>石門大圳<span class="pull-right  text-primary  font14 "><span class="SMGET_szCSIST">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>桃園大圳<span class="pull-right  text-primary  font14 "><span class="HCGET_tzCSIST">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			            </ul>
+			        </h4>
+			        <hr class="linepurple "/>
+			        <h4>中油<span class="pull-right text-primary font22 margin-R5"><span class="CC_GETK">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>分層取水工<span class="pull-right text-primary font14"><span class="SMGET_layerCPC">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>桃園大圳<span class="pull-right  text-primary  font14 "><span class="HCGET_tzCPC">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			            </ul>
+			        </h4>
+			        <hr class="linepurple "/>
+			    </div>
+			    <br/>
+                <div class="alert alert-info fade in ">  實際供水 <span class="pull-right  font22 margin-R5"><span class="realAll">0.0</span> <span class="font14 ">萬噸</span></span></div>
+                <div class=" bg-lightgreen">
+			    	<h4 class="h4-lightgreen">農業用水<span class="pull-right  font22 margin-R5"><span class="SSMGETNO">0.0</span> <span class="font14 ">萬噸</span></span></h4>
+			        <h4>石門水利會<span class="pull-right text-primary font22 margin-R5"><span class="SSMGETN">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>分層取水工<span class="pull-right text-primary font14"><span class="SMGET_layerSMIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>石門大圳<span class="pull-right text-primary font14"><span class="SMGET_szSMIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>└支援水公司二區處<span class="pull-right text-primary font14"><span class="AGRI_SMsupplyDIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			            </ul>
+			        </h4>
+			        <hr class="linelightgreen">
+			        <h4>桃園水利會<span class="pull-right text-primary font22 margin-R5"><span class="SSMGETO">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>分層取水工<span class="pull-right text-primary font14"><span class="SMGET_layerTYIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>桃園大圳<span class="pull-right  text-primary  font14 "><span class="HCGET_tzTYIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>溪洲圳<span class="pull-right  text-primary  font14"><span class="HCGET_xz">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>下游灌區<span class="pull-right  text-primary  font14"><span class="HC_TYIA">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			            </ul>
+			        </h4>
+                    <hr class="linelightgreen">
+			        <h4>支援水公司二區處<span class="pull-right text-primary font22 margin-R5">-<span class="AGRI_TYsupplyDIV2">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+                    <hr class="linelightgreen">
+                    <h4>支援華亞科<span class="pull-right text-primary font22 margin-R5">-<span class="AGRI_TYsupplyHYK">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			        <hr class="linelightgreen">
+                    <h4>支援南亞錦興<span class="pull-right text-primary font22 margin-R5">-<span class="AGRI_TYsupplyNYK">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			        <hr class="linelightgreen">
+                    <h4>支援桃科<span class="pull-right text-primary font22 margin-R5">-<span class="AGRI_TYsupplyTK">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			        <hr class="linelightgreen">
+                    <h4>支援亞東石化<span class="pull-right text-primary font22 margin-R5">-<span class="AGRI_TYsupplyYD">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			    </div>
+			    <br/>
+			    <div class=" bg-yellow2 ">
+			    	<h4 class="h4-gold">公共給水<span class="pull-right  font22 margin-R5"><span class="CCGET_TU">0.0</span> <span class="font14 ">m</span></span></h4>
+			        <h4>水公司二區處<span class="pull-right text-primary font22 margin-R5"><span class="CCGET_T">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>水庫取水<span class="pull-right text-primary font14"><span class="CCGET_16910">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>調整池<span class="pull-right  text-primary  font14 "><span class="CCGET_DIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>鳶山堰(抽水)<span class="pull-right  text-primary  font14 "><span class="PUB_DIV2pumpYS">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>水公司十二區處支援<span class="pull-right  text-primary  font14 "><span class="PUB_DIV12support">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>石門水利會支援<span class="pull-right  text-primary  font14 "><span class="AGRI_SMsupplyDIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>桃園水利會支援<span class="pull-right  text-primary  font14 "><span class="AGRI_TYsupplyDIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>└支援水公司三區處<span class="pull-right  text-primary  font14 "><span class="PUB_DIV2supplyDIV3">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			            </ul>
+			        </h4>
+				    <hr class="linegold">
+				    <h4>水公司十二區處<span class="pull-right text-primary font22 margin-R5"><span class="CCGET_U">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>調整池<span class="pull-right text-primary font14"><span class="CCGET_DIV12">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>鳶山堰(抽水)<span class="pull-right  text-primary  font14 "><span class="PUB_DIV12pumpYS">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>三峽河<span class="pull-right  text-primary  font14 "><span class="PUB_DIV12SXRiver">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>北水處支援<span class="pull-right  text-primary  font14 "><span class="PUB_DIVNsupplyDIV2">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>└支援水公司二區處<span class="pull-right  text-primary  font14 "><span class="PUB_DIV12support">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			            </ul>
+			        </h4>
+				    <hr class="linegold">
+			    </div>
+                <br/>
+			    <div class=" bg-lightpurple ">
+			        <h4 class="h4-purple">個別工業用水<span class="pull-right  font22 margin-R5"><span class="CC_GETPQRSTU">0.0</span> <span class="font14 ">萬噸</span></span></h4>
+			        <h4>中山<span class="pull-right text-primary font22 margin-R5"><span class="CC_GETP">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>分層取水工<span class="pull-right text-primary font14"><span class="SMGET_layerCSIST">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>石門大圳<span class="pull-right  text-primary  font14 "><span class="SMGET_szCSIST">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			                <li>桃園大圳<span class="pull-right  text-primary  font14 "><span class="HCGET_tzCSIST">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			            </ul>
+			        </h4>
+			        <hr class="linepurple "/>
+			        <h4>中油<span class="pull-right text-primary font22 margin-R5"><span class="CC_GETQ">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>分層取水工<span class="pull-right text-primary font14"><span class="SMGET_layerCPC">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>桃園大圳<span class="pull-right  text-primary  font14 "><span class="HCGET_tzCPC">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			            </ul>
+			        </h4>
+                    <h4>華亞科等<span class="pull-right text-primary font22 margin-R5"><span class="CC_GETRLIST">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>華亞科<span class="pull-right text-primary font14"><span class="CC_GETR">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>南亞錦興<span class="pull-right  text-primary  font14 "><span class="CC_GETS">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+                            <li>桃科<span class="pull-right  text-primary  font14 "><span class="CC_GETT">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+                            <li>亞東石化<span class="pull-right  text-primary  font14 "><span class="CC_GETU">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>     
+			            </ul>
+			        </h4>
+			    </div>
+            </div>
+            <div role="tabpane1" class="tab-pane fade" id="tab3" aria-labelledby="tab3-tab" style="min-height: 300px">
+                <div class="alert alert-info fade in "><img src="img/FooterNav02.svg" style="width:40px;"/>  寶二水庫水情</div>
+			    <h4>上坪堰集水區雨量<span class="pull-right text-primary font22 margin-R5"><span id="Baoshanrainfall">0.00</span> <span class="font14 storm-cloud">mm</span></h4>
+                <hr>
+                <h4>水位(當日24時)<span class="pull-right text-primary font22 margin-R5"><span id="Baoshanstage">0.0</span> <span class="font14 storm-cloud">m</span></span></h4>
+                <hr>
+                <h4>蓄水量<span class="pull-right text-primary font22 margin-R5"><span id="Baoshanretain">0.0</span> <span class="font14 storm-cloud">萬噸</span></h4>
+                 <hr>
+                <h4>蓄水率<span class="pull-right text-primary font22 margin-R5"><span id="BaoshanretainRate">0.00</span> <span class="font14 storm-cloud">%</span></span></h4>
+                <hr>
+                <h4>昨日入流量<span class="pull-right text-primary font22 margin-R5"><span id="Baoshaninflow">0.00</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+                <hr>
+                <h4>昨日出流量<span class="pull-right text-primary font22 margin-R5"><span id="BaoshansupplyFlow">0.00</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+                <hr>
+                <h4>寶山+寶二蓄水量<span class="pull-right text-primary font22 margin-R5"><span id="Baoshanretain4Baoshan">0.00</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+                <hr>
+                <h4>寶山+寶二入流量<span class="pull-right text-primary font22 margin-R5"><span id="BaoshanretainRate4Baoshan">0.00</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+                <hr>
+			    <div class=" bg-lightgreen">
+			    	<h4 class="h4-lightgreen">寶二水庫供水統計</h4>
+			    	<h4 class="h4-lightgreen">上坪堰<span class="pull-right  font22 margin-R5"><span id="BaoshanA3">0.0</span> <span class="font14 ">萬噸</span></span></h4>
+			        <h4>竹東圳取水<span class="pull-right text-primary font22 margin-R5"><span id="BaoshanA12">0.0</span> <span class="font14 storm-cloud">萬噸</span></span>
+			        	<ul class="s-list">
+			                <li>水利會<span class="pull-right text-primary font14"><span id="BaoshanSHANGPING_irrigation">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>自來水公司取水(寶山)<span class="pull-right text-primary font14"><span id="BaoshanSHANGPING_watercom">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			                <li>自來水公司取水(員崠)<span class="pull-right text-primary font14"><span id="BaoshanSHANGPING_watercomYD">0.0</span> <span class="font12  storm-cloud">萬噸</span></span></li>
+			            </ul>
+			        </h4>
+			        <hr class="linelightgreen">
+			        <h4>寶二取水量<span class="pull-right text-primary font22 margin-R5"><span id="BaoshanSHANGPING_BaoEr">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			        <h4 class="h4-lightgreen">隆恩堰<span class="pull-right  font22 margin-R5"><span id="Baoshan45">0.0</span> <span class="font14 ">萬噸</span></span></h4>
+			        <h4>隆恩圳灌溉取水<span class="pull-right text-primary font22 margin-R5"><span id="Baoshantake4LonN">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			        <hr class="linelightgreen">
+			        <h4>自來水司取水(新竹)<span class="pull-right text-primary font22 margin-R5"><span id="Baoshantake4watercom">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+			    </div>
+            </div>
+            
+            <div role="tabpane1" class="tab-pane fade" id="tab5" aria-labelledby="tab5-tab" style="min-height: 300px">
+                <div id="Div2">
+                    <div class="alert alert-info fade in ">  水利防災資訊連結   <span id="Span1" class="pull-right"><!--<span id="b_date" class="font13 margin-T5"></span>-->&nbsp;&nbsp;</span> </div>
+                    <h4>災情統計表<button onclick="openLink('http://wra.caece.net/wralink/disaster.html')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>關鍵三小時<button onclick="openLink('http://wra.caece.net/wralink/qpf3hr.html')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>雨量統計表<button onclick="openLink('http://fhy.wra.gov.tw/raininfo/rainsummary.aspx')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>氣象雲圖<button onclick="openLink('http://wra.caece.net/wralink/cloud.html')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>水庫統計表<button onclick="openLink('http://fhy.wra.gov.tw/reservoirpage_2011/statistics.aspx')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>
+水公司災害及緊急事件速報<button onclick="openLink('http://wra.caece.net/wralink/waterc.html')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>臺電停復電查詢<button onclick="openLink('http://wra.caece.net/wralink/powerc.html')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>
+水庫濁度<button onclick="openLink('http://wra.caece.net/wralink/zd.html')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>防災資訊整合平台<button onclick="openLink('http://wra.caece.net/wralink/integrate.html')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>
+即時影像<button onclick="openLink('http://fhyv.wra.gov.tw/fhy/Monitor/CCTV')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>
+淹水警戒<button onclick="openLink('http://wra.caece.net/wralink/flood.html')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>最新消息-新聞<button onclick="openLink('http://wra.caece.net/wralink/news.html')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>旱災新聞資訊交換平台<button onclick="openLink('http://wra.caece.net/wralink/drought.html')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                    <h4>天氣與氣候監測網<button onclick="openLink('http://watch.ncdr.nat.gov.tw/')" class="pull-right margin-R5 btn btn-xs btn-peach ">開啟連結</button></h4>
+                    <hr>
+                </div>  <!-- /.main col-sm-9 col-md-9  content--> 
+            </div>
+        </div>
+	</div>
+
+  <div id="pageThird" class="  col-sm-12 col-md-12 col-lg-12  " style="display:none;">
+  <h3 class="Dateh3 " style=" color:#666;  padding:- 10px; text-align:center;"><button id="btnRT2" class="btn btn-default pull-left">返回</button><span class="glyphicon glyphicon-calendar"></span> <span id="bb_date"></span></h3>
+  <hr class="Datehr">
+  <div class="alert alert-success fade in "> <img src="img/FooterNav02.svg"/ style="width:40px;"> 寶二水庫 </div>
+  <div class=" bg-lightblue ">
+        <h4 class="h4-blue">寶二水庫水情</h4>
+        <h4>雨量<span class="pull-right text-primary font22 margin-R5"><span id="b_00s">0.0</span> <span class="font14 storm-cloud">mm</span></span></h4>
+        <hr class="lineinfo">
+        <h4>寶二水位<span class="pull-right text-primary font22 margin-R5px"><span id="b_01s">0.00</span> <span class="font14 storm-cloud">公尺</span> <label><span id="b_d_01s">0</span><span id="b_s_01s"></span></label></span></h4>
+        <hr class="lineinfo">
+        <h4>寶二有效蓄水量<span class="pull-right text-primary font22 margin-R5px"><span id="b_02s">0.00</span> <span class="font14 storm-cloud">萬噸</span> <label><span id="b_d_02s">0</span><span id="b_s_02s"></span></label></span></h4>
+         <hr class="lineinfo">
+        <h4>寶二蓄水率<span class="pull-right text-primary font22 margin-R5"><span id="b_03s">0.00</span> <span class="font14 storm-cloud">%</span></span></h4>
+        <hr class="lineinfo">
+        <h4>寶二入流量<span class="pull-right text-primary font22 margin-R5"><span id="b_04s">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+        <hr class="lineinfo">
+        <h4>寶二供水量<span class="pull-right text-primary font22 margin-R5"><span id="b_05s">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+        <hr class="lineinfo">
+        <h4>隆恩堰取水量<span class="pull-right text-primary font22 margin-R5"><span id="b_06s">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+        <hr class="lineinfo">
+    </div>
+    <div class=" bg-yellow2 ">
+        <h4 class="h4-gold">寶山+寶二水情</h4>
+    <h4>寶山+寶二有效蓄水量<span class="pull-right text-primary font22 margin-R5"><span id="b_07s">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+    <hr class="linegold">
+    <h4>寶山+寶二蓄水率<span class="pull-right text-primary font22 margin-R5"><span id="b_08s">0.0</span> <span class="font14 storm-cloud">%</span></span></h4>
+    <hr class="linegold">
+    <h4>寶山+寶二取水量<span class="pull-right text-primary font22 margin-R5"><span id="b_09s">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+    <hr class="linegold">
+    <h4>寶山+寶二出水量<span class="pull-right text-primary font22 margin-R5"><span id="b_10s">0.0</span> <span class="font14 storm-cloud">萬噸</span></span></h4>
+    <hr class="linegold">
+    </div>
+       
+  </div>  <!-- /.main col-sm-9 col-md-9  content--> 
+
+  <button onclick="javascript:window.location='mailto:?subject=水情 - 每日水情意見回報&body=姓名：%0d%0a單位：%0d%0a意見說明：%0d%0a'" class="btn btn-lg btn-warning pull-right margin-T15" title="回報問題"><span class="glyphicon glyphicon-envelope"> </span> &nbsp;回報問題</button>
+
+   </div>
+    <!-- /.row --> 
+<ul class="footer-nav-6">
+    <li><a href="01_Rainfall-01.html"><img src="img/FooterNav01.svg"/><br/>雨量</a></li>
+    <li class="active"><a href="02_WaterRegimen-02.html"><img src="img/FooterNav02.svg"/><br/>水情</a></li>
+    <li><a href="07_Electricity-01.html"><img src="img/FooterNav07.svg" /><br />發電</a></li>
+    <li><a href="04_Quality.html"><img src="img/FooterNav04.svg"/><br/>濁度</a></li>
+    <li><a href="05_Engineering-01.html"><img src="img/FooterNav05.svg"/><br/>工程</a></li>
+    <li><a href="06_Earthquake-01.html"><img src="img/FooterNav06.svg"/><br/>地震</a></li>
+</ul>
+
+<script type="text/javascript">
+$(function () {
+  	$('.navbar-toggle-sidebar').click(function () {
+  		$('.navbar-nav').toggleClass('slide-in');
+  		$('.side-body').toggleClass('body-slide-in');
+  		$('#search').removeClass('in').addClass('collapse').slideUp(200);
+  	});
+
+  	$('#search-trigger').click(function () {
+  		$('.navbar-nav').removeClass('slide-in');
+  		$('.side-body').removeClass('body-slide-in');
+  		$('.search-input').focus();
+  	});
+  });
+</script>
+</body>
+</html>
