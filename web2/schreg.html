@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="utf-8">
-<!--註冊-->
+<!--校方註冊-->
 
 <head>
     <meta charset="utf-8">
@@ -92,7 +92,7 @@
 
                     <ul class="dropdown-menu dropdown-menu-xl-end">
                         <li><a class="dropdown-item" href="login.html">登入</a></li>
-                        <li><a class="dropdown-item" href="register.html">註冊</a></li>
+                        <li><a class="dropdown-item active" aria-current="page" href="schreg.html">註冊</a></li>
                     </ul>
                 </div>
             </div>
@@ -101,9 +101,19 @@
 
     <!--註冊-->
     <div class="container bg-log rounded p-3">
-        <h3 class="p-3" style="text-align: center ;">註冊</h3>
-        <div class="col-6 col-md-5  col-xl-4 mx-auto">
-            <label for="validationDefault01" class="form-label">姓名</label>
+        <h3 class="p-3" style="text-align: center ;">校方註冊</h3>
+        <!--帳號輸入-->
+        <div class="col-6 col-md-5 col-xl-4 mx-auto">
+            <label for="validationServer03" class="form-label">帳號</label>
+            <input type="text" class="form-control is-invalid" id="validationServer03"
+                aria-describedby="validationServer03Feedback" required>
+            <div id="validationServer03Feedback" class="invalid-feedback">
+                請輸入8位數字+英文字母
+            </div>
+        </div>
+
+        <div class="col-6 col-md-5 col-xl-4 mx-auto">
+            <label for="validationDefault01" class="form-label">校名</label>
             <input type="text" class="form-control" id="validationDefault01" value="" required>
         </div>
         <div class=" col-6 col-md-5 col-xl-4 mx-auto">
@@ -117,16 +127,6 @@
         <div class="col-6 col-md-5 col-xl-4  mx-auto">
             <label for="validationDefault04" class="form-label">密碼</label>
             <input type="text" class="form-control" id="validationDefault04" required>
-        </div>
-        <div class="col-6 col-md-5 col-xl-4  mx-auto ">
-            <label for="validationDefault05" class="form-label">--選擇身分--</label>
-            <select class="form-select" id="validationDefault05" required>
-                <option selected disabled value="">選擇身分</option>
-                <option value="1">學生</option>
-                <option value="2">輔導志工</option>
-                <option value="3">導護志工</option>
-                <option value="4">校方</option>
-            </select>
         </div>
 
         <div class="col-4 ms-auto p-3">

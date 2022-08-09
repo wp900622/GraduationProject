@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="utf-8">
-<!--登入-->
+<!--身分選擇-->
 
 <head>
     <meta charset="utf-8">
@@ -25,6 +25,10 @@
 
         i {
             font-size: x-large;
+        }
+
+        .btn-id{
+            background-color: #b1b1ec;
         }
 
         /*手機*/
@@ -73,7 +77,7 @@
                         <a class="nav-link link-dark" href="home.html">首頁</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-dark" href="vol.html">志工</a>
+                        <a class="nav-link link-dark" href="stdscore.html">志工</a>
                     </li>
 
                     <li class="nav-item">
@@ -97,32 +101,17 @@
         </div>
     </nav>
 
-    <!--登入-->
-    <div class="container bg-log rounded p-3">
-        <h3 class="p-3" style="text-align: center ;">登入</h3>
-        <div class="col-6 col-md-5 col-xl-4 mx-auto">
-            <label for="exampleInputEmail1" class="form-label">電子郵件</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <!--選擇身分-->
+    <div class="container bg-log rounded p-3 ">
+        <h3 class="p-3" style="text-align: center;">選擇身分</h3>
+        <div style="text-align: center;">
+            <a href="volreg.html"><button type="button " class="btn btn-id col-xl-6 my-3" >志工</button></a>
         </div>
-        <div class="col-6 col-md-5 col-xl-4 mx-auto">
-            <label for="exampleInputPassword1" class="form-label">密碼</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+        <div style="text-align: center;">
+            <a href="stdreg.html"><button type="button " class="btn btn-id col-xl-6 my-3">學生</button></a>
         </div>
-        <!--選擇身分-->
-        <div class="col-6 col-md-5 col-xl-4 mx-auto">
-            --選擇身分--
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected disabled value="">選擇身分</option>
-                <option value="1">學生</option>
-                <option value="2">志工</option>
-                <option value="3">校方</option>
-            </select>
-        </div>
-
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
-            <a href="chooseidentity.html" class="me-md-2">還沒註冊?</a>
-            <a href="register.html" class="me-md-2" type="button">忘記密碼?</a>
-            <button class="btn btn-primary col-3 col-xl-2 " type="button">登入</button>
+        <div style="text-align: center;">
+            <a href="schreg.html"><button type="button " class="btn btn-id col-xl-6 my-3">校方</button></a>
         </div>
     </div>
 
