@@ -18,12 +18,18 @@ public class school_register {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer Id;
     @Column
-    String Mail;
-    @Column
     String pwd;
     @Column
     String username;
     @Column
     String school;
+    @Column
+    String telephone;
+    @Column
+    String address_county;
+    @Column
+    String address_district;
+    @Column
+    String address;
 
 }
