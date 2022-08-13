@@ -5,6 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
+<<<<<<< HEAD
         <version>2.7.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
@@ -13,6 +14,16 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>demo8</name>
     <description>demo8</description>
+=======
+        <version>2.7.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.example</groupId>
+    <artifactId>demo9</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demo9</name>
+    <description>demo9</description>
+>>>>>>> 196417acd6f7422d71c2fb81a4ff54c5c0f63e51
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -27,10 +38,13 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+<<<<<<< HEAD
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+=======
+>>>>>>> 196417acd6f7422d71c2fb81a4ff54c5c0f63e51
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
@@ -45,6 +59,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+<<<<<<< HEAD
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
@@ -52,6 +67,15 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+=======
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+>>>>>>> 196417acd6f7422d71c2fb81a4ff54c5c0f63e51
     </dependencies>
 
     <build>
