@@ -24,7 +24,7 @@ public class schoolController {
     @GetMapping("/school")
     public Iterable<school_register> getschoolService(){
         Iterable<school_register> school = schoolservice.getregister();
-        logger.warn("Warning!.");
+
         return school;
     }
     @GetMapping("/school/{Id}")
@@ -38,18 +38,10 @@ public class schoolController {
     public ResponseEntity createSchool(@RequestBody school_register School_register) {
       Integer ID = schoolservice.createSchoolService(School_register);
 
-      if(ID == 1){
-          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email不可為空值或格式不正確");
+      if(ID != 0){
+          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("欄位不得為空值或帳號格式不正確");
       }
-      if(ID == 2){
-          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("使用者不得為空值");
-      }
-      if(ID == 3){
-          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("密碼不得為空值");
-      }
-      if(ID == 4){
-          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("學校不得為空值");
-      }
+
 
           return ResponseEntity.status(HttpStatus.CREATED).body(ID);
 
