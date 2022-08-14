@@ -31,5 +31,7 @@ public class school_register {
     String address_district;
     @Column
     String address;
+    @Column
+    String mail;
 
 }
