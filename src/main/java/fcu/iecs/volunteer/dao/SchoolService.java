@@ -25,7 +25,7 @@ public class SchoolService {
             return 1;
 
         }
-        if(school.getUsername().trim().length() == 0){
+        if(school.getSchool_account().trim().length() == 0){
             return 2;
         }
         if(school.getPwd().trim().length() == 0){
@@ -57,11 +57,11 @@ public class SchoolService {
         if(school.getPwd() == null){
             return false;
         }
-        if(school.getUsername() == null){
+        if(school.getSchool_account() == null){
             return false;
         }
         newschool.setPwd(school.getPwd());
-        newschool.setUsername(school.getUsername());
+
         newschool.setSchool(school.getSchool());
 
         schooldao.save(newschool);

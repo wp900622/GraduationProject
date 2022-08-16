@@ -34,5 +34,19 @@ public class StudentEntity {
     char sex;
     @Column
     String school;
+    @Column
+    String telephone;
+    @Column
+    Integer grade;
+    @Column
+    String address_county;
+    @Column
+    String address_district;
+    @Column
+    String address;
+    @Column
+    Integer age;
+
+
 
 }

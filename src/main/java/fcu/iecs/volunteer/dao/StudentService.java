@@ -19,7 +19,8 @@ public class StudentService {
           Pattern r = Pattern.compile(pattern);
            if(Stu.getMail().length() == 0 || Stu.getPwd().length() == 0  ||
                Stu.getUsername().length() == 0 || !Stu.getMail().matches(pattern)
-           ||Stu.getStu_class().length() == 0 || Stu.getSchool().length()== 0){
+           ||Stu.getStu_class().length() == 0 || Stu.getSchool().length()== 0
+           || Stu.getAge() == 0){
                return 1;
            }
             studao.save(Stu);

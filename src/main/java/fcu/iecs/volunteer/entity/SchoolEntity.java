@@ -20,7 +20,7 @@ public class SchoolEntity {
     @Column
     String pwd;
     @Column
-    String username;
+    String school_account;
     @Column
     String school;
     @Column
