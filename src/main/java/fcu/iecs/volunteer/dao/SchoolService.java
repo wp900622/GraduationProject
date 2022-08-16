@@ -1,27 +1,24 @@
-package com.example.demo.Dao;
+package fcu.iecs.volunteer.dao;
 
 
 
-import com.example.demo.entity.school_register;
+import fcu.iecs.volunteer.entity.SchoolEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.regex.Pattern;
 
 @Component
-public class schoolService {
+public class SchoolService {
     @Autowired
     SchoolDao schooldao;
-    public Iterable<school_register> getregister() {
+    public Iterable<SchoolEntity> getregister() {
         return schooldao.findAll();
     }
 
-    public Integer createSchoolService(school_register school)  {
-        school_register rlt;
+    public Integer createSchoolService(SchoolEntity school)  {
+        SchoolEntity rlt;
         String pattern = "^([a-zA-Z0-9_\\-.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
         Pattern r = Pattern.compile(pattern);
         if(school.getMail().trim().length() == 0 || !school.getMail().matches(pattern)){
@@ -51,12 +48,12 @@ public class schoolService {
 
     }
 
-    public Boolean updateSchoolService(Integer Id, school_register school){
-        Optional<school_register> isExit = findByMail(Id);
+    public Boolean updateSchoolService(Integer Id, SchoolEntity school){
+        Optional<SchoolEntity> isExit = findByMail(Id);
         if(! isExit.isPresent()){
             return false;
         }
-        school_register newschool = isExit.get();
+        SchoolEntity newschool = isExit.get();
         if(school.getPwd() == null){
             return false;
         }
@@ -71,8 +68,8 @@ public class schoolService {
         return  true;
     }
 
-    public Optional<school_register> findByMail(Integer Id) {
-        Optional<school_register> school = schooldao.findById(Id);
+    public Optional<SchoolEntity> findByMail(Integer Id) {
+        Optional<SchoolEntity> school = schooldao.findById(Id);
         return school;
     }
 }

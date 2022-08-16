@@ -1,8 +1,9 @@
-package com.example.demo.Dao;
+package fcu.iecs.volunteer.controller;
 
 
 
-import com.example.demo.entity.school_register;
+import fcu.iecs.volunteer.dao.SchoolService;
+import fcu.iecs.volunteer.entity.SchoolEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,28 +16,28 @@ import java.util.Optional;
 
 
 @RestController
-public class schoolController {
+public class SchoolController {
     private static final Logger logger
-            = LoggerFactory.getLogger(schoolController.class);
+            = LoggerFactory.getLogger(SchoolController.class);
     @Autowired
-    schoolService schoolservice;
+    SchoolService schoolservice;
 
     @GetMapping("/school")
-    public Iterable<school_register> getschoolService(){
-        Iterable<school_register> school = schoolservice.getregister();
+    public Iterable<SchoolEntity> getschoolService(){
+        Iterable<SchoolEntity> school = schoolservice.getregister();
 
         return school;
     }
     @GetMapping("/school/{Id}")
-    public Optional<school_register>getSchoolServices(@PathVariable Integer Id){
-        Optional<school_register> school = schoolservice.findByMail(Id);
+    public Optional<SchoolEntity>getSchoolServices(@PathVariable Integer Id){
+        Optional<SchoolEntity> school = schoolservice.findByMail(Id);
 
         return school;
     }
 
     @PostMapping(value="/schoolpost",consumes = "application/json",produces = "application/json")
-    public ResponseEntity createSchool(@RequestBody school_register School_register) {
-      Integer ID = schoolservice.createSchoolService(School_register);
+    public ResponseEntity createSchool(@RequestBody SchoolEntity schoolEntity) {
+      Integer ID = schoolservice.createSchoolService(schoolEntity);
 
       if(ID != 0){
           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("欄位不得為空值或帳號格式不正確");
@@ -49,7 +50,7 @@ public class schoolController {
 
     }
     @PutMapping("/schoolupdate/{Id}")
-    public ResponseEntity updateSchool(@PathVariable Integer Id , @RequestBody school_register school){
+    public ResponseEntity updateSchool(@PathVariable Integer Id , @RequestBody SchoolEntity school){
         Boolean rlt = schoolservice.updateSchoolService(Id,school);
         if(!rlt){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("password 欄位不能為空");

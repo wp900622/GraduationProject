@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package fcu.iecs.volunteer.entity;
 
 import lombok.Data;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 @Data
 @ToString
-public class stu_register {
+public class StudentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer Id;
