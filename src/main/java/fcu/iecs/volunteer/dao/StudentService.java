@@ -17,13 +17,32 @@ public class StudentService {
     public Integer createStuservice(StudentEntity Stu){
           String pattern = "^([a-zA-Z0-9_\\-.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
           Pattern r = Pattern.compile(pattern);
-           if(Stu.getMail().length() == 0 || Stu.getPwd().length() == 0  ||
-               Stu.getUsername().length() == 0 || !Stu.getMail().matches(pattern)
-           ||Stu.getStu_class().length() == 0 || Stu.getSchool().length()== 0
-           || Stu.getAge() == 0){
+           if(Stu.getMail().trim().length() == 0 || !Stu.getMail().matches(pattern)){
                return 1;
            }
-            studao.save(Stu);
+           else if(Stu.getPwd().trim().length() == 0  ){
+               return 2;
+           }
+           else  if( Stu.getUsername().trim().length() == 0){
+               return 3;
+            }
+           else if(Stu.getSchool().trim().length() == 0){
+                return 4;
+            }
+           else if(Stu.getStu_class().trim().length() == 0){
+               return 5;
+           }
+           else if(Stu.getSex().trim().length() == 0){
+                return 6;
+           }
+           else if(Stu.getAge() == 0){
+               return 7;
+           }
+           else if(Stu.getTelephone().trim().length() == 0){
+               return 8;
+
+           }
+           studao.save(Stu);
             return  0;
     }
 }

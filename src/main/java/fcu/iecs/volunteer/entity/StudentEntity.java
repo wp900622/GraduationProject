@@ -31,7 +31,7 @@ public class StudentEntity {
     String stu_class;
 
     @Column
-    char sex;
+    String sex;
     @Column
     String school;
     @Column
