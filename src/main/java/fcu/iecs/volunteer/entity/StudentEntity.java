@@ -31,7 +31,7 @@ public class StudentEntity {
     String stu_class;
 
     @Column
-    char sex;
+    String sex;
     @Column
     String school;
     @Column
@@ -46,7 +46,4 @@ public class StudentEntity {
     String address;
     @Column
     Integer age;
-
-
-
 }

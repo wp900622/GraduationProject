@@ -21,7 +21,7 @@ public class StudentController {
     public ResponseEntity createStudent(@RequestBody StudentEntity Student){
         Integer ID = stu.createStuservice(Student);
         if(ID != 0){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ID);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("123");
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(ID);
     }
