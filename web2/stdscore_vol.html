@@ -16,11 +16,11 @@
     <!--導覽列顏色-->
     <style>
         .bg-amos {
-            background-color: #9898da;
+            background-color: #435ebe36;
         }
 
         body {
-            background-color: #b1b1ec;
+            background-color: #b7ddf6e6;
         }
 
         i {
@@ -29,7 +29,7 @@
 
         /*手機*/
         .bg-log {
-            background-color: #9898da;
+            background-color: #435ebe36;
             width: 100%;
         }
 
@@ -107,7 +107,7 @@
                     <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static">
                         <i class="bi bi-person-circle"></i>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-xl-end">
+                    <ul class="dropdown-menu dropdown-menu-xl-end dropdown-menu-lg-end">
                         <li><a class="dropdown-item" href="personal.html">個人資料</a></li>
                         <li><a class="dropdown-item" href="#">訊息</a></li>
                         <li><a class="dropdown-item" href="home.html">登出</a></li>
@@ -118,60 +118,64 @@
     </nav>
 
     <!--資料區-->
-    <div ui-view="" class="ng-scope">
-        <div class="container bg-log rounded p-3">
-            <form class="p-3">
-                <ng-form name="studentCtrl.editForm" class="form-horizontal ng-pristine ng-valid ng-scope">
-                    <div><i class="bi bi-file-earmark-text">成績</i></div>
-                    <div class="container" style="padding-top:20px">
-                        <div class="col-md-12">
-                            <!--表單內容-->
-                            <div class="panel-body" style="font-size:medium">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <p><strong>科目</strong></p>
-                                        <select class="form-select-sm col-12 col-lg-8 col-xl-5 " aria-atomic="Subject">
-                                            <option selected>選擇科目</option>
-                                            <option value="1"><a href="vol.html">國文</a></option>
-                                            <option value="2">英文</option>
-                                            <option value="3">數學</option>
-                                            <option value="4">生活</option>
-                                            <option value="5">自然</option>
-                                            <option value="6">社會</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-1"></div>
-                                    <!--照片位置調整-->
-                                    <div class="col-sm-2 d-none d-lg-block">
-                                        <img src="pic/student.jpg" class="img-rounded border border-3 mt-2 img-size">
+    <div class="container rounded p-4 shadow mb-5" style="max-width: 56rem; background-color: #a7d3f13d;">
+        <div class="row">
+            <div ui-view="" class="ng-scope">
+
+                <form class="p-3">
+                    <ng-form name="studentCtrl.editForm" class="form-horizontal ng-pristine ng-valid ng-scope">
+                        <div><i class="bi bi-file-earmark-text">成績</i></div>
+                        <div class="container" style="padding-top:20px">
+                            <div class="col-md-12">
+                                <!--表單內容-->
+                                <div class="panel-body" style="font-size:medium">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <p><strong>科目</strong></p>
+                                            <select class="form-select-sm col-12 col-lg-8 col-xl-5 "
+                                                aria-atomic="Subject">
+                                                <option selected>選擇科目</option>
+                                                <option value="1"><a href="vol.html">國文</a></option>
+                                                <option value="2">英文</option>
+                                                <option value="3">數學</option>
+                                                <option value="4">生活</option>
+                                                <option value="5">自然</option>
+                                                <option value="6">社會</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                        <!--照片位置調整-->
+                                        <div class="col-sm-2 d-none d-lg-block">
+                                            <img src="pic/student.jpg"
+                                                class="img-rounded border border-3 mt-2 img-size">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
-                                <a href="subject_score.html"><button class="btn btn-primary" type="button">確定</button></a>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+                                    <a href="subject_score.html"><button class="btn btn-primary"
+                                            type="button">確定</button></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </ng-form>
-            </form>
+                    </ng-form>
+                </form>
+            </div>
         </div>
     </div>
-
-
 
     <!--下方欄位-->
     <footer role="contentinfo ">
         <div class="p-5 container-fluid">
             <div class="footerlinks row-fluid ">
                 <hr>
-                <span class="copy" style="color: #ffffff;">TEST</span>
+                <span class="copy" style="color: rgba(0, 0, 0, 0.575);">TEST</span>
                 <div class="footnote span12">
-                    <p style="text-align: center;"><span style="color: #ffffff;"></span></p>
-                    <span class="col-4" style="color: #ffffff;"> 聯絡資訊</span><br>
+                    <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.575);"></span></p>
+                    <span class="col-4" style="color: rgba(0, 0, 0, 0.575);"> 聯絡資訊</span><br>
                     <!--<p style="text-align: center ;"></p>-->
-                    <span style="color: #ffffff;"> 電話：0912345678</span>
+                    <span style="color: rgba(0, 0, 0, 0.575);"> 電話：0912345678</span>
 
-                    <p style="text-align: center;"><span style="color: #ffffff;"></span></p>
+                    <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.575);"></span></p>
                 </div>
             </div>
         </div>

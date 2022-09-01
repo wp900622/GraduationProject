@@ -16,11 +16,11 @@
     <!--導覽列顏色-->
     <style>
         .bg-amos {
-            background-color: #9898da;
+            background-color: #435ebe36;
         }
 
         body {
-            background-color: #b1b1ec;
+            background-color: #cbe6f7de;
         }
 
         i {
@@ -68,7 +68,7 @@
 
         /*平板*/
         @media screen and (min-width: 768px) {
-            .bg-log {
+            .img-top {
                 width: 60%;
             }
         }
@@ -116,7 +116,7 @@
 
 
     <!--導覽列-->
-    <nav class="navbar navbar-expand-lg navbar-darks bg-amos">
+    <nav class="navbar navbar-expand-lg navbar-darks bg-amos mb-5">
         <div class="container-fluid">
             <a class="navbar-brand" style="color:#ffffff"><strong>學生資源平台</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -148,7 +148,7 @@
                         aria-expanded="false">
                         <i class="bi bi-person-circle"></i>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-xl-end">
+                    <ul class="dropdown-menu dropdown-menu-xl-end dropdown-menu-lg-end">
                         <li><a class="dropdown-item" href="login.html">登入</a></li>
                         <li><a class="dropdown-item" href="chooseidentity.html">註冊</a></li>
                     </ul>
@@ -158,34 +158,9 @@
     </nav>
 
 
-    <!--介紹-->
-    <div class="container rounded p-4">
+    <!--後面長條背景-->
+    <div class="container rounded p-4 shadow mb-5" style="max-width: 56rem; background-color: #a7d3f13d;">
         <div class="row">
-            <div class="container col-xl-8 ms-1" style="border-style:dashed;">
-                <i class="bi bi-people"></i><strong style="font-size:x-large;">平台願景</strong>
-                <table class="rwd-table ">
-                    <thead>
-                        <tr>
-                            <th>一、前言<br></th>
-                            <td data-title="前言">
-                                幫助弱勢學生在課輔、導護等方面的協助，在校方志工
-                                與家長間互相配合讓學生有更良好的學習幫助。
-                                平台提供三方聯絡使學校可以提供學生資訊給志工，志
-                                工再將學生一些不同的問題回饋給家長，讓家長可以有
-                                渠道了解孩子的學業、心理等狀況。
-                            </td>
-                            <th>二、 現況<br></th>
-                            <td>
-                                目前.....
-                            </td>
-                            <th> 三、平台展望<br></th>
-                            <td>
-                                為了...
-                            </td>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
             <!--輪播圖-->
             <div class="container img-cor">
                 <h6 class="text-start"><i class="bi bi-image"></i>&nbsp;<strong>活動照片</strong></h6>
@@ -221,26 +196,87 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
+            </div>
+            <!--介紹-->
+            <div class="container col-xl-8 ms-1 my-4" style="border-style:dashed;">
+                <i class="bi bi-people"></i><strong style="font-size:x-large;">平台願景</strong>
+                <table class="rwd-table ">
+                    <thead>
+                        <tr>
+                            <th>一、前言<br></th>
+                            <td data-title="前言">
+                                幫助學生在課輔、導護等方面的協助，在校方志工
+                                與家長間互相配合讓學生有更良好的學習幫助。
+                                平台提供三方聯絡使學校可以提供學生資訊給志工，志
+                                工再將學生一些不同的問題回饋給家長，讓家長可以有
+                                渠道了解孩子的學業、心理等狀況。
+                            </td>
+                            <th>二、 現況<br></th>
+                            <td>
+                                目前.....
+                            </td>
+                            <th> 三、平台展望<br></th>
+                            <td>
+                                為了...
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
 
+
+            <!--下面學校介紹志工介紹-->
+            <div class="container rounded p-4">
+                <div align="center">
+                    <div class="card mb-2" style="max-width: 50rem; max-height: 50rem;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="./pic/school.jpg" class="card-img-top" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <div align="center">
+                                        <h5 class="card-title">學校介紹</h5>
+                                        <p class="card-text">志工團隊成員詳細介紹志工團隊成員詳細介</p>
+                                        <a href="#" class="btn-outline-primary">查看更多</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2" style="max-width: 50rem;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="./pic/vol_home.jpg" class="card-img-top" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">志工團隊成員介紹</h5>
+                                    <p class="card-text">志工團隊成員詳細介紹志工團隊成員詳細介</p>
+                                    <a href="#" class="btn-outline-primary">查看更多</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-
 
     <!--下方欄位-->
     <footer role="contentinfo ">
         <div class="p-5 container-fluid">
             <div class="footerlinks row-fluid ">
                 <hr>
-                <span class="copy" style="color: #ffffff;">TEST</span>
+                <span class="copy" style="color: rgba(0, 0, 0, 0.575);">TEST</span>
                 <div class="footnote span12">
-                    <p style="text-align: center;"><span style="color: #ffffff;"></span></p>
-                    <span class="col-4" style="color: #ffffff;"> 聯絡資訊</span><br>
+                    <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.575);"></span></p>
+                    <span class="col-4" style="color: rgba(0, 0, 0, 0.575);"> 聯絡資訊</span><br>
                     <!--<p style="text-align: center ;"></p>-->
-                    <span style="color: #ffffff;"> 電話：0912345678</span>
+                    <span style="color: rgba(0, 0, 0, 0.575);"> 電話：0912345678</span>
 
-                    <p style="text-align: center;"><span style="color: #ffffff;"></span></p>
+                    <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.575);"></span></p>
                 </div>
             </div>
         </div>

@@ -16,11 +16,11 @@
     <!--導覽列顏色-->
     <style>
         .bg-amos {
-            background-color: #9898da;
+            background-color: #435ebe36;
         }
 
         body {
-            background-color: #b1b1ec;
+            background-color: #b7ddf6e6;
         }
 
         i {
@@ -84,8 +84,9 @@
     <nav class="navbar navbar-expand-lg navbar-darks bg-amos mb-5">
         <div class="container-fluid">
             <a class="navbar-brand" style="color:#ffffff"><strong>學生資源平台</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -106,7 +107,7 @@
                     <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static">
                         <i class="bi bi-person-circle"></i>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-xl-end">
+                    <ul class="dropdown-menu dropdown-menu-xl-end dropdown-menu-lg-end">
                         <li><a class="dropdown-item" href="personal.html">個人資料</a></li>
                         <li><a class="dropdown-item" href="#">訊息</a></li>
                         <li><a class="dropdown-item" href="home.html">登出</a></li>
@@ -117,72 +118,77 @@
     </nav>
 
     <!--資料區-->
-    <div ui-view="" class="ng-scope">
-        <div class="container bg-log rounded p-3">
-            <form class="p-3 ">
-                <ng-form name="studentCtrl.editForm" class="form-horizontal ng-pristine ng-valid ng-scope">
-                    <div><i class="bi bi-file-earmark-text"></i><strong style="font-size:x-large;">成績</strong></div>
-                    <div class="container" style="padding-top:20px">
-                        <div class="col-md-12">
-                            <!--表單內容-->
-                            <div class="panel-body" style="font-size:medium">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h5><strong>科目：國文</strong></h5>
-                                        <ul class="list-group col-xl-5 my-3">
-                                            <li class="list-group-item">上學期</li>
-                                            <li class="list-group-item">&emsp;第一次期中考&emsp;&emsp;&emsp;90分</li>
-                                            <li class="list-group-item">&emsp;第二次期中考&emsp;&emsp;&emsp;90分</li>
-                                            <li class="list-group-item">&emsp;期末考&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;90分
-                                            </li>
-                                        </ul>
-                                        <ul class="list-group col-xl-5">
-                                            <li class="list-group-item">下學期</li>
-                                            <li class="list-group-item">&emsp;第一次期中考&emsp;&emsp;&emsp;90分</li>
-                                            <li class="list-group-item">&emsp;第二次期中考&emsp;&emsp;&emsp;90分</li>
-                                            <li class="list-group-item">&emsp;期末考&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;90分
-                                            </li>
-                                        </ul>
-                                    </div>
+    <div class="container rounded p-3 shadow mb-5" style="max-width: 56rem; background-color: #a7d3f13d;">
+        <div class="row">
+            <div ui-view="" class="ng-scope">
+                <form class="p-3 ">
+                    <ng-form name="studentCtrl.editForm" class="form-horizontal ng-pristine ng-valid ng-scope">
+                        <div><i class="bi bi-file-earmark-text"></i><strong style="font-size:x-large;">成績</strong>
+                        </div>
+                        <div class="container" style="padding-top:20px">
+                            <div class="col-md-12">
+                                <!--表單內容-->
+                                <div class="panel-body" style="font-size:medium">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <h5><strong>科目：國文</strong></h5>
+                                            <ul class="list-group col-xl-6 my-3">
+                                                <li class="list-group-item">上學期</li>
+                                                <li class="list-group-item">&emsp;第一次期中考&emsp;&emsp;&emsp;90分</li>
+                                                <li class="list-group-item">&emsp;第二次期中考&emsp;&emsp;&emsp;90分</li>
+                                                <li class="list-group-item">
+                                                    &emsp;期末考&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;90分
+                                                </li>
+                                            </ul>
+                                            <ul class="list-group col-xl-6">
+                                                <li class="list-group-item">下學期</li>
+                                                <li class="list-group-item">&emsp;第一次期中考&emsp;&emsp;&emsp;90分</li>
+                                                <li class="list-group-item">&emsp;第二次期中考&emsp;&emsp;&emsp;90分</li>
+                                                <li class="list-group-item">
+                                                    &emsp;期末考&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;90分
+                                                </li>
+                                            </ul>
+                                        </div>
 
 
-                                    <div class="col-sm-1"></div>
-                                    <!--照片位置調整-->
-                                    <div class="col-sm-2 d-none d-lg-block">
-                                        <img src="pic/student.jpg" class="img-rounded border border-3 mt-2 img-size">
+                                        <div class="col-sm-1"></div>
+                                        <!--照片位置調整-->
+                                        <div class="col-sm-2 d-none d-lg-block">
+                                            <img src="pic/student.jpg"
+                                                class="img-rounded border border-3 mt-2 img-size">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
-                                <a href="vol.html"><button class="btn btn-primary" type="button">確定</button></a>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+                                    <a href="vol.html"><button class="btn btn-primary" type="button">確定</button></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </ng-form>
-            </form>
+                    </ng-form>
+                </form>
+            </div>
         </div>
     </div>
 
 
+        <!--下方欄位-->
+        <footer role="contentinfo ">
+            <div class="p-5 container-fluid">
+                <div class="footerlinks row-fluid ">
+                    <hr>
+                    <span class="copy" style="color: rgba(0, 0, 0, 0.575);">TEST</span>
+                    <div class="footnote span12">
+                        <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.575);"></span></p>
+                        <span class="col-4" style="color: rgba(0, 0, 0, 0.575);"> 聯絡資訊</span><br>
+                        <!--<p style="text-align: center ;"></p>-->
+                        <span style="color: rgba(0, 0, 0, 0.575);"> 電話：0912345678</span>
 
-    <!--下方欄位-->
-    <footer role="contentinfo ">
-        <div class="p-5 container-fluid">
-            <div class="footerlinks row-fluid ">
-                <hr>
-                <span class="copy" style="color: #ffffff;">TEST</span>
-                <div class="footnote span12">
-                    <p style="text-align: center;"><span style="color: #ffffff;"></span></p>
-                    <span class="col-4" style="color: #ffffff;"> 聯絡資訊</span><br>
-                    <!--<p style="text-align: center ;"></p>-->
-                    <span style="color: #ffffff;"> 電話：0912345678</span>
-
-                    <p style="text-align: center;"><span style="color: #ffffff;"></span></p>
+                        <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.575);"></span></p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 </body>
 
 </html>

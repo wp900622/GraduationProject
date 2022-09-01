@@ -17,11 +17,11 @@
     <!--導覽列顏色-->
     <style>
         .bg-amos {
-            background-color: #9898da;
+            background-color: #435ebe36;
         }
 
         body {
-            background-color: #b1b1ec;
+            background-color: #cbe6f7de;
         }
 
         i {
@@ -39,16 +39,23 @@
             border: 2px solid rgb(121, 120, 120);
             text-align: center;
         }
-        @media screen and (max-width:767px){
-            .rwd-table{border: none;}
-            .rwd-table thead{display: none;}
-            .rwd-table tr{
+
+        @media screen and (max-width:767px) {
+            .rwd-table {
+                border: none;
+            }
+
+            .rwd-table thead {
+                display: none;
+            }
+
+            .rwd-table tr {
                 display: block;
                 border: 2px solid rgb(121, 120, 120);
                 margin-bottom: 20px;
             }
 
-            .rwd-table td{
+            .rwd-table td {
                 display: block;
                 text-align: left;
                 border: none;
@@ -58,10 +65,12 @@
                 padding-bottom: 6px;
 
             }
-            .rwd-table td+td{
+
+            .rwd-table td+td {
                 border-top: 2px solid rgb(121, 120, 120);
             }
-            .rwd-table td:before{
+
+            .rwd-table td:before {
                 content: attr(data-title)':';
                 color: #000;
                 display: inline-block;
@@ -107,7 +116,7 @@
                     <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static">
                         <i class="bi bi-person-circle"></i>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-xl-end">
+                    <ul class="dropdown-menu dropdown-menu-xl-end dropdown-menu-lg-end">
                         <li><a class="dropdown-item" href="personal.html">個人資料</a></li>
                         <li><a class="dropdown-item" href="message.html">訊息</a></li>
                         <li><a class="dropdown-item" href="home.html">登出</a></li>
@@ -117,121 +126,56 @@
         </div>
     </nav>
 
-    <div class="container col-10 rounded p-3 ms-0 ">
-        <table class="rwd-table">
-            <thead>
-                <tr>
-                    <th>姓名</th>
-                    <th>班級</th>
-                    <th>成績</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-title="姓名">ABC</td>
-                    <td data-title="班級">1年1班</td>
-                    <td data-title="查看成績 "><a href="stdscore_vol.html">查看成績</a></td>
-                </tr>
+    <!--班級-->
+    <div class="container rounded p-4 shadow mb-5" style="max-width: 56rem; background-color: #a7d3f13d;">
+        <div class="row">
+            <div class="container col-10 rounded p-3 ">
+                <table class="rwd-table">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>班級</th>
+                            <th>成績</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-title="姓名">ABC</td>
+                            <td data-title="班級">1年1班</td>
+                            <td data-title="查看成績 "><a href="stdscore_vol.html">查看成績</a></td>
+                        </tr>
 
-                <tr>
-                    <td data-title="姓名">ABC</td>
-                    <td data-title="班級">1年1班</td>
-                    <td data-title="查看成績 "><a href="stdscore_vol.html">查看成績</a></td>
-                </tr>
+                        <tr>
+                            <td data-title="姓名">ABC</td>
+                            <td data-title="班級">1年1班</td>
+                            <td data-title="查看成績 "><a href="stdscore_vol.html">查看成績</a></td>
+                        </tr>
 
-                <tr>
-                    <td data-title="姓名">ABC</td>
-                    <td data-title="班級">1年1班</td>
-                    <td data-title="查看成績 "><a href="stdscore_vol.html">查看成績</a></td>
-                </tr>
+                        <tr>
+                            <td data-title="姓名">ABC</td>
+                            <td data-title="班級">1年1班</td>
+                            <td data-title="查看成績 "><a href="stdscore_vol.html">查看成績</a></td>
+                        </tr>
 
-                <tr>
-                    <td data-title="姓名">ABC</td>
-                    <td data-title="班級">1年1班</td>
-                    <td data-title="查看成績 "><a href="stdscore_vol.html">查看成績</a></td>
-                </tr>
+                        <tr>
+                            <td data-title="姓名">ABC</td>
+                            <td data-title="班級">1年1班</td>
+                            <td data-title="查看成績 "><a href="stdscore_vol.html">查看成績</a></td>
+                        </tr>
 
-                <tr>
-                    <td data-title="姓名">ABC</td>
-                    <td data-title="班級">1年1班</td>
-                    <td data-title="查看成績 "><a href="stdscore_vol.html">查看成績</a></td>
-                </tr>
-            </tbody>
-        </table>
+                        <tr>
+                            <td data-title="姓名">ABC</td>
+                            <td data-title="班級">1年1班</td>
+                            <td data-title="查看成績 "><a href="stdscore_vol.html">查看成績</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
 
-    <!--學生班級分類
-    <div class="container rounded p-3">
-        <div class="row">
-            <div class="col-12 col-xl-4 col-md-6 my-1">
-                <div class="accordion" id="accordionExample">
-                    <h5 class="p-1">班級</h5>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                1年1班
 
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">name</th>
-                                            <th scope="col">Last</th>
-                                            <th scope="col">Handle</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">Mark</th>
-                                            <td>Otto</td>
-                                            <td><a href="stdscore_std.html">@twitter</a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Jacob</th>
-                                            <td>Thornton</td>
-                                            <td><a href="stdscore_std.html">@twitter</a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Larry</th>
-                                            <td>Thornton</td>
-                                            <td><a href="stdscore_std.html">@twitter</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12 col-xl-4 col-md-6">
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                1年2班
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <a href="stdscore_vol.html" class="link-dark">AAA 1號</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
 
 
     <!--下方欄位-->
@@ -239,14 +183,14 @@
         <div class="p-5 container-fluid">
             <div class="footerlinks row-fluid ">
                 <hr>
-                <span class="copy" style="color: #ffffff;">TEST</span>
+                <span class="copy" style="color: rgba(0, 0, 0, 0.575);">TEST</span>
                 <div class="footnote span12">
-                    <p style="text-align: center;"><span style="color: #ffffff;"></span></p>
-                    <span class="col-4" style="color: #ffffff;"> 聯絡資訊</span><br>
+                    <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.575);"></span></p>
+                    <span class="col-4" style="color: rgba(0, 0, 0, 0.575);"> 聯絡資訊</span><br>
                     <!--<p style="text-align: center ;"></p>-->
-                    <span style="color: #ffffff;"> 電話：0912345678</span>
+                    <span style="color: rgba(0, 0, 0, 0.575);"> 電話：0912345678</span>
 
-                    <p style="text-align: center;"><span style="color: #ffffff;"></span></p>
+                    <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.575);"></span></p>
                 </div>
             </div>
         </div>
