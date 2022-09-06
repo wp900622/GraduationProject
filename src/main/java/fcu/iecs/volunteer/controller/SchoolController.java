@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 
-
+@CrossOrigin
 @RestController
 public class SchoolController {
     private static final Logger logger
