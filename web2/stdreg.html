@@ -171,8 +171,9 @@
             </div>
 
             <div class="col-12 col-md-5 col-xl-3 mx-auto">
+                <script src = "js/address_stu.js"></script>
                 <label for="validationDefault10" class="form-label">縣市</label>
-                <select class="form-select" id="validationDefault10" required>
+                <select class="form-select" id="validationDefault10" required onchange="changeCounty(this.selectedIndex - 1)">
                     <option selected disabled value="縣市"></option>
                     <option value="1">台北市</option>
                     <option value="2">新北市</option>

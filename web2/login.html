@@ -111,7 +111,7 @@
         <!--選擇身分-->
         <div class="col-6 col-md-5 col-xl-4 mx-auto">
             --選擇身分--
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <select class="form-select form-select-sm" id = "exampleInputidentity"aria-label=".form-select-sm example">
                 <option selected disabled value="">選擇身分</option>
                 <option value="1">學生</option>
                 <option value="2">志工</option>
@@ -122,8 +122,11 @@
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
             <a href="chooseidentity.html" class="me-md-2">還沒註冊?</a>
             <a href="register.html" class="me-md-2" type="button">忘記密碼?</a>
-            <button class="btn btn-primary col-3 col-xl-2 " type="button">登入</button>
+            <script src = "js/user_login.js"></script>
+            <button class="btn btn-primary col-3 col-xl-2" type="button" onClick="submit()">登入</button><br>
+            <div id = "login"></div>
         </div>
+        
     </div>
 
 

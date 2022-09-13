@@ -104,6 +104,7 @@
         <h3 class="p-3" style="text-align: center ;">校方註冊</h3>
         <!--帳號輸入-->
         <div class="row">
+            
             <div class="col-12 col-md-5 col-xl-4 mx-auto">
                 <label for="validationServer01" class="form-label">帳號</label>
                 <input type="text" class="form-control is-invalid" id="validationServer01"
@@ -120,6 +121,7 @@
                     請輸入8位數字+英文字母
                 </div>
             </div>
+           
             <div class="col-12 col-md-5 col-xl-4 mx-auto">
                 <label for="validationDefault03" class="form-label">校名</label>
                 <input type="text" class="form-control" id="validationDefault03" required>
@@ -128,47 +130,53 @@
                 <label for="validationDefault04" class="form-label">電話</label>
                 <input type="text" class="form-control" id="validationDefault04" required>
             </div>
-
+            
             <div class="col-12 col-md-5 col-xl-4 mx-auto">
+                <script src = "js/address.js"></script>
                 <label for="validationDefault05" class="form-label">縣市</label>
-                <select class="form-select" id="validationDefault05" required>
-                    <option selected disabled value="縣市"></option>
-                    <option value="1">台北市</option>
-                    <option value="2">新北市</option>
-                    <option value="3">基隆市</option>
-                    <option value="4">桃園市</option>
-                    <option value="5">新竹市</option>
-                    <option value="6">新竹縣</option>
-                    <option value="7">苗栗縣</option>
-                    <option value="8">台中市</option>
-                    <option value="9">彰化縣</option>
-                    <option value="10">南投縣</option>
-                    <option value="11">雲林縣</option>
-                    <option value="12">嘉義市</option>
-                    <option value="13">嘉義縣</option>
-                    <option value="14">台南市</option>
-                    <option value="15">高雄市</option>
-                    <option value="16">屏東縣</option>
-                    <option value="9">宜蘭縣</option>
-                    <option value="10">花蓮縣</option>
-                    <option value="11">台東縣</option>
-                    <option value="12">澎湖縣</option>
+                <select class="form-select" id="validationDefault05" required onchange="changeCounty(this.selectedIndex - 1)">
+                    <option selected disabled value="台北市"></option>
+                    <option value="台北市">台北市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="基隆市">基隆市</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="新竹市">新竹市</option>
+                    <option value="新竹縣">新竹縣</option>
+                    <option value="苗栗縣">苗栗縣</option>
+                    <option value="台中市">台中市</option>
+                    <option value="彰化縣">彰化縣</option>
+                    <option value="南投縣">南投縣</option>
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="嘉義市">嘉義市</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="台南市">台南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="宜蘭縣">宜蘭縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                    <option value="台東縣">台東縣</option>
+                    <option value="澎湖縣">澎湖縣</option>
+                    <option value="金門縣">金門縣</option>
                 </select>
             </div>
             <div class="col-12 col-md-5 col-xl-4 mx-auto">
                 <label for="validationDefault06" class="form-label">地區</label>
-                <select class="form-select" id="validationDefault06" required>
+                <select class="form-select" id="validationDefault06" required  >
                     <option selected disabled value="地區"></option>
-
                 </select>
             </div>
             <div class="col-12 col-md-5 col-xl-9 mx-auto">
                 <label for="validationDefault07" class="form-label">地址</label>
                 <input type="text" class="form-control" id="validationDefault07" required>
             </div>
+            <div class="col-12 col-md-5 col-xl-9 mx-auto">
+                <label for="validationDefault07" class="form-label">mail</label>
+                <input type="text" class="form-control" id="validationDefault08" required>
+            </div>
 
             <div class="col-4 col-xl-3 ms-auto p-5">
-                <button class="btn btn-primary" type="submit">註冊</button>
+                <script src = "js/school_register.js"></script>
+                <button class="btn btn-primary" type="submit" onclick="submit()">註冊</button>
             </div>
         </div>
 
