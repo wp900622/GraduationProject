@@ -74,6 +74,8 @@
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
       crossorigin="anonymous"
     ></script>
+    <script src="./js/city.js"></script>
+    <script src="./js/school_register.js"></script>
   </head>
 
   <body>
@@ -142,118 +144,91 @@
     <div class="container bg-log rounded p-5">
       <h3 class="p-3" style="text-align: center">校方註冊</h3>
       <!--帳號輸入-->
-      <div class="row">
-        <div class="col-12 col-md-5 col-xl-4 mx-auto">
-          <label for="validationServer01" class="form-label">帳號</label>
-          <input
-            type="text"
-            class="form-control is-invalid"
-            id="validationServer01"
-            aria-describedby="validationServer01Feedback"
-            required
-          />
-          <div id="validationServer01Feedback" class="invalid-feedback">
-            請輸入8位數字+英文字母
+      <form id="school-reg-form">
+        <div class="row">
+          <div class="mb-3">
+            <label for="account" class="form-label">帳號</label>
+            <input
+              type="text"
+              class="form-control"
+              id="account"
+              placeholder="請輸入8位數字+英文字母"
+              required
+              autocomplete="off"
+            />
           </div>
-        </div>
-        <div class="col-12 col-md-5 col-xl-4 mx-auto">
-          <label for="validationServer02" class="form-label">密碼</label>
-          <input
-            type="text"
-            class="form-control is-invalid"
-            id="validationServer02"
-            aria-describedby="validationServer02Feedback"
-            required
-          />
-          <div id="validationServer02Feedback" class="invalid-feedback">
-            請輸入8位數字+英文字母
+
+          <div class="mb-3 col-6">
+            <label for="password" class="form-label">密碼</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="請輸入8位數字+英文字母"
+              required
+              autocomplete="off"
+            />
           </div>
-        </div>
 
-        <div class="col-12 col-md-5 col-xl-4 mx-auto">
-          <label for="validationDefault03" class="form-label">校名</label>
-          <input
-            type="text"
-            class="form-control"
-            id="validationDefault03"
-            required
-          />
-        </div>
-        <div class="col-12 col-md-5 col-xl-4 mx-auto">
-          <label for="validationDefault04" class="form-label">電話</label>
-          <input
-            type="text"
-            class="form-control"
-            id="validationDefault04"
-            required
-          />
-        </div>
-
-        <div class="col-12 col-md-5 col-xl-4 mx-auto">
-          <script src="js/address.js"></script>
-          <label for="validationDefault05" class="form-label">縣市</label>
-          <select
-            class="form-select"
-            id="validationDefault05"
-            required
-            onchange="changeCounty(this.selectedIndex - 1)"
+          <div class="col-6">
+            <label for="confirm" class="form-label">密碼確認</label>
+            <input
+              type="password"
+              class="form-control"
+              id="confirm"
+              placeholder="請重新輸入密碼"
+              required
+              autocomplete="off"
+            />
+          </div>
+          <div
+            class="mb-3"
+            style="color: rgba(255, 0, 0, 0.612)"
+            id="password-warning"
           >
-            <option selected disabled value="台北市"></option>
-            <option value="台北市">台北市</option>
-            <option value="新北市">新北市</option>
-            <option value="基隆市">基隆市</option>
-            <option value="桃園市">桃園市</option>
-            <option value="新竹市">新竹市</option>
-            <option value="新竹縣">新竹縣</option>
-            <option value="苗栗縣">苗栗縣</option>
-            <option value="台中市">台中市</option>
-            <option value="彰化縣">彰化縣</option>
-            <option value="南投縣">南投縣</option>
-            <option value="雲林縣">雲林縣</option>
-            <option value="嘉義市">嘉義市</option>
-            <option value="嘉義縣">嘉義縣</option>
-            <option value="台南市">台南市</option>
-            <option value="高雄市">高雄市</option>
-            <option value="屏東縣">屏東縣</option>
-            <option value="宜蘭縣">宜蘭縣</option>
-            <option value="花蓮縣">花蓮縣</option>
-            <option value="台東縣">台東縣</option>
-            <option value="澎湖縣">澎湖縣</option>
-            <option value="金門縣">金門縣</option>
-          </select>
-        </div>
-        <div class="col-12 col-md-5 col-xl-4 mx-auto">
-          <label for="validationDefault06" class="form-label">地區</label>
-          <select class="form-select" id="validationDefault06" required>
-            <option selected disabled value="地區"></option>
-          </select>
-        </div>
-        <div class="col-12 col-md-5 col-xl-9 mx-auto">
-          <label for="validationDefault07" class="form-label">地址</label>
-          <input
-            type="text"
-            class="form-control"
-            id="validationDefault07"
-            required
-          />
-        </div>
-        <div class="col-12 col-md-5 col-xl-9 mx-auto">
-          <label for="validationDefault07" class="form-label">mail</label>
-          <input
-            type="text"
-            class="form-control"
-            id="validationDefault08"
-            required
-          />
-        </div>
+            請確認密碼是否一致
+          </div>
 
-        <div class="col-4 col-xl-3 ms-auto p-5">
-          <script src="js/school_register.js"></script>
-          <button class="btn btn-primary" type="submit" id="submitBtn">
+          <div class="mb-3">
+            <label for="school-name" class="form-label">學校名稱</label>
+            <input type="text" class="form-control" id="school-name" required />
+          </div>
+
+          <div class="mb-3 col-6">
+            <label for="tel-no" class="form-label">連絡電話</label>
+            <input type="tel" class="form-control" id="tel-no" required />
+          </div>
+
+          <div class="mb-3 col-6">
+            <label for="email" class="form-label">聯絡電子信箱</label>
+            <input type="email" class="form-control" id="email" required />
+          </div>
+
+          <div class="mb-3 col-6">
+            <label for="city" class="form-label">縣市</label>
+            <select class="form-select form-control" id="city"></select>
+          </div>
+
+          <div class="mb-3 col-6">
+            <label for="area" class="form-label">地區</label>
+            <select class="form-select form-control" id="area"></select>
+          </div>
+
+          <div class="mb-3">
+            <label for="address" class="form-label">地址</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary mt-3" id="submitBtn">
             註冊
           </button>
         </div>
-      </div>
+      </form>
     </div>
 
     <!--下方欄位-->

@@ -1,15 +1,33 @@
 const schoolRegApiUrl = 'http://140.134.24.157:53008/schoolpost';
+//const schoolRegApiUrl = 'http://localhost:3008/schoolpost';
 
 $(document).ready(function() {
-    $('#submitBtn').click(function() {
-        const account = $('#validationServer01').val();
-        const password = $('#validationServer02').val();
-        const schoolName = $('#validationDefault03').val();
-        const telNo = $('#validationDefault04').val();
-        const city = $('#validationDefault05').val();
-        const district = $('#validationDefault06').val();
-        const address = $('#validationDefault07').val();
-        const email = $('#validationDefault08').val();
+
+    $('#password-warning').hide();
+
+    fillCities();
+
+    $('#city').change(function() {
+        fillAreas($('#city').val())       
+    });
+
+    $('#school-reg-form').submit(function(e) {
+
+        e.preventDefault();
+
+        if(!isConsistPassword()) {
+            $('#password-warning').show();
+            return;
+        }
+
+        const account = $('#account').val();
+        const password = $('#password').val();
+        const schoolName = $('#school-name').val();
+        const telNo = $('#tel-no').val();
+        const city = $('#city').val();
+        const district = $('#area').val();
+        const address = $('#address').val();
+        const email = $('#email').val();
 
         const schoolInfo = {
             school_account: account,
@@ -39,3 +57,38 @@ $(document).ready(function() {
         });
     });  
 });
+
+function fillCities() {
+    let cities = getCities();
+    let count = 0;
+    for (let city of cities) {
+        if (count == 0) {
+            $('#city').append('<option value="' + city + '" selected>' + city + '</option>');
+            fillAreas(city)
+        } else {
+            $('#city').append('<option value="' + city + '">' + city + '</option>');
+        } 
+        count++;       
+    }    
+}
+
+function fillAreas(city) {
+    let areas = getAreas(city);
+    let count = 0;
+    $('#area').html("");
+    for (let area of areas) {
+        if (count == 0) {
+            $('#area').append('<option value="' + area + '" selected>' + area + '</option>');
+        } else {
+            $('#area').append('<option value="' + area + '">' + area + '</option>');
+        } 
+        count++;       
+    }        
+}
+
+function isConsistPassword(){
+    if ($('#password').val() === $('#confirm').val()) {
+        return true;
+    }
+    return false;
+}
