@@ -1,4 +1,18 @@
 let serverURL = "http://140.134.24.157:53008/";
+let loginstat;
+
+$(document).ready(() => {
+    loginstat = parseInt($("#ddl-loginflag").attr("value"));
+    console.log(loginstat);
+    if(loginstat == 0) {
+        $(".afterlogin").hide();
+    }
+})
+
+function setLoginstat(stat){
+    loginstat = parseInt(stat);
+    $("#ddl-loginflag").attr("value",loginstat);
+}
 
 function AjaxGet(identity, callback,para) {
     $.ajax({
