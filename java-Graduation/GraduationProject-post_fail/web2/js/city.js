@@ -1620,12 +1620,11 @@ let citytownobj = JSON.parse(`
 `);
 
 function initOption(){
-    console.log(citytownobj);
 
     let citydata = citytownobj;
     citydata.forEach(function(city,index){
         index += 1;
-        $("#inputCityStd").append(`<option value="${index}">${city.name}</option>`);
+        $("#inputCityStd,#inputCitySch").append(`<option value="${index}">${city.name}</option>`);
     })
 }
 
@@ -1637,21 +1636,9 @@ function changeCity(cityvalue){
     // }
     // var sectorSelect = document.getElementById("validationDefault11");
     // sectorSelect.innerHTML = Sinner;
-    $("#inputDistrictStd").empty();
+    $("#inputDistrictStd,#inputDistrictSch").empty();
     citytownobj[cityvalue]["districts"].forEach(function(town,index){
         index += 1;
-        $("#inputDistrictStd").append(`<option value="${index}">${town.name}</option>`);
+        $("#inputDistrictStd,#inputDistrictSch").append(`<option value="${index}">${town.name}</option>`);
     })
 }
-
-
-function changeCountyschool(index){
-    var Sinner = "";
-    var i = 0;
-    for( i = 0 ; i < sectors[index].length ; i++){
-        Sinner = Sinner + '<option value = '+sectors[index][i]+'>'+ sectors[index][i]+'</option>';
-    }
-    var sectorSelect = document.getElementById("validationDefault06");
-    sectorSelect.innerHTML = Sinner;
-}
-

@@ -2,6 +2,13 @@ $(document).ready(() => {
     
 })
 
+function initlogin(){
+
+    $("#InputEmail").empty();
+    $("#InputPassword").empty();
+    $("#acc-loginmsg,#pwd-loginmsg").empty();
+}
+
 function bindPersonalData(data,para){
 
     console.log(data,para);
@@ -27,21 +34,21 @@ function bindPersonalData(data,para){
 
 }
 
-function loginSubmit() {
+function testloginSubmit(identity) {
     
     let email = $("#InputEmail").val().trim();
     let password = $("#InputPassword").val().trim();
-    let identity = $("#InputIdentity").val().trim();
+    $("#acc-loginmsg,#pwd-loginmsg").empty();
 
     switch(identity){
         case '1':
-            AjaxGet("student","", verifyActAndPwd,{"Email" : email,"Password" : password,"Identity" : identity});
+            AjaxGet("student","", verifyActAndPwd,{"Email" : email,"Password" : password,"Identity" : identity });
             break; 
         case '2':
-            AjaxGet("volunteer","", verifyActAndPwd,{"Email" : email,"Password" : password,"Identity" : identity});
+            AjaxGet("volunteer","", verifyActAndPwd,{"Email" : email,"Password" : password,"Identity" : identity });
             break;
         case '3':
-            AjaxGet("school","", verifyActAndPwd,{"Email" : email,"Password" : password,"Identity" : identity});
+            AjaxGet("school","", verifyActAndPwd,{"Email" : email,"Password" : password,"Identity" : identity });
             break;
     }
 
@@ -52,7 +59,6 @@ function verifyActAndPwd(data,para){
     let mail_pass = 0;
 
     for(i = 0  ; i < data.length ; i++){
-        console.log(data[i].mail,para.Email);
         if(data[i].mail === para.Email){
             mail_pass = 1;
             break;
@@ -60,21 +66,27 @@ function verifyActAndPwd(data,para){
     }
 
     if(mail_pass == 0){
-        $("#login").html("此帳號不存在");
+        $("#alertmsg").append(`<i class="fa-solid fa-triangle-exclamation"></i><a id="acc-loginmsg"></a>`);
+        $("#acc-loginmsg").html("   此帳號尚未註冊");
     }
     else{ //帳號對了之後驗證密碼
         console.log(data[i].pwd, para.Password);
         if(data[i].pwd === para.Password){
-            console.log("登入成功");
-            let userData = data[i];
-            bindPersonalData(userData,para); //還沒實作
+            console.log("登入成功",para);
+
+            //設置
+            statInit(para.Identity,1);
             setLoginstat(1);
-            //window.location.href = '01-1_home.html';
+            initlogin();
+
+            //資料綁定
+            let userData = data[i];
+            bindPersonalData(userData,para);
+            
         }
         else{
-            $("#login").html("密碼不正確");
+            $("#alertmsg").append(`<i class="fa-solid fa-triangle-exclamation"></i><a id="pwd-loginmsg"></a>`);
+            $("#pwd-loginmsg").html("   密碼不正確");
         }
     }
-
-
 }

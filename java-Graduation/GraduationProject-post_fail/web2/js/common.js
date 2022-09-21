@@ -1,4 +1,4 @@
-let serverURL = "http://140.134.24.157:53008/";
+const serverURL = "http://140.134.24.157:53008/";
 let loginstat;
 
 $(document).ready(() => {
@@ -14,10 +14,10 @@ function setLoginstat(stat){
     $("#ddl-loginflag").attr("value",loginstat);
 }
 
-function AjaxGet(identity, callback,para) {
+function AjaxGet(identity, action, callback, para) {
     $.ajax({
         type: "GET",
-        url: serverURL + identity,
+        url: serverURL + identity + action,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         crossDomain: true,
@@ -26,29 +26,29 @@ function AjaxGet(identity, callback,para) {
 
         success: function (res) {
             console.log(res,para);
-            callback(res,para);
+            callback(res,para,identity);
         },
         error: function (err) {
             console.log('Failed');
-            console.log(serverURL);
+            console.log(serverURL + identity + action);
         },
     });
     
 }
 
-function AjaxPost(identity, data, callback) {
+function AjaxPost(identity, action, callback, data) {
     $.ajax({
         type: "POST",
-        url: serverURL + identity,
+        url: serverURL + identity + action,
         contentType: "application/json; charset=utf-8",
         data: data,
         success: function (res) {
             console.log(res);
-            callback(res);
+            callback(data, identity);
         },
         error: function (err) {
             console.log('Failed : ' + err.toString() );
-            console.log(serverURL + identity);
+            console.log(serverURL + identity + action);
         },
     });
     

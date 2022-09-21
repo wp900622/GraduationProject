@@ -148,12 +148,12 @@
                 </div>
             </div>
             <div class=" col-12 col-md-5 col-xl-4 mx-auto">
-                <label for="inputNameStu" class="form-label">姓名</label>
-                <input type="text" class="form-control" id="inputNameStu" value="" required>
+                <label for="inputNameStd" class="form-label">姓名</label>
+                <input type="text" class="form-control" id="inputNameStd" value="" required>
             </div>
             <div class=" col-12 col-md-5 col-xl-3 mx-auto">
-                <label for="inputSexStu" class="form-label">性別</label>
-                <select class="form-select" id="inputSexStu" required>
+                <label for="inputSexStd" class="form-label">性別</label>
+                <select class="form-select" id="inputSexStd" required>
                     <option selected disabled value=""></option>
                     <option value="1">生理男</option>
                     <option value="2">生理女</option>
@@ -197,7 +197,6 @@
             </div>
 
             <div class="col-12 col-md-5 col-xl-3 mx-auto">
-                <script src = "js/address_stu.js"></script>
                 <label for="inputCityStd" class="form-label">縣市</label>
                 <select class="form-select" id="inputCityStd" required onchange="changeCity(this.selectedIndex - 1)">
                     <option selected disabled value="縣市"></option>
@@ -381,11 +380,10 @@
             </div>
             
             <div class="col-12 col-md-5 col-xl-4 mx-auto">
-                <script src = "js/address.js"></script>
                 <label for="inputCitySch" class="form-label">縣市</label>
                 <select class="form-select" id="inputCitySch" required onchange="changeCity(this.selectedIndex - 1)">
                     <option selected disabled value="台北市"></option>
-                    <option value="台北市">台北市</option>
+                    <!-- <option value="台北市">台北市</option>
                     <option value="新北市">新北市</option>
                     <option value="基隆市">基隆市</option>
                     <option value="桃園市">桃園市</option>
@@ -405,7 +403,7 @@
                     <option value="花蓮縣">花蓮縣</option>
                     <option value="台東縣">台東縣</option>
                     <option value="澎湖縣">澎湖縣</option>
-                    <option value="金門縣">金門縣</option>
+                    <option value="金門縣">金門縣</option> -->
                 </select>
             </div>
             <div class="col-12 col-md-5 col-xl-4 mx-auto">
@@ -424,7 +422,6 @@
             </div>
 
             <div class="col-4 col-xl-3 ms-auto p-5">
-                <script src = "js/school_register.js"></script>
                 <button class="btn btn-primary" type="submit" onclick="signupSubmitSchool()">註冊</button>
             </div>
         </div>

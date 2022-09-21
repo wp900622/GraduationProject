@@ -1,0 +1,101 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+body{
+  font-family: 'Noto Sans TC',sans-serif !important;
+}
+
+.home-textlight{
+    color : #967E76
+}
+
+.home-textdark{
+    color : #704F4F
+}
+
+.bg-amos {
+    background-color: #E8DFCA;
+}
+
+body {
+    background-color: #F5EFE6;
+}
+
+i {
+    font-size: x-large;
+}
+
+/*介紹*/
+.rwd-table {
+    width: 90%;
+    margin: auto;
+    border: none;
+}
+
+tr {
+    display: block;
+    border: 1px;
+    margin-bottom: 20px;
+
+}
+
+td {
+    display: block;
+    text-align: left;
+    border: none;
+    padding-left: 2em;
+}
+
+.img-cor {
+    width: 100%;
+}
+
+@media screen and (min-width: 992px) {
+    .img-cor {
+        width: 30%;
+    }
+}
+
+/*手機*/
+.img-top {
+    width: 80px;
+    height: 40px;
+    object-fit: cover;
+    object-position: 50% 100%;
+}
+
+/*平板*/
+@media screen and (min-width: 768px) {
+    .bg-log {
+        width: 60%;
+    }
+}
+
+/*電腦*/
+@media screen and (min-width: 992px) {
+    .img-top {
+        width: 1280px;
+        height: 250px;
+        object-fit: cover;
+        object-position: 50% 100%;
+    }
+}
+
+
+.box {
+    width: 100%;
+    background: #aaa;
+    overflow: hidden;
+}
+
+img {
+    transition: .5s;
+}
+
+.box:hover img {
+    transform: scale(1.2);
+}
+
+.cover-fit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

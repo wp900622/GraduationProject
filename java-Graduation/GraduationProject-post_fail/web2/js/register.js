@@ -27,7 +27,7 @@ function signupSubmitStudent(){
     let sex = $("#inputSexStd").val().trim();
     let age = $("#inputAgeStd").val().trim();
     let tel = $("#inputTelephoneStd").val();
-    let school = $("#inputSchoolStd").val().trim();
+    let school = $("#inputSchoolnameStd").val().trim();
     let grade = $("#inputGradeStd").val();
     let classval = $("#inputClassStd").val();
     let city = $("#inputCityStd").val();
@@ -49,17 +49,7 @@ function signupSubmitStudent(){
                     "address" : address,
                     "mail" : mail
                 }
-                
-    let datajson = JSON.stringify(dataobj);
-    console.log(datajson);
-    
-    AjaxPost("studentpost", datajson, poststudentData);
-}
-
-function poststudentData(data){
-
-    //Ajaxpost的callback
-
+    AjaxGet("student", "", verifySameAccount, dataobj); //取得所有帳戶資料，成功時呼叫verifySameAccount
 }
 
 function signupSubmitSchool(){
@@ -78,21 +68,33 @@ function signupSubmitSchool(){
                     "pwd" : password,
                     "telephone" : tel,
                     "school" : school,
-                    "address_county" : "city",
-                    "address_district" : "district",
+                    "address_county" : city,
+                    "address_district" : district,
                     "address" : address,
                     "mail" : mail
                 }
-                // "address_county" : city,
-                // "address_district" : district,
-    let datajson = JSON.stringify(dataobj);
-    console.log(datajson);
-    
-    AjaxPost("schoolpost", datajson, postschoolData);
+    AjaxGet("school", "", verifySameAccount, dataobj); //取得所有帳戶資料，成功時呼叫verifySameAccount
 }
 
-function postschoolData(data){
+function verifySameAccount(data,para,identity){
+        console.log(data,para);
+        for(i=0;i<data.length;i++){
+            var acc = data[i];
+            console.log(acc.mail, para.mail);
+            if(acc.mail === para.mail){ //檢查是否有一樣的帳號
+                var error = new Error("此帳號已被使用過");
+                alert(error.toString());
+                console.log(error.toString());
+                return;
+            }
+        }
+        let datajson = JSON.stringify(para);
+        console.log(datajson);
+        AjaxPost(identity, "post", postcallback, datajson); //檢查通過才能註冊
+        alert("註冊成功");
+}
 
-    //Ajaxpost的callback
+function postcallback(){
+
 
 }

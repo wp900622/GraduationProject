@@ -1,0 +1,119 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+body {
+    font-family: 'Noto Sans TC', sans-serif !important;
+}
+
+.home-textlight {
+    color: #967E76
+}
+
+.home-textdark {
+    color: #704F4F
+}
+
+.bg-amos {
+    background-color: #E8DFCA;
+}
+
+body {
+    background-color: #F5EFE6;
+}
+
+i {
+    font-size: x-large;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.identity-card {
+    position: relative;
+    float:left;
+    display:inline;
+    margin-left : 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    text-align: center;
+    background-color: #FFF3E4;
+    border-radius: 12px;
+    -webkit-box-shadow: 2px 2px 3px #AD8B73;
+    box-shadow: 2px 2px 3px #AD8B73;
+}
+
+.identity-card-title {
+    margin-top: 0px;
+    margin-bottom: 40px;
+    line-height: 48px;
+}
+
+.identity-card-title a {
+    color: #704F4F !important;
+    text-decoration: none !important;
+}
+
+.identity-icon {
+    color: #967E76;
+    margin-top : 40px;
+}
+
+.submit-btn{
+    background-color:#ABD9FF;
+    text-align: center;
+}
+
+.submit-btn :hover{
+    background-color:#277BC0;
+    text-align: center;
+}
+
+/*手機*/
+.bg-log {
+    background-color: #9898da;
+    width: 100%;
+}
+
+/*平板*/
+@media screen and (min-width: 768px) {
+    .bg-log {
+        width: 60%;
+    }
+}
+
+/*電腦*/
+@media screen and (min-width: 992px) {
+    .bg-log {
+        width: 60%;
+    }
+}
+
+.img-size {
+    padding: 1px;
+    width: 150px;
+    max-width: 100%;
+    max-height: auto;
+}
+
+/*電腦*/
+@media screen and (min-width: 992px) {
+    .img-size {
+        padding: 1px;
+        width: 300px;
+        max-width: 100%;
+        max-height: auto;
+    }
+}
+
+/*科目選單*/
+select {
+    background: #FFD4D4;
+}
