@@ -1,21 +1,25 @@
+/* 統一字體 */
 @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
-
 body {
     font-family: 'Noto Sans TC', sans-serif !important;
 }
 
+/* 淺色文字 */
 .home-textlight {
     color: #967E76
 }
 
+/* 深色文字 */
 .home-textdark {
     color: #704F4F
 }
 
+/* 導覽列底色 */
 .bg-amos {
     background-color: #E8DFCA;
 }
 
+/* 主頁面底色 */
 body {
     background-color: #F5EFE6;
 }
@@ -24,6 +28,7 @@ i {
     font-size: x-large;
 }
 
+/* 選擇身分 */
 .card-container{
     display: flex;
     flex-direction: row;
@@ -49,36 +54,38 @@ i {
     -webkit-box-shadow: 2px 2px 3px #AD8B73;
     box-shadow: 2px 2px 3px #AD8B73;
 }
-
 .identity-card-title {
     margin-top: 0px;
     margin-bottom: 40px;
     line-height: 48px;
 }
-
 .identity-card-title a {
     color: #704F4F !important;
     text-decoration: none !important;
 }
-
 .identity-icon {
     color: #967E76;
     margin-top : 40px;
 }
+
 
 .submit-btn{
     background-color:#ABD9FF;
     text-align: center;
 }
 
-.submit-btn :hover{
-    background-color:#277BC0;
+.submit-btn:hover{
+    background-color:#ABD9FF;
     text-align: center;
 }
 
+/* .nav-item{
+    background-color:#ABD9FF;
+} */
+
 /*手機*/
 .bg-log {
-    background-color: #9898da;
+    background-color: #F5EFE6;
     width: 100%;
 }
 

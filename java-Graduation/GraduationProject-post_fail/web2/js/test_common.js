@@ -29,6 +29,6 @@ function statInit(identity,stat){ //初始狀態
 
 
     }
-    
+    return stat;
 
 }

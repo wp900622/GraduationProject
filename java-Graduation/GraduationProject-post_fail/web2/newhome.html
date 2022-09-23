@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>home page</title>
+    <title>首頁</title>
     <!-- lib -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -19,6 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
         integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
         crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e81a7543a2.js" crossorigin="anonymous"></script> <!-- icon -->
     <!-- js -->
     <script src = "lib/jquery-3.6.1.min.js"></script>
     <script src = "js/common.js"></script>
@@ -34,7 +35,7 @@
     <!--導覽列-->
     <nav class="navbar navbar-expand-lg navbar-darks bg-amos">
         <div class="container-fluid">
-            <a class="navbar-brand home-textdark" href="01-1_home.html"><strong>學生資源平台</strong></a>
+            <a class="navbar-brand home-textdark" href="newhome.html"><strong>學生資源平台</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -49,7 +50,7 @@
                         <a class="nav-link link-dark afterlogin" id="bar-student" href="02-1_student.html">學生專區</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-dark afterlogin" id="bar-volunteer" href="03-1_vol.html">志工專區</a>
+                        <a class="nav-link link-dark" id="bar-volunteer" href="">志工專區</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-dark afterlogin" id="bar-school" href="04-1_school.html">校方專區</a>
@@ -61,11 +62,11 @@
                         <i class="bi bi-person-circle home-textdark fs-4"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-xl-end">
-                        <li><a class="dropdown-item beforelogin" id="ddl-login" href="00-2_login.html">登入</a></li>
-                        <li><a class="dropdown-item beforelogin" id="ddl-register" href="00-1_register.html">註冊</a></li>
-                        <li><a class="dropdown-item afterlogin" id="ddl-personal" href="06-1_personal.html">個人資料</a></li>
-                        <li><a class="dropdown-item afterlogin" id="ddl-message" href="05-1_message.html">訊息</a></li>
-                        <li><a class="dropdown-item afterlogin" id="ddl-logout" href="01-1_home.html">登出</a></li>
+                        <li><a class="dropdown-item beforelogin" id="ddl-login" href="test_identity.html">登入</a></li>
+                        <li><a class="dropdown-item beforelogin" id="ddl-register" href="test_register.html">註冊</a></li>
+                        <li><a class="dropdown-item afterlogin" id="ddl-personal" onClick="showHideDivSch(this.id);">個人資料</a></li>
+                        <li><a class="dropdown-item afterlogin" id="ddl-message" onClick="showHideDivSch(this.id);">訊息</a></li>
+                        <li><a class="dropdown-item afterlogin" id="ddl-logout" href="newhome.html">登出</a></li>
                     </ul>
                 </div>
             </div>
@@ -130,20 +131,19 @@
     <!--下方欄位-->
     <footer role="contentinfo ">
         <div class="p-5 container-fluid">
-            <div class="footerlinks row-fluid ">
+            <div class="footerlinks row-fluid home-textdark">
                 <hr>
-                <span class="copy" style="color: #ffffff;">TEST</span>
+                <span class="copy">TEST</span>
                 <div class="footnote span12">
-                    <p style="text-align: center;"><span style="color: #ffffff;"></span></p>
-                    <span class="col-4" style="color: #ffffff;"> 聯絡資訊</span><br>
-                    <!--<p style="text-align: center ;"></p>-->
-                    <span style="color: #ffffff;"> 電話：0912345678</span>
-
-                    <p style="text-align: center;"><span style="color: #ffffff;"></span></p>
+                    <p ><span></span></p>
+                    <span class="col-4 home-textdark"> 聯絡資訊</span><br>
+                    <span class="home-textdark"> 電話：0912345678</span>
+                    <p ><span class="home-textdark"></span></p>
                 </div>
             </div>
         </div>
     </footer>
+    
 </body>
 
 </html>

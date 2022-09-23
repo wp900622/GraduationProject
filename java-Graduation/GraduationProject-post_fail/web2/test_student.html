@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login page</title>
+    <title>學生專區</title>
     <!-- lib -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -44,7 +44,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 stdnavbar-btn">
-                    <li class="nav-item">
+                    <li class="nav-item rounded mg-3">
                         <a class="nav-link link-dark afterlogin" type=button id="bar-student-index"
                             onClick="showHideDivStd(this.id);">學生首頁</a>
                     </li>
@@ -61,11 +61,10 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-xl-end">
                         <li><a class="dropdown-item beforelogin" id="ddl-login" href="test_identity.html">登入</a></li>
-                        <li><a class="dropdown-item beforelogin" id="ddl-register" href="00-1_register.html">註冊</a></li>
-                        <li><a class="dropdown-item afterlogin" id="ddl-personal" href="06-1_personal.html">個人資料</a>
-                        </li>
-                        <li><a class="dropdown-item afterlogin" id="ddl-message" href="05-1_message.html">訊息</a></li>
-                        <li><a class="dropdown-item afterlogin" id="ddl-logout" href="test_identity.html">登出</a></li>
+                        <li><a class="dropdown-item beforelogin" id="ddl-register" href="test_register.html">註冊</a></li>
+                        <li><a class="dropdown-item afterlogin" id="ddl-personal" onClick="showHideDivStd(this.id);">個人資料</a></li>
+                        <li><a class="dropdown-item afterlogin" id="ddl-message" onClick="showHideDivStd(this.id);">訊息</a></li>
+                        <li><a class="dropdown-item afterlogin" id="ddl-logout" href="newhome.html">登出</a></li>
                     </ul>
                 </div>
             </div>
