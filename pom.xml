@@ -10,7 +10,7 @@
     </parent>
     <groupId>fcu.iecs</groupId>
     <artifactId>volunteer</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <name>volunteer</name>
     <description>student volunteer system</description>
     <properties>
@@ -33,6 +33,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>mysql</groupId>
@@ -51,6 +55,12 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
         </dependency>
     </dependencies>
 
