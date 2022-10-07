@@ -16,19 +16,17 @@ import javax.persistence.*;
 @ToString
 
 public class TestEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer Id;
-    @Column
-    Integer scores;
-    @Column
-    Integer academic_year;
-    @Column
-    Integer semester;
-    @Column
-    String sub_ject;
-
-
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  Integer Id;
+  @Column
+  Integer scores;
+  @Column
+  Integer academic_year;
+  @Column
+  Integer semester;
+  @Column
+  String sub_ject;
 
 
 }

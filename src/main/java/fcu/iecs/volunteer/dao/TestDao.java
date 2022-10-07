@@ -4,5 +4,5 @@ import fcu.iecs.volunteer.entity.SchoolEntity;
 import fcu.iecs.volunteer.entity.TestEntity;
 import org.springframework.data.repository.CrudRepository;
 
-public interface TestDao extends CrudRepository<TestEntity,Integer> {
+public interface TestDao extends CrudRepository<TestEntity, Integer> {
 }

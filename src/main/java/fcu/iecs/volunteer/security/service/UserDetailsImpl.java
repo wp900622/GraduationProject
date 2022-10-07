@@ -1,4 +1,4 @@
-package fcu.iecs.volunteer.service;
+package fcu.iecs.volunteer.security.service;
 
 import fcu.iecs.volunteer.model.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,15 +13,15 @@ public class UserDetailsImpl implements UserDetails {
 
   private static final long serialVersionUID = 1L;
 
-  private Long id;
+  private final Long id;
 
-  private String name;
+  private final String name;
 
-  private String email;
+  private final String email;
 
-  private String password;
+  private final String password;
 
-  private Collection<? extends GrantedAuthority> authorities;
+  private final Collection<? extends GrantedAuthority> authorities;
 
   public UserDetailsImpl(Long id, String name, String email, String password,
                          Collection<? extends GrantedAuthority> authorities) {
@@ -38,6 +38,15 @@ public class UserDetailsImpl implements UserDetails {
 
     return new UserDetailsImpl(user.getId(), user.getName(), user.getEmail(), user.getPassword(), authorities);
 
+  }
+
+
+  public Long getId() {
+    return id;
+  }
+
+  public String getEmail() {
+    return email;
   }
 
   @Override

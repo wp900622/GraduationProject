@@ -1,12 +1,13 @@
 package fcu.iecs.volunteer.model;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name="user")
+@Table(name = "user")
 public class User {
 
   @Id
@@ -20,7 +21,16 @@ public class User {
   private String name;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name="role_id", referencedColumnName = "id")
+  @JoinColumn(name = "role_id", referencedColumnName = "id")
   private Role role;
+
+  public User() {
+  }
+
+  public User(String email, String password, String name) {
+    this.email = email;
+    this.password = password;
+    this.name = name;
+  }
 
 }

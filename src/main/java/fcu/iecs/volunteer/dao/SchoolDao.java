@@ -5,5 +5,5 @@ import fcu.iecs.volunteer.entity.SchoolEntity;
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface SchoolDao extends CrudRepository<SchoolEntity,Integer> {
+public interface SchoolDao extends CrudRepository<SchoolEntity, Integer> {
 }
