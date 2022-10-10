@@ -1,12 +1,13 @@
 package fcu.iecs.volunteer.controller;
 
 import fcu.iecs.volunteer.model.Role;
+import fcu.iecs.volunteer.model.School;
+import fcu.iecs.volunteer.model.Student;
 import fcu.iecs.volunteer.model.User;
-import fcu.iecs.volunteer.model.payload.JwtResponse;
-import fcu.iecs.volunteer.model.payload.LoginRequest;
-import fcu.iecs.volunteer.model.payload.MessageResponse;
-import fcu.iecs.volunteer.model.payload.SignupRequest;
+import fcu.iecs.volunteer.model.payload.*;
 import fcu.iecs.volunteer.repository.RoleRepository;
+import fcu.iecs.volunteer.repository.SchoolRepository;
+import fcu.iecs.volunteer.repository.StudentRepository;
 import fcu.iecs.volunteer.repository.UserRepository;
 import fcu.iecs.volunteer.security.jwt.JwtToken;
 import fcu.iecs.volunteer.security.service.UserDetailsImpl;
@@ -32,6 +33,10 @@ import java.util.List;
 @RequestMapping("/api/auth")
 public class AuthController {
 
+  private enum UserRole{
+    School, Student, Volunteer;
+  }
+
   @Autowired
   AuthenticationManager authenticationManager;
 
@@ -43,6 +48,12 @@ public class AuthController {
 
   @Autowired
   RoleRepository roleRepository;
+
+  @Autowired
+  SchoolRepository schoolRepository;
+
+  @Autowired
+  StudentRepository studentRepository;
 
   @Autowired
   PasswordEncoder encoder;
@@ -74,26 +85,75 @@ public class AuthController {
     return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), role));
   }
 
-  @PostMapping("/signup")
-  public ResponseEntity signup(@RequestBody SignupRequest signUpRequest) {
+  @PostMapping("/signup/school")
+  public ResponseEntity signupSchool(@RequestBody SchoolSignupRequest schoolSignupRequest) {
 
-    if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+    if (userRepository.existsByEmail(schoolSignupRequest.getEmail())) {
       return ResponseEntity.badRequest()
           .body(new MessageResponse("Error: Email already exists."));
     }
+    User userWithId = registerUser(schoolSignupRequest , UserRole.School);
 
-    User user = new User(signUpRequest.getEmail(),
-        encoder.encode(signUpRequest.getPassword()),
-        signUpRequest.getName());
+    School school = new School();
+    school.setTelNo(schoolSignupRequest.getTelNo());
+    school.setContactName(schoolSignupRequest.getContactName());
+    school.setCity(schoolSignupRequest.getCity());
+    school.setArea(schoolSignupRequest.getArea());
+    school.setAddress(schoolSignupRequest.getAddress());
+    school.setUser(userWithId);
 
-    int roleId = signUpRequest.getRoleId();
+    School schoolWithId = schoolRepository.save(school);
 
-    Role role = roleRepository.findById(roleId).get();
+    return ResponseEntity.ok().body(schoolWithId);
+  }
 
-    user.setRole(role);
+  @PostMapping("/signup/student")
+  public ResponseEntity signupStudent(@RequestBody StudentSignupRequest studentSignupRequest) {
 
-    userRepository.save(user);
-    return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    if (userRepository.existsByEmail(studentSignupRequest.getEmail())) {
+      return ResponseEntity.badRequest()
+          .body(new MessageResponse("Error: Email already exists."));
+    }
+    User userWithId = registerUser(studentSignupRequest , UserRole.Student);
 
+    Student student = new Student();
+    student.setGender(studentSignupRequest.getGender());
+    student.setAge(studentSignupRequest.getAge());
+    student.setSchoolName(studentSignupRequest.getSchoolName());
+    student.setYearName(studentSignupRequest.getYearName());
+    student.setCity(studentSignupRequest.getCity());
+    student.setArea(studentSignupRequest.getArea());
+    student.setAddress(studentSignupRequest.getAddress());
+    student.setUser(userWithId);
+
+    Student studentWithId = studentRepository.save(student);
+    return ResponseEntity.ok().body(studentWithId);
+  }
+
+  @PostMapping("/signup/volunteer")
+  public ResponseEntity signupVolunteer(@RequestBody StudentSignupRequest studentSignupRequest) {
+
+    if (userRepository.existsByEmail(studentSignupRequest.getEmail())) {
+      return ResponseEntity.badRequest()
+          .body(new MessageResponse("Error: Email already exists."));
+    }
+    User userWithId = registerUser(studentSignupRequest , UserRole.Student);
+
+    return ResponseEntity.ok().body(userWithId);
+  }
+
+  private User registerUser(SignupRequest signupRequest, UserRole role) {
+
+    Role roleObj = roleRepository.findByName(role.toString()).get();
+
+    User user = new User(
+        signupRequest.getEmail(),
+        encoder.encode(signupRequest.getPassword()),
+        signupRequest.getName());
+    user.setRole(roleObj);
+
+    User newUser = userRepository.save(user);
+    log.info("New user: " + newUser.toString());
+    return newUser;
   }
 }

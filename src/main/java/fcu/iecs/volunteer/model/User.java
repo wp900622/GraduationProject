@@ -1,5 +1,6 @@
 package fcu.iecs.volunteer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -16,6 +17,7 @@ public class User {
 
   private String email;
 
+  @JsonIgnore
   private String password;
 
   private String name;

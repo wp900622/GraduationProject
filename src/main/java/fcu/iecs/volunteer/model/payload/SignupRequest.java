@@ -11,7 +11,11 @@ public class SignupRequest {
 
   private String name;
 
-  private int roleId;
+  private String city;
+
+  private String area;
+
+  private String address;
 
 
 }
