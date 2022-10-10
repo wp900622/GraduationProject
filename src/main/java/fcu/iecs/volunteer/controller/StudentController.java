@@ -1,5 +1,6 @@
 package fcu.iecs.volunteer.controller;
 
+
 import fcu.iecs.volunteer.dao.StudentService;
 import fcu.iecs.volunteer.entity.StudentEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,18 @@ public class StudentController {
 
     @PostMapping("/studentpost")
     public ResponseEntity createStudent(@RequestBody StudentEntity Student){
-        Integer ID = stu.createStuservice(Student);
-        if(ID != 0){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("123");
+        String str = stu.createStuservice(Student);
+        if(!str.equals("ok")){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(str);
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(ID);
+        return ResponseEntity.status(HttpStatus.CREATED).body(str);
     }
-
-
-
+    @PutMapping("/studentupdate/{id}")
+    public ResponseEntity updateStudent(@PathVariable Integer id , @RequestBody StudentEntity Student){
+        String str = stu.updateSchoolService(id, Student);
+        if(!str.equals("ok")){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(str);
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(str);
+    }
 }

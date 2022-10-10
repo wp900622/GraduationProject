@@ -1,9 +1,13 @@
 package fcu.iecs.volunteer.entity;
 
+import com.sun.istack.NotNull;
+import fcu.iecs.volunteer.model.Role;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import javax.mail.MailSessionDefinition;
 import javax.persistence.*;
 
 @Entity
@@ -33,5 +37,7 @@ public class SchoolEntity {
     String address;
     @Column
     String mail;
-
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name="role_id", referencedColumnName = "id")
+    private Role role;
 }

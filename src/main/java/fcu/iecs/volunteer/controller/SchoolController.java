@@ -25,7 +25,6 @@ public class SchoolController {
     @GetMapping("/school")
     public Iterable<SchoolEntity> getschoolService(){
         Iterable<SchoolEntity> school = schoolservice.getregister();
-
         return school;
     }
     @GetMapping("/school/{Id}")
@@ -37,25 +36,25 @@ public class SchoolController {
 
     @PostMapping(value="/schoolpost",consumes = "application/json",produces = "application/json")
     public ResponseEntity createSchool(@RequestBody SchoolEntity schoolEntity) {
-      Integer ID = schoolservice.createSchoolService(schoolEntity);
+      String str = schoolservice.createSchoolService(schoolEntity);
 
-      if(ID != 0){
-          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("欄位不得為空值或帳號格式不正確");
+      if(!str.equals("ok")){
+          return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(str);
       }
 
 
-          return ResponseEntity.status(HttpStatus.CREATED).body(ID);
+          return ResponseEntity.status(HttpStatus.CREATED).body(str);
 
 
 
     }
     @PutMapping("/schoolupdate/{Id}")
     public ResponseEntity updateSchool(@PathVariable Integer Id , @RequestBody SchoolEntity school){
-        Boolean rlt = schoolservice.updateSchoolService(Id,school);
-        if(!rlt){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("password 欄位不能為空");
+        String str = schoolservice.updateSchoolService(Id,school);
+        if(!str.equals("ok")){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(str);
         }
-        return ResponseEntity.status(HttpStatus.OK).body("ok");
+        return ResponseEntity.status(HttpStatus.OK).body(str);
     }
 
 }

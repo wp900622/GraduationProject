@@ -1,5 +1,6 @@
 package fcu.iecs.volunteer.entity;
 
+import fcu.iecs.volunteer.model.Role;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -46,4 +47,7 @@ public class StudentEntity {
     String address;
     @Column
     Integer age;
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name="role_id", referencedColumnName = "id")
+    private Role role;
 }
