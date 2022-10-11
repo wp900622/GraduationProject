@@ -20,7 +20,7 @@
         }
 
         body {
-            background-color: #b7ddf6e6;
+            background-color: #cbe6f7de;
         }
 
         i {
@@ -95,7 +95,7 @@
                         <a class="nav-link link-dark" href="student.html">學生首頁</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link link-light active" aria-current="page" href="stdscore_std.html">成績資訊</a>
+                        <a class="nav-link link-light active" aria-current="page" href="stdscore_std.html">成績資訊</a>
                     </li>
                 </ul>
                 <!--icon-->
@@ -105,7 +105,7 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-xl-end dropdown-menu-lg-end">
                         <li><a class="dropdown-item" href="personal.html">個人資料</a></li>
-                        <li><a class="dropdown-item" href="#">訊息</a></li>
+                        <li><a class="dropdown-item" href="message.html">訊息</a></li>
                         <li><a class="dropdown-item" href="home.html">登出</a></li>
                     </ul>
                 </div>
@@ -114,51 +114,48 @@
     </nav>
 
     <!--資料區-->
-    <div ui-view="" class="ng-scope">
-        <div class="container bg-log rounded p-3">
-            <form class="p-3 ">
-                <ng-form name="studentCtrl.editForm" class="form-horizontal ng-pristine ng-valid ng-scope">
-                    <div><i class="bi bi-file-earmark-text"></i><strong style="font-size:x-large;">成績</strong></div>
-                    <div class="container" style="padding-top:20px">
-                        <div class="col-md-12">
-                            <!--表單內容-->
-                            <div class="panel-body" style="font-size:medium">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <h5><strong>科目：國文</strong></h5>
-                                        <ul class="list-group col-xl-5 my-3">
-                                            <li class="list-group-item">上學期</li>
-                                            <li class="list-group-item">&emsp;第一次期中考&emsp;&emsp;&emsp;90分</li >
-                                            <li class="list-group-item">&emsp;第二次期中考&emsp;&emsp;&emsp;90分</li>
-                                            <li class="list-group-item">&emsp;期末考&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;90分</li>
-                                        </ul>
-                                        <ul class="list-group col-xl-5">
-                                            <li class="list-group-item">下學期</li>
-                                            <li class="list-group-item">&emsp;第一次期中考&emsp;&emsp;&emsp;90分</li>
-                                            <li class="list-group-item">&emsp;第二次期中考&emsp;&emsp;&emsp;90分</li>
-                                            <li class="list-group-item">&emsp;期末考&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;90分</li>
-                                        </ul>
-                                    </div>
+    <div class="container rounded p-4 shadow mb-5" style="max-width: 56rem; background-color: #a7d3f13d;">
+        <div class="row">
+            <div ui-view="" class="ng-scope">
 
-
-                                    <div class="col-sm-1"></div>
-                                    <!--照片位置調整-->
-                                    <div class="col-sm-2 d-none d-lg-block">
-                                        <img src="pic/student.jpg" class="img-rounded border border-3 mt-2 img-size">
+                <form class="p-3">
+                    <ng-form name="studentCtrl.editForm" class="form-horizontal ng-pristine ng-valid ng-scope">
+                        <div><i class="bi bi-file-earmark-text">成績</i></div>
+                        <div class="container" style="padding-top:20px">
+                            <div class="col-md-12">
+                                <!--表單內容-->
+                                <div class="panel-body" style="font-size:medium">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <p><strong>科目</strong></p>
+                                            <select class="form-select-sm col-12 col-lg-8 col-xl-5 " aria-atomic="Subject">
+                                                <option selected>選擇科目</option>
+                                                <option value="1"><a href="vol.html">國文</a></option>
+                                                <option value="2">英文</option>
+                                                <option value="3">數學</option>
+                                                <option value="4">生活</option>
+                                                <option value="5">自然</option>
+                                                <option value="6">社會</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                        <!--照片位置調整-->
+                                        <div class="col-sm-2 d-none d-lg-block">
+                                            <img src="pic/student.jpg" class="img-rounded border border-3 mt-2 img-size">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
-                                <a href="student.html"><button class="btn btn-primary" type="button">確定</button></a>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+                                    <a href="subject_score_std.html"><button class="btn btn-primary"
+                                            type="button">確定</button></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </ng-form>
-            </form>
+                    </ng-form>
+                </form>
+            </div>
         </div>
     </div>
-
 
 
     <!--下方欄位-->

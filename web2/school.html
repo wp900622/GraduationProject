@@ -20,7 +20,7 @@
         }
 
         body {
-            background-color: #b7ddf6e6;
+            background-color: #cbe6f7de;
         }
 
         i {
@@ -52,6 +52,7 @@
             background-color: #b7ddf6e6;
             width: 100%;
         }
+
         .nav-tabs .nav-link.active {
             color: #000;
             background-color: #fff;
@@ -60,7 +61,7 @@
         }
 
         .nav-link {
-            color: #fff;
+            color: rgb(73, 73, 73);
         }
 
         .nav-tabs {
@@ -69,7 +70,7 @@
         }
 
         .list-group-item {
-            background-color: #b7ddf6e6;
+            background-color: #b7ddf643;
             border-style: dashed;
         }
     </style>
@@ -96,17 +97,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-dark" href="home.html" style="font-size:large">首頁</a>
+                        <a class="nav-link active link-light" aria-current="page" href="school.html">校方首頁</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-dark" href="vol.html">志工</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link link-dark" href="student.html">學生</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active link-light" aria-current="page" href="school.html">校方</a>
+                        <a class="nav-link link-dark" href="edit.html">公告發佈</a>
                     </li>
                 </ul>
                 <!--icon-->
@@ -124,35 +118,40 @@
         </div>
     </nav>
 
+
     <!--消息框-->
-    <div class="container">
-        <div class="nav nav-tabs nav-justified col-xl-4">
-            <!--最新消息-->
-            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#menu1" aria-selected="true">
-                最新消息
-            </button>
-            <!--活動通知-->
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu2" aria-selected="false">
-                活動通知
-            </button>
-            <!---->
+    <div class="container rounded p-4 shadow mb-5" style="max-width: 56rem; background-color: #a7d3f13d;">
+        <div class="row">
+            <div class="container">
+                <div class="nav nav-tabs nav-justified col-xl-5">
+                    <!--最新消息-->
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#menu1" aria-selected="true">
+                        最新消息
+                    </button>
+                    <!--活動通知-->
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu2" aria-selected="false">
+                        報名通知
+                    </button>
+                    <!---->
 
-        </div>
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="menu1">
-                <ul class="list-group list-group-flush col-xl-4">
-                    <a href="#" class="list-group-item "><i class="bi bi-dot"></i>&nbsp; 防疫政策</a>
-                    <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期行事曆</a>
-                </ul>
-            </div>
-            <div class="tab-pane fade" id="menu2">
-                <ul class="list-group list-group-flush col-xl-4">
-                    <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 全校討論大會</a>
-                    <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期政策討論</a>
-                    <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 教師研討會</a>
-                </ul>
-            </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="menu1">
+                        <ul class="list-group list-group-flush col-xl-5">
+                            <a href="#" class="list-group-item "><i class="bi bi-dot"></i>&nbsp; 防疫政策</a>
+                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期行事曆</a>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="menu2">
+                        <ul class="list-group list-group-flush col-xl-5">
+                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 全校討論大會</a>
+                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期政策討論</a>
+                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 教師研討會</a>
+                        </ul>
+                    </div>
 
+                </div>
+            </div>
         </div>
     </div>
 

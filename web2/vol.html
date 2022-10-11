@@ -28,10 +28,6 @@
             font-size: x-large;
         }
 
-        .bg-log {
-            background-color: #9898da;
-            width: 100%;
-        }
 
         .nav-tabs .nav-link.active {
             color: #000;
@@ -41,7 +37,7 @@
         }
 
         .nav-link {
-            color: #fff;
+            color: rgb(73, 73, 73);
         }
 
         .nav-tabs {
@@ -100,50 +96,42 @@
         </div>
     </nav>
 
+
     <!--消息框-->
     <div class="container rounded p-4 shadow mb-5" style="max-width: 56rem; background-color: #a7d3f13d;">
         <div class="row">
-            <div class="nav nav-tabs nav-justified col-xl-5">
-                <!--最新消息-->
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#menu1" aria-selected="true">
-                    最新消息
-                </button>
-                <!--活動通知-->
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu2" aria-selected="false">
-                    活動通知
-                </button>
-                <!---->
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu3" aria-selected="false">
-                    志工行程
+            <div class="container">
+                <div class="nav nav-tabs nav-justified col-xl-5">
+                    <!--最新消息-->
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#menu1" aria-selected="true">
+                        最新消息
+                    </button>
+                    <!--活動通知-->
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu2" aria-selected="false">
+                        報名通知
+                    </button>
+                    <!---->
 
-                </button>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="menu1">
-                    <ul class="list-group list-group-flush col-xl-5">
-                        <a href="#" class="list-group-item "><i class="bi bi-dot"></i>&nbsp; 志工大會</a>
-                        <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期討論</a>
-                        <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 防疫政策</a>
-                    </ul>
                 </div>
-                <div class="tab-pane fade" id="menu2">
-                    <ul class="list-group list-group-flush col-xl-5">
-                        <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 志工大會</a>
-                        <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期討論</a>
-                        <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 防疫政策</a>
-                    </ul>
-                </div>
-                <div class="tab-pane fade" id="menu3">
-                    <ul class="list-group list-group-flush col-xl-5">
-                        <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 志工大會</a>
-                        <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期討論</a>
-                        <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 防疫政策</a>
-                    </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="menu1">
+                        <ul class="list-group list-group-flush col-xl-5">
+                            <a href="#" class="list-group-item "><i class="bi bi-dot"></i>&nbsp; 防疫政策</a>
+                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期行事曆</a>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="menu2">
+                        <ul class="list-group list-group-flush col-xl-5">
+                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 全校討論大會</a>
+                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期政策討論</a>
+                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 教師研討會</a>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
-
 
 
     <!--下方欄位-->

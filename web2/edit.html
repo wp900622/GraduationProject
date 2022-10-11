@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="utf-8">
-<!--身分選擇-->
+<!--首頁-->
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>login page</title>
+    <title>home page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="boostrap.css">
@@ -20,35 +20,58 @@
         }
 
         body {
-            background-color: #b7ddf6e6;
+            background-color: #cbe6f7de;
         }
 
         i {
             font-size: x-large;
         }
 
-        .btn-id {
-            background-color: #435ebe36;
+        /*介紹*/
+        .rwd-table {
+            width: 90%;
+            margin: auto;
+            border: none;
         }
 
-        /*手機*/
+        tr {
+            display: block;
+            border: 1px;
+            margin-bottom: 20px;
+
+        }
+
+        td {
+            display: block;
+            text-align: left;
+            border: none;
+            padding-left: 2em;
+        }
+
         .bg-log {
-            background-color: #435ebe36;
+            background-color: #b7ddf6e6;
             width: 100%;
         }
 
-        /*平板*/
-        @media screen and (min-width: 768px) {
-            .bg-log {
-                width: 60%;
-            }
+        .nav-tabs .nav-link.active {
+            color: #000;
+            background-color: #fff;
+            border-color: #fff;
+            border-bottom: 0px;
         }
 
-        /*電腦*/
-        @media screen and (min-width: 992px) {
-            .bg-log {
-                width: 60%;
-            }
+        .nav-link {
+            color: rgb(73, 73, 73);
+        }
+
+        .nav-tabs {
+            background-color: ;
+            border-bottom: 1px solid white;
+        }
+
+        .list-group-item {
+            background-color: #b7ddf643;
+            border-style: dashed;
         }
     </style>
 </head>
@@ -74,17 +97,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link link-dark" href="home.html">首頁</a>
+                        <a class="nav-link link-dark" href="school.html">校方首頁</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-dark" href="stdscore.html">志工</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link link-dark" href="student.html">學生</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-dark" href="school.html">校方</a>
+                        <a class="nav-link active link-light" aria-current="page" href="edit.html">公告發佈</a>
                     </li>
                 </ul>
                 <!--icon-->
@@ -93,37 +109,41 @@
                         <i class="bi bi-person-circle"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-xl-end dropdown-menu-lg-end">
-                        <li><a class="dropdown-item" href="login.html">登入</a></li>
-                        <li><a class="dropdown-item" href="register.html">註冊</a></li>
+                        <li><a class="dropdown-item" href="personal.html">個人資料</a></li>
+                        <li><a class="dropdown-item" href="message.html">訊息</a></li>
+                        <li><a class="dropdown-item" href="home.html">登出</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!--選擇身分-->
 
-    <div class="container bg-log rounded p-3 ">
-        <h3 class="p-3" style="text-align: center;">選擇身分</h3>
-        <div class="row">
-            <div class="col-xl-4 p-5">
-                <a href="volreg.html"><button type="button" class="btn btn-id"
-                        style="width: 10rem ; height: 10rem;"><i class="bi bi-person-badge"></i>&nbsp志工</button></a>
-            </div>
-            <div class="col-xl-4 p-5">
-                <a href="stdreg.html"><button type="button " class="btn btn-id" style="width: 10rem ;height: 10rem;"><i
-                            class="bi bi-mortarboard"></i>&nbsp學生</button></a>
-            </div>
-            <div class="col-xl-4 p-5">
-                <a href="schreg.html"><button type="button " class="btn btn-id" style="width: 10rem ;height: 10rem;"><i
-                            class="bi bi-building"></i>&nbsp校方</button></a>
-            </div>
+    <!--消息框-->
+    <div class="container rounded p-4 shadow mb-5" style="max-width: 56rem; background-color: #a7d3f13d;">
+        <h3 class="p-3" style="text-align: center;">發佈公告</h3>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">標題</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1">
         </div>
+        <div class="mb-3">
+            <h6>類別</h6>
+            <select class="form-select" aria-label="Default select example">
+                <option value="1">首頁</option>
+                <option value="2">學生</option>
+                <option value="3">志工</option>
+            </select>
+
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">內容</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="請輸入內容..." rows="3"></textarea>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">發佈</button>
+        </div>
+
     </div>
-
-
-
-
 
     <!--下方欄位-->
     <footer role="contentinfo ">
@@ -142,7 +162,6 @@
             </div>
         </div>
     </footer>
-
 </body>
 
 </html>

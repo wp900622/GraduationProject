@@ -103,6 +103,49 @@
             height: 100%;
             object-fit: cover;
         }
+
+        .nav-tabs .nav-link.active {
+            color: #000;
+            background-color: #fff;
+            border-color: #fff;
+            border-bottom: 0px;
+        }
+
+        .nav-link {
+            color: rgb(73, 73, 73);
+        }
+
+        .nav-tabs {
+            background-color: ;
+            border-bottom: 1px solid white;
+        }
+
+        .list-group-item {
+            background-color: #b7ddf643;
+            border-style: dashed;
+        }
+
+        /*手機*/
+        .card-w {
+            width: 11rem;
+            height: 12rem;
+        }
+
+        /*平板*/
+        @media screen and (min-width: 768px) {
+            .card-w {
+                width: 13rem;
+                height: 16rem;
+            }
+        }
+
+        /*電腦*/
+        @media screen and (min-width: 992px) {
+            .card-w {
+                width: 15rem;
+                height: 16rem;
+            }
+        }
     </style>
 </head>
 
@@ -161,44 +204,9 @@
     <!--後面長條背景-->
     <div class="container rounded p-4 shadow mb-5" style="max-width: 56rem; background-color: #a7d3f13d;">
         <div class="row">
-            <!--輪播圖-->
-            <div class="container img-cor">
-                <h6 class="text-start"><i class="bi bi-image"></i>&nbsp;<strong>活動照片</strong></h6>
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                    </div>
 
-                    <div class="carousel-inner ">
-                        <div class="carousel-item box active">
-                            <a href="#"><img src="pic/act_1.jpg" class="cover-fit d-block w-100" alt="..."></a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="#"><img src="/pic/vol_2.jpg" class="d-block w-100" alt="..."></a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="#"><img src="/pic/vol_1.jpg" class="d-block w-100" alt="..."></a>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
             <!--介紹-->
-            <div class="container col-xl-8 ms-1 my-4" style="border-style:dashed;">
+            <div class="container col-xl-12 my-4" style="border-style:dashed; width:90%;">
                 <i class="bi bi-people"></i><strong style="font-size:x-large;">平台願景</strong>
                 <table class="rwd-table ">
                     <thead>
@@ -224,37 +232,107 @@
                 </table>
             </div>
 
+            <!--公告-->
+            <div class="container col-xl-12 col-9 ms-5 my-4 ">
+                <div class="row">
+                    <div class="nav nav-tabs nav-justified col-xl-5">
+                        <!--最新消息-->
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#menu1"
+                            aria-selected="true">
+                            最新消息
+                        </button>
+                        <!--活動通知-->
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu2" aria-selected="false">
+                            報名通知
+                        </button>
+                        <!---->
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="menu1">
+                            <ul class="list-group list-group-flush col-xl-5">
+                                <a href="#" class="list-group-item "><i class="bi bi-dot"></i>&nbsp; 防疫政策</a>
+                                <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期行事曆</a>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="menu2">
+                            <ul class="list-group list-group-flush col-xl-5">
+                                <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 全校討論大會</a>
+                                <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期政策討論</a>
+                                <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 教師研討會</a>
+                            </ul>
+                        </div>
+                    </div>
 
-            <!--下面學校介紹志工介紹-->
-            <div class="container rounded p-4">
-                <div align="center">
-                    <div class="card mb-2" style="max-width: 50rem; max-height: 50rem;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="./pic/school.jpg" class="card-img-top" alt="...">
+                    <!--輪播圖-->
+                    <!-- <div class="img-cor">
+                        <h6 class="text-start"><i class="bi bi-image"></i>&nbsp;<strong>活動照片</strong></h6>
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
                             </div>
+
+                            <div class="carousel-inner ">
+                                <div class="carousel-item box active">
+                                    <a href="#"><img src="pic/act_1.jpg" class="cover-fit d-block w-100" alt="..."></a>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="#"><img src="/pic/vol_2.jpg" class="d-block w-100" alt="..."></a>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="#"><img src="/pic/vol_1.jpg" class="d-block w-100" alt="..."></a>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <!--下面學校介紹志工介紹-->
+            <div class="container col-xl-12 ms-5 my-4">
+                <div class="row">
+                    <div class="card mb-2 mx-2 card-w">
+                        <img src="./pic/school.jpg" class="card-img-top" alt="...">
+                        <div align="center">
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <div align="center">
-                                        <h5 class="card-title">學校介紹</h5>
-                                        <p class="card-text">志工團隊成員詳細介紹志工團隊成員詳細介</p>
-                                        <a href="#" class="btn-outline-primary">查看更多</a>
-                                    </div>
+                                    <a href="#" class="btn-outline-primary">學校介紹</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card mb-2" style="max-width: 50rem;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="./pic/vol_home.jpg" class="card-img-top" alt="...">
-                            </div>
+                    <div class="card mb-2 mx-2 card-w">
+                        <img src="./pic/vol_home.jpg" class="card-img-top" alt="Card image cap">
+                        <div align="center">
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">志工團隊成員介紹</h5>
-                                    <p class="card-text">志工團隊成員詳細介紹志工團隊成員詳細介</p>
-                                    <a href="#" class="btn-outline-primary">查看更多</a>
+                                    <a href="#" class="btn-outline-primary">志工團隊介紹</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2 mx-2 card-w">
+
+                        <img src="./pic/act_1.jpg" class="card-img-top" alt="width=device-width">
+                        <div align="center">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <a href="#" class="btn-outline-primary">活動照片</a>
                                 </div>
                             </div>
                         </div>
