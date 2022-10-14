@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="utf-8">
+<!--登入-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>學銀共善服務平台</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link href="./fontawesome-free-6.2.0-web/css/all.min.css" rel="stylesheet">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="./js/config.js"></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">學銀共善服務平台</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="student.html">學生專區</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="volunteer.html">志工專區</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="school.html">學校專區</a>
+                    </li>
+                </ul>
+                <div class="d-flex navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="login.html">登入</a>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="card" style="width:500px;">
+
+            <form class="card-body" id="signinForm" autocomplete="off">
+                <div class="mb-3 text-center">
+                    <h4>登入</h4>
+                </div>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" id="errorMessage">
+                    錯誤的電子信箱或密碼.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">電子信箱：</label>
+                    <input type="email" class="form-control" id="emailInput" placeholder="Email" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label for="passwordInput" class="form-label">密碼：</label>
+                    <input type="password" class="form-control" id="passwordInput" placeholder="Password" autocomplete="off">
+                </div>
+                <div class="mb-3 text-end">
+                    <a href="signup.html" class="me-md-2">還沒註冊?</a>
+                    <a href="register.html" class="me-md-2" type="button">忘記密碼?</a>
+                </div>
+                <div class="mb-3 d-grid gap-2">
+                    <input type="submit" class="btn btn-primary" id="signinBtn" value="登入">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $('#errorMessage').hide();
+
+            $('#signinForm').submit(function (e) {
+                e.preventDefault();
+
+                const email = $('#emailInput').val();
+                const password = $('#passwordInput').val();
+                const roleId = $('#roleSelect').val();
+
+                const signinUrl = 'http://localhost:3008/api/auth/signin';
+                const inputs = {
+                    "email": email,
+                    "password": password
+                };
+                const signinData = JSON.stringify(inputs);
+                $.ajax({
+                    url: signinUrl,
+                    method: 'POST',
+                    dataType: 'json',
+                    data: signinData,
+                    contentType: "application/json;charset=utf-8",
+                    success: function (user) {
+                        console.log(user);
+                        for (item in user) {
+                            $.cookie(item, user[item], { expires: 7 });
+                        }
+                        $('#errorMessage').hide();
+                        console.log($.cookie('token'));
+                        window.location.href = "index.html";
+                    },
+                    error: function (err) {
+                        $('#errorMessage').show();
+                        console.log(err);
+                    },
+                });
+
+            });
+        });
+    </script>
+</body>
+
+</html>

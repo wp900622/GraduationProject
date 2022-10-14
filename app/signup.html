@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="utf-8">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>學銀共善服務平台</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link href="./fontawesome-free-6.2.0-web/css/all.min.css" rel="stylesheet">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/cities.js"></script>
+    <script src="./js/signup.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">學銀共善服務平台</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="student.html">學生專區</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="volunteer.html">志工專區</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="school.html">學校專區</a>
+                    </li>
+                </ul>
+                <div class="d-flex navbar-nav">
+
+                    <li class="nav-item unsigned">
+                        <a class="nav-link active" aria-current="page" href="login.html">
+                            登入
+                        </a>
+                    </li>
+                    <li class="nav-item unsigned">
+                        <a class="nav-link active" aria-current="page" href="signup.html">
+                            註冊
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown" id="userItem">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa-regular fa-user"></i> (<span id="nameDropdown"></span>)
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">
+                                    <i class="fa-solid fa-sliders"></i> 資料設定
+                                </a></li>
+                            <li><a class="dropdown-item" href="" onclick="logout()">
+                                    <i class="fa-solid fa-right-from-bracket"></i> 登出
+                                </a></li>
+                        </ul>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                    type="button" role="tab" aria-controls="pills-home" aria-selected="true"> 學生註冊 </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false"> 志工註冊 </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false"> 學校註冊 </button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="card">
+                    <form class="card-body" id="studentSigninupForm">
+                        <div class="mb-3 text-center">
+                            <h4>學生註冊</h4>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="studentNameInput" class="form-label">姓名：</label>
+                                <input type="text" class="form-control" id="studentNameInput" placeholder="姓名">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="studentEmailInput" class="form-label">電子信箱：</label>
+                                <input type="email" class="form-control" id="studentEmailInput" placeholder="Email">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="studentPasswordInput" class="form-label">密碼：</label>
+                                <input type="password" class="form-control" id="studentPasswordInput" placeholder="密碼">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="studentPasswordConfirmInput" class="form-label">密碼確認：</label>
+                                <input type="password" class="form-control" id="studentPasswordConfirmInput"
+                                    placeholder="密碼確認">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="studentGanderSelect" class="form-label">性別：</label>
+                                <select class="form-control" id="studentGanderSelect">
+                                    <option value="">--請選擇性別--</option>
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="studentAgeInput" class="form-label">年齡：</label>
+                                <input type="number" class="form-control" id="studentAgeInput" placeholder="年齡" min="5"
+                                    max="18">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="studentSchoolNameInput" class="form-label">校名：</label>
+                                <input type="text" class="form-control" id="studentSchoolNameInput" placeholder="校名">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="studentYearSelect" class="form-label">年級：</label>
+                                <select class="form-control" id="studentYearSelect">
+                                    <option value="">--請選擇年級--</option>
+                                    <option value="小一">小一</option>
+                                    <option value="小二">小二</option>
+                                    <option value="小三">小三</option>
+                                    <option value="小四">小四</option>
+                                    <option value="小五">小五</option>
+                                    <option value="小六">小六</option>
+                                    <option value="國一">國一</option>
+                                    <option value="國二">國二</option>
+                                    <option value="國三">國三</option>
+                                </select>
+
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="studentCitySelect" class="form-label">縣市：</label>
+                                <select class="form-control" id="studentCitySelect">
+                                    <option value="">--請選擇城市--</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="studentAreaSelect" class="form-label">地區：</label>
+                                <select class="form-control" id="studentAreaSelect">
+                                    <option value="">--請選擇地區--</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="studentAddressInput" class="form-label">住址：</label>
+                                <input type="text" class="form-control" id="studentAddressInput" placeholder="住址">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 d-grid gap-2">
+                            <input type="submit" class="btn btn-primary" id="studentSignupBtn" value="註冊">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="card">
+                    <form class="card-body" id="volunteerSigninupForm">
+                        <div class="mb-3 text-center">
+                            <h4>學生註冊</h4>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="volunteerNameInput" class="form-label">姓名：</label>
+                                <input type="text" class="form-control" id="volunteerNameInput" placeholder="姓名">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="volunteerEmailInput" class="form-label">電子信箱：</label>
+                                <input type="email" class="form-control" id="volunteerEmailInput" placeholder="Email">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="volunteerPasswordInput" class="form-label">密碼：</label>
+                                <input type="password" class="form-control" id="volunteerPasswordInput"
+                                    placeholder="密碼">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="volunteerPasswordConfirmInput" class="form-label">密碼確認：</label>
+                                <input type="password" class="form-control" id="volunteerPasswordConfirmInput"
+                                    placeholder="密碼確認">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="volunteerGanderSelect" class="form-label">性別：</label>
+                                <select class="form-control" id="volunteerGanderSelect">
+                                    <option value="">--請選擇性別--</option>
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="volunteerAgeInput" class="form-label">年齡：</label>
+                                <input type="number" class="form-control" id="volunteerAgeInput" placeholder="年齡"
+                                    min="20">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="volunteerHighEduSelect" class="form-label">最高學歷：</label>
+                                <select class="form-control" id="volunteerHighEduSelect">
+                                    <option value="">--請選擇最高學歷--</option>
+                                    <option value="國小">國小</option>
+                                    <option value="國中">國中</option>
+                                    <option value="高中">高中</option>
+                                    <option value="大專">大專</option>
+                                    <option value="碩士">碩士</option>
+                                    <option value="博士">博士</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="volunteerExpertiseInput" class="form-label">專長：</label>
+                                <input type="text" class="form-control" id="volunteerExpertiseInput"
+                                    placeholder="國語、數學、自然、音樂...">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="volunteerCitySelect" class="form-label">縣市：</label>
+                                <select class="form-control" id="volunteerCitySelect">
+                                    <option value="">--請選擇城市--</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="volunteerAreaSelect" class="form-label">地區：</label>
+                                <select class="form-control" id="volunteerAreaSelect">
+                                    <option value="">--請選擇地區--</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="volunteerAddressInput" class="form-label">住址：</label>
+                                <input type="text" class="form-control" id="volunteerAddressInput" placeholder="住址">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="volunteerPhoneNumInput" class="form-label">聯絡電話：</label>
+                                <input type="tel" class="form-control" id="volunteerPhoneNumInput" placeholder="聯絡電話">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 d-grid gap-2">
+                            <input type="submit" class="btn btn-primary" id="studentSignupBtn" value="註冊">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <div class="card">
+                    <form class="card-body" id="schoolSigninupForm">
+                        <div class="mb-3 text-center">
+                            <h4>學校註冊</h4>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <label for="schoolNameInput" class="form-label">校名：</label>
+                                <input type="text" class="form-control" id="schoolNameInput" placeholder="姓名">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="schoolEmailInput" class="form-label">電子信箱：</label>
+                                <input type="email" class="form-control" id="schoolEmailInput" placeholder="Email">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="schoolPasswordInput" class="form-label">密碼：</label>
+                                <input type="password" class="form-control" id="schoolPasswordInput" placeholder="密碼">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="schoolPasswordConfirmInput" class="form-label">密碼確認：</label>
+                                <input type="password" class="form-control" id="schoolPasswordConfirmInput"
+                                    placeholder="密碼確認">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="schoolTelNoInput" class="form-label">聯絡電話：</label>
+                                <input type="tel" class="form-control" id="schoolTelNoInput" placeholder="聯絡電話">
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="schoolContactNameInput" class="form-label">聯絡人姓名：</label>
+                                <input type="tel" class="form-control" id="schoolContactNameInput" placeholder="聯絡人姓名">
+                            </div>
+
+                            <div class="mb-3 col-6">
+                                <label for="schoolCitySelect" class="form-label">縣市：</label>
+                                <select class="form-control" id="schoolCitySelect">
+                                    <option value="">--請選擇城市--</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <label for="schoolAreaSelect" class="form-label">地區：</label>
+                                <select class="form-control" id="schoolAreaSelect">
+                                    <option value="">--請選擇地區--</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="schoolAddressInput" class="form-label">住址：</label>
+                                <input type="text" class="form-control" id="schoolAddressInput" placeholder="住址">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 d-grid gap-2">
+                            <input type="submit" class="btn btn-primary" id="schoolSignupBtn" value="註冊">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" tabindex="-1" id="success-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">註冊成功</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>恭喜您註冊成功，請先登入系統。</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="signin-btn">登入</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const studentSignupUrl = apiUrl + 'auth/signup/student';
+        const schoolSignupUrl = apiUrl + 'auth/signup/school';
+        const volunteerSignupUrl = apiUrl + 'auth/signup/volunteer';
+
+        $(document).ready(function () {
+            
+            updateLoginItem(false);
+
+            fillCities();
+
+            $('#studentCitySelect').change(function () {
+                fillAreas($('#studentCitySelect').val(), 'student');
+            });
+
+            $('#volunteerCitySelect').change(function () {
+                fillAreas($('#volunteerCitySelect').val(), 'volunteer');
+            });
+
+            $('#schoolCitySelect').change(function () {
+                fillAreas($('#schoolCitySelect').val(), 'school');
+            });
+
+
+            const token = $.cookie('token');
+            if (token !== undefined && token !== '') {
+                const username = $.cookie('username');
+                $('#nameDropdown').text(username);
+                updateLoginItem(true);
+            }
+
+            console.log(token);
+
+            $('#studentSigninupForm').submit(function (e) {
+                e.preventDefault();
+                studentSignup();
+            });
+
+            $('#schoolSigninupForm').submit(function (e) {
+                e.preventDefault();
+                schoolSignup();
+            });
+
+            $('#signin-btn').click(function() {
+                window.location.href='login.html';
+            })
+        });
+
+        function updateLoginItem(isSignined) {
+            if (isSignined) {
+                $('.unsigned').hide();
+                $('#userItem').show();
+            } else {
+                $('.unsigned').show();
+                $('#userItem').hide();
+            }
+        }
+
+        function logout() {
+            if ($.removeCookie('token')) {
+                window.location.href = "index.html";
+            }
+        }
+
+        function studentSignup() {
+            const inputs = {
+                email: $('#studentEmailInput').val(),
+                password: $('#studentPasswordInput').val(),
+                name: $('#studentNameInput').val(),
+                gender: $('#studentGanderSelect').val(),
+                age: parseInt($('#studentAgeInput').val()),
+                schoolName: $('#studentSchoolNameInput').val(),
+                yearName: $('#studentYearSelect').val(),
+                city: $('#studentCitySelect').val(),
+                area: $('#studentAreaSelect').val(),
+                address: $('#studentAddressInput').val()
+            }
+
+            const signupData = JSON.stringify(inputs);
+            console.log(signupData);
+
+            $.ajax({
+                url: studentSignupUrl,
+                method: 'POST',
+                dataType: 'json',
+                data: signupData,
+                contentType: "application/json;charset=utf-8",
+                success: function (student) {
+                    var myModal = new bootstrap.Modal(document.getElementById('success-modal'))
+                    myModal.show()
+                    console.log(student);
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
+
+        function schoolSignup() {
+            const inputs = {
+                email: $('#schoolEmailInput').val(),
+                password: $('#schoolPasswordInput').val(),
+                name: $('#schoolNameInput').val(),
+                telNo: $('#schoolTelNoInput').val(),
+                contactName: $('#schoolContactNameInput').val(),
+                city: $('#schoolCitySelect').val(),
+                area: $('#schoolAreaSelect').val(),
+                address: $('#schoolAddressInput').val()
+            }
+
+            const signupData = JSON.stringify(inputs);
+            console.log(signupData);
+
+            $.ajax({
+                url: schoolSignupUrl,
+                method: 'POST',
+                dataType: 'json',
+                data: signupData,
+                contentType: "application/json;charset=utf-8",
+                success: function (student) {
+                    var myModal = new bootstrap.Modal(document.getElementById('success-modal'))
+                    myModal.show()
+                    console.log(student);
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+            });
+        }
+    </script>
+
+</body>
+
+
+</html>
