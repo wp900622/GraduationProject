@@ -7,13 +7,16 @@ $(document).ready(() => {
 function toggleRegisterDiv(identity){
     switch(identity){
         case 1:
-            $("#regStudentDiv").toggle();
+            $(".identity-card, .identity-card-text").hide();
+            $("#regStudentDiv").show();
             break;
         case 2:
-            $("#regVolunteerDiv").toggle();
+            $(".identity-card, .identity-card-text").hide();
+            $("#regVolunteerDiv").show();
             break;
         case 3:
-            $("#regSchoolDiv").toggle();
+            $(".identity-card, .identity-card-text").hide();
+            $("#regSchoolDiv").show();
             break;
     }
 }

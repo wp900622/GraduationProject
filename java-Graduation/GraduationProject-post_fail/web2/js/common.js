@@ -2,6 +2,7 @@ const serverURL = "http://140.134.24.157:53008/";
 let loginstat;
 
 $(document).ready(() => {
+    $(".pagefooter").load("share_footer.html"); 
     loginstat = parseInt($("#ddl-loginflag").attr("value"));
     console.log(loginstat);
     if(loginstat == 0) {

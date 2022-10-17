@@ -14,16 +14,17 @@ function bindPersonalData(data,para){
     console.log(data,para);
     //登入後更新顯現資訊
     switch(para.Identity){
-        case '1':
+        case '1': //student
             $("#bar-school,#bar-volunteer").removeClass("afterlogin").addClass("beforelogin");
-            $(".dropdown-menu").prepend(`<li class="dropdown-item afterlogin" id="ddl-stdloginmsg">歡迎回來,${data.username}</li>`)
+            bindStdData(data);
             break; 
-        case '2':
+        case '2': //volunteer
             $("#bar-school,#bar-student").removeClass("afterlogin").addClass("beforelogin");
+            bindVolData(data);
             break;
-        case '3':
+        case '3': //school
             $("#bar-student,#bar-volunteer").removeClass("afterlogin").addClass("beforelogin");
-            $(".dropdown-menu").prepend(`<li><a class="dropdown-item afterlogin" id="ddl-schloginmsg">歡迎回來,${data.school_account}</a></li>`)
+            bindSchData(data);
             break;
     }
     //登入後綁定資料
@@ -32,6 +33,30 @@ function bindPersonalData(data,para){
     $(".beforelogin").hide();
     $(".afterlogin").show();
 
+}
+
+function bindStdData(data){
+    $(".dropdown-menu").prepend(`<li class="dropdown-item afterlogin" id="ddl-stdloginmsg">歡迎回來,${data.username}</li>`)
+    $("#std-personal-div #dataId,#std-personal-div #inputId").attr("value",data.username);
+    $("#std-personal-div #dataGender,#std-personal-div #inputGender").attr("value",data.sex);
+    $("#std-personal-div #dataAge,#std-personal-div #inputAge").attr("value",data.age);
+    $("#std-personal-div #dataSchool,#std-personal-div #inputSchool").attr("value",data.school);
+    $("#std-personal-div #dataGrade,#std-personal-div #inputGrade").attr("value",data.grade);
+    $("#std-personal-div #dataCity,#std-personal-div #inputCity").attr("value",data.address_county);
+    $("#std-personal-div #dataDistrict,#std-personal-div #inputDistrict").attr("value",data.address_district);
+}
+
+function bindVolData(){
+    
+}
+
+function bindSchData(data){
+    $(".dropdown-menu").prepend(`<li><a class="dropdown-item afterlogin" id="ddl-schloginmsg">歡迎回來,${data.school_account}</a></li>`)
+    $("#sch-personal-div #dataName,#sch-personal-div #inputName").attr("value",data.school_account);
+    $("#sch-personal-div #dataTel,#sch-personal-div #inputTel").attr("value",data.telephone);
+    $("#sch-personal-div #dataCity,#sch-personal-div #inputCity").attr("value",data.address_county);
+    $("#sch-personal-div #dataArea,#sch-personal-div #inputArea").attr("value",data.address_district);
+    $("#sch-personal-div #dataAddress,#sch-personal-div #inputAddress").attr("value",data.address);
 }
 
 function testloginSubmit(identity) {

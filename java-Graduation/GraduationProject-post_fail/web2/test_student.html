@@ -29,14 +29,14 @@
     <script src="js/test_student.js"></script>
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="css/userpage.css">
-
 </head>
 
 <body>
     <!--導覽列-->
     <nav class="navbar navbar-expand-lg navbar-darks bg-amos mb-5">
         <div class="container-fluid">
-            <a class="navbar-brand home-textdark" id="bar-student-home" type="button" onClick="showHideDivStd(this.id);"><strong>學生資源平台</strong></a>
+            <a class="navbar-brand user-textdark" id="bar-student-home" type="button"
+                onClick="showHideDivStd(this.id);"><strong>學生資源平台</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -44,11 +44,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 stdnavbar-btn">
-                    <li class="nav-item rounded mg-3">
+                    <li class="nav-item rounded mx-2">
                         <a class="nav-link link-dark afterlogin" type=button id="bar-student-index"
                             onClick="showHideDivStd(this.id);">學生首頁</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item rounded mx-2">
+                        <a class="nav-link link-dark afterlogin" type=button id="bar-student-personal"
+                            onClick="showHideDivStd(this.id);">個人資料</a>
+                    </li> -->
+                    <li class="nav-item rounded mx-2">
                         <a class="nav-link link-dark afterlogin" type=button id="bar-student-score"
                             onClick="showHideDivStd(this.id);">成績資訊</a>
                     </li>
@@ -57,13 +61,15 @@
                 <div class="btn-group">
                     <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static"
                         id="ddl-loginflag" value="0">
-                        <i class="bi bi-person-circle home-textdark"></i>
+                        <i class="bi bi-person-circle user-textdark"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-xl-end">
                         <li><a class="dropdown-item beforelogin" id="ddl-login" href="test_identity.html">登入</a></li>
                         <li><a class="dropdown-item beforelogin" id="ddl-register" href="test_register.html">註冊</a></li>
-                        <li><a class="dropdown-item afterlogin" id="ddl-personal" onClick="showHideDivStd(this.id);">個人資料</a></li>
-                        <li><a class="dropdown-item afterlogin" id="ddl-message" onClick="showHideDivStd(this.id);">訊息</a></li>
+                        <li><a class="dropdown-item afterlogin" id="stdddl-personal"
+                                onClick="showHideDivStd(this.id);">個人資料</a></li>
+                        <li><a class="dropdown-item afterlogin" id="stdddl-message"
+                                onClick="showHideDivStd(this.id);">訊息</a></li>
                         <li><a class="dropdown-item afterlogin" id="ddl-logout" href="newhome.html">登出</a></li>
                     </ul>
                 </div>
@@ -73,7 +79,7 @@
 
     <!--登入-->
     <div class="container rounded p-3 div-block" id="std-login-div">
-        <h3 class="p-3 text-center">會員登入</h3>
+        <h3 class="p-3 text-center">學生登入</h3>
         <div class="col-6 col-md-5 col-xl-4 mx-auto">
             <label for="exampleInputEmail1" class="form-label">帳號</label>
             <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp">
@@ -89,7 +95,8 @@
             <!-- <a href="00-1_register.html" class="me-md-2">還沒註冊?</a> -->
             <a href="00-1_register.html" class="me-md-2" type="button">忘記密碼?</a>
             <button class="btn submit-btn col-3 col-xl-2" type="button" value="1"
-                onClick="testloginSubmit('1');">登入</button><hr>
+                onClick="testloginSubmit('1');">登入</button>
+            <hr>
             <!-- <button class="btn submit-btn col-3 col-xl-2" type="button" value="1"
                 href="00-1_register.html">註冊</button> -->
 
@@ -100,9 +107,9 @@
     <div class="container rounded p-4 div-block" id="std-home-div">
         <div class="row">
             <div class="container col-xl-8 ms-1 rounded">
-                <i class="bi bi-people home-textlight fs-4"></i><strong class="home-textlight fs-4">&emsp;平台願景</strong>
+                <i class="bi bi-people user-textlight fs-4"></i><strong class="user-textlight fs-4 mx-2">平台願景</strong>
                 <hr>
-                <div class=" offset-md-1 col-10 home-textdark">
+                <div class=" offset-md-1 col-10 user-textdark">
                     <p class=""><span>幫助弱勢學生在課輔、導護等方面的協助，在校方志工
                             與家長間互相配合讓學生有更良好的學習幫助。
                             平台提供三方聯絡使學校可以提供學生資訊給志工，志
@@ -113,7 +120,7 @@
             <hr>
             <!--輪播圖-->
             <div class="container img-cor ">
-                <!-- <h6 class="text-start"><i class="bi bi-image home-textlight fs-5"></i>&nbsp;<strong class="home-textlight fs-5">&emsp;活動照片</strong></h6> -->
+                <!-- <h6 class="text-start"><i class="bi bi-image user-textlight fs-5"></i>&nbsp;<strong class="user-textlight fs-5">&emsp;活動照片</strong></h6> -->
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
@@ -149,12 +156,12 @@
         </div>
     </div>
 
-    <!--訊息框-->
+    <!--學生首頁-->
     <div class="container rounded p-3 div-block" id="std-index-div">
         <div class="row">
-            <div class="container rounded p-3 col-12 col-xl-3 home-textlight">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><i class="bi bi-calendar"></i><strong>&nbsp; 即將到來</strong></li>
+            <div class="container rounded p-3 col-12 col-xl-3 user-textlight">
+                <ul class="list-group list-group-flush rounded">
+                    <li class="list-group-item fs-5"><i class="bi bi-calendar mx-2 fs-5"></i><strong>即將到來</strong></li>
 
                     <!-- 從資料庫抓資料動態生成 -->
 
@@ -164,11 +171,10 @@
                     <li class="list-group-item"><i class="bi bi-check"></i>&nbsp; 期末考</li>
                 </ul>
             </div>
-            <div class="container rounded p-3 col-12 col-xl-3 home-textlight">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><i class="bi bi-exclamation-triangle"></i><strong>&nbsp; 校園公告</strong>
-                    </li>
-
+            <div class="container rounded p-3 col-12 col-xl-3 user-textlight">
+                <ul class="list-group list-group-flush rounded">
+                    <li class="list-group-item fs-5"><i
+                            class="bi bi-exclamation-triangle mx-2 fs-5"></i><strong>校園公告</strong></li>
                     <!-- 從資料庫抓資料動態生成 -->
 
                     <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 語文競賽報名</a>
@@ -176,13 +182,183 @@
                     <a href="" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 疫苗</a>
                 </ul>
             </div>
-            <div class="container rounded p-3 col-12 col-xl-3 home-textdark">
-                <img src="pic/curriculum.jpg" class="img-rounded border border-3 mt-2 img-size">
+            <div class="container rounded p-3 col-12 col-xl-3 user-textdark" id="lesson-table">
+                <!-- <img src="pic/curriculum.jpg" class="img-rounded border border-3 mt-2 img-size"> -->
             </div>
         </div>
     </div>
 
-    <!--資料區-->
+    <!--個人資料區-->
+    <!-- <div ui-view="" class="ng-scope"> -->
+    <div class="container rounded p-3 div-block" id="std-personal-div">
+        <form class="p-3 ">
+            <ng-form name="studentCtrl.editForm" class="form-horizontal ng-pristine ng-valid ng-scope">
+                <div class="fs-4 user-textdark "><i class="bi bi-file-earmark-person fs-4 mx-2">個人資料</i></div>
+                <div class="container" style="padding-top:20px">
+                    <div class="col-md-12">
+                        <!--表單內容-->
+                        <div class="panel-body" style="font-size:medium">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <fieldset class="before-edit" id="list-stddata" disabled>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="dataId" class="form-label">代號</label>
+                                        <input type="" class="form-control" id="dataId" value="--">
+                                    </div>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="dataGender" class="form-label">性別</label>
+                                        <input type="" class="form-control" id="dataGender" value="--">
+                                    </div>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="dataAge" class="form-label">年齡</label>
+                                        <input type="" class="form-control" id="dataAge" value="--">
+                                    </div>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="dataSchool" class="form-label">學校</label>
+                                        <input type="" class="form-control" id="dataSchool" value="--">
+                                    </div>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="dataGrade" class="form-label">年級</label>
+                                        <input type="" class="form-control" id="dataGrade" value="--">
+                                    </div>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="dataCity" class="form-label">居住縣市</label>
+                                        <input type="" class="form-control" id="dataCity" value="--">
+                                    </div>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="dataDistrict" class="form-label">區域</label>
+                                        <input type="" class="form-control" id="dataDistrict" value="--">
+                                    </div>
+                                </fieldset>
+                                <fieldset class="after-edit" id="edit-stddata">
+                                    <fieldset disabled>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="inputId" class="form-label">代號</label>
+                                        <input type="" class="form-control" id="inputId" value="--">
+                                    </div>
+                                    </fieldset>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="inputGender" class="form-label">性別</label>
+                                        <input type="" class="form-control" id="inputGender" value="--">
+                                    </div>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="inputAge" class="form-label">年齡</label>
+                                        <input type="" class="form-control" id="inputAge" value="--">
+                                    </div>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="inputSchool" class="form-label">學校</label>
+                                        <input type="" class="form-control" id="inputSchool" value="--">
+                                    </div>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="inputGrade" class="form-label">年級</label>
+                                        <input type="" class="form-control" id="inputGrade" value="--">
+                                    </div>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="inputCity" class="form-label">居住縣市</label>
+                                        <input type="" class="form-control" id="inputCity" value="--">
+                                    </div>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="inputDistrict" class="form-label">區域</label>
+                                        <input type="" class="form-control" id="inputDistrict" value="--">
+                                    </div>
+                                </fieldset>
+                                    <!-- <fieldset disabled>
+                                        <div class="form-group col-12 col-md-7 col-xl-5">
+                                            <label for="disabledNameInput" class="form-label">姓名</label>
+                                            <input type="text" class="form-control" id="disabledNameInput" value="楊博安">
+                                        </div>
+                                    </fieldset>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="inputEmail" class="form-label">電子郵件</label>
+                                        <input type="text" class="form-control" id="inputEmail"
+                                            value="test@example.com">
+                                    </div>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="inputcel" class="form-label">電話</label>
+                                        <input type="tel" class="form-control" id="inputCel" value="0912345678">
+                                    </div>
+                                    <fieldset disabled>
+                                        <div class="form-group col-12 col-md-7 col-xl-5">
+                                            <label for="inputAccount" class="form-label">帳號</label>
+                                            <input type="text" class="form-control" id="inputAccount"
+                                                placeholder="ABCDEFG">
+                                        </div>
+                                    </fieldset>
+                                    <div class="form-group col-12 col-md-7 col-xl-5">
+                                        <label for="inputPassword" class="form-label">密碼</label>
+                                        <input type="text" class="form-control" id="inputPassword" value="********">
+                                    </div>
+                                    <fieldset disabled>
+                                        <div class="form-group col-12 col-md-7 col-xl-5">
+                                            <label for="inputAddress" class="form-label">組別</label>
+                                            <input type="text" class="form-control" id="inputAddress" value="課輔組">
+                                        </div>
+                                    </fieldset> -->
+                                </div>
+                                <div class="col-sm-1"></div>
+                                <!--照片位置調整-->
+                                <div class="col-sm-2 ">
+                                    <img src="pic/vol.jpg" class="img-rounded border border-3 mt-2 img-size">
+                                </div>
+                            </div>
+                        </div>
+                        <!--確認按鍵-->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+                            <button type="button" class="btn btn-primary before-edit" data-bs-toggle="modal"
+                                data-bs-target="#edit-alert" id="edmit-stdbtn">
+                                修改資料
+                            </button>
+                            <button type="button" class="btn btn-primary after-edit" data-bs-toggle="modal"
+                            data-bs-target="#submit-alert" id="submit-stdbtn">
+                                確認送出
+                            </button>
+                        </div>
+                        <!-- 修改資料警告內容 -->
+                        <div class="modal fade" id="edit-alert" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="edit-alertLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="edit-alertLabel">警告</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        確認修該資料嗎?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                        <button class="btn btn-primary" type="button" id="edit-stdbtn" onClick="showHideDivStd(this.id);" data-bs-dismiss="modal">確定</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 確認資料警告內容 -->
+                        <div class="modal fade" id="submit-alert" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="submit-alertLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="submit-alertLabel">警告</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        確認修該資料嗎?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                        <button class="btn btn-primary" type="button" id="submit-stdbtn" onClick="showHideDivStd(this.id);" data-bs-dismiss="modal">確定</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-form>
+        </form>
+    </div>
+    <!-- </div> -->
+
+    <!--成績資訊-->
     <!-- <div ui-view="" class="ng-scope"> -->
     <div class="container rounded p-3 div-block" id="std-score-div">
         <form class="p-3 ">
@@ -229,22 +405,9 @@
         </form>
     </div>
     <!-- </div> -->
-
+    
     <!--下方欄位-->
-    <footer role="contentinfo ">
-        <div class="p-5 container-fluid">
-            <div class="footerlinks row-fluid home-textdark">
-                <hr>
-                <span class="copy">TEST</span>
-                <div class="footnote span12">
-                    <p><span></span></p>
-                    <span class="col-4 home-textdark"> 聯絡資訊</span><br>
-                    <span class="home-textdark"> 電話：0912345678</span>
-                    <p><span class="home-textdark"></span></p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div class="pagefooter"></div>
 
 </body>
 
