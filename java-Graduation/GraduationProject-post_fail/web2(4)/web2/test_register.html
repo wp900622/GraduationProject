@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="utf-8">
+<!--身分選擇-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>註冊頁面</title>
+    <!-- lib -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="boostrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="lib/jquery-3.6.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/e81a7543a2.js" crossorigin="anonymous"></script> <!-- icon -->
+    <!-- js -->
+    <script src="js/common.js"></script>
+    <script src="js/city.js"></script>
+    <script src="js/register.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/register.css">
+
+
+</head>
+
+<body>
+    <!--導覽列-->
+    <nav class="navbar navbar-expand-lg navbar-darks bg-amos mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="color:#ffffff" href="newhome.html"><strong>學銀共善服務平台</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link link-dark" href="01-1_home.html">首頁</a>
+                    </li> -->
+                </ul>
+                <!--icon-->
+                <div class="btn-group">
+                    <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static" id="ddl-loginflag" value="0">
+                        <i class="bi bi-person-circle home-textdark"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-xl-end">
+                        <li><a class="dropdown-item beforelogin" id="ddl-login" href="test_identity.html">登入</a></li>
+                        <li><a class="dropdown-item beforelogin" id="ddl-register" href="test_register.html">註冊</a></li>
+                        <li><a class="dropdown-item afterlogin" id="ddl-personal"
+                                onClick="showHideDivStd(this.id);">個人資料</a></li>
+                        <li><a class="dropdown-item afterlogin" id="ddl-message"
+                                onClick="showHideDivStd(this.id);">訊息</a></li>
+                        <li><a class="dropdown-item afterlogin" id="ddl-logout" href="newhome.html">登出</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--背景長條-->
+    <div class="container rounded p-3 shadow mb-5 mt-5" style="max-width: 60rem; background-color: #a7d3f13d;">
+        <div class="row">
+            <!--選擇身分-->
+            <div class="container bg-log rounded p-3 ">
+                <h3 class="p-3 identity-card-text home-textdark" style="text-align: center;">選擇身分註冊</h3>
+                <div class="card-container">
+                    <div class="col-4 identity-card aos-init aos-animate" data-aos="zoom-in">
+                        <i class="fa-solid fa-graduation-cap identity-icon"></i>
+                        <h4 class="identity-card-title"><a class="stretched-link" type="button"
+                                onclick="toggleRegisterDiv(1);">學生</a></h4>
+                        <img src="" alt="">
+                    </div>
+                    <div class="col-4 identity-card aos-init aos-animate" data-aos="zoom-in">
+                        <i class="fa-solid fa-handshake-angle identity-icon"></i>
+                        <h4 class="identity-card-title"><a class="stretched-link" type="button"
+                                onclick="toggleRegisterDiv(2);">志工</a></h4>
+                        <img src="" alt="">
+                    </div>
+                    <div class="col-4 identity-card aos-init aos-animate" data-aos="zoom-in">
+                        <i class="fa-solid fa-school identity-icon"></i>
+                        <h4 class="identity-card-title"><a class="stretched-link" type="button"
+                                onclick="toggleRegisterDiv(3);">校方</a></h4>
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <!--學生註冊-->
+            <div class="container rounded RegisterDiv" id="regStudentDiv">
+                <h3 class="p-3" style="text-align: center ;">學生註冊</h3>
+                <!--帳號輸入-->
+                <div class="row">
+                    <div class=" col-12 col-md-5 col-xl-6 mx-auto">
+                        <label for="inputNameStd" class="form-label">姓名</label>
+                        <input type="text" class="form-control" id="inputNameStd" value="" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                        <label for="inputMailStd" class="form-label">信箱</label>
+                        <input type="text" class="form-control" id="inputMailStd" value="" required>
+                    </div>
+
+                    <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                        <label for="inputPasswordStd" class="form-label">密碼</label>
+                        <input type="text" class="form-control is-invalid" id="inputPasswordStd"
+                            aria-describedby="inputPasswordStdFeedback" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                        <label for="inputPasswordStd" class="form-label">確認密碼</label>
+                        <input type="text" class="form-control is-invalid" id="inputPasswordStd"
+                            aria-describedby="inputPasswordStdFeedback" required>
+                    </div>
+
+                    <div class=" col-12 col-md-5 col-xl-6 mx-auto">
+                        <label for="inputSexStd" class="form-label">性別</label>
+                        <select class="form-select" id="inputSexStd" required>
+                            <option selected disabled value=""></option>
+                            <option value="1">生理男</option>
+                            <option value="2">生理女</option>
+                        </select>
+                    </div>
+                    <div class=" col-12 col-md-5 col-xl-6 mx-auto">
+                        <label for="inputAgeStd" class="form-label">年齡</label>
+                        <input type="text" class="form-control" id="inputAgeStd" value="" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                        <label for="inputSchoolnameStd" class="form-label">校名</label>
+                        <input type="text" class="form-control" id="inputSchoolnameStd" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-6  mx-auto ">
+                        <label for="inputGradeStd" class="form-label">--選擇年級--</label>
+                        <select class="form-select" id="inputGradeStd" required>
+                            <option selected disabled value="">選擇年級</option>
+                            <option value="1">1年級</option>
+                            <option value="2">2年級</option>
+                            <option value="3">3年級</option>
+                            <option value="4">4年級</option>
+                            <option value="5">5年級</option>
+                            <option value="6">6年級</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                        <label for="inputCityStd" class="form-label">縣市</label>
+                        <select class="form-select inputCity" id="inputCityStd" required
+                            onchange="changeCity(this.selectedIndex - 1)">
+                            <option selected disabled value="縣市"></option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                        <label for="inputDistrictStd" class="form-label">地區</label>
+                        <select class="form-select inputDistrict" id="inputDistrictStd" required>
+                            <option selected disabled value="地區"></option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-12 mx-auto">
+                        <label for="inputAddressStd" class="form-label">地址</label>
+                        <input type="text" class="form-control" id="inputAddressStd" required>
+                    </div>
+                    <div class="col-4 ms-auto p-5">
+                        <button class="btn btn-primary" type="submit" onClick="signupSubmitStudent()">註冊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--志工註冊-->
+        <div class="container rounded RegisterDiv" id="regVolunteerDiv">
+            <h3 class="p-3" style="text-align: center ;">志工註冊</h3>
+            <!--帳號輸入-->
+            <div class="row">
+                <div class=" col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputNameVol" class="form-label">姓名</label>
+                    <input type="text" class="form-control" id="inputNameVol" value="" required>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputMailVol" class="form-label">信箱</label>
+                    <input type="text" class="form-control" id="inputMailVol" value="" required>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputPasswordVol" class="form-label">密碼</label>
+                    <input type="text" class="form-control is-invalid" id="inputPasswordVol"
+                        aria-describedby="inputPasswordVolFeedback" required>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputPasswordVol" class="form-label">確認密碼</label>
+                    <input type="text" class="form-control is-invalid" id="inputPasswordVol"
+                        aria-describedby="inputPasswordVolFeedback" required>
+                </div>
+
+
+                <div class=" col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputSexVol" class="form-label">性別</label>
+                    <select class="form-select" id="inputSexVol" required>
+                        <option selected disabled value=""></option>
+                        <option value="1">生理男</option>
+                        <option value="2">生理女</option>
+                    </select>
+                </div>
+                <div class=" col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputAgeVol" class="form-label">年齡</label>
+                    <input type="text" class="form-control" id="inputAgeVol" value="" required>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputTelephoneVol" class="form-label">電話</label>
+                    <input type="text" class="form-control" id="inputTelephoneVol" required>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto ">
+                    <label for="inputEducationVol" class="form-label">--最高學歷--</label>
+                    <select class="form-select" id="inputEducationVol" required>
+                        <option selected disabled value="">最高學歷</option>
+                        <option value="1">高中</option>
+                        <option value="2">大學</option>
+                        <option value="3">碩士</option>
+                        <option value="4">博士</option>
+                    </select>
+                </div>
+
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputCityVol" class="form-label">縣市</label>
+                    <select class="form-select inputCity" id="inputCityVol" required
+                        onchange="changeCity(this.selectedIndex - 1)">
+                        <option selected disabled value="縣市"></option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputDistrictVol" class="form-label">地區</label>
+                    <select class="form-select inputDistrict" id="inputDistrictVol" required>
+                        <option selected disabled value="地區"></option>
+
+                    </select>
+                </div>
+                <div class="col-12 col-md-5 col-xl-12 mx-auto">
+                    <label for="inputAddressVol" class="form-label">地址</label>
+                    <input type="text" class="form-control" id="inputAddressVol" required>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto ">
+                    <label for="inputIdentityVol" class="form-label">--選擇身分--</label>
+                    <select class="form-select" id="inputIdentityVol" required>
+                        <option selected disabled value="">選擇身分</option>
+                        <option value="1">學生</option>
+                        <option value="2">輔導志工</option>
+                        <option value="3">導護志工</option>
+                        <option value="4">校方</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-5 col-xl-3 mx-auto "></div>
+                <div class="col-4 col-xl-3 ms-auto p-5">
+                    <button class="btn btn-primary" type="submit">註冊</button>
+                </div>
+            </div>
+        </div>
+
+        <!--校方註冊-->
+        <div class="container rounded RegisterDiv" id="regSchoolDiv">
+            <h3 class="p-3" style="text-align: center ;">校方註冊</h3>
+            <!--帳號輸入-->
+            <div class="row">
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputSchoolnameSch" class="form-label">校名</label>
+                    <input type="text" class="form-control" id="inputSchoolnameSch" required>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputMailSch" class="form-label">信箱</label>
+                    <input type="text" class="form-control" id="inputMailSch" required>
+                </div>
+
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputAccountSch" class="form-label">帳號</label>
+                    <input type="text" class="form-control is-invalid" id="inputAccountSch"
+                        aria-describedby="inputAccountSchoolFeedback" required>
+
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputPasswordSch" class="form-label">密碼</label>
+                    <input type="text" class="form-control is-invalid" id="inputPasswordSch"
+                        aria-describedby="inputPasswordSchFeedback" required>
+
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputPasswordSch" class="form-label">確認密碼</label>
+                    <input type="text" class="form-control is-invalid" id="inputPasswordSch" aria-describedby="inputPasswordSchFeedback"
+                        required>
+
+                </div>
+
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputTelephoneSch" class="form-label">電話</label>
+                    <input type="text" class="form-control" id="inputTelephoneSch" required>
+                </div>
+
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputCitySch" class="form-label">縣市</label>
+                    <select class="form-select inputCity" id="inputCitySch" required
+                        onchange="changeCity(this.selectedIndex - 1)">
+                        <option selected disabled value="台北市"></option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputDistrictSh" class="form-label">地區</label>
+                    <select class="form-select inputDistrict" id="inputDistrictSch" required>
+                        <option selected disabled value="地區"></option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-5 col-xl-12 mx-auto">
+                    <label for="inputAddressSch" class="form-label">地址</label>
+                    <input type="text" class="form-control" id="inputAddressSch" required>
+                </div>
+
+
+                <div class="col-4 col-xl-3 ms-auto p-5">
+                    <button class="btn btn-primary" type="submit" onclick="signupSubmitSchool()">註冊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--下方欄位-->
+    <div class="pagefooter"></div>
+
+</body>
+
+</html>

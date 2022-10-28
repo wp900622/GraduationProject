@@ -4,19 +4,19 @@ body{
 }
 
 .home-textlight{
-    color : #967E76
+    color : #ffffff
 }
 
 .home-textdark{
-    color : #704F4F
+    color : #525E75
 }
 
 .bg-amos {
-    background-color: #E8DFCA;
+    background-color: #435ebe36;
 }
 
 body {
-    background-color: #F5EFE6;
+    background-color: #cbe6f7de;
 }
 
 i {
@@ -98,4 +98,52 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.nav-tabs .nav-link.active {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+    border-bottom: 0px;
+}
+
+.nav-link {
+    color: #525E75;
+}
+
+.nav-tabs {
+    background-color: #cbe6f7de;
+    border-bottom: 1px solid white;
+}
+
+.list-group-item {
+    background-color: #b7ddf643;
+    border-style: dashed;
+}
+
+/*手機*/
+.card-w {
+    width: 11rem;
+    height: 12rem;
+}
+
+.identity-card-title a {
+    color: #525E75 !important;
+    text-decoration: none !important;
+}
+
+/*平板*/
+@media screen and (min-width: 768px) {
+    .card-w {
+        width: 13rem;
+        height: 16rem;
+    }
+}
+
+/*電腦*/
+@media screen and (min-width: 992px) {
+    .card-w {
+        width: 15rem;
+        height: 16rem;
+    }
 }

@@ -6,12 +6,12 @@ body {
 
 /* 淺色文字 */
 .user-textlight {
-    color: #967E76
+    color: #ffffff
 }
 
 /* 深色文字 */
 .user-textdark {
-    color: #704F4F
+    color: #525E75
 }
 
 /* 不顯眼文字 */
@@ -21,15 +21,17 @@ body {
 
 /* 導覽列 */
 .bg-amos {
-    background-color: #E8DFCA;
+    background-color: #435ebe36;
 }
+
+
 .nav-item{
-    background-color:#DFD3C3;
-} 
+    background-color:#435ebe1a;
+}
 
 /* 主頁面底色 */
 body {
-    background-color: #F5EFE6;
+    background-color: #cbe6f7de;
 }
 
 i {
@@ -96,13 +98,13 @@ i {
 }
 
 .tab-pane a {
-    background-color: #F9F9F9;
+    background-color: #cbe6f7de;
     color: rgb(0, 0, 0);
   }
 
 .nav-tabs nav-link {
     background-color: #DFD3C3;
-} 
+}
 
 /* 課表 */
 table {
@@ -112,20 +114,21 @@ table {
 
 th,
 td {
-    padding: 10px 20px;
+    padding: 3px 3px;
     border: 1px solid #000;
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #F0EBE3;
+    background-color: #D2DAFF;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #E4DCCF;
+    background-color: #EEF1FF;
 }
 
 table {
-    background-color: #D8CBBB;
+    text-align: center;
+    background-color: #AAC4FF;
 }
 
 /*科目選單*/
@@ -167,5 +170,26 @@ table {
         width: 300px;
         max-width: 100%;
         max-height: auto;
+    }
+}
+/*手機*/
+.card-w {
+    width: 11rem;
+    height: 12rem;
+}
+
+/*平板*/
+@media screen and (min-width: 768px) {
+    .card-w {
+        width: 13rem;
+        height: 16rem;
+    }
+}
+
+/*電腦*/
+@media screen and (min-width: 992px) {
+    .card-w {
+        width: 15rem;
+        height: 16rem;
     }
 }

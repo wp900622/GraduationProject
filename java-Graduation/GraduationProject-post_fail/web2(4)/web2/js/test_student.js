@@ -17,8 +17,8 @@ function showHideDivStd(divId) { //根據點選的按鈕，顯示所選區塊、
                 window.location.href = 'newhome.html';
             }
             else {
-                $(".div-block ").hide();
-                $("#std-home-div").show();
+                $(".div-block").hide();
+                $("#home-div").show();
             }
             break;
         case 'bar-student-index':

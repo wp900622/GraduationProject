@@ -36,7 +36,7 @@
     <!--導覽列-->
     <nav class="navbar navbar-expand-lg navbar-darks bg-amos mb-5">
         <div class="container-fluid">
-            <a class="navbar-brand user-textdark" id="bar-school-home" type="button" onClick="showHideDivSch(this.id);"><strong>學生資源平台</strong></a>
+            <a class="navbar-brand user-textlight" id="bar-school-home" type="button" onClick="showHideDivSch(this.id);"><strong>學銀共善服務平台</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -48,15 +48,15 @@
                         <a class="nav-link link-dark" href="01-1_home.html">首頁</a>
                     </li> -->
                     <li class="nav-item rounded mx-2">
-                        <a class="nav-link link-dark afterlogin" id="bar-school-home" type="button" 
+                        <a class="nav-link link-dark afterlogin" id="bar-school-home" type="button"
                             onClick="showHideDivSch(this.id);">校方首頁</a>
                     </li>
                     <li class="nav-item rounded mx-2">
-                        <a class="nav-link link-dark afterlogin" id="bar-school-index" type="button" 
+                        <a class="nav-link link-dark afterlogin" id="bar-school-index" type="button"
                             onClick="showHideDivSch(this.id);">最新消息</a>
                     </li>
                     <li class="nav-item rounded mx-2">
-                        <a class="nav-link link-dark afterlogin" id="bar-school-post" type="button" 
+                        <a class="nav-link link-dark afterlogin" id="bar-school-post" type="button"
                             onClick="showHideDivSch(this.id);">發佈公告</a>
                     </li>
                 </ul>
@@ -70,14 +70,17 @@
                         <li><a class="dropdown-item beforelogin" id="ddl-login" href="test_identity.html">登入</a></li>
                         <li><a class="dropdown-item beforelogin" id="ddl-register" href="test_register.html">註冊</a></li>
                         <li><a class="dropdown-item afterlogin" id="schddl-personal" onClick="showHideDivSch(this.id);">個人資料</a></li>
-                        <li><a class="dropdown-item afterlogin" id="schddl-message" onClick="showHideDivSch(this.id);">訊息</a></li>
+                        <!-- <li><a class="dropdown-item afterlogin" id="schddl-message" onClick="showHideDivSch(this.id);">訊息</a></li> -->
+                        <li><a class="dropdown-item afterlogin" id="schddl-message" href="test_message.html">訊息</a></li>
                         <li><a class="dropdown-item afterlogin" id="ddl-logout" href="newhome.html">登出</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-
+    <!--後面長條背景-->
+    <div class="container rounded p-3 shadow mb-5 mt-5" style="max-width: 60rem; background-color: #a7d3f13d;">
+        <div class="row">
     <!--登入-->
     <div class="container rounded p-3 div-block" id="sch-login-div">
         <h3 class="p-3 text-center">校方登入</h3>
@@ -100,54 +103,88 @@
         </div>
     </div>
     <!--首頁介紹-->
-    <div class="container rounded p-4 div-block" id="sch-home-div">
+    <!-- <div class="container rounded p-4 div-block" id="sch-home-div">
         <div class="row">
-            <div class="container col-xl-12">
-                <i class="bi bi-people user-textlight fs-4 mx-2"></i><strong class="user-textlight fs-4">平台願景</strong>
+            <div class="container col-xl-12 my-4" style="width:90%;">
+                <i class="bi bi-people home-textdark fs-4"></i>
+                <strong class="home-textdark fs-4">&emsp;平台願景</strong>
                 <hr>
-                <div class=" offset-md-1 me-2 col-10 user-textdark">
-                    <p class=""><span>幫助弱勢學生在課輔、導護等方面的協助，在校方志工與家長間互相配合讓學生有更良好的學習幫助。
-                            平台提供三方聯絡使學校可以提供學生資訊給志工，志工再將學生一些不同的問題回饋給家長，讓家長可以有渠道了解孩子的學業、心理等狀況。</span></p>
+                <div class=" offset-md-1 col-10 home-textddark">
+                    <p class="">
+                        <span>幫助弱勢學生在課輔、導護等方面的協助，在校方志工與家長間互相配合讓學生有更良好的學習幫助。
+                            平台提供三方聯絡使學校可以提供學生資訊給志工，志工再將學生一些不同的問題回饋給家長，讓家長可以有
+                            渠道了解孩子的學業、心理等狀況。</span>
+                    </p>
+                </div>
+                <hr>
+            </div>
+            <div class="container col-xl-12 col-9 ms-5 my-4 ">
+                <div class="nav nav-tabs nav-justified col-xl-5">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#menu1" aria-selected="true">
+                        最新消息
+                    </button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu2" aria-selected="false">
+                        報名通知
+                    </button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="menu1">
+                        <ul class="list-group list-group-flush col-xl-5">
+                            <a href="#" class="list-group-item "><i class="bi bi-dot"></i>&nbsp; 防疫政策</a>
+                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期行事曆</a>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="menu2">
+                        <ul class="list-group list-group-flush col-xl-5">
+                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 全校討論大會</a>
+                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期政策討論</a>
+                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 教師研討會</a>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <hr>
-            <!--輪播圖-->
-            <div class="container img-cor ">
-                <!-- <h6 class="text-start"><i class="bi bi-image user-textlight fs-5"></i>&nbsp;<strong class="user-textlight fs-5">&emsp;活動照片</strong></h6> -->
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item box active">
-                            <a href="#"><img src="pic/act_1.jpg" class="cover-fit d-block w-100" alt="..."></a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="#"><img src="/pic/vol_2.jpg" class="d-block w-100" alt="..."></a>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="#"><img src="/pic/vol_1.jpg" class="d-block w-100" alt="..."></a>
+            下面學校介紹志工介紹
+            <div class="container col-xl-12 ms-5 my-4">
+                <div class="row">
+                    <div class="card mb-2 mx-2 card-w ">
+                        <img src="./pic/school.jpg" class="card-img-top mr-1 mt-2" alt="...">
+                        <div align="center">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <a href="#" class="btn-outline-primary">學校介紹</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+
+                    <div class="card mb-2 mx-2 card-w">
+                        <img src="./pic/vol_home.jpg" class="card-img-top mr-1 mt-2" alt="Card image cap">
+                        <div align="center">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <a href="#" class="btn-outline-primary">志工團隊介紹</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2 mx-2 card-w">
+                        <img src="./pic/act_1.jpg" class="card-img-top mr-1 mt-2" alt="width=device-width">
+                        <div align="center">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <a href="#" class="btn-outline-primary">活動照片</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
+    <!-- 生成share_homepage.js裡的內容 -->
+    <script src="js/share_homepage.js"></script>
 
     <!--個人資料區-->
     <!-- <div ui-view="" class="ng-scope"> -->
@@ -286,16 +323,16 @@
                 <button class="nav-link user-textdark" data-bs-toggle="tab" data-bs-target="#menu2" aria-selected="false">
                     活動通知
                 </button>
-            </div><br>
+            </div>
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="menu1">
-                    <ul class="list-group list-group-flush col-xl-6" id="newmsg-list">
+                    <ul class="list-group list-group-flush col-xl-12" id="newmsg-list">
                         <a data-bs-toggle="collapse" data-bs-target="#collapse1" aria-controls="collapse1" type="button" id="" class="list-group-item rounded"><i class="bi bi-dot"></i>&nbsp; 測試-防疫政策</a>
                         <a data-bs-toggle="collapse" data-bs-target="#collapse2" aria-controls="collapse2" type="button" class="list-group-item rounded"><i class="bi bi-dot"></i>&nbsp; 測試-美麗校園 智慧學習</a>
                     </ul>
                 </div>
                 <div class="tab-pane fade" id="menu2">
-                    <ul class="list-group list-group-flush col-xl-6" id="activity-list">
+                    <ul class="list-group list-group-flush col-xl-12" id="activity-list">
                         <a type="button" id="" class="list-group-item rounded" onClick="showActDetail('#collapse3');"><i class="bi bi-dot"></i>&nbsp; 大立光電股份有限公司徵才說明會</a>
                         <a type="button" id="" class="list-group-item rounded" onClick="showActDetail('#collapse4');"><i class="bi bi-dot"></i>&nbsp; 推動中部地區衛星科學產業交流座談會</a>
                     </ul>
@@ -328,7 +365,7 @@
                         國科會與臺灣太空科學聯盟(Taiwan Space Union, 簡稱TSU)共同合作推動衛星科學產學發展，為增廣臺灣太空計畫各界夥伴參與，整合衛星科技資源與力量，促進產、官、學、研等各界夥伴協同合作，強化衛星發展及與產業之鏈結，由中部地區臺灣太空科學聯盟辦公室逢甲大學辦理太空產業交流座談，邀請中部地區太空領域專家學者及產官學研各界先進參與交流座談活動；本次座談專題演講邀請到臺灣太空科學聯盟-葉永烜主席及國立海洋大學智慧航運研究中心-高聖龍主任，從產業技術與投資環境的角度，探討台灣太空產業的發展，串接科學研究成果至產業需求面，帶動各項尖端技術研發創新，提升各類產業發展能量，誠摯地邀請您共同參與！
                 </p><p class = "news-time right user-textlight " ><i class="fa-regular fa-calendar-days mx-2 fs-6"></i>2022-07-01</p></div>
 
-            </div> 
+            </div>
         </div>
     </div>
 
@@ -347,6 +384,15 @@
                     <option selected disabled value="消息分類"></option>
                     <option value="1">最新消息</option>
                     <option value="2">活動通知</option>
+                </select>
+            </div>
+            <div class=" col-12 col-md-5 col-xl-12 mx-auto">
+                <label for="inputPostType" class="form-label">位置</label>
+                <select class="form-select" id="inputPostType" required>
+                    <option selected disabled value="消息分類"></option>
+                    <option value="1">發布至所有公告區</option>
+                    <option value="2">發布至學生公告區</option>
+                    <option value="3">發布至志工公告區</option>
                 </select>
             </div>
             <div class="col-12 col-md-5 col-xl-12 mx-auto">
@@ -378,9 +424,11 @@
         </div>
         </div>
     </div>
-
+</div>
+</div>
     <!--下方欄位-->
-    <div class="pagefooter"></div>
+    <!-- 生成share_footer.js裡的內容 -->
+    <script src="js/share_footer.js"></script>
 
 </body>
 

@@ -1,0 +1,32 @@
+.bg-amos {
+    background-color: #435ebe36;
+}
+
+body {
+    background-color: #cbe6f7de;
+}
+
+i {
+    font-size: x-large;
+}
+
+/*手機*/
+.bg-log {
+    background-color: #9898da;
+    width: 100%;
+}
+
+/*平板*/
+@media screen and (min-width: 768px) {
+    .bg-log {
+        width: 60%;
+    }
+}
+
+/*電腦*/
+@media screen and (min-width: 992px) {
+    .bg-log {
+        width: 80%;
+    }
+}
+

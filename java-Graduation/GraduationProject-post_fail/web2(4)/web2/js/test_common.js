@@ -66,12 +66,19 @@ function statInit(identity,stat){ //初始狀態
             }
             else{
                 $(".div-block").hide();
-                $("#std-home-div").show();
+                $("#home-div").show();
             }
             break;
 
         case '2' :
-            
+            if(stat == 0){
+                $(".div-block").hide();
+                //$("#vol-login-div").show();
+            }
+            else{
+                $(".div-block").hide();
+                $("#home-div").show();
+            }
             break;
 
         case '3' :
@@ -81,7 +88,7 @@ function statInit(identity,stat){ //初始狀態
             }
             else{
                 $(".div-block").hide();
-                $("#sch-home-div").show();
+                $("#home-div").show();
             }
             break;
     }

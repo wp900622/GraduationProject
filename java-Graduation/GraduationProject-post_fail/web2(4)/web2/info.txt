@@ -1,0 +1,49 @@
+
+統一字體
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+body {
+    font-family: 'Noto Sans TC', sans-serif !important;
+}
+
+淺色文字
+.home-textlight {
+    color: #967E76
+}
+
+深色文字
+.home-textdark {
+    color: #704F4F
+}
+
+導覽列底色
+.bg-amos {
+    background-color: #E8DFCA;
+}
+
+
+主頁面底色
+body {
+    background-color: #F5EFE6;
+}
+
+導覽列active顏色
+.nav-item active{
+    background-color: #DFD3C3;
+}
+
+最新消息下方欄位
+.tab-pane a {
+    background-color: #F9F9F9;
+    color: rgb(0, 0, 0);
+  }
+
+  
+tbody tr:nth-child(odd) {
+    background-color: #F0EBE3;
+}
+tbody tr:nth-child(even) {
+    background-color: #E4DCCF;
+}
+table {
+    background-color: #D8CBBB;
+}

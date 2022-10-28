@@ -19,7 +19,7 @@ function showHideDivSch(divId){ //根據點選的按鈕，顯示所選區塊、�
             }
             else{
                 $(".div-block").hide();
-                $("#sch-home-div").show();
+                $("#home-div").show();
             }
             break;
         case 'bar-school-index':

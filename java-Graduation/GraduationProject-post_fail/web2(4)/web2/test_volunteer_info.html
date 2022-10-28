@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="utf-8">
+<!--首頁-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首頁</title>
+    <!-- lib -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="boostrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e81a7543a2.js" crossorigin="anonymous"></script> <!-- icon -->
+    <!-- js -->
+    <script src = "lib/jquery-3.6.1.min.js"></script>
+    <script src = "js/common.js"></script>
+    <script src = "js/login.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/userpage.css">
+    <link rel="stylesheet" type="text/css" href="css/volunteer.css">
+
+</head>
+
+<body>
+
+    <!--導覽列-->
+    <nav class="navbar navbar-expand-lg navbar-darks bg-amos">
+        <div class="container-fluid">
+            <a class="navbar-brand user-textlight" href="newhome.html"><strong>學銀共善服務平台</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link link-dark" href="01-1_home.html">首頁</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link link-dark afterlogin" id="bar-student" href="">志工名單</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-dark" id="bar-volunteer" href="">志工報名</a>
+                    </li>
+                </ul>
+                <!-- <nav class="navbar nav-searchbox">
+                    <div class="container-fluid">
+                      <a class="navbar-brand"></a> 
+                      <form class="d-flex">
+                        <input class="form-control me-2 searchbox-input" type="search" placeholder="搜尋志工" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-paper-plane-top"></i></button>
+                      </form>
+                    </div>
+                  </nav> -->
+                <!--icon-->
+                <div class="btn-group">
+                    <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static" id="ddl-loginflag" value="0">
+                        <i class="bi bi-person-circle home-textdark fs-4"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-xl-end">
+                        <li><a class="dropdown-item beforelogin" id="ddl-login" href="test_identity.html">登入</a></li>
+                        <li><a class="dropdown-item beforelogin" id="ddl-register" href="test_register.html">註冊</a></li>
+                        <li><a class="dropdown-item afterlogin" id="ddl-personal" onClick="showHideDivSch(this.id);">個人資料</a></li>
+                        <li><a class="dropdown-item afterlogin" id="ddl-message" onClick="showHideDivSch(this.id);">訊息</a></li>
+                        <li><a class="dropdown-item afterlogin" id="ddl-logout" href="newhome.html">登出</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container rounded p-3 shadow mb-5 mt-5" style="max-width: 60rem; background-color: #a7d3f13d;">
+        <div class="row">
+    <!--志工名單-->
+    <div class="container rounded p-4 div-block"id="vol-index-div">
+        <div class="nav nav-tabs nav-justified col-xl-4 nav-bg">
+            <!--最新消息-->
+            <button class="nav-link nav-bg active" data-bs-toggle="tab" data-bs-target="#expertise1" aria-selected="true">
+                數學
+            </button>
+            <!--活動通知-->
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#expertise2" aria-selected="false">
+                英文
+            </button>
+        </div>
+        <div class="tab-content nav-bg">
+            <div class="tab-pane show active" id="expertise1">
+                <ul class="list-group  col-xl-4" id="newmsg-list">
+                    <a onClick="showHideNews(this.id);" id="" class="list-group-item nav-bg"><i class="bi bi-dot"></i>&nbsp; 數學志工1</a>
+                    <a onClick="showHideNews(this.id);" class="list-group-item nav-bg"><i class="bi bi-dot"></i>&nbsp; 數學志工1</a>
+                </ul>
+            </div>
+            <div class="tab-pane " id="expertise2">
+                <ul class="list-group list-group-flush col-xl-4" id="activity-list">
+                    <a href="#" class="list-group-item nav-bg"><i class="bi bi-dot"></i>&nbsp; 英文志工3</a>
+                    <a href="#" class="list-group-item nav-bg"><i class="bi bi-dot"></i>&nbsp; 英文志工3</a>
+                    <a href="#" class="list-group-item nav-bg"><i class="bi bi-dot"></i>&nbsp; 英文志工3</a>
+                </ul>
+            </div>
+        </div>
+        <!-- 最新消息展開內容 -->
+        <div class="container-volunteer">
+            <div class="volunteer-detail">
+                <div class="volunteer-list" id="volunteer-list-idnum" >content...</div>
+            </div> 
+        </div>
+    </div>
+</div>
+</div>
+
+    <!--下方欄位-->
+    <footer role="contentinfo ">
+        <div class="p-5 container-fluid">
+            <div class="footerlinks row-fluid home-textdark">
+                <hr>
+                <span class="copy">TEST</span>
+                <div class="footnote span12">
+                    <p ><span></span></p>
+                    <span class="col-4 home-textdark"> 聯絡資訊</span><br>
+                    <span class="home-textdark"> 電話：0912345678</span>
+                    <p ><span class="home-textdark"></span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+
+</html>

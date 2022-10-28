@@ -29,36 +29,44 @@
 </head>
 
 <body>
-    <!--導覽列-->
-    <nav class="navbar navbar-expand-lg navbar-darks bg-amos mb-5">
-        <div class="container-fluid">
-            <a class="navbar-brand home-textdark" href="newhome.html"><strong>學生資源平台</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!--icon-->
-                <div class="btn-group">
-                    <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static" id="ddl-loginflag" value="0">
-                        <i class="bi bi-person-circle home-textdark"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-xl-end">
-                        <li><a class="dropdown-item beforelogin" id="ddl-login" href="test_identity.html">登入</a></li>
-                        <li><a class="dropdown-item beforelogin" id="ddl-register" href="test_register.html">註冊</a></li>
-                        <li><a class="dropdown-item afterlogin" id="ddl-personal" onClick="showHideDivStd(this.id);">個人資料</a></li>
-                        <li><a class="dropdown-item afterlogin" id="ddl-message" onClick="showHideDivStd(this.id);">訊息</a></li>
-                        <li><a class="dropdown-item afterlogin" id="ddl-logout" href="newhome.html">登出</a></li>
-                    </ul>
-                </div>
+<nav class="navbar navbar-expand-lg navbar-darks bg-amos mb-5">
+    <div class="container-fluid">
+        <a class="navbar-brand" style="color:#ffffff" href="newhome.html"><strong>學銀共善服務平台</strong></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- <li class="nav-item">
+                        <a class="nav-link link-dark" href="01-1_home.html">首頁</a>
+                    </li> -->
+            </ul>
+            <!--icon-->
+            <div class="btn-group">
+                <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static" id="ddl-loginflag"
+                    value="0">
+                    <i class="bi bi-person-circle home-textdark"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-xl-end">
+                    <li><a class="dropdown-item beforelogin" id="ddl-login" href="test_identity.html">登入</a></li>
+                    <li><a class="dropdown-item beforelogin" id="ddl-register" href="test_register.html">註冊</a></li>
+                    <li><a class="dropdown-item afterlogin" id="ddl-personal"
+                            onClick="showHideDivStd(this.id);">個人資料</a></li>
+                    <li><a class="dropdown-item afterlogin" id="ddl-message" onClick="showHideDivStd(this.id);">訊息</a>
+                    </li>
+                    <li><a class="dropdown-item afterlogin" id="ddl-logout" href="newhome.html">登出</a></li>
+                </ul>
             </div>
         </div>
-    </nav>
-
+    </div>
+</nav>
+<!--後面長條背景-->
+<div class="container rounded p-3 shadow mb-5 mt-5" style="max-width: 60rem; background-color: #a7d3f13d;">
+    <div class="row">
     <!--選擇身分-->
-    <div class="container rounded p-3 text-center">
-        <h3 class="p-3 text-center" >選擇身分登錄</h3>
+    <div class="container bg-log rounded p-3">
+        <h3 class="p-3 identity-card-text text-center" >選擇身分登錄</h3>
         <div class="card-container">
             <div class="col-4 identity-card aos-init aos-animate" data-aos="zoom-in">
                 <i class="fa-solid fa-graduation-cap identity-icon"></i>
@@ -87,6 +95,8 @@
             <a href="test_school.html"><button type="button " class="btn btn-id col-xl-6 my-3">校方</button></a>
         </div> -->
     </div>
+    </div>
+</div>
 
     <!--下方欄位-->
     <div class="pagefooter"></div>
