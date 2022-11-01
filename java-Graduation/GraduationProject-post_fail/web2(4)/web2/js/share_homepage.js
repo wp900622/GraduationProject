@@ -54,7 +54,7 @@ let homepage = '<!--介紹-->\
                     <div align="center">\
                         <div class="col-md-8">\
                             <div class="card-body">\
-                                <h6 class="identity-card-title">\<a class="stretched-link" type="button">志工團隊介紹</a></h6>\
+                                <h6 class="identity-card-title">\<a class="stretched-link" href="test_volunteer_info.html"type="button">志工團隊介紹</a></h6>\
                             </div>\
                         </div>\
                     </div>\

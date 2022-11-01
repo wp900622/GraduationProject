@@ -13,3 +13,18 @@
 .nav-tabs{
     background-color: #F5EFE6;
 }
+
+.container img{
+    display:block;
+    width: 150px;
+}
+
+.container li{
+    display: inline-grid;
+    width: 33%;
+}
+
+#signup_process .active{
+    background-color: aliceblue;
+    border-radius: 25px;
+}
