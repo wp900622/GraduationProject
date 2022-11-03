@@ -39,18 +39,18 @@ let homepage = '<!--介紹-->\
         <!--下面學校介紹志工介紹-->\
         <div class="container col-xl-12 ms-5 my-4">\
             <div class="row">\
-                <div class="card mb-2 mx-2 card-w ">\
-                    <img src="./pic/school.jpg" class="card-img-top mr-1 mt-2" alt="...">\
+                <div class="card mb-2 mx-2 card-w">\
+                    <img src="./pic/home_volunteering.png" class="card-img-top" alt="Card image cap">\
                     <div align="center">\
                         <div class="col-md-8">\
                             <div class="card-body">\
-                                <h6 class="identity-card-title">\<a class="stretched-link" type="button">學校介紹</a></h6>\
+                                <h6 class="identity-card-title">\<a class="stretched-link" href="test_signup.html"type="button">加入志工團隊</a></h6>\
                             </div>\
                         </div>\
                     </div>\
                 </div>\
                 <div class="card mb-2 mx-2 card-w">\
-                    <img src="./pic/vol_home.jpg" class="card-img-top mr-1 mt-2" alt="Card image cap">\
+                    <img src="./pic/home_charity.png" class="card-img-top" alt="Card image cap">\
                     <div align="center">\
                         <div class="col-md-8">\
                             <div class="card-body">\
@@ -60,7 +60,7 @@ let homepage = '<!--介紹-->\
                     </div>\
                 </div>\
                 <div class="card mb-2 mx-2 card-w">\
-                    <img src="./pic/act_1.jpg" class="card-img-top mr-1 mt-2" alt="width=device-width">\
+                    <img src="./pic/home_photos.png" class="card-img-top" alt="width=device-width">\
                     <div align="center">\
                         <div class="col-md-8">\
                             <div class="card-body">\

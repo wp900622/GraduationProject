@@ -23,6 +23,12 @@ i {
     font-size: x-large;
 }
 
+.container img{
+    display:block;
+    margin:auto;
+    width: 150px;
+}
+
 /*介紹*/
 .rwd-table {
     width: 90%;

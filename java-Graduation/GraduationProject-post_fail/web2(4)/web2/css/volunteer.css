@@ -5,26 +5,57 @@
 .nav-searchbox{
     display: flex;
 }
+.nav-tabs .nav-link.active {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+    border-bottom: 0px;
+}
 
 .nav-bg{
-    background-color: #F7ECDE;
+    background-color: #cbe6f7de;
 }
 
-.nav-tabs{
-    background-color: #F5EFE6;
+.nav-tabs {
+    background-color: #cbe6f7de;
+    border-bottom: 1px solid white;
 }
 
-.container img{
-    display:block;
+.container img {
+    display: block;
     width: 150px;
 }
 
-.container li{
+.container li {
     display: inline-grid;
     width: 33%;
 }
 
-#signup_process .active{
+#signup_process .active {
     background-color: aliceblue;
     border-radius: 25px;
+}
+
+.nav-link {
+    color: #525E75;
+}
+.list-group-item {
+    background-color: #b7ddf643;
+    border-style: dashed;
+}
+
+.bg-log {
+    background-color: #cbe6f7de;
+    width: 100%;
+}
+/*志工名單框大小*/
+.vol-card-w{
+    width: 12rem;
+    height: 15rem;
+}
+/*志工*/
+.card-container{
+    display: flex;
+    /*flex-direction: row;*/
+    background-color: #cbe6f7de;
 }

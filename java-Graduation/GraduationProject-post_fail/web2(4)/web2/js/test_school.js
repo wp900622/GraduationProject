@@ -13,7 +13,7 @@ function initHiddenDiv(){
 
 function showHideDivSch(divId){ //根據點選的按鈕，顯示所選區塊、隱藏其他區塊
     switch(divId){
-        case 'bar-school-home':
+        case 'bar-school-home': //校方登入前後，左上方標題欄位導到不同地方
             if(stat == 0){
                 window.location.href= 'newhome.html';
             }
@@ -38,13 +38,19 @@ function showHideDivSch(divId){ //根據點選的按鈕，顯示所選區塊、�
             $(".div-block").hide();
             $("#sch-message-div").show();
             break;
-        case 'edit-stdbtn':
+        case 'edit-stdbtn': //編輯個人資料
             $(".before-edit").hide();
             $(".after-edit").show();
             break;
-        case 'submit-stdbtn':
+        case 'submit-stdbtn': //確認變更個人資料
             $(".after-edit").hide();
             $(".before-edit").show();
+            break;
+        case 'nav-activity': //按活動消息，最新消息會消失
+            $(".news-detail").hide();
+            break;
+        case 'nav-newsmsg': //按最新消息，最新消息會顯示
+            $(".news-detail").show();
             break;
     }
 }
