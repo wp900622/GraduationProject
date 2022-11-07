@@ -1,6 +1,3 @@
-
-const role = $.cookie('role');
-const username = $.cookie('username');
 $(document).ready(() => {
     checkAndBindUserStat();
 
@@ -8,12 +5,12 @@ $(document).ready(() => {
 
 function checkAndBindUserStat(){
     $(".userItem").hide();
-    const token = $.cookie('token');
     if (token !== undefined && token !== '') {
         $('#username').text(username);
         updateLoginItem(true);
     }
     console.log(token);
+    return 0;
 }
 
 function updateLoginItem(isSignined) {

@@ -20,7 +20,7 @@ body {
 }
 
 /* 置中 */
-.center h2, h4 {
+.center h2,.center h4 {
     text-align: center;
     margin-top: 15px;
     margin-bottom: 25px;

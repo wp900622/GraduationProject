@@ -69,21 +69,3 @@ function toggleRegisterDiv(identity){
             break;
     }
 }
-
-// function verifySameAccount(data,para,identity){
-//         console.log(data,para);
-//         for(i=0;i<data.length;i++){
-//             var acc = data[i];
-//             console.log(acc.mail, para.mail);
-//             if(acc.mail === para.mail){ //檢查是否有一樣的帳號
-//                 var error = new Error("此帳號已被使用過");
-//                 alert(error.toString());
-//                 console.log(error.toString());
-//                 return;
-//             }
-//         }
-//         let datajson = JSON.stringify(para);
-//         console.log(datajson);
-//         AjaxPost(identity, "post", postcallback, datajson); //檢查通過才能註冊
-//         alert("註冊成功");
-// }
