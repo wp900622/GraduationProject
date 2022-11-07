@@ -1,27 +1,49 @@
-//const serverURL = "http://140.134.24.157:53008/";
-//let loginstat;
 
+const role = $.cookie('role');
+const username = $.cookie('username');
 $(document).ready(() => {
-    loginstat = parseInt($("#ddl-loginflag").attr("value"));
-    console.log(loginstat);
-    if(loginstat == 0) {
-        $(".afterlogin").hide();
-    }
+    checkAndBindUserStat();
+
 })
+
+function checkAndBindUserStat(){
+    $(".userItem").hide();
+    const token = $.cookie('token');
+    if (token !== undefined && token !== '') {
+        $('#username').text(username);
+        updateLoginItem(true);
+    }
+    console.log(token);
+}
 
 function updateLoginItem(isSignined) {
     if (isSignined) {
-        $('.unsigned').hide();
-        $('#userItem').show();
+        $(".unsigned").hide();
+        $(".userItem").show();
     } else {
-        $('.unsigned').show();
-        $('#userItem').hide();
+        $(".unsigned").show();
+        $(".userItem").hide();
     }
+    switch(role){
+        case 'Student':
+            $('#userrole').text("學生");
+            $(".schview,.volview").hide();
+            break;
+        case 'Volunteer':
+            $('#userrole').text("志工");
+            $(".schview,.stdview").hide();
+            break;
+        case 'School':
+            $('#userrole').text("學校管理員");
+        $(".stdview,.volview").hide();
+        break;
+    }
+
 }
 
 function logout() {
     if ($.removeCookie('token')) {
-        window.location.href = "index.html";
+        window.location.href = "00-2_home.html";
     }
 }
 
@@ -43,63 +65,3 @@ function logout() {
     });
 
 }
-
-//尚未完成
-function AjaxSignIn(identity, action, callback, data) {
-    $.ajax({
-        url: schoolSignupUrl,
-        method: 'POST',
-        dataType: 'json',
-        data: signupData,
-        contentType: "application/json;charset=utf-8",
-        success: function (student) {
-            var myModal = new bootstrap.Modal(document.getElementById('success-modal'))
-            myModal.show()
-            console.log(student);
-        },
-        error: function (err) {
-            console.log(err);
-        },
-    });
-
-}
-
-// function AjaxGet(identity, action, callback, para) {
-//     $.ajax({
-//         type: "GET",
-//         url: serverURL + identity + action,
-//         contentType: "application/json; charset=utf-8",
-//         dataType: "json",
-//         crossDomain: true,
-//         cache: false,
-//         headers: { "cache-control": "no-cache" },
-
-//         success: function (res) {
-//             console.log(res,para);
-//             callback(res,para,identity);
-//         },
-//         error: function (err) {
-//             console.log('Failed');
-//             console.log(serverURL + identity + action);
-//         },
-//     });
-    
-// }
-
-// function AjaxPost(identity, action, callback, data) {
-//     $.ajax({
-//         type: "POST",
-//         url: serverURL + identity + action,
-//         contentType: "application/json; charset=utf-8",
-//         data: data,
-//         success: function (res) {
-//             console.log(res);
-//             callback(data, identity);
-//         },
-//         error: function (err) {
-//             console.log('Failed : ' + err.toString() );
-//             console.log(serverURL + identity + action);
-//         },
-//     });
-    
-// }

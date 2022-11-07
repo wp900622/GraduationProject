@@ -9,28 +9,9 @@ $(document).ready(() => {
 
     updateLoginItem(false);
 
-    const token = $.cookie('token');
-    if (token !== undefined && token !== '') {
-        const username = $.cookie('username');
-        $('#nameDropdown').text(username);
-        updateLoginItem(true);
-    }
-
-    console.log(token);
-
-    // $('#studentSigninupForm').on('submit',function (e) {
-    //     e.preventDefault();
-    //     studentSignup();
-    // });
-
-    // $('#schoolSigninupForm').on('submit',function (e) {
-    //     e.preventDefault();
-    //     schoolSignup();
-    // });
-
-    $('#signin-btn').on('click',function() {
-        window.location.href='test_login.html';
-    })
+    // $('#signin-btn').on('click',function() {
+    //     window.location.href='00-0_login.html';
+    // })
     
 })
 
