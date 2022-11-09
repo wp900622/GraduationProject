@@ -8,7 +8,9 @@ body{
 }
 
 .home-textdark{
-    color : #525E75
+    /* color : #525E75 */
+    color : black;
+
 }
 
 .bg-amos {
@@ -27,6 +29,10 @@ i {
     display:block;
     margin:auto;
     width: 150px;
+}
+
+.right{
+    float:right;
 }
 
 /*介紹*/
@@ -114,7 +120,9 @@ img {
 }
 
 .nav-link {
-    color: #525E75;
+    /* color: #525E75; */
+    color: black;
+
 }
 
 .nav-tabs {

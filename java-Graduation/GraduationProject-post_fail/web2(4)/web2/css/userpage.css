@@ -11,7 +11,8 @@ body {
 
 /* 深色文字 */
 .user-textdark {
-    color: #525E75
+    /* color: #525E75 */
+    color: #000;
 }
 
 /* 不顯眼文字 */
@@ -109,8 +110,8 @@ i {
     color: rgb(0, 0, 0);
   }
 
-.nav-tabs nav-link {
-    background-color: #DFD3C3;
+.nav-tabs .nav-link {
+    /* background-color: #DFD3C3;  */
 }
 
 /* 課表 */

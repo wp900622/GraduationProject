@@ -44,21 +44,40 @@ function logout() {
     }
 }
 
- function AjaxSignUp(url, data) {
+function AjaxPost(url, funcurl, data, token, modalID) {
     $.ajax({
-        url: url,
+        url: url + funcurl,
         method: 'POST',
         dataType: 'json',
         data: data,
         contentType: "application/json;charset=utf-8",
+        headers: {"Authorization": "Bearer " + token},
         success: function (msg) {
-            var myModal = new bootstrap.Modal(document.getElementById('success-modal'))
-            myModal.show()
+            var myModal = new bootstrap.Modal(document.getElementById(modalID));
+            myModal.show();
             console.log(msg);
         },
         error: function (err) {
             console.log(err);
         },
     });
+}
 
+function AjaxGet(url, funcurl, token, callback) {
+    $.ajax({
+        url: url + funcurl,
+        method: 'Get',
+        dataType: 'json',
+        contentType: "application/json;charset=utf-8",
+        headers: {"Authorization": "Bearer " + token},
+        success: function (msg) {
+            callback(msg);
+            //var myModal = new bootstrap.Modal(document.getElementById(modalID));
+            //myModal.show();
+            console.log(msg);
+        },
+        error: function (err) {
+            console.log(err);
+        },
+    });
 }

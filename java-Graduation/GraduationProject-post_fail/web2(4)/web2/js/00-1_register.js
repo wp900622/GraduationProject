@@ -3,7 +3,9 @@ const schoolSignupUrl = apiUrl + 'auth/signup/school';
 const volunteerSignupUrl = apiUrl + 'auth/signup/volunteer';
 
 $(document).ready(() => {
-    
+    const token = $.cookie('token');
+const role = $.cookie('role');
+const username = $.cookie('username');
     $(".RegisterDiv").hide();    
     initOption();
 
@@ -30,7 +32,7 @@ function schoolSignup() {
     const signupData = JSON.stringify(inputs);
     console.log(signupData);
 
-    AjaxSignUp(schoolSignupUrl, signupData);
+    AjaxPost(schoolSignupUrl, '', signupData, '', 'success-modal');
 }
 
 function studentSignup() {
@@ -50,7 +52,8 @@ function studentSignup() {
     const signupData = JSON.stringify(inputs);
     console.log(signupData);
 
-    AjaxSignUp(studentSignupUrl, signupData);
+    AjaxPost(studentSignupUrl, '', signupData, '', 'success-modal');
+
 }
 
 function toggleRegisterDiv(identity){
