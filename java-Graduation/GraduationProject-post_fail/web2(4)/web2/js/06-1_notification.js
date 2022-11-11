@@ -1,6 +1,6 @@
 $(document).ready(() => {
     initShowHide();
-    AjaxGet(NewsUrl, '/School', token, initNews);
+    AjaxGet(NewsUrl, '/School', token, initNews,'');
 })
 
 function initShowHide(){

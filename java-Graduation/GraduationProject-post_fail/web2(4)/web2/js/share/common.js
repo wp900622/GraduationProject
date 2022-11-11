@@ -32,8 +32,8 @@ function updateLoginItem(isSignined) {
             break;
         case 'School':
             $('#userrole').text("學校管理員");
-        $(".stdview,.volview").hide();
-        break;
+            $(".stdview,.volview").hide();
+            break;
     }
 
 }
@@ -44,7 +44,7 @@ function logout() {
     }
 }
 
-function AjaxPost(url, funcurl, data, token, modalID) {
+function AjaxPost(url, funcurl, data, token, para) {
     $.ajax({
         url: url + funcurl,
         method: 'POST',
@@ -53,7 +53,7 @@ function AjaxPost(url, funcurl, data, token, modalID) {
         contentType: "application/json;charset=utf-8",
         headers: {"Authorization": "Bearer " + token},
         success: function (msg) {
-            var myModal = new bootstrap.Modal(document.getElementById(modalID));
+            var myModal = new bootstrap.Modal(document.getElementById(para.modalID));
             myModal.show();
             console.log(msg);
         },
@@ -63,7 +63,7 @@ function AjaxPost(url, funcurl, data, token, modalID) {
     });
 }
 
-function AjaxGet(url, funcurl, token, callback) {
+function AjaxGet(url, funcurl, token, callback, para) {
     $.ajax({
         url: url + funcurl,
         method: 'Get',
@@ -71,7 +71,7 @@ function AjaxGet(url, funcurl, token, callback) {
         contentType: "application/json;charset=utf-8",
         headers: {"Authorization": "Bearer " + token},
         success: function (msg) {
-            callback(msg);
+            callback(msg,para);
             //var myModal = new bootstrap.Modal(document.getElementById(modalID));
             //myModal.show();
             console.log(msg);

@@ -1,9 +1,15 @@
 $(document).ready(() => {
-    $(".div-block").hide();
-    $("#std-index-div").show();
+    initShowHide();
     checkAndBindUserStat();
+    AjaxGet(NewsUrl, '/Student', token, initNews,'');
+    let uid = '1';
+    AjaxGet(ExamUrl, '/' + uid, token, initScore,{academicyear:'111'});
 })
 
+function initShowHide(){
+    $(".div-block,#btn-return,.acts-list").hide();
+    $("#std-index-div").show();
+}
 
 function showHideDivStd(divId) { //根據點選的按鈕，顯示所選區塊、隱藏其他區塊
     switch (divId) {
