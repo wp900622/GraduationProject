@@ -1,5 +1,6 @@
 $(document).ready(() => {
     initHiddenDiv();
+    initOption();
 })
 
 function initHiddenDiv(){
@@ -21,4 +22,37 @@ function ableSummitBtn(){
         $("#signsummit").attr('disabled', false);
     }
     else $("#signsummit").attr('disabled', true);
+}
+
+function volunteerApplySummit() {
+    var subjectlist="";
+    $('input[name=checked-sub]:checked').each(function(){
+        if(subjectlist == "")
+        {
+            subjectlist = $(this).val();
+        }
+        else
+        {
+            subjectlist += "," + $(this).val();
+        }
+    });
+    const inputs = {
+        email: $("#inputMailSign").val().trim(),
+        username: $("#inputNameSign").val().trim(),
+        sex: $("#inputSexSign").val().trim(),
+        age: parseInt($("#inputAgeSign").val().trim()),
+        city: $("#inputCitySign").val(),
+        area: $("#inputDistrictSign").val(),
+        address: $("#inputAddressSign").val().trim(),
+        subject: subjectlist,
+        school: $("#inputSchoolSign1").val() + "," + $("#inputSchoolSign2").val() + "," + $("#inputSchoolSign3").val(),
+        telNo: $("#inputTelSign").val().trim(),
+        eduattain: $("#inputAttainmentSign").val().trim()
+    }
+
+    const applyData = JSON.stringify(inputs);
+    console.log(applyData);
+
+    AjaxPost(matchUrl, '', applyData, '', '');
+
 }

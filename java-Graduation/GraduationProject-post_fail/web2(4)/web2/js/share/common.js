@@ -59,6 +59,7 @@ function AjaxPost(url, funcurl, data, token, para) {
         },
         error: function (err) {
             console.log(err);
+            alert("動作未成功");
         },
     });
 }
@@ -78,6 +79,7 @@ function AjaxGet(url, funcurl, token, callback, para) {
         },
         error: function (err) {
             console.log(err);
+            console.log("動作未成功");
         },
     });
 }

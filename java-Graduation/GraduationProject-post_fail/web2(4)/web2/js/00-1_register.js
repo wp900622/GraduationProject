@@ -32,7 +32,7 @@ function schoolSignup() {
     const signupData = JSON.stringify(inputs);
     console.log(signupData);
 
-    AjaxPost(schoolSignupUrl, '', signupData, '', 'success-modal');
+    AjaxPost(schoolSignupUrl, '', signupData, '', {modalID:'success-modal'});
 }
 
 function studentSignup() {
@@ -52,7 +52,30 @@ function studentSignup() {
     const signupData = JSON.stringify(inputs);
     console.log(signupData);
 
-    AjaxPost(studentSignupUrl, '', signupData, '', 'success-modal');
+    AjaxPost(studentSignupUrl, '', signupData, '', {modalID:'success-modal'});
+
+}
+
+function volunteerSignup() {
+    const inputs = {
+        email: $("#inputMailVol").val().trim(),
+        password: $("#inputPasswordVol").val().trim(),
+        name: $("#inputNameVol").val().trim(),
+        gender: $("#inputSexVol").val().trim(),
+        age: parseInt($("#inputAgeVol").val().trim()),
+        city: $("#inputCityVol").val(),
+        area: $("#inputDistrictVol").val(),
+        address: $("#inputAddressVol").val().trim(),
+        highEdu: $("#inputEducationVol").val(),
+        expertise: $("#inputSpecialtyVol").val(),
+        telNo: $("#inputTelephoneVol").val().trim(),
+        educational_attainment: $("#inputAttainmentVol").val().trim()
+    }
+
+    const signupData = JSON.stringify(inputs);
+    console.log(signupData);
+
+    AjaxPost(volunteerSignupUrl, '', signupData, '', {modalID:'success-modal'});
 
 }
 

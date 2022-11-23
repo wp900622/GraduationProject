@@ -2,7 +2,7 @@ $(document).ready(() => {
     initShowHide();
     checkAndBindUserStat();
     AjaxGet(schoolListUrl, '', token, getSchools,'');
-    AjaxGet(NewsUrl, '/School', token, initNews,'');
+    AjaxGet(NewsUrl, "/" + role, token, initNews,'');
 })
 
 function initShowHide(){
@@ -57,5 +57,5 @@ function appendNews(){
         type : $("#inputPostType").val()
     }
     let newsData = JSON.stringify(inputs);
-    AjaxPost(NewsUrl, '/post', newsData, token, {modal:'post-alert'});
+    AjaxPost(NewsUrl, '/post', newsData, token, {modalID:'post-alert'});
 }

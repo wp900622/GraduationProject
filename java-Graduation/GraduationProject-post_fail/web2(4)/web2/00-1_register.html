@@ -123,8 +123,8 @@
                         <label for="inputSexStd" class="form-label">性別</label>
                         <select class="form-select" id="inputSexStd" required>
                             <option selected disabled value=""></option>
-                            <option value="1">生理男</option>
-                            <option value="2">生理女</option>
+                            <option value="male">生理男</option>
+                            <option value="female">生理女</option>
                         </select>
                     </div>
                     <div class=" col-12 col-md-5 col-xl-5 mx-auto">
@@ -139,12 +139,12 @@
                         <label for="inputGradeStd" class="form-label">選擇年級</label>
                         <select class="form-select" id="inputGradeStd" required>
                             <option selected disabled value="">選擇年級</option>
-                            <option value="1">1年級</option>
-                            <option value="2">2年級</option>
-                            <option value="3">3年級</option>
-                            <option value="4">4年級</option>
-                            <option value="5">5年級</option>
-                            <option value="6">6年級</option>
+                            <option value="小一">1年級</option>
+                            <option value="小二">2年級</option>
+                            <option value="小三">3年級</option>
+                            <option value="小四">4年級</option>
+                            <option value="小五">5年級</option>
+                            <option value="小六">6年級</option>
                         </select>
                     </div>
                     <div class="col-12 col-md-5 col-xl-5 mx-auto">
@@ -192,18 +192,16 @@
                         aria-describedby="inputPasswordVolFeedback" required>
                 </div>
                 <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputPasswordVol" class="form-label">確認密碼</label>
-                    <input type="text" class="form-control is-invalid" id="inputPasswordVol"
+                    <label for="inputPassword2Vol" class="form-label">確認密碼</label>
+                    <input type="text" class="form-control is-invalid" id="inputPassword2Vol"
                         aria-describedby="inputPasswordVolFeedback" required>
                 </div>
-
-
                 <div class=" col-12 col-md-5 col-xl-5 mx-auto">
                     <label for="inputSexVol" class="form-label">性別</label>
                     <select class="form-select" id="inputSexVol" required>
                         <option selected disabled value=""></option>
-                        <option value="1">生理男</option>
-                        <option value="2">生理女</option>
+                        <option value="male">生理男</option>
+                        <option value="female">生理女</option>
                     </select>
                 </div>
                 <div class=" col-12 col-md-5 col-xl-5 mx-auto">
@@ -218,13 +216,27 @@
                     <label for="inputEducationVol" class="form-label">最高學歷</label>
                     <select class="form-select" id="inputEducationVol" required>
                         <option selected disabled value="">最高學歷</option>
-                        <option value="1">高中</option>
-                        <option value="2">大學</option>
-                        <option value="3">碩士</option>
-                        <option value="4">博士</option>
+                        <option value="高中">高中</option>
+                        <option value="大學">大學</option>
+                        <option value="碩士">碩士</option>
+                        <option value="博士">博士</option>
                     </select>
                 </div>
-
+                <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                    <label for="inputSpecialtyVol" class="form-label">選擇專業</label>
+                    <select class="form-select" id="inputSpecialtyVol" required>
+                        <option selected disabled value="">選擇專業</option>
+                        <option value="國文">國文</option>
+                        <option value="英文">英文</option>
+                        <option value="數學">數學</option>
+                        <option value="社會">社會</option>
+                        <option value="自然">自然</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                    <label for="inputAttainmentVol" class="form-label">學歷</label>
+                    <input type="text" class="form-control" id="inputAttainmentVol" placeholder="e.g.逢甲大學" required>
+                </div>
                 <div class="col-12 col-md-5 col-xl-5 mx-auto">
                     <label for="inputCityVol" class="form-label">縣市</label>
                     <select class="form-select inputCity" id="inputCityVol" required
@@ -243,18 +255,8 @@
                     <label for="inputAddressVol" class="form-label">地址</label>
                     <input type="text" class="form-control" id="inputAddressVol" required>
                 </div>
-                <div class="col-12 col-md-5 col-xl-11 mx-auto">
-                    <label for="inputIdentityVol" class="form-label">選擇身分</label>
-                    <select class="form-select" id="inputIdentityVol" required>
-                        <option selected disabled value="">選擇身分</option>
-                        <option value="1">學生</option>
-                        <option value="2">輔導志工</option>
-                        <option value="3">導護志工</option>
-                        <option value="4">校方</option>
-                    </select>
-                </div>
                 <div class="col-xl-11 mx-auto mt-3 d-grid">
-                    <button class="btn btn-primary" type="button">註冊</button>
+                    <button class="btn btn-primary" type="button" onClick="volunteerSignup()">註冊</button>
                 </div>
             </div>
         </form>

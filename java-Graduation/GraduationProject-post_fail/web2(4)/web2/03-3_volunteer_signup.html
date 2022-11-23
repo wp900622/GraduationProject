@@ -25,6 +25,7 @@
     <!-- js -->
     <script src="js/share/config.js"></script>
     <script src="js/share/common.js"></script>
+    <script src="js/share/city.js"></script>
     <script src="js/03-3_volunteer_signup.js"></script>
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="css/userpage.css">
@@ -123,22 +124,25 @@
     <div class="container rounded p-3 shadow mb-5 mt-5 div-block after-summit" style="max-width: 60rem; background-color: #a7d3f13d;" id="signupform">
         <div class="container rounded SignlistDiv" id="SignlistDiv">
             <h3 class="p-3" style="text-align: center ;">報名資訊</h3>
-
+            <div class="col-12 col-md-5 col-xl-12 mx-auto">
+                <label for="inputMailSign" class="form-label">信箱</label>
+                <input type="text" class="form-control" id="inputMailSign" required>
+            </div>
             <div class="row">
                 <div class=" col-12 col-md-5 col-xl-6 mx-auto">
                     <label for="inputNameSign" class="form-label">姓名</label>
                     <input type="text" class="form-control" id="inputNameSign" value="" required>
                 </div>
                 <div class="col-12 col-md-5 col-xl-6 mx-auto">
-                    <label for="inputPhSign" class="form-label">連絡電話</label>
-                    <input type="text" class="form-control" id="inputPhSign" value="" required>
+                    <label for="inputTelSign" class="form-label">連絡電話</label>
+                    <input type="text" class="form-control" id="inputTelSign" value="" required>
                 </div>
                 <div class=" col-12 col-md-5 col-xl-6 mx-auto">
                     <label for="inputSexSign" class="form-label">性別</label>
                     <select class="form-select" id="inputSexSign" required>
                         <option selected disabled value=""></option>
-                        <option value="1">生理男</option>
-                        <option value="2">生理女</option>
+                        <option value="male">生理男</option>
+                        <option value="female">生理女</option>
                     </select>
                 </div>
 
@@ -165,33 +169,33 @@
                     <input type="text" class="form-control" id="inputAddressSign" required>
                 </div>
                 <div class="col-12 col-md-5 col-xl-6 ">
-                    <label for="inputGradeSign" class="form-label">最高學歷</label>
-                    <select class="form-select" id="inputGradeSign" required>
-                        <option value="1">高中職以下(含)</option>
-                        <option value="2">大專</option>
-                        <option value="3">碩士</option>
-                        <option value="4">博士</option>
+                    <label for="inputAttainmentSign" class="form-label">最高學歷</label>
+                    <select class="form-select" id="inputAttainmentSign" required>
+                        <option value="高中職以下(含)1">高中職以下(含)</option>
+                        <option value="大專">大專</option>
+                        <option value="碩士">碩士</option>
+                        <option value="博士">博士</option>
                     </select>
                 </div>
                 <div class="container p-3 mt-2 mb-1 col-12">
                     <h5>服務學校</h5>
-                    <select class="form-select" id="inputGradeSign" required>
+                    <select class="form-select" id="inputSchoolSign1" required>
                         <option value="0">請複選</option>
-                        <option value="1">某國小</option>
-                        <option value="2">某國小</option>
-                        <option value="3">某國小</option>
+                        <option value="某國小1">某國小</option>
+                        <option value="某國小2">某國小</option>
+                        <option value="某國小3">某國小</option>
                     </select>
-                    <select class="form-select" id="inputGradeSign" required>
+                    <select class="form-select" id="inputSchoolSign2" required>
                         <option value="0">請複選</option>
-                        <option value="1">某國小</option>
-                        <option value="2">某國小</option>
-                        <option value="3">某國小</option>
+                        <option value="某國小1">某國小</option>
+                        <option value="某國小2">某國小</option>
+                        <option value="某國小3">某國小</option>
                     </select>
-                    <select class="form-select" id="inputGradeSign" required>
+                    <select class="form-select" id="inputSchoolSign3" required>
                         <option value="0">請複選</option>
-                        <option value="1">某國小</option>
-                        <option value="2">某國小</option>
-                        <option value="3">某國小</option>
+                        <option value="某國小1">某國小</option>
+                        <option value="某國小2">某國小</option>
+                        <option value="某國小3">某國小</option>
                     </select>
                 </div>
                 <div class="col-12 col-md-5 col-xl-6  mx-auto "></div>
@@ -199,33 +203,33 @@
                     <div class="container p-3 col-xl-6" style="max-width: 60rem; ">
                         <h5>專業科目</h5>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="Chinese">
+                            <input class="form-check-input" type="checkbox" name="checked-sub" value="國文" id="Chinese">
                             <label class="form-check-label" for="Chinese">
                                 <h6>國文</h6>
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="English">
+                            <input class="form-check-input" type="checkbox" name="checked-sub" value="英文" id="English">
                             <label class="form-check-label" for="English">
                                 <h6>英文</h6>
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="Math">
+                            <input class="form-check-input" type="checkbox" name="checked-sub" value="數學" id="Math">
                             <label class="form-check-label" for="Math">
                                 <h6>數學</h6>
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="Science">
+                            <input class="form-check-input" type="checkbox" name="checked-sub" value="自然" id="Science">
                             <label class="form-check-label" for="Science">
                                 <h6>自然</h6>
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="PE">
-                            <label class="form-check-label" for="PE">
-                                <h6>體育</h6>
+                            <input class="form-check-input" type="checkbox" name="checked-sub" value="社會" id="Social">
+                            <label class="form-check-label" for="Social">
+                                <h6>社會</h6>
                             </label>
                         </div>
                     </div>
@@ -265,7 +269,7 @@
                     
                 </div>
                 <div class="p-2" style="text-align:right;">
-                    <button class="btn btn-primary" type="submit" onClick="signupSubmitStudent()">註冊</button>
+                    <button class="btn btn-primary" type="submit" onClick="volunteerApplySummit()">註冊</button>
                 </div>
             </div>
         </div>

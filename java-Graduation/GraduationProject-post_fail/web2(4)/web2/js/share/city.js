@@ -1623,7 +1623,7 @@ function initOption(){
     let citydata = citytownobj;
     citydata.forEach(function(city,index){
         index += 1;
-        $(".inputCity").append(`<option value="${index}">${city.name}</option>`);
+        $(".inputCity").append(`<option value="${city.name}">${city.name}</option>`);
     })
 }
 
@@ -1631,6 +1631,6 @@ function changeCity(cityvalue){
     $(".inputDistrict").empty();
     citytownobj[cityvalue]["districts"].forEach(function(town,index){
         index += 1;
-        $(".inputDistrict").append(`<option value="${index}">${town.name}</option>`);
+        $(".inputDistrict").append(`<option value="${town.name}">${town.name}</option>`);
     })
 }

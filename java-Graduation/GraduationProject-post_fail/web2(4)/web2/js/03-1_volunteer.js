@@ -18,6 +18,10 @@ function showHideDivVol(divId) { //根據點選的按鈕，顯示所選區塊、
             $(".div-block").hide();
             $("#vol-stdscore-div").show();
             break;
+        case 'bar-volunteer-keyscore':
+            $(".div-block").hide();
+            $("#vol-keyscore-div").show();
+            break;
         case 'volddl-personal':
             $(".div-block").hide();
             $("#vol-personal-div").show();
@@ -31,4 +35,22 @@ function showHideDivVol(divId) { //根據點選的按鈕，顯示所選區塊、
             $(".before-edit").show();
             break;
     }
+}
+
+function summitScore(){
+
+    const inputs = {
+        email: $("#inputMailScore").val().trim(),
+        name: $("#inputNameScore").val().trim(),
+        yearname: $("#inputGradeScore").val(),
+        schoolname: $("#inputSchoolnameScore").val().trim(),
+        subject: $("#inputSubjectScore").val(),
+        score: $("#inputScore").val().trim()
+    }
+
+    const scoreData = JSON.stringify(inputs);
+    console.log(scoreData);
+
+    AjaxPost(ExamUrl, '/exampost', scoreData, token,"{modalID:''}");
+
 }

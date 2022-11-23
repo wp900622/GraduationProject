@@ -1,5 +1,6 @@
 const apiUrl = 'http://localhost:3008/api/';
 const schoolListUrl = apiUrl + 'school';
+const matchUrl = apiUrl + 'match/post';
 const NewsUrl = apiUrl + 'news';
 const ExamUrl = apiUrl + 'exam';
 const token = $.cookie('token');
