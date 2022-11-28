@@ -45,12 +45,13 @@ function summitScore(){
         yearname: $("#inputGradeScore").val(),
         schoolname: $("#inputSchoolnameScore").val().trim(),
         subject: $("#inputSubjectScore").val(),
-        score: $("#inputScore").val().trim()
+        score: $("#inputScore").val().trim(),
+        number: $("#inputNumberScore").val()
     }
 
     const scoreData = JSON.stringify(inputs);
     console.log(scoreData);
 
-    AjaxPost(ExamUrl, '/exampost', scoreData, token,"{modalID:''}");
+    AjaxPost(ExamUrl, '/post', scoreData, token,{modalID:'success-modal'});
 
 }

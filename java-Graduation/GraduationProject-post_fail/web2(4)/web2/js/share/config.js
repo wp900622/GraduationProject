@@ -1,9 +1,9 @@
 const apiUrl = 'http://localhost:3008/api/';
 const schoolListUrl = apiUrl + 'school';
-const matchUrl = apiUrl + 'match/post';
+const matchUrl = apiUrl + 'match';
 const NewsUrl = apiUrl + 'news';
 const ExamUrl = apiUrl + 'exam';
 const token = $.cookie('token');
-const role = $.cookie('role');
+const role = $.cookie('role').toLowerCase();
 const username = $.cookie('username');
 const id = $.cookie('id');

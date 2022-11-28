@@ -36,6 +36,17 @@ function volunteerApplySummit() {
             subjectlist += "," + $(this).val();
         }
     });
+    var worklist="";
+    $('input[name=checked-work]:checked').each(function(){
+        if(worklist == "")
+        {
+            worklist = $(this).val();
+        }
+        else
+        {
+            worklist += "," + $(this).val();
+        }
+    });
     const inputs = {
         email: $("#inputMailSign").val().trim(),
         username: $("#inputNameSign").val().trim(),
@@ -46,13 +57,14 @@ function volunteerApplySummit() {
         address: $("#inputAddressSign").val().trim(),
         subject: subjectlist,
         school: $("#inputSchoolSign1").val() + "," + $("#inputSchoolSign2").val() + "," + $("#inputSchoolSign3").val(),
-        telNo: $("#inputTelSign").val().trim(),
-        eduattain: $("#inputAttainmentSign").val().trim()
+        telno: $("#inputTelSign").val().trim(),
+        eduattain: $("#inputAttainmentSign").val().trim(),
+        work: worklist
     }
 
     const applyData = JSON.stringify(inputs);
     console.log(applyData);
 
-    AjaxPost(matchUrl, '', applyData, '', '');
+    AjaxPost(matchUrl, '/post', applyData, token, {modalID:'success-modal'});
 
 }

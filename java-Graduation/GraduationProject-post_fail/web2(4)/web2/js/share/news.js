@@ -56,19 +56,19 @@ function showSearchNews(){
     let keywords = $("#input-search-news").val().trim();
     let funcurl = `/search?title=${keywords}`
     
-    AjaxGet(NewsUrl, funcurl, token, initNews);
+    AjaxGet(NewsUrl, funcurl, token, initNews, "");
 }
 
 function showHomeNews(role){
 
     switch(role){
-        case 'Student':
+        case 'student':
             AjaxGet(NewsUrl, '/Student', token, initNews);
             break;
-        case 'Volunteer':
+        case 'volunteer':
             AjaxGet(NewsUrl, '/Volunteer', token, initNews);
             break;
-        case 'School':
+        case 'school':
             AjaxGet(NewsUrl, '/School', token, initNews);
             break;
     }

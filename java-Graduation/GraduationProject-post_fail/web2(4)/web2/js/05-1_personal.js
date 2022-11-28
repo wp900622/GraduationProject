@@ -12,7 +12,23 @@ function showHideDivPsn(divId){ //根據點選的按鈕，顯示所選區塊、�
             $(".before-edit").hide();
             $(".after-edit").show();
             break;
-        case 'confirm-stdbtn': //確認變更個人資料
+        case 'submit-stdbtn': //確認變更個人資料
+            $(".after-edit").hide();
+            $(".before-edit").show();
+            break;
+        case 'edit-volbtn': //編輯個人資料
+            $(".before-edit").hide();
+            $(".after-edit").show();
+            break;
+        case 'submit-volbtn': //確認變更個人資料
+            $(".after-edit").hide();
+            $(".before-edit").show();
+            break;
+        case 'edit-schbtn': //編輯個人資料
+            $(".before-edit").hide();
+            $(".after-edit").show();
+            break;
+        case 'submit-schbtn': //確認變更個人資料
             $(".after-edit").hide();
             $(".before-edit").show();
             break;
