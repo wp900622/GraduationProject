@@ -1,0 +1,1 @@
+JWT reference: https://github.com/bezkoder/spring-boot-spring-security-jwt-authentication
