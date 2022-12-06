@@ -56,7 +56,8 @@ function volunteerApplySummit() {
         area: $("#inputDistrictSign").val(),
         address: $("#inputAddressSign").val().trim(),
         subject: subjectlist,
-        school: $("#inputSchoolSign1").val() + "," + $("#inputSchoolSign2").val() + "," + $("#inputSchoolSign3").val(),
+        //school: $("#inputSchoolSign1").val() + "," + $("#inputSchoolSign2").val() + "," + $("#inputSchoolSign3").val(),
+        school: $("#inputSchoolSign1").val().trim(),
         telno: $("#inputTelSign").val().trim(),
         eduattain: $("#inputAttainmentSign").val().trim(),
         work: worklist
