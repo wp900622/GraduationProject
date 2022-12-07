@@ -57,5 +57,6 @@ function appendNews(){
         type : $("#inputPostType").val()
     }
     let newsData = JSON.stringify(inputs);
-    AjaxPost(NewsUrl, '/post', newsData, token, {modalID:'post-alert'});
+    AjaxPost(NewsUrl, '/post', newsData, token, {});
+    window.location.href = "01-1_school.html";
 }
