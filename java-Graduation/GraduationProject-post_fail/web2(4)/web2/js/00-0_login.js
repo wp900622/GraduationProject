@@ -6,7 +6,6 @@ function loginSummit(){
 
     const email = $('#InputEmail').val();
     const password = $('#InputPassword').val();
-    //const roleId = $('#roleSelect').val();
 
     const signinUrl = 'auth/signin';
     const inputs = {

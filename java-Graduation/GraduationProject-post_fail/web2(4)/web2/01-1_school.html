@@ -127,10 +127,10 @@
 
         <!-- 學校列表 -->
         <div class="container rounded p-4 div-block" id="sch-list-div">
-            <div class="mb-3">
+            <div class="col-10">
                 <label for="studentGanderSelect" class="form-label fs-4 pb-4 me-1"><i class="fa-regular fa-clipboard px-2"></i>學校列表</label>
-                <select class="form-control" id="schoolList">
-                </select>
+                <select class="form-control" id="schoolList" required></select>
+                <button type="button" class="btn btn-outline-primary rounded col-1" onClick="checkMatch();"><i class="fa-solid fa-magnifying-glass fs-6"></i></button>
             </div>
         </div>
 

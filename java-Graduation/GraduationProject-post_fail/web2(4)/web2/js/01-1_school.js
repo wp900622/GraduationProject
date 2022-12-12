@@ -13,7 +13,8 @@ function initShowHide(){
 function getSchools(schools) {
     schools.forEach(school=>{
         //console.log(school);
-        $('#schoolList').append('<option>' + school.user.name + '</option>');
+        let optionstr = `<option value="${school.user.name}">${school.user.name}</option>`
+        $('#schoolList').append(optionstr);
     })
 }
 
@@ -59,4 +60,11 @@ function appendNews(){
     let newsData = JSON.stringify(inputs);
     AjaxPost(NewsUrl, '/post', newsData, token, {});
     window.location.href = "01-1_school.html";
+}
+
+function checkMatch(){
+
+    let schSearch = $("#schoolList").val()
+    AjaxPost(matchUrl, '', schSearch, token, {});
+
 }

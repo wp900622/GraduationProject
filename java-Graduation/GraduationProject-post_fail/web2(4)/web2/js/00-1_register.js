@@ -3,9 +3,7 @@ const schoolSignupUrl = apiUrl + 'auth/signup/school';
 const volunteerSignupUrl = apiUrl + 'auth/signup/volunteer';
 
 $(document).ready(() => {
-    const token = $.cookie('token');
-const role = $.cookie('role');
-const username = $.cookie('username');
+
     $(".RegisterDiv").hide();    
     initOption();
 

@@ -45,7 +45,7 @@ function summitScore(){
         yearname: $("#inputGradeScore").val(),
         schoolname: $("#inputSchoolnameScore").val().trim(),
         subject: $("#inputSubjectScore").val(),
-        score: $("#inputScore").val().trim(),
+        scores: $("#inputScore").val().trim(),
         number: $("#inputNumberScore").val()
     }
 

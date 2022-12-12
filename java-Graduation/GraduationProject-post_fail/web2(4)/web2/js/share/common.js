@@ -22,15 +22,15 @@ function updateLoginItem(isSignined) {
         $(".userItem").hide();
     }
     switch(role){
-        case 'student':
+        case 'Student':
             $('#userrole').text("學生");
             $(".schview,.volview").hide();
             break;
-        case 'volunteer':
+        case 'Volunteer':
             $('#userrole').text("志工");
             $(".schview,.stdview").hide();
             break;
-        case 'school':
+        case 'School':
             $('#userrole').text("學校管理員");
             $(".stdview,.volview").hide();
             break;
