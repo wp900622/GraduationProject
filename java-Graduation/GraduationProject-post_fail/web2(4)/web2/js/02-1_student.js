@@ -1,11 +1,9 @@
 $(document).ready(() => {
     initShowHide();
     checkAndBindUserStat();
-    AjaxGet(NewsUrl, '/Student', token, initNews,'');
-    let uid = '1';
+    AjaxGet(NewsUrl, role, token, initNews,'');
     console.log(username,id);
     AjaxGet(ExamUrl, '/' + id, token, initScore,{academicyear:'111'});
-    // AjaxGet(ExamUrl, '/' + "7", token, initScore,{academicyear:'111'});
 })
 
 function initShowHide(){

@@ -1,6 +1,7 @@
 $(document).ready(() => {
     initHiddenDiv();
     initOption();
+    AjaxGet(schoolListUrl, '', token, getSchools,'');
 })
 
 function initHiddenDiv(){
@@ -22,6 +23,13 @@ function ableSummitBtn(){
         $("#signsummit").attr('disabled', false);
     }
     else $("#signsummit").attr('disabled', true);
+}
+
+function getSchools(schools) {
+    schools.forEach(school=>{
+        let optionstr = `<option value="${school.user.name}">${school.user.name}</option>`
+        $('#inputSchoolSign').append(optionstr);
+    })
 }
 
 function volunteerApplySummit() {
@@ -56,8 +64,7 @@ function volunteerApplySummit() {
         area: $("#inputDistrictSign").val(),
         address: $("#inputAddressSign").val().trim(),
         subject: subjectlist,
-        //school: $("#inputSchoolSign1").val() + "," + $("#inputSchoolSign2").val() + "," + $("#inputSchoolSign3").val(),
-        school: $("#inputSchoolSign1").val(),
+        school: $("#inputSchoolSign").val(),
         telno: $("#inputTelSign").val().trim(),
         eduattain: $("#inputAttainmentSign").val().trim(),
         work: worklist

@@ -10,7 +10,7 @@ function checkAndBindUserStat(){
         updateLoginItem(true);
     }
     console.log(token);
-    return 0;
+    // return 0;
 }
 
 function updateLoginItem(isSignined) {
@@ -59,7 +59,7 @@ function AjaxPost(url, funcurl, data, token, para) {
         },
         error: function (err) {
             console.log(err);
-            alert("動作未成功");
+            //alert("動作未成功");
         },
     });
 }

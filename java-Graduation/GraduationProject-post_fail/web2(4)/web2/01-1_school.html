@@ -84,16 +84,16 @@
         <div class="container rounded p-4 div-block" id="sch-index-div">
             <!-- 返回按鈕 -->
             <div class="">
-                <button class="btn btn-outline-secondary btn-sm" id="btn-return" data-postid="" onClick="returnFromActDetail($(this).attr('data-postid'))">返回</button>
+                <button class="btn btn-outline-secondary btn-sm" id="btn-return" data-postid=""  type="button" onClick="returnFromActDetail($(this).attr('data-postid'))">返回</button>
             </div>
             <!-- 公告欄位-->
             <div class="" id="container-posttab">
                 <h4 class="pb-4 me-1"><i class="fa-regular fa-clipboard px-2"></i>公告欄</h4>
                 <div class="nav nav-tabs nav-justified col-xl-12">
-                    <button class="nav-link active user-textdark" data-bs-toggle="tab" data-bs-target="#menu3" aria-selected="true" id="nav-newsmsg" onClick="showHideDivNews(this.id);">
+                    <button class="nav-link active user-textdark" data-bs-toggle="tab" data-bs-target="#menu3" aria-selected="true" id="nav-newsmsg"  type="button" onClick="showHideDivNews(this.id);">
                         最新消息
                     </button>
-                    <button class="nav-link user-textdark" data-bs-toggle="tab" data-bs-target="#menu4" aria-selected="false" id="nav-activity" onClick="showHideDivNews(this.id);">
+                    <button class="nav-link user-textdark" data-bs-toggle="tab" data-bs-target="#menu4" aria-selected="false" id="nav-activity"  type="button" onClick="showHideDivNews(this.id);">
                         活動通知
                     </button>
                 </div>
@@ -127,10 +127,14 @@
 
         <!-- 學校列表 -->
         <div class="container rounded p-4 div-block" id="sch-list-div">
-            <div class="col-10">
-                <label for="studentGanderSelect" class="form-label fs-4 pb-4 me-1"><i class="fa-regular fa-clipboard px-2"></i>學校列表</label>
-                <select class="form-control" id="schoolList" required></select>
-                <button type="button" class="btn btn-outline-primary rounded col-1" onClick="checkMatch();"><i class="fa-solid fa-magnifying-glass fs-6"></i></button>
+            <h3 class="form-label fs-4 pb-4 me-1"><i class="fa-regular fa-clipboard px-2"></i>學校列表</h3>
+            <div class="">
+                <select class="form-control rounded col-10" id="schoolList"></select>
+                <button type="button" class="btn btn-outline-primary rounded col-12 mt-2" onClick="checkMatch();"><i class="fa-solid fa-magnifying-glass fs-6"></i> 搜尋 </button>
+            </div>
+            <div class="" id="match-list">
+                <div class="mx-3 my-3">
+
             </div>
         </div>
 

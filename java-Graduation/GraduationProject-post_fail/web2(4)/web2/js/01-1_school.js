@@ -63,8 +63,38 @@ function appendNews(){
 }
 
 function checkMatch(){
+    $('#match-list').empty();
+    let schSearch = '/' + $("#schoolList").val()
+    AjaxGet(matchUrl, schSearch, token, showMatchInfo, {});
 
-    let schSearch = $("#schoolList").val()
-    AjaxPost(matchUrl, '', schSearch, token, {});
+}
+
+function showMatchInfo(data,para){
+
+    data.forEach(function(voldata,i){
+        $('#match-list').append(`<div class="mx-3 my-3">
+        <h5 class="mx-3 mt-5 mb-3" >科目：<span id="vol-username-${i}">${voldata.subject}</span></h5>
+        <h5 class="mx-3 my-3" >學歷：<span id="vol-eduattain-${i}">${voldata.eduattain}</span></h5>
+        <h5 class="mx-3 my-3" >服務時間：<span id="vol-work-${i}">${voldata.work}</span></h5>
+        <h6 class="mx-3 mb-5 mt-3" >性別：<span id="vol-sex-${i}">${voldata.sex}</span></h6>
+    </div>
+    <button type="button" class="btn btn-outline-primary rounded col-6 mt-2" onClick=";"> 詳細資料 </button>`);
+    })
+    // const voldata = {
+    //     id : data[num]["id"],
+    //     username: data[num]["username"],
+    //     telno : data[num]["telno"],
+    //     eduattain : data[num]["eduattain"],
+    //     subject : data[num]["subject"],
+    //     email : data[num]["email"],
+    //     age : data[num]["age"],
+    //     sex : data[num]["sex"],
+    //     city : data[num]["city"],
+    //     area : data[num]["area"],
+    //     address : data[num]["address"],
+    //     school : data[num]["school"],
+    //     work : data[num]["work"]
+    // }
+    console.log(voldata);
 
 }
