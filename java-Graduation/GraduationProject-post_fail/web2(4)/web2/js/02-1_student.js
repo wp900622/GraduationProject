@@ -1,9 +1,9 @@
 $(document).ready(() => {
     initShowHide();
     checkAndBindUserStat();
-    AjaxGet(NewsUrl, role, token, initNews,'');
     console.log(username,id);
     AjaxGet(ExamUrl, '/' + id, token, initScore,{academicyear:'111'});
+    AjaxGet(NewsUrl, '/' + role.toLowerCase(), token, initNews,'');
 })
 
 function initShowHide(){
@@ -29,7 +29,7 @@ function showHideDivStd(divId) { //根據點選的按鈕，顯示所選區塊、
             $(".before-edit").hide();
             $(".after-edit").show();
             break;
-        case 'submit-stdbtn':
+        case 'confirm-stdbtn':
             $(".after-edit").hide();
             $(".before-edit").show();
             break;
