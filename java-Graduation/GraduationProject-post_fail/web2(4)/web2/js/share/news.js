@@ -62,13 +62,13 @@ function showSearchNews(){
 function showHomeNews(role){
 
     switch(role){
-        case 'student':
+        case 'Student':
             AjaxGet(NewsUrl, '/Student', token, initNews);
             break;
-        case 'volunteer':
+        case 'Volunteer':
             AjaxGet(NewsUrl, '/Volunteer', token, initNews);
             break;
-        case 'school':
+        case 'School':
             AjaxGet(NewsUrl, '/School', token, initNews);
             break;
     }

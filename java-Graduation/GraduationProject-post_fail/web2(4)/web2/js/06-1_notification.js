@@ -1,8 +1,9 @@
 $(document).ready(() => {
     initShowHide();
-    AjaxGet(NewsUrl, '/school', token, initNews,'');
-    AjaxGet(NewsUrl, '/volunteer', token, initNews,'');
-    AjaxGet(NewsUrl, '/student', token, initNews,'');
+    AjaxGet(NewsUrl, '/' + role.toLowerCase(), token, initNews,'');
+    //console.log('/' + role.toLowerCase());
+    // AjaxGet(NewsUrl, '/volunteer', token, initNews,'');
+    // AjaxGet(NewsUrl, '/student', token, initNews,'');
 })
 
 function initShowHide(){

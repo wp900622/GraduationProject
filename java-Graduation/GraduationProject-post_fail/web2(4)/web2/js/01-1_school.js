@@ -77,9 +77,9 @@ function showMatchInfo(data,para){
         <h5 class="mx-3 my-3" >學歷：<span id="vol-eduattain-${i}">${voldata.eduattain}</span></h5>
         <h5 class="mx-3 my-3" >服務時間：<span id="vol-work-${i}">${voldata.work}</span></h5>
         <h6 class="mx-3 mb-5 mt-3" >性別：<span id="vol-sex-${i}">${voldata.sex}</span></h6>
-    </div>
-    <button type="button" class="btn btn-outline-primary rounded col-6 mt-2" onClick=";"> 詳細資料 </button>`);
+    </div>`);
     })
+    //<button type="button" class="btn btn-outline-primary rounded col-6 mt-2" onClick=";"> 詳細資料 </button>
     // const voldata = {
     //     id : data[num]["id"],
     //     username: data[num]["username"],
@@ -95,6 +95,6 @@ function showMatchInfo(data,para){
     //     school : data[num]["school"],
     //     work : data[num]["work"]
     // }
-    console.log(voldata);
+    //console.log(voldata);
 
 }

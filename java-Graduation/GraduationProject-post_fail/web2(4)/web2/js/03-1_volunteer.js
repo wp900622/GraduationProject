@@ -2,6 +2,8 @@ $(document).ready(() => {
     $(".div-block").hide();
     $("#vol-index-div").show();
     checkAndBindUserStat();
+    $("#btn-return").hide();
+    AjaxGet(NewsUrl, '/' + role.toLowerCase(), token, initNews,'');
 })
 
 function showHideDivVol(divId) { //根據點選的按鈕，顯示所選區塊、隱藏其他區塊
@@ -55,3 +57,4 @@ function summitScore(){
     AjaxPost(ExamUrl, '/post', scoreData, token,{modalID:'success-modal'});
 
 }
+

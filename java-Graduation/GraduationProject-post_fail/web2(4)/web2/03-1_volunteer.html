@@ -26,6 +26,7 @@
     <!-- script -->
     <script src="js/share/config.js"></script>
     <script src="js/share/common.js"></script>
+    <script src="js/share/news.js"></script>
     <script src="js/00-0_login.js"></script>
     <script src="js/03-1_volunteer.js"></script>
     <!-- css -->
@@ -98,10 +99,10 @@
                         <a class="nav-link link-dark userItem" id="bar-volunteer-stdlist" type="button"
                             onClick="showHideDivVol(this.id);">學生資料</a>
                     </li>
-                    <li class="nav-item rounded mx-2">
+                    <!-- <li class="nav-item rounded mx-2">
                         <a class="nav-link link-dark userItem" id="bar-volunteer-stdscore" type="button"
                             onClick="showHideDivVol(this.id);">學生成績</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item rounded mx-2">
                         <a class="nav-link link-dark userItem" id="bar-volunteer-keyscore" type="button"
                             onClick="showHideDivVol(this.id);">發佈成績</a>
@@ -130,44 +131,37 @@
         <div class="row">
 
             <!--消息框-->
-            <div class="container col-9 ms-5 rounded p-3 div-block" id="vol-index-div">
-                <h4 class="pb-4 me-1"><i class="fa-regular fa-clipboard px-2"></i>公告欄</h4>
-                <div class="nav nav-tabs nav-justified col-12">
-                    <!--最新消息-->
-                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#menu1" aria-selected="true">
-                        最新消息
-                    </button>
-                    <!--活動通知-->
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu2" aria-selected="false">
-                        活動通知
-                    </button>
-                    <!---->
-                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#menu3" aria-selected="false">
-                        志工行程
-                    </button>
+            <div class="container rounded p-4 div-block"  id="vol-index-div">
+                <!-- 返回按鈕 -->
+                <div class="my-2">
+                    <button class="btn btn-outline-secondary btn-sm" id="btn-return" data-postid="" onClick="returnFromActDetail($(this).attr('data-postid'))">返回</button>
                 </div>
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="menu1">
-                        <ul class="list-group list-group-flush col-xl-4">
-                            <a href="#" class="list-group-item "><i class="bi bi-dot"></i>&nbsp; 志工大會</a>
-                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期討論</a>
-                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 防疫政策</a>
-                        </ul>
+                <!-- 公告欄位 -->
+                <div class="" id="container-posttab">
+                    <i class="bi bi-people home-textdark fs-4 mx-2"></i><strong class="home-textdark fs-4 mb-3">佈告欄</strong><hr>
+                    <div class="nav nav-tabs nav-justified col-xl-12">
+                        <button class="nav-link active user-textdark" data-bs-toggle="tab" data-bs-target="#vol-menu3" aria-selected="true" id="nav-newsmsg" onClick="showHideDivNews(this.id);">
+                            最新消息
+                        </button>
+                        <button class="nav-link user-textdark" data-bs-toggle="tab" data-bs-target="#vol-menu4" aria-selected="false" id="nav-activity" onClick="showHideDivNews(this.id);">
+                            活動通知
+                        </button>
                     </div>
-                    <div class="tab-pane fade" id="menu2">
-                        <ul class="list-group list-group-flush col-xl-4">
-                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 志工大會</a>
-                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期討論</a>
-                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 防疫政策</a>
-                        </ul>
+                    
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="vol-menu3">
+                            <ul class="list-group list-group-flush col-xl-12" id="newmsg-list"></ul>
+                            
+                        </div>
+                        <div class="tab-pane fade" id="vol-menu4">
+                            <ul class="list-group list-group-flush col-xl-12" id="activity-list"></ul>
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="menu3">
-                        <ul class="list-group list-group-flush col-xl-4">
-                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 志工大會</a>
-                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 學期討論</a>
-                            <a href="#" class="list-group-item"><i class="bi bi-dot"></i>&nbsp; 防疫政策</a>
-                        </ul>
-                    </div>
+                </div>
+                <!-- 公告展開內容-->
+                <div class="container-news ">
+                    <div class="news-detail" id="menulist3"></div>
+                    <div class="acts-detail" id="menulist4"></div>
                 </div>
             </div>
 
@@ -185,33 +179,33 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td data-title="姓名">◯◯◯</td>
+                            <td data-title="姓名">黃小鹿</td>
                             <td data-title="班級">1年1班</td>
-                            <td data-title="查看成績 "><a href="">查看成績</a></td>
+                            <td data-title="查看成績 "><a href="">尚無成績</a></td>
                         </tr>
 
                         <tr>
-                            <td data-title="姓名">◯◯◯</td>
+                            <td data-title="姓名">林小豪</td>
                             <td data-title="班級">2年3班</td>
-                            <td data-title="查看成績 "><a href="">查看成績</a></td>
+                            <td data-title="查看成績 "><a href="">尚無成績</a></td>
                         </tr>
 
                         <tr>
-                            <td data-title="姓名">◯◯◯</td>
+                            <td data-title="姓名">彭小彥</td>
                             <td data-title="班級">3年1班</td>
-                            <td data-title="查看成績 "><a href="">查看成績</a></td>
+                            <td data-title="查看成績 "><a href="">尚無成績</a></td>
                         </tr>
 
                         <tr>
-                            <td data-title="姓名">◯◯◯</td>
+                            <td data-title="姓名">羅小祥</td>
                             <td data-title="班級">3年2班</td>
-                            <td data-title="查看成績 "><a href="">查看成績</a></td>
+                            <td data-title="查看成績 "><a href="">尚無成績</a></td>
                         </tr>
 
                         <tr>
-                            <td data-title="姓名">◯◯◯</td>
+                            <td data-title="姓名">吳小凡</td>
                             <td data-title="班級">4年1班</td>
-                            <td data-title="查看成績 "><a href="">查看成績</a></td>
+                            <td data-title="查看成績 "><a href="">尚無成績</a></td>
                         </tr>
                     </tbody>
                 </table>
