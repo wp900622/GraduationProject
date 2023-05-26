@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="utf-8">
+<!--登入-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>校方專區</title>
+    <!-- lib -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="boostrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e81a7543a2.js" crossorigin="anonymous"></script> <!-- icon -->
+    <script src="lib/jquery-3.6.1.min.js"></script>
+    <script src="lib\jquery-cookie-master\src\jquery.cookie.js"></script>
+    <script src="lib/moment.js"></script>
+    <!-- script -->
+    <script src="js/share/config.js"></script>
+    <script src="js/share/common.js"></script>
+    <script src="js/share/news.js"></script>
+    <script src="js/00-0_login.js"></script>
+    <script src="js/01-1_school.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/userpage.css">
+
+</head>
+
+<body>
+    <!--導覽列-->
+    <nav class="navbar navbar-expand-lg navbar-darks bg-amos mb-5">
+        <div class="container-fluid">
+            <a class="navbar-brand user-textlight" id="bar-school-home" type="button" href="00-2_home.html"><strong>學銀共善服務平台</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 schnavbar-btn userItem">
+                    <li class="nav-item rounded mx-2">
+                        <a class="nav-link link-dark userItem" id="bar-school-index" type="button"
+                            onClick="showHideDivSch(this.id);">校方首頁</a>
+                    </li>
+                    <li class="nav-item rounded mx-2">
+                        <a class="nav-link link-dark userItem " id="bar-school-schlist" type="button"
+                            onClick="showHideDivSch(this.id);">學校列表</a>
+                    </li>
+                    <li class="nav-item rounded mx-2">
+                        <a class="nav-link link-dark userItem" id="bar-school-post" type="button"
+                            onClick="showHideDivSch(this.id);">發佈公告</a>
+                    </li>
+                </ul>
+                <!--icon-->
+                <div class="btn-group">
+                    <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static"
+                        id="ddl-loginflag" value="0">
+                        <i class="bi bi-person-circle user-textdark"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-xl-end">
+                        <li><a class="dropdown-item unsigned" id="ddl-login" href="00-0_login.html">登入</a></li>
+                        <li><a class="dropdown-item unsigned" id="ddl-register" href="00-1_register.html">註冊</a></li>
+                        <li><a class="dropdown-item userItem" id="ddl-welcome"><span id="userrole"></span> , <span id="username"></span> </a></li>
+                        <li><a class="dropdown-item userItem" id="schddl-personal"  href="05-1_personal.html">個人資料</a></li>
+                        <!-- <li><a class="dropdown-item userItem" id="schddl-message" href="04-1_message.html">訊息</a></li> -->
+                        <li><a class="dropdown-item userItem" id="ddl-logout" onClick="logout();">登出</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--後面長條背景-->
+    <div class="container rounded p-3 shadow mb-5 mt-5" style="max-width: 60rem; background-color: #a7d3f13d;">
+        <div class="row">
+        <!--消息框-->
+        <div class="container rounded p-4 div-block" id="sch-index-div">
+            <!-- 返回按鈕 -->
+            <div class="">
+                <button class="btn btn-outline-secondary btn-sm" id="btn-return" data-postid=""  type="button" onClick="returnFromActDetail($(this).attr('data-postid'))">返回</button>
+            </div>
+            <!-- 公告欄位-->
+            <div class="" id="container-posttab">
+                <h4 class="pb-4 me-1"><i class="fa-regular fa-clipboard px-2"></i>公告欄</h4>
+                <div class="nav nav-tabs nav-justified col-xl-12">
+                    <button class="nav-link active user-textdark" data-bs-toggle="tab" data-bs-target="#menu3" aria-selected="true" id="nav-newsmsg"  type="button" onClick="showHideDivNews(this.id);">
+                        最新消息
+                    </button>
+                    <button class="nav-link user-textdark" data-bs-toggle="tab" data-bs-target="#menu4" aria-selected="false" id="nav-activity"  type="button" onClick="showHideDivNews(this.id);">
+                        活動通知
+                    </button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="menu3">
+                        <ul class="list-group list-group-flush col-xl-12" id="newmsg-list"></ul>
+                        <!-- 假資料 -->
+                        <!-- <a data-bs-toggle="collapse" data-bs-target="#news-list-1" aria-controls="news-list-1" type="button" class="list-group-item "><i class="bi bi-dot"></i>&nbsp; 志工報名開始</a>
+                        <a data-bs-toggle="collapse" data-bs-target="#news-list-2" aria-controls="news-list-2" type="button" class="list-group-item "><i class="bi bi-dot"></i>&nbsp; 防疫之應變處置或措施</a> -->
+                    </div>
+                    <div class="tab-pane fade" id="menu4">
+                        <ul class="list-group list-group-flush col-xl-12" id="activity-list"></ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 公告展開內容-->
+            <div class="container-news ">
+                <div class="news-detail" id="menulist3"></div>
+                <!-- 假資料 -->
+                <div class="news-list collapse user-textdark mt-5" id="news-list-1" >
+                    <p class="mx-4 fs-5 fw-bold user-textdark">志工報名開始</p>
+                    <p class="mx-5 fs-6"></p><p class = "news-time right user-textlight" ><i class="fa-regular fa-calendar-days mx-2 fs-6"></i></span></p>
+                </div>
+                <div class="news-list collapse user-textdark mt-5" id="news-list-2" >
+                    <!-- <p class="mx-4 fs-5 fw-bold user-textdark">防疫之應變處置或措施</p> -->
+                    <!-- <p class="mx-5 fs-6">為防治控制疫情需要，自公告日（即109年3月20日）起至109年7月15日止，公私立高級中等以下學校、外國僑民學校、實驗教育機構、團體及教保服務機構之教職員工生，非經專案許可，應暫時停止出國（境）。</p><p class = "news-time right user-textlight" ><i class="fa-regular fa-calendar-days mx-2 fs-6"></i>2022-05-01</span></p> -->
+                </div>
+                <div class="acts-detail" id="menulist4"></div>
+            </div>
+        </div>
+
+        <!-- 學校列表 -->
+        <div class="container rounded p-4 div-block" id="sch-list-div">
+            <h3 class="form-label fs-4 pb-4 me-1"><i class="fa-regular fa-clipboard px-2"></i>學校列表</h3>
+            <div class="">
+                <select class="form-control rounded col-10" id="schoolList"></select>
+                <button type="button" class="btn btn-outline-primary rounded col-12 mt-2" onClick="checkMatch();"><i class="fa-solid fa-magnifying-glass fs-6"></i> 搜尋 </button>
+            </div>
+            <div class="" id="match-list">
+                <div class="mx-3 my-3">
+
+            </div>
+            </div>
+        </div>
+        <!-- 發布公告 -->
+        <div class="container rounded p-5 div-block" id="sch-post-div">
+            <h3 class="p-3" style="text-align: center ;">發佈公告</h3>
+            <!--公告輸入-->
+            <div class="container-post">
+                <div class="col-12 col-md-5 col-xl-12 mx-auto">
+                    <label for="inputPostTitle" class="form-label">標題</label>
+                    <input type="text" class="form-control post-content" id="inputPostTitle" required>
+                </div>
+                <div class=" col-12 col-md-5 col-xl-12 mx-auto">
+                    <label for="inputPostType" class="form-label">類別</label>
+                    <select class="form-select" id="inputPostType" required>
+                        <option selected disabled value="消息分類"></option>
+                        <option value="最新消息">最新消息</option>
+                        <option value="活動通知">活動通知</option>
+                    </select>
+                </div>
+                <div class=" col-12 col-md-5 col-xl-12 mx-auto">
+                    <label for="inputPostType" class="form-label">位置</label>
+                    <select class="form-select" id="inputPostArea" required>
+                        <option selected disabled value="發佈位置"></option>
+                        <option value="All">發布至所有公告區</option>
+                        <option value="Student">發布至學生公告區</option>
+                        <option value="Volunteer">發布至志工公告區</option>
+                        <option value="School">發布至學校公告區</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-5 col-xl-12 mx-auto">
+                    <label for="inputPostContent" class="form-label">內容</label>
+                    <textarea rows=10 cols=30 class="form-control post-content" id="inputPostContent" required>請輸入內容...</textarea>
+                </div>
+                <div class="col-4 col-xl-3 ms-auto p-5">
+                    <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#post-alert" id="submit-stdbtn">送出</button>
+                </div>
+            </div>
+            <!-- 確認送出警示內容 -->
+            <div class="modal fade" id="post-alert" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="post-alertLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="post-alertLabel">提示</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        確認發佈公告嗎?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button class="btn btn-primary" type="button" id="submit-stdbtn" onClick="appendNews();alert('已送出');" data-bs-dismiss="modal">確定</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--下方欄位-->
+    <!-- 生成share_footer.js裡的內容 -->
+    <script src="js/share/share_footer.js"></script>
+
+</body>
+
+</html>

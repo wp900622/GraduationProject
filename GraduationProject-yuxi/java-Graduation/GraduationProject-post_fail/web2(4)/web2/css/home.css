@@ -1,0 +1,163 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+body{
+  font-family: 'Noto Sans TC',sans-serif !important;
+}
+
+.home-textlight{
+    color : #ffffff
+}
+
+.home-textdark{
+    /* color : #525E75 */
+    color : black;
+
+}
+
+.bg-amos {
+    background-color: #435ebe36;
+}
+
+body {
+    background-color: #cbe6f7de;
+}
+
+i {
+    font-size: x-large;
+}
+
+.container img{
+    display:block;
+    margin:auto;
+    width: 150px;
+}
+
+.right{
+    float:right;
+}
+
+/*介紹*/
+.rwd-table {
+    width: 90%;
+    margin: auto;
+    border: none;
+}
+
+tr {
+    display: block;
+    border: 1px;
+    margin-bottom: 20px;
+
+}
+
+td {
+    display: block;
+    text-align: left;
+    border: none;
+    padding-left: 2em;
+}
+
+.img-cor {
+    width: 100%;
+}
+
+@media screen and (min-width: 992px) {
+    .img-cor {
+        width: 30%;
+    }
+}
+
+/*手機*/
+.img-top {
+    width: 80px;
+    height: 40px;
+    object-fit: cover;
+    object-position: 50% 100%;
+}
+
+/*平板*/
+@media screen and (min-width: 768px) {
+    .bg-log {
+        width: 60%;
+    }
+}
+
+/*電腦*/
+@media screen and (min-width: 992px) {
+    .img-top {
+        width: 1280px;
+        height: 250px;
+        object-fit: cover;
+        object-position: 50% 100%;
+    }
+}
+
+
+.box {
+    width: 100%;
+    background: #aaa;
+    overflow: hidden;
+}
+
+img {
+    transition: .5s;
+}
+
+.box:hover img {
+    transform: scale(1.2);
+}
+
+.cover-fit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-tabs .nav-link.active {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+    border-bottom: 0px;
+}
+
+.nav-link {
+    /* color: #525E75; */
+    color: black;
+
+}
+
+.nav-tabs {
+    background-color: #cbe6f7de;
+    border-bottom: 1px solid white;
+}
+
+.list-group-item {
+    background-color: #b7ddf643;
+    border-style: dashed;
+}
+
+/*手機*/
+.card-w {
+    width: 11rem;
+    height: 12rem;
+}
+
+.identity-card-title a {
+    color: #525E75 !important;
+    text-decoration: none !important;
+}
+
+/*平板*/
+@media screen and (min-width: 768px) {
+    .card-w {
+        width: 13rem;
+        height: 16rem;
+    }
+}
+
+/*電腦*/
+@media screen and (min-width: 992px) {
+    .card-w {
+        width: 15rem;
+        height: 16rem;
+    }
+}

@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="utf-8">
+<!--首頁-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>志工報名</title>
+    <!-- lib -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="boostrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="lib/jquery-3.6.1.min.js"></script>
+    <script src="lib\jquery-cookie-master\src\jquery.cookie.js"></script>
+    <script src="https://kit.fontawesome.com/e81a7543a2.js" crossorigin="anonymous"></script> <!-- icon -->
+    <!-- js -->
+    <script src="js/share/config.js"></script>
+    <script src="js/share/common.js"></script>
+    <script src="js/share/city.js"></script>
+    <script src="js/03-3_volunteer_signup.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/userpage.css">
+    <link rel="stylesheet" type="text/css" href="css/volunteer.css">
+
+</head>
+
+<body>
+
+    <!--導覽列-->
+    <nav class="navbar navbar-expand-lg navbar-darks bg-amos">
+        <div class="container-fluid">
+            <a class="navbar-brand user-textlight" href="00-2_home.html"><strong>學銀共善服務平台</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link link-dark" href="01-1_home.html">首頁</a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link link-dark" id="bar-volunteer-list" onClick="showHideDivStd(this.id)">志工名單</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-dark" id="bar-volunteer-signup" onClick="showHideDivStd(this.id)">志工報名</a>
+                    </li> -->
+                </ul>
+                <div class="btn-group">
+                    <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static"
+                        id="ddl-loginflag" value="0">
+                        <i class="bi bi-person-circle home-textdark fs-4"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-xl-end">
+                        <li><a class="dropdown-item userItem" id="ddl-welcome"><span id="userrole"></span>,<span id="username"></span> </a></li>
+                        <li><a class="dropdown-item unsigned" id="ddl-login" href="00-0_login.html">登入</a></li>
+                        <li><a class="dropdown-item unsigned" id="ddl-register" href="00-1_register.html">註冊</a></li>
+                        <li><a class="dropdown-item userItem" id="ddl-logout" onClick="logout();">登出</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container rounded p-3 shadow mb-5 mt-5 div-block" style="max-width: 60rem; background-color: #a7d3f13d;">
+        <!-- 流程圖 -->
+        <div class="container center my-3" id="signup_process">
+            <div class="">
+                <h2 class="">服務內容</h2>
+            </div>
+            <ul class="my-3">
+                <div class="row">
+                    <div class="container col-xl-3 ">
+                        <li>
+                            <img src="pic/vol_student.png" style="display:block; margin:auto;">
+                            <h4>學生</h4>
+                            <p>與學生家長自行連絡學生相關事宜。</p>
+                        </li>
+                    </div>
+                    <div class="container col-xl-3">
+                        <li>
+                            <img src="pic/vol_teacher.png" style="display:block; margin:auto;" class="active">
+                            <h4>志工團隊</h4>
+                            <p>輔導學生課業，定期將學生學習資料記錄下來，注意學生的學習曲線及狀態。</p>
+                        </li>
+                    </div>
+                    <div class="container col-xl-3">
+                        <li>
+                            <img src="pic/vol_school.png" style="display:block; margin:auto;">
+                            <h4>校方</h4>
+                            <p>與校方洽談可授課時間及科目，由校方進行媒合。由校方提供段考成績並交由志工填寫至系統。</p>
+                        </li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+
+        <!--確認鍵  -->
+        <div class="row">
+            <div align = "right">
+                <div class="form-check">
+                    <input class="form-check-input position-absolute" type="checkbox" value="" id="readcheck" onClick="ableSummitBtn();">
+                    <label class="form-check-label" for="readcheck">
+                        閱讀完畢
+                    </label>
+                </div>
+                <div class="col-xl-3">
+                    <button disabled="true" class="btn btn-primary" type="submit" id="signsummit" onClick="showHideDivStd(this.id)">立即加入</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container rounded p-3 shadow mb-5 mt-5 div-block after-summit" style="max-width: 60rem; background-color: #a7d3f13d;" id="signupform">
+        <div class="container rounded SignlistDiv" id="SignlistDiv">
+            <h3 class="p-3" style="text-align: center ;">報名資訊</h3>
+            <div class="col-12 col-md-5 col-xl-12 mx-auto">
+                <label for="inputMailSign" class="form-label">信箱</label>
+                <input type="text" class="form-control" id="inputMailSign" required>
+            </div>
+            <div class="row">
+                <div class=" col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputNameSign" class="form-label">姓名</label>
+                    <input type="text" class="form-control" id="inputNameSign" value="" required>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputTelSign" class="form-label">連絡電話</label>
+                    <input type="text" class="form-control" id="inputTelSign" value="" required>
+                </div>
+                <div class=" col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputSexSign" class="form-label">性別</label>
+                    <select class="form-select" id="inputSexSign" required>
+                        <option selected disabled value=""></option>
+                        <option value="男">生理男</option>
+                        <option value="女">生理女</option>
+                    </select>
+                </div>
+
+                <div class=" col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputAgeSign" class="form-label">年齡</label>
+                    <input type="text" class="form-control" id="inputAgeSign" value="" required>
+                </div>
+
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputCitySign" class="form-label">縣市</label>
+                    <select class="form-select inputCity" id="inputCitySign" required
+                        onchange="changeCity(this.selectedIndex - 1)">
+                        <option selected disabled value="縣市"></option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                    <label for="inputDistrictSign" class="form-label">地區</label>
+                    <select class="form-select inputDistrict" id="inputDistrictSign" required>
+                        <option selected disabled value="地區"></option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-5 col-xl-12 mx-auto">
+                    <label for="inputAddressSign" class="form-label">地址</label>
+                    <input type="text" class="form-control" id="inputAddressSign" required>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6 ">
+                    <label for="inputAttainmentSign" class="form-label">最高學歷</label>
+                    <select class="form-select" id="inputAttainmentSign" required>
+                        <option value="高中職以下(含)1">高中職以下(含)</option>
+                        <option value="大專">大專</option>
+                        <option value="碩士">碩士</option>
+                        <option value="博士">博士</option>
+                    </select>
+                </div>
+                <div class="container p-3 mt-2 mb-1 col-12">
+                    <h5>服務學校</h5>
+                    <select class="form-select" id="inputSchoolSign" required>
+                        <option value="0">請選擇</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-5 col-xl-6  mx-auto "></div>
+                <div class="row">
+                    <div class="container p-3 col-xl-6" style="max-width: 60rem; ">
+                        <h5>專業科目</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="checked-sub" value="國文" id="Chinese">
+                            <label class="form-check-label" for="Chinese">
+                                <h6>國文</h6>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="checked-sub" value="英文" id="English">
+                            <label class="form-check-label" for="English">
+                                <h6>英文</h6>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="checked-sub" value="數學" id="Math">
+                            <label class="form-check-label" for="Math">
+                                <h6>數學</h6>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="checked-sub" value="自然" id="Science">
+                            <label class="form-check-label" for="Science">
+                                <h6>自然</h6>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="checked-sub" value="社會" id="Social">
+                            <label class="form-check-label" for="Social">
+                                <h6>社會</h6>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="container p-3 col-xl-6" style="max-width: 60rem; ">
+                        <h5>服務時間 （複選）</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="checked-work" value="星期一" id="Monday">
+                            <label class="form-check-label" for="Monday">
+                                <h6>星期一</h6>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="checked-work" value="星期二" id="Tuesday">
+                            <label class="form-check-label" for="Tuesday">
+                                <h6>星期二</h6>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="checked-work" value="星期三" id="Wednesday">
+                            <label class="form-check-label" for="Wednesday">
+                                <h6>星期三</h6>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="checked-work" value="星期四" id="Thursday">
+                            <label class="form-check-label" for="Thursday">
+                                <h6>星期四</h6>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="checked-work" value="星期五" id="Friday">
+                            <label class="form-check-label" for="Friday">
+                                <h6>星期五</h6>
+                            </label>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="p-2" style="text-align:right;">
+                    <button class="btn btn-primary" type="submit" onClick="volunteerApplySummit()">註冊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="success-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">報名成功</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>恭喜您報名成功，即將跳轉至首頁。</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <a href="00-2_home.html"><button type="button" class="btn btn-primary" id="signin-btn">確認</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--下方欄位-->
+    <footer role="contentinfo ">
+        <div class="p-5 container-fluid">
+            <div class="footerlinks row-fluid home-textdark">
+                <hr>
+                <span class="copy">TEST</span>
+                <div class="footnote span12">
+                    <p><span></span></p>
+                    <span class="col-4 home-textdark"> 聯絡資訊</span><br>
+                    <span class="home-textdark"> 電話：0912345678</span>
+                    <p><span class="home-textdark"></span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

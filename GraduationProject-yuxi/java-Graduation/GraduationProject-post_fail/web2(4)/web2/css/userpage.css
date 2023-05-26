@@ -1,0 +1,203 @@
+/* 統一字體 */
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+body {
+    font-family: 'Noto Sans TC', sans-serif !important;
+}
+
+/* 淺色文字 */
+.user-textlight {
+    color: #ffffff
+}
+
+/* 深色文字 */
+.user-textdark {
+    /* color: #525E75 */
+    color: #000;
+}
+
+/* 不顯眼文字 */
+.user-textgray {
+    color: #9D9D9D
+}
+
+/* 置中 */
+.center h2,.center h4 {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+/* 導覽列 */
+.bg-amos {
+    background-color: #435ebe36;
+}
+
+
+/*.nav-item{
+    background-color:#435ebe1a;
+}*/
+
+/* 主頁面底色 */
+body {
+    background-color: #cbe6f7de;
+}
+
+i {
+    font-size: x-large;
+}
+
+/* 選擇身分 */
+.card-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.identity-card {
+    position: relative;
+    float:left;
+    display:inline;
+    margin-left : 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    text-align: center;
+    background-color: #FFF3E4;
+    border-radius: 12px;
+    -webkit-box-shadow: 2px 2px 3px #AD8B73;
+    box-shadow: 2px 2px 3px #AD8B73;
+}
+.identity-card-title {
+    margin-top: 0px;
+    margin-bottom: 40px;
+    line-height: 48px;
+}
+.identity-card-title a {
+    color: #704F4F !important;
+    text-decoration: none !important;
+}
+.identity-icon {
+    color: #967E76;
+    margin-top : 40px;
+}
+
+
+.submit-btn{
+    background-color:#ABD9FF;
+    text-align: center;
+}
+
+.submit-btn:hover{
+    background-color:#ABD9FF;
+    text-align: center;
+}
+
+.left{
+    float:left;
+}
+
+.right{
+    float:right;
+}
+
+.tab-pane a {
+    background-color: #cbe6f7de;
+    color: rgb(0, 0, 0);
+  }
+
+.nav-tabs .nav-link {
+    /* background-color: #DFD3C3;  */
+}
+
+/* 課表 */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th,
+td {
+    padding: 3px 3px;
+    border: 1px solid #000;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #D2DAFF;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #EEF1FF;
+}
+
+table {
+    text-align: center;
+    background-color: #AAC4FF;
+}
+
+/*科目選單*/
+.select {
+    background: #FFD4D4;
+}
+
+/*手機*/
+.bg-log {
+    background-color: #F5EFE6;
+    width: 100%;
+}
+
+/*平板*/
+@media screen and (min-width: 768px) {
+    .bg-log {
+        width: 60%;
+    }
+}
+
+/*電腦*/
+@media screen and (min-width: 992px) {
+    .bg-log {
+        width: 60%;
+    }
+}
+
+.img-size {
+    padding: 1px;
+    width: 150px;
+    max-width: 100%;
+    max-height: auto;
+}
+
+/*電腦*/
+@media screen and (min-width: 992px) {
+    .img-size {
+        padding: 1px;
+        width: 300px;
+        max-width: 100%;
+        max-height: auto;
+    }
+}
+/*手機*/
+.card-w {
+    width: 11rem;
+    height: 12rem;
+}
+
+/*平板*/
+@media screen and (min-width: 768px) {
+    .card-w {
+        width: 13rem;
+        height: 16rem;
+    }
+}
+
+/*電腦*/
+@media screen and (min-width: 992px) {
+    .card-w {
+        width: 15rem;
+        height: 16rem;
+    }
+}
