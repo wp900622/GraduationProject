@@ -4,7 +4,7 @@ const volunteerSignupUrl = apiUrl + 'auth/signup/volunteer';
 
 $(document).ready(() => {
 
-    $(".RegisterDiv").hide();    
+    $(".RegisterDiv").hide();
     initOption();
 
     updateLoginItem(false);
@@ -12,7 +12,7 @@ $(document).ready(() => {
     // $('#signin-btn').on('click',function() {
     //     window.location.href='00-0_login.html';
     // })
-    
+
 })
 
 function schoolSignup() {
@@ -24,13 +24,14 @@ function schoolSignup() {
         contactName: $("#inputContactNameSch").val().trim(),
         city: $("#inputCitySch").val(),
         area: $("#inputDistrictSch").val(),
-        address: $("#inputAddressSch").val().trim()
+        address: $("#inputAddressSch").val().trim(),
+
     }
 
     const signupData = JSON.stringify(inputs);
     console.log(signupData);
 
-    AjaxPost(schoolSignupUrl, '', signupData, '', {modalID:'success-modal'});
+    AjaxPost(schoolSignupUrl, '', signupData, '', { modalID: 'success-modal' });
 }
 
 function studentSignup() {
@@ -44,13 +45,14 @@ function studentSignup() {
         yearName: $("#inputGradeStd").val(),
         city: $("#inputCityStd").val(),
         area: $("#inputDistrictStd").val(),
-        address: $("#inputAddressStd").val().trim()
+        address: $("#inputAddressStd").val().trim(),
+        Personality: PersonalityStds
     }
 
     const signupData = JSON.stringify(inputs);
     console.log(signupData);
 
-    AjaxPost(studentSignupUrl, '', signupData, '', {modalID:'success-modal'});
+    AjaxPost(studentSignupUrl, '', signupData, '', { modalID: 'success-modal' });
 
 }
 
@@ -67,18 +69,20 @@ function volunteerSignup() {
         highEdu: $("#inputEducationVol").val(),
         expertise: $("#inputSpecialtyVol").val(),
         telNo: $("#inputTelephoneVol").val().trim(),
-        educational_attainment: $("#inputAttainmentVol").val().trim()
+        educational_attainment: $("#inputAttainmentVol").val().trim(),
+        Personality: PersonalityVol
+
     }
 
     const signupData = JSON.stringify(inputs);
     console.log(signupData);
 
-    AjaxPost(volunteerSignupUrl, '', signupData, '', {modalID:'success-modal'});
+    AjaxPost(volunteerSignupUrl, '', signupData, '', { modalID: 'success-modal' });
 
 }
 
-function toggleRegisterDiv(identity){
-    switch(identity){
+function toggleRegisterDiv(identity) {
+    switch (identity) {
         case 1:
             $(".RegisterDiv").hide();
             $("#regStudentDiv").show();

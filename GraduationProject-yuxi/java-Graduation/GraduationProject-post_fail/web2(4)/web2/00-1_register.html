@@ -7,19 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>註冊頁面</title>
     <!-- lib -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="boostrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/e81a7543a2.js" crossorigin="anonymous"></script> <!-- icon -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e81a7543a2.js" crossorigin="anonymous"></script>
+    <!-- icon -->
     <script src="lib/jquery-3.6.1.min.js"></script>
     <script src="lib/jquery-cookie-master/src/jquery.cookie.js"></script>
 
@@ -28,8 +23,12 @@
     <script src="js/share/common.js"></script>
     <script src="js/share/city.js"></script>
     <script src="js/00-1_register.js"></script>
+    <script>
+        src = "js/personality.js"
+    </script>
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="css/register.css">
+
 </head>
 
 <body>
@@ -37,9 +36,7 @@
     <nav class="navbar navbar-expand-lg navbar-darks bg-amos mb-5">
         <div class="container-fluid">
             <a class="navbar-brand" style="color:#ffffff" href="00-2_home.html"><strong>學銀共善服務平台</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -54,7 +51,8 @@
                         <i class="bi bi-person-circle home-textdark"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-xl-end">
-                        <li><a class="dropdown-item userItem" id="ddl-welcome"><span id="userrole"></span>,<span id="username"></span> </a></li>
+                        <li><a class="dropdown-item userItem" id="ddl-welcome"><span id="userrole"></span>,<span
+                                    id="username"></span> </a></li>
                         <li><a class="dropdown-item unsigned" id="ddl-login" href="00-0_login.html">登入</a></li>
                         <li><a class="dropdown-item unsigned" id="ddl-register" href="00-1_register.html">註冊</a></li>
                         <li><a class="dropdown-item userItem" id="ddl-personal" href="05-1_personal.html">個人資料</a></li>
@@ -74,20 +72,17 @@
                 <div class="card-container">
                     <div class="col-4 identity-card ">
                         <i class="fa-solid fa-graduation-cap identity-icon"></i>
-                        <h4 class="identity-card-title"><a class="stretched-link" type="button"
-                                onclick="toggleRegisterDiv(1);">學生</a></h4>
+                        <h4 class="identity-card-title"><a class="stretched-link" type="button" onclick="toggleRegisterDiv(1);">學生</a></h4>
                         <img src="" alt="">
                     </div>
                     <div class="col-4 identity-card ">
                         <i class="fa-solid fa-handshake-angle identity-icon"></i>
-                        <h4 class="identity-card-title"><a class="stretched-link" type="button"
-                                onclick="toggleRegisterDiv(2);">志工</a></h4>
+                        <h4 class="identity-card-title"><a class="stretched-link" type="button" onclick="toggleRegisterDiv(2);">志工</a></h4>
                         <img src="" alt="">
                     </div>
                     <div class="col-4 identity-card ">
                         <i class="fa-solid fa-school identity-icon"></i>
-                        <h4 class="identity-card-title"><a class="stretched-link" type="button"
-                                onclick="toggleRegisterDiv(3);">校方</a></h4>
+                        <h4 class="identity-card-title"><a class="stretched-link" type="button" onclick="toggleRegisterDiv(3);">校方</a></h4>
                         <img src="" alt="">
                     </div>
                 </div>
@@ -96,227 +91,258 @@
             <!--學生註冊-->
             <div class="container rounded RegisterDiv mt-3" id="regStudentDiv">
                 <form class="card-body" id="studentSigninupForm">
-                <h3 class="p-3" style="text-align: center ;">學生註冊</h3>
-                <!--帳號輸入-->
-                <div class="row">
-                    <div class=" col-12 col-md-5 col-xl-5 mx-auto">
-                        <label for="inputNameStd" class="form-label">姓名</label>
-                        <input type="text" class="form-control" id="inputNameStd" value="" required>
-                    </div>
-                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                        <label for="inputMailStd" class="form-label">信箱</label>
-                        <input type="text" class="form-control" id="inputMailStd" value="" required>
-                    </div>
+                    <h3 class="p-3" style="text-align: center ;">學生註冊</h3>
+                    <!--帳號輸入-->
+                    <div class="row">
+                        <div class=" col-12 col-md-5 col-xl-5 mx-auto">
+                            <label for="inputNameStd" class="form-label">姓名</label>
+                            <input type="text" class="form-control" id="inputNameStd" value="" required>
+                        </div>
+                        <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                            <label for="inputMailStd" class="form-label">信箱</label>
+                            <input type="text" class="form-control" id="inputMailStd" value="" required>
+                        </div>
 
-                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                        <label for="inputPasswordStd" class="form-label">密碼</label>
-                        <input type="text" class="form-control is-invalid" id="inputPasswordStd"
-                            aria-describedby="inputPasswordStdFeedback" required>
-                    </div>
-                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                        <label for="inputPasswordStd" class="form-label">確認密碼</label>
-                        <input type="text" class="form-control is-invalid" id="inputPasswordStd"
-                            aria-describedby="inputPasswordStdFeedback" required>
-                    </div>
+                        <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                            <label for="inputPasswordStd" class="form-label">密碼</label>
+                            <input type="text" class="form-control is-invalid" id="inputPasswordStd" aria-describedby="inputPasswordStdFeedback" required>
+                        </div>
+                        <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                            <label for="inputPasswordStd" class="form-label">確認密碼</label>
+                            <input type="text" class="form-control is-invalid" id="inputPasswordStd" aria-describedby="inputPasswordStdFeedback" required>
+                        </div>
 
-                    <div class=" col-12 col-md-5 col-xl-5 mx-auto">
-                        <label for="inputSexStd" class="form-label">性別</label>
-                        <select class="form-select" id="inputSexStd" required>
-                            <option selected disabled value=""></option>
-                            <option value="male">生理男</option>
-                            <option value="female">生理女</option>
-                        </select>
+                        <div class=" col-12 col-md-5 col-xl-5 mx-auto">
+                            <label for="inputSexStd" class="form-label">性別</label>
+                            <select class="form-select" id="inputSexStd" required>
+                                <option selected disabled value=""></option>
+                                <option value="male">生理男</option>
+                                <option value="female">生理女</option>
+                            </select>
+                        </div>
+                        <div class=" col-12 col-md-5 col-xl-5 mx-auto">
+                            <label for="inputAgeStd" class="form-label">年齡</label>
+                            <input type="text" class="form-control" id="inputAgeStd" value="" required>
+                        </div>
+                        <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                            <label for="inputSchoolnameStd" class="form-label">校名</label>
+                            <input type="text" class="form-control" id="inputSchoolnameStd" required>
+                        </div>
+                        <div class="col-12 col-md-5 col-xl-5  mx-auto ">
+                            <label for="inputGradeStd" class="form-label">選擇年級</label>
+                            <select class="form-select" id="inputGradeStd" required>
+                                <option selected disabled value="">選擇年級</option>
+                                <option value="小一">1年級</option>
+                                <option value="小二">2年級</option>
+                                <option value="小三">3年級</option>
+                                <option value="小四">4年級</option>
+                                <option value="小五">5年級</option>
+                                <option value="小六">6年級</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                            <label for="inputCityStd" class="form-label">縣市</label>
+                            <select class="form-select inputCity" id="inputCityStd" required onchange="changeCity(this.selectedIndex - 1)">
+                                <option selected disabled value="縣市"></option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                            <label for="inputDistrictStd" class="form-label">地區</label>
+                            <select class="form-select inputDistrict" id="inputDistrictStd" required>
+                                <option selected disabled value="地區"></option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-5 col-xl-11 mx-auto">
+                            <label for="inputAddressStd" class="form-label">地址</label>
+                            <input type="text" class="form-control" id="inputAddressStd" required>
+                        </div>
+                        <div class="col-12 col-md-5 col-xl-11 mx-auto">
+                            <label for="inputPersonalityStd" class="form-label">偏好的教學風格</label>
+                            <div class="nav nav-tabs nav-justified mx-10 col-xl-11" id="inputPersonalityStd" required>
+                                <button type="button" class="nav-link active">
+                                    溫柔
+                                </button>
+                                <button type="button" class="nav-link">
+                                    嚴格
+                                </button>
+                                <button type="button" class="nav-link">
+                                    創新
+                                </button>
+                                <button type="button" class="nav-link">
+                                    有趣
+                                </button>
+                                <button type="button" class="nav-link">
+                                    熱情
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-11 mx-auto mt-3 d-grid">
+                            <button class="btn btn-primary" type="button" onClick="studentSignup()">註冊</button>
+                        </div>
                     </div>
-                    <div class=" col-12 col-md-5 col-xl-5 mx-auto">
-                        <label for="inputAgeStd" class="form-label">年齡</label>
-                        <input type="text" class="form-control" id="inputAgeStd" value="" required>
-                    </div>
-                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                        <label for="inputSchoolnameStd" class="form-label">校名</label>
-                        <input type="text" class="form-control" id="inputSchoolnameStd" required>
-                    </div>
-                    <div class="col-12 col-md-5 col-xl-5  mx-auto ">
-                        <label for="inputGradeStd" class="form-label">選擇年級</label>
-                        <select class="form-select" id="inputGradeStd" required>
-                            <option selected disabled value="">選擇年級</option>
-                            <option value="小一">1年級</option>
-                            <option value="小二">2年級</option>
-                            <option value="小三">3年級</option>
-                            <option value="小四">4年級</option>
-                            <option value="小五">5年級</option>
-                            <option value="小六">6年級</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                        <label for="inputCityStd" class="form-label">縣市</label>
-                        <select class="form-select inputCity" id="inputCityStd" required
-                            onchange="changeCity(this.selectedIndex - 1)">
-                            <option selected disabled value="縣市"></option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                        <label for="inputDistrictStd" class="form-label">地區</label>
-                        <select class="form-select inputDistrict" id="inputDistrictStd" required>
-                            <option selected disabled value="地區"></option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-md-5 col-xl-11 mx-auto">
-                        <label for="inputAddressStd" class="form-label">地址</label>
-                        <input type="text" class="form-control" id="inputAddressStd" required>
-                    </div>
-                    <div class="col-xl-11 mx-auto mt-3 d-grid">
-                        <button class="btn btn-primary" type="button" onClick="studentSignup()">註冊</button>
-                    </div>
-                </div>
-            </form>
+                </form>
             </div>
         </div>
 
         <!--志工註冊-->
         <div class="container rounded RegisterDiv mt-3" id="regVolunteerDiv">
             <form class="card-body" id="volunteerSigninupForm">
-            <h3 class="p-3" style="text-align: center ;">志工註冊</h3>
-            <!--帳號輸入-->
-            <div class="row">
-                <div class=" col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputNameVol" class="form-label">姓名</label>
-                    <input type="text" class="form-control" id="inputNameVol" value="" required>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputMailVol" class="form-label">信箱</label>
-                    <input type="text" class="form-control" id="inputMailVol" value="" required>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputPasswordVol" class="form-label">密碼</label>
-                    <input type="text" class="form-control is-invalid" id="inputPasswordVol"
-                        aria-describedby="inputPasswordVolFeedback" required>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputPassword2Vol" class="form-label">確認密碼</label>
-                    <input type="text" class="form-control is-invalid" id="inputPassword2Vol"
-                        aria-describedby="inputPasswordVolFeedback" required>
-                </div>
-                <div class=" col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputSexVol" class="form-label">性別</label>
-                    <select class="form-select" id="inputSexVol" required>
-                        <option selected disabled value=""></option>
-                        <option value="male">生理男</option>
-                        <option value="female">生理女</option>
-                    </select>
-                </div>
-                <div class=" col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputAgeVol" class="form-label">年齡</label>
-                    <input type="text" class="form-control" id="inputAgeVol" value="" required>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputTelephoneVol" class="form-label">電話</label>
-                    <input type="text" class="form-control" id="inputTelephoneVol" required>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto ">
-                    <label for="inputEducationVol" class="form-label">最高學歷</label>
-                    <select class="form-select" id="inputEducationVol" required>
-                        <option selected disabled value="">最高學歷</option>
-                        <option value="高中">高中</option>
-                        <option value="大學">大學</option>
-                        <option value="碩士">碩士</option>
-                        <option value="博士">博士</option>
-                    </select>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputSpecialtyVol" class="form-label">選擇專業</label>
-                    <select class="form-select" id="inputSpecialtyVol" required>
-                        <option selected disabled value="">選擇專業</option>
-                        <option value="國文">國文</option>
-                        <option value="英文">英文</option>
-                        <option value="數學">數學</option>
-                        <option value="社會">社會</option>
-                        <option value="自然">自然</option>
-                    </select>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputAttainmentVol" class="form-label">學歷</label>
-                    <input type="text" class="form-control" id="inputAttainmentVol" placeholder="e.g.逢甲大學" required>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputCityVol" class="form-label">縣市</label>
-                    <select class="form-select inputCity" id="inputCityVol" required
-                        onchange="changeCity(this.selectedIndex - 1)">
-                        <option selected disabled value="縣市"></option>
-                    </select>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputDistrictVol" class="form-label">地區</label>
-                    <select class="form-select inputDistrict" id="inputDistrictVol" required>
-                        <option selected disabled value="地區"></option>
+                <h3 class="p-3" style="text-align: center ;">志工註冊</h3>
+                <!--帳號輸入-->
+                <div class="row">
+                    <div class=" col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputNameVol" class="form-label">姓名</label>
+                        <input type="text" class="form-control" id="inputNameVol" value="" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputMailVol" class="form-label">信箱</label>
+                        <input type="text" class="form-control" id="inputMailVol" value="" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputPasswordVol" class="form-label">密碼</label>
+                        <input type="text" class="form-control is-invalid" id="inputPasswordVol" aria-describedby="inputPasswordVolFeedback" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputPassword2Vol" class="form-label">確認密碼</label>
+                        <input type="text" class="form-control is-invalid" id="inputPassword2Vol" aria-describedby="inputPasswordVolFeedback" required>
+                    </div>
+                    <div class=" col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputSexVol" class="form-label">性別</label>
+                        <select class="form-select" id="inputSexVol" required>
+                            <option selected disabled value=""></option>
+                            <option value="male">生理男</option>
+                            <option value="female">生理女</option>
+                        </select>
+                    </div>
+                    <div class=" col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputAgeVol" class="form-label">年齡</label>
+                        <input type="text" class="form-control" id="inputAgeVol" value="" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputTelephoneVol" class="form-label">電話</label>
+                        <input type="text" class="form-control" id="inputTelephoneVol" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto ">
+                        <label for="inputEducationVol" class="form-label">最高學歷</label>
+                        <select class="form-select" id="inputEducationVol" required>
+                            <option selected disabled value="">最高學歷</option>
+                            <option value="高中">高中</option>
+                            <option value="大學">大學</option>
+                            <option value="碩士">碩士</option>
+                            <option value="博士">博士</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputSpecialtyVol" class="form-label">選擇專業</label>
+                        <select class="form-select" id="inputSpecialtyVol" required>
+                            <option selected disabled value="">選擇專業</option>
+                            <option value="國文">國文</option>
+                            <option value="英文">英文</option>
+                            <option value="數學">數學</option>
+                            <option value="社會">社會</option>
+                            <option value="自然">自然</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputAttainmentVol" class="form-label">學歷</label>
+                        <input type="text" class="form-control" id="inputAttainmentVol" placeholder="e.g.逢甲大學" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputCityVol" class="form-label">縣市</label>
+                        <select class="form-select inputCity" id="inputCityVol" required onchange="changeCity(this.selectedIndex - 1)">
+                            <option selected disabled value="縣市"></option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputDistrictVol" class="form-label">地區</label>
+                        <select class="form-select inputDistrict" id="inputDistrictVol" required>
+                            <option selected disabled value="地區"></option>
 
-                    </select>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-11 mx-auto">
+                        <label for="inputAddressVol" class="form-label">地址</label>
+                        <input type="text" class="form-control" id="inputAddressVol" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-11 mx-auto">
+                        <label for="inputPersonalityVol" class="form-label">教學風格</label>
+                        <div class="nav nav-tabs nav-justified mx-10 col-xl-11" id="inputPersonalityVol" required>
+                            <button class="nav-link active">
+                                    溫柔
+                                </button>
+                            <button type="button" class="nav-link">
+                                    嚴格
+                                </button>
+                            <button type="button" class="nav-link">
+                                    創新
+                                </button>
+                            <button type="button" class="nav-link">
+                                    有趣
+                                </button>
+                            <button type="button" class="nav-link">
+                                    熱情
+                                </button>
+                        </div>
+                    </div>
+                    <div class="col-xl-11 mx-auto mt-3 d-grid">
+                        <button class="btn btn-primary" type="button" onClick="volunteerSignup()">註冊</button>
+                    </div>
                 </div>
-                <div class="col-12 col-md-5 col-xl-11 mx-auto">
-                    <label for="inputAddressVol" class="form-label">地址</label>
-                    <input type="text" class="form-control" id="inputAddressVol" required>
-                </div>
-                <div class="col-xl-11 mx-auto mt-3 d-grid">
-                    <button class="btn btn-primary" type="button" onClick="volunteerSignup()">註冊</button>
-                </div>
-            </div>
-        </form>
+            </form>
         </div>
 
         <!--校方註冊-->
         <div class="container rounded RegisterDiv mt-3" id="regSchoolDiv">
             <form class="card-body" id="schoolSigninupForm">
-            <h3 class="p-3" style="text-align: center ;">校方註冊</h3>
-            <!--帳號輸入-->
-            <div class="row">
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputSchoolnameSch" class="form-label">校名</label>
-                    <input type="text" class="form-control" id="inputNameSch" required>
+                <h3 class="p-3" style="text-align: center ;">校方註冊</h3>
+                <!--帳號輸入-->
+                <div class="row">
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputSchoolnameSch" class="form-label">校名</label>
+                        <input type="text" class="form-control" id="inputNameSch" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputMailSch" class="form-label">信箱</label>
+                        <input type="text" class="form-control" id="inputMailSch" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputAccountSch" class="form-label">聯絡人</label>
+                        <input type="text" class="form-control is-invalid" id="inputContactNameSch" aria-describedby="inputAccountSchoolFeedback" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputPasswordSch" class="form-label">密碼</label>
+                        <input type="text" class="form-control is-invalid" id="inputPasswordSch" aria-describedby="inputPasswordSchFeedback" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputPasswordSch" class="form-label">確認密碼</label>
+                        <input type="text" class="form-control is-invalid" id="inputPasswordSch" aria-describedby="inputPasswordSchFeedback" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputTelephoneSch" class="form-label">電話</label>
+                        <input type="text" class="form-control" id="inputTelephoneSch" required>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputCitySch" class="form-label">縣市</label>
+                        <select class="form-select inputCity" id="inputCitySch" required onchange="changeCity(this.selectedIndex - 1)">
+                            <option selected disabled value="台北市"></option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                        <label for="inputDistrictSh" class="form-label">地區</label>
+                        <select class="form-select inputDistrict" id="inputDistrictSch" required>
+                            <option selected disabled value="地區"></option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-5 col-xl-11 mx-auto">
+                        <label for="inputAddressSch" class="form-label">地址</label>
+                        <input type="text" class="form-control" id="inputAddressSch" required>
+                    </div>
+                    <div class="col-xl-11 mx-auto mt-3 d-grid">
+                        <button class="btn btn-primary" type="button" onclick="schoolSignup()">註冊</button>
+                    </div>
                 </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputMailSch" class="form-label">信箱</label>
-                    <input type="text" class="form-control" id="inputMailSch" required>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputAccountSch" class="form-label">聯絡人</label>
-                    <input type="text" class="form-control is-invalid" id="inputContactNameSch"
-                        aria-describedby="inputAccountSchoolFeedback" required>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputPasswordSch" class="form-label">密碼</label>
-                    <input type="text" class="form-control is-invalid" id="inputPasswordSch"
-                        aria-describedby="inputPasswordSchFeedback" required>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputPasswordSch" class="form-label">確認密碼</label>
-                    <input type="text" class="form-control is-invalid" id="inputPasswordSch" aria-describedby="inputPasswordSchFeedback"
-                        required>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputTelephoneSch" class="form-label">電話</label>
-                    <input type="text" class="form-control" id="inputTelephoneSch" required>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputCitySch" class="form-label">縣市</label>
-                    <select class="form-select inputCity" id="inputCitySch" required
-                        onchange="changeCity(this.selectedIndex - 1)">
-                        <option selected disabled value="台北市"></option>
-                    </select>
-                </div>
-                <div class="col-12 col-md-5 col-xl-5 mx-auto">
-                    <label for="inputDistrictSh" class="form-label">地區</label>
-                    <select class="form-select inputDistrict" id="inputDistrictSch" required>
-                        <option selected disabled value="地區"></option>
-                    </select>
-                </div>
-                <div class="col-12 col-md-5 col-xl-11 mx-auto">
-                    <label for="inputAddressSch" class="form-label">地址</label>
-                    <input type="text" class="form-control" id="inputAddressSch" required>
-                </div>
-                <div class="col-xl-11 mx-auto mt-3 d-grid">
-                    <button class="btn btn-primary" type="button" onclick="schoolSignup()">註冊</button>
-                </div>
-            </div>
-        </form>
+            </form>
         </div>
     </div>
 
@@ -332,7 +358,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                    <a href="00-0_login.html"><button type="button" class="btn btn-primary" id="signin-btn">登入</button></a>
+                    <a href="00-0_login.html"><button type="button" class="btn btn-primary"
+                            id="signin-btn">登入</button></a>
                 </div>
             </div>
         </div>
@@ -340,6 +367,24 @@
     <!--下方欄位-->
     <div class="pagefooter"></div>
 
+    <script>
+        const nows = document.querySelectorAll(".nav-link");
+        var PersonalityStds = document.querySelector("#inputPersonalityStd .active");
+        var PersonalityVol = document.querySelector("#inputPersonalityVol .active");
+
+        nows.forEach((now) => {
+            now.addEventListener("click", aaa);
+        });
+
+        function aaa() {
+            nows.forEach((now) => {
+                now.classList.remove("active");
+            });
+            PersonalityStds = this.innerHTML;
+            PersonalityVol = this.innerHTML;
+            this.classList.add("active");
+        }
+    </script>
 </body>
 
 </html>
