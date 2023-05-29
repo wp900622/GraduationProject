@@ -39,14 +39,14 @@ function studentSignup() {
         email: $("#inputMailStd").val().trim(),
         password: $("#inputPasswordStd").val().trim(),
         name: $("#inputNameStd").val().trim(),
+        city: $("#inputCityStd").val(),
+        area: $("#inputDistrictStd").val(),
+        address: $("#inputAddressStd").val().trim(),
         gender: $("#inputSexStd").val().trim(),
         age: parseInt($("#inputAgeStd").val().trim()),
         schoolName: $("#inputSchoolnameStd").val().trim(),
         yearName: $("#inputGradeStd").val(),
-        city: $("#inputCityStd").val(),
-        area: $("#inputDistrictStd").val(),
-        address: $("#inputAddressStd").val().trim(),
-        Personality: PersonalityStds
+        style: $("#inputPersonalityStd .active")[0].innerHTML,
     }
 
     const signupData = JSON.stringify(inputs);
@@ -61,16 +61,16 @@ function volunteerSignup() {
         email: $("#inputMailVol").val().trim(),
         password: $("#inputPasswordVol").val().trim(),
         name: $("#inputNameVol").val().trim(),
-        gender: $("#inputSexVol").val().trim(),
-        age: parseInt($("#inputAgeVol").val().trim()),
         city: $("#inputCityVol").val(),
         area: $("#inputDistrictVol").val(),
         address: $("#inputAddressVol").val().trim(),
+        gender: $("#inputSexVol").val().trim(),
+        age: parseInt($("#inputAgeVol").val().trim()),
         highEdu: $("#inputEducationVol").val(),
         expertise: $("#inputSpecialtyVol").val(),
         telNo: $("#inputTelephoneVol").val().trim(),
         educational_attainment: $("#inputAttainmentVol").val().trim(),
-        Personality: PersonalityVol
+        style: $("#inputPersonalityVol .active")[0].innerHTML,
 
     }
 

@@ -7,12 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>註冊頁面</title>
     <!-- lib -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="boostrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/e81a7543a2.js" crossorigin="anonymous"></script>
     <!-- icon -->
     <script src="lib/jquery-3.6.1.min.js"></script>
@@ -36,7 +42,9 @@
     <nav class="navbar navbar-expand-lg navbar-darks bg-amos mb-5">
         <div class="container-fluid">
             <a class="navbar-brand" style="color:#ffffff" href="00-2_home.html"><strong>學銀共善服務平台</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -47,7 +55,8 @@
                 </ul>
                 <!--icon-->
                 <div class="btn-group">
-                    <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static" id="ddl-loginflag" value="0">
+                    <button type="button" class="btn " data-bs-toggle="dropdown" data-display="static"
+                        id="ddl-loginflag" value="0">
                         <i class="bi bi-person-circle home-textdark"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-xl-end">
@@ -72,17 +81,20 @@
                 <div class="card-container">
                     <div class="col-4 identity-card ">
                         <i class="fa-solid fa-graduation-cap identity-icon"></i>
-                        <h4 class="identity-card-title"><a class="stretched-link" type="button" onclick="toggleRegisterDiv(1);">學生</a></h4>
+                        <h4 class="identity-card-title"><a class="stretched-link" type="button"
+                                onclick="toggleRegisterDiv(1);">學生</a></h4>
                         <img src="" alt="">
                     </div>
                     <div class="col-4 identity-card ">
                         <i class="fa-solid fa-handshake-angle identity-icon"></i>
-                        <h4 class="identity-card-title"><a class="stretched-link" type="button" onclick="toggleRegisterDiv(2);">志工</a></h4>
+                        <h4 class="identity-card-title"><a class="stretched-link" type="button"
+                                onclick="toggleRegisterDiv(2);">志工</a></h4>
                         <img src="" alt="">
                     </div>
                     <div class="col-4 identity-card ">
                         <i class="fa-solid fa-school identity-icon"></i>
-                        <h4 class="identity-card-title"><a class="stretched-link" type="button" onclick="toggleRegisterDiv(3);">校方</a></h4>
+                        <h4 class="identity-card-title"><a class="stretched-link" type="button"
+                                onclick="toggleRegisterDiv(3);">校方</a></h4>
                         <img src="" alt="">
                     </div>
                 </div>
@@ -105,11 +117,13 @@
 
                         <div class="col-12 col-md-5 col-xl-5 mx-auto">
                             <label for="inputPasswordStd" class="form-label">密碼</label>
-                            <input type="text" class="form-control is-invalid" id="inputPasswordStd" aria-describedby="inputPasswordStdFeedback" required>
+                            <input type="text" class="form-control is-invalid" id="inputPasswordStd"
+                                aria-describedby="inputPasswordStdFeedback" required>
                         </div>
                         <div class="col-12 col-md-5 col-xl-5 mx-auto">
                             <label for="inputPasswordStd" class="form-label">確認密碼</label>
-                            <input type="text" class="form-control is-invalid" id="inputPasswordStd" aria-describedby="inputPasswordStdFeedback" required>
+                            <input type="text" class="form-control is-invalid" id="inputPasswordStd"
+                                aria-describedby="inputPasswordStdFeedback" required>
                         </div>
 
                         <div class=" col-12 col-md-5 col-xl-5 mx-auto">
@@ -142,7 +156,8 @@
                         </div>
                         <div class="col-12 col-md-5 col-xl-5 mx-auto">
                             <label for="inputCityStd" class="form-label">縣市</label>
-                            <select class="form-select inputCity" id="inputCityStd" required onchange="changeCity(this.selectedIndex - 1)">
+                            <select class="form-select inputCity" id="inputCityStd" required
+                                onchange="changeCity(this.selectedIndex - 1)">
                                 <option selected disabled value="縣市"></option>
                             </select>
                         </div>
@@ -159,21 +174,11 @@
                         <div class="col-12 col-md-5 col-xl-11 mx-auto">
                             <label for="inputPersonalityStd" class="form-label">偏好的教學風格</label>
                             <div class="nav nav-tabs nav-justified mx-10 col-xl-11" id="inputPersonalityStd" required>
-                                <button type="button" class="nav-link active">
-                                    溫柔
-                                </button>
-                                <button type="button" class="nav-link">
-                                    嚴格
-                                </button>
-                                <button type="button" class="nav-link">
-                                    創新
-                                </button>
-                                <button type="button" class="nav-link">
-                                    有趣
-                                </button>
-                                <button type="button" class="nav-link">
-                                    熱情
-                                </button>
+                                <button type="button" class="nav-link active">溫柔</button>
+                                <button type="button" class="nav-link">嚴格</button>
+                                <button type="button" class="nav-link">創新</button>
+                                <button type="button" class="nav-link">有趣</button>
+                                <button type="button" class="nav-link">熱情</button>
                             </div>
                         </div>
 
@@ -201,11 +206,13 @@
                     </div>
                     <div class="col-12 col-md-5 col-xl-5 mx-auto">
                         <label for="inputPasswordVol" class="form-label">密碼</label>
-                        <input type="text" class="form-control is-invalid" id="inputPasswordVol" aria-describedby="inputPasswordVolFeedback" required>
+                        <input type="text" class="form-control is-invalid" id="inputPasswordVol"
+                            aria-describedby="inputPasswordVolFeedback" required>
                     </div>
                     <div class="col-12 col-md-5 col-xl-5 mx-auto">
                         <label for="inputPassword2Vol" class="form-label">確認密碼</label>
-                        <input type="text" class="form-control is-invalid" id="inputPassword2Vol" aria-describedby="inputPasswordVolFeedback" required>
+                        <input type="text" class="form-control is-invalid" id="inputPassword2Vol"
+                            aria-describedby="inputPasswordVolFeedback" required>
                     </div>
                     <div class=" col-12 col-md-5 col-xl-5 mx-auto">
                         <label for="inputSexVol" class="form-label">性別</label>
@@ -250,7 +257,8 @@
                     </div>
                     <div class="col-12 col-md-5 col-xl-5 mx-auto">
                         <label for="inputCityVol" class="form-label">縣市</label>
-                        <select class="form-select inputCity" id="inputCityVol" required onchange="changeCity(this.selectedIndex - 1)">
+                        <select class="form-select inputCity" id="inputCityVol" required
+                            onchange="changeCity(this.selectedIndex - 1)">
                             <option selected disabled value="縣市"></option>
                         </select>
                     </div>
@@ -268,21 +276,11 @@
                     <div class="col-12 col-md-5 col-xl-11 mx-auto">
                         <label for="inputPersonalityVol" class="form-label">教學風格</label>
                         <div class="nav nav-tabs nav-justified mx-10 col-xl-11" id="inputPersonalityVol" required>
-                            <button class="nav-link active">
-                                    溫柔
-                                </button>
-                            <button type="button" class="nav-link">
-                                    嚴格
-                                </button>
-                            <button type="button" class="nav-link">
-                                    創新
-                                </button>
-                            <button type="button" class="nav-link">
-                                    有趣
-                                </button>
-                            <button type="button" class="nav-link">
-                                    熱情
-                                </button>
+                            <button class="nav-link active">溫柔</button>
+                            <button type="button" class="nav-link">嚴格</button>
+                            <button type="button" class="nav-link">創新</button>
+                            <button type="button" class="nav-link">有趣</button>
+                            <button type="button" class="nav-link">熱情</button>
                         </div>
                     </div>
                     <div class="col-xl-11 mx-auto mt-3 d-grid">
@@ -308,15 +306,18 @@
                     </div>
                     <div class="col-12 col-md-5 col-xl-5 mx-auto">
                         <label for="inputAccountSch" class="form-label">聯絡人</label>
-                        <input type="text" class="form-control is-invalid" id="inputContactNameSch" aria-describedby="inputAccountSchoolFeedback" required>
+                        <input type="text" class="form-control is-invalid" id="inputContactNameSch"
+                            aria-describedby="inputAccountSchoolFeedback" required>
                     </div>
                     <div class="col-12 col-md-5 col-xl-5 mx-auto">
                         <label for="inputPasswordSch" class="form-label">密碼</label>
-                        <input type="text" class="form-control is-invalid" id="inputPasswordSch" aria-describedby="inputPasswordSchFeedback" required>
+                        <input type="text" class="form-control is-invalid" id="inputPasswordSch"
+                            aria-describedby="inputPasswordSchFeedback" required>
                     </div>
                     <div class="col-12 col-md-5 col-xl-5 mx-auto">
                         <label for="inputPasswordSch" class="form-label">確認密碼</label>
-                        <input type="text" class="form-control is-invalid" id="inputPasswordSch" aria-describedby="inputPasswordSchFeedback" required>
+                        <input type="text" class="form-control is-invalid" id="inputPasswordSch"
+                            aria-describedby="inputPasswordSchFeedback" required>
                     </div>
                     <div class="col-12 col-md-5 col-xl-5 mx-auto">
                         <label for="inputTelephoneSch" class="form-label">電話</label>
@@ -324,7 +325,8 @@
                     </div>
                     <div class="col-12 col-md-5 col-xl-5 mx-auto">
                         <label for="inputCitySch" class="form-label">縣市</label>
-                        <select class="form-select inputCity" id="inputCitySch" required onchange="changeCity(this.selectedIndex - 1)">
+                        <select class="form-select inputCity" id="inputCitySch" required
+                            onchange="changeCity(this.selectedIndex - 1)">
                             <option selected disabled value="台北市"></option>
                         </select>
                     </div>
@@ -366,22 +368,19 @@
     </div>
     <!--下方欄位-->
     <div class="pagefooter"></div>
-
+    <!-- 拉拉市拉拉街拉拉路13號 -->
     <script>
         const nows = document.querySelectorAll(".nav-link");
-        var PersonalityStds = document.querySelector("#inputPersonalityStd .active");
-        var PersonalityVol = document.querySelector("#inputPersonalityVol .active");
 
         nows.forEach((now) => {
             now.addEventListener("click", aaa);
+            console.log(now.innerHTML);
         });
-
+        console.log();
         function aaa() {
             nows.forEach((now) => {
                 now.classList.remove("active");
             });
-            PersonalityStds = this.innerHTML;
-            PersonalityVol = this.innerHTML;
             this.classList.add("active");
         }
     </script>
