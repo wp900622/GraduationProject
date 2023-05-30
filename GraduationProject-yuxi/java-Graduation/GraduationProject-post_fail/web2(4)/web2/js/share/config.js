@@ -1,4 +1,4 @@
-const apiUrl = 'http://140.134.24.157:53008/api/';
+const apiUrl = 'http://localhost:3008/api/';
 const schoolListUrl = apiUrl + 'school';
 const matchUrl = apiUrl + 'match';
 const NewsUrl = apiUrl + 'news';

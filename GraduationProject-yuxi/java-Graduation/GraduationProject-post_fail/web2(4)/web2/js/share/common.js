@@ -44,6 +44,7 @@ function logout() {
     }
 }
 
+// 
 function AjaxPost(url, funcurl, data, token, para) {
     $.ajax({
         url: url + funcurl,
@@ -64,12 +65,17 @@ function AjaxPost(url, funcurl, data, token, para) {
     });
 }
 
+// 網址、方法、資料格式、編碼方式、驗證需要token、callback 成功要執行甚麼 失敗要執行甚麼、para、
 function AjaxGet(url, funcurl, token, callback, para) {
     $.ajax({
         url: url + funcurl,
+        // Get Post delete
         method: 'Get',
+
         dataType: 'json',
+        // 資料格式 utf8
         contentType: "application/json;charset=utf-8",
+        // 加token
         headers: {"Authorization": "Bearer " + token},
         success: function (msg) {
             callback(msg,para);
