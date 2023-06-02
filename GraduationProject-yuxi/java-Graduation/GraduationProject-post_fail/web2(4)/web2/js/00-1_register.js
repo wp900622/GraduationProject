@@ -70,7 +70,7 @@ function volunteerSignup() {
         expertise: $("#inputSpecialtyVol").val(),
         telNo: $("#inputTelephoneVol").val().trim(),
         educational_attainment: $("#inputAttainmentVol").val().trim(),
-        style: $("#inputPersonalityVol .active")[0].innerHTML,
+        style: $("#inputPersonalityVol .active")[0].innerHTML
 
     }
 
