@@ -3,6 +3,7 @@ const schoolListUrl = apiUrl + 'school';
 const matchUrl = apiUrl + 'match';
 const NewsUrl = apiUrl + 'news';
 const ExamUrl = apiUrl + 'exam';
+const mateUrl = apiUrl + 'mate';
 const token = $.cookie('token');
 const role = $.cookie('role');
 const username = $.cookie('username');

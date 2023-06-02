@@ -4,6 +4,7 @@ $(document).ready(() => {
     console.log(username,id);
     AjaxGet(ExamUrl, '/' + id, token, initScore,{academicyear:'111'});
     AjaxGet(NewsUrl, '/' + role.toLowerCase(), token, initNews,'');
+    AjaxGet(mateUrl, '/get/'+username , token, '');
 })
 
 function initShowHide(){

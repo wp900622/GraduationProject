@@ -78,7 +78,7 @@ function AjaxGet(url, funcurl, token, callback, para) {
         // 加token
         headers: {"Authorization": "Bearer " + token},
         success: function (msg) {
-            callback(msg,para);
+            // callback(msg,para);
             //var myModal = new bootstrap.Modal(document.getElementById(modalID));
             //myModal.show();
             console.log(msg);
