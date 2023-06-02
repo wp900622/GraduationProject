@@ -32,6 +32,10 @@ function showHideDivSch(divId){ //根據點選的按鈕，顯示所選區塊、�
             $(".div-block").hide();
             $("#sch-list-div").show();
             break;
+        case 'bar-school-match':
+            $(".div-block").hide();
+            $("#sch-post-mate").show();
+            break;
         case 'edit-stdbtn': //編輯個人資料
             $(".before-edit").hide();
             $(".after-edit").show();
