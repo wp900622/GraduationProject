@@ -17,4 +17,6 @@ public class VolunteerSignupRequest extends SignupRequest{
 
   private String educational_attainment;
 
+  private String style;
+
 }

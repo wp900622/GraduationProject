@@ -13,4 +13,6 @@ public class StudentSignupRequest extends SignupRequest{
 
   private String yearName;
 
+  private String style;
+
 }

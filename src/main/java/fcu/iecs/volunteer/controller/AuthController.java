@@ -127,6 +127,7 @@ public class AuthController {
     student.setCity(studentSignupRequest.getCity());
     student.setArea(studentSignupRequest.getArea());
     student.setAddress(studentSignupRequest.getAddress());
+    student.setStyle(studentSignupRequest.getStyle());
     student.setUser(userWithId);
 
     Student studentWithId = studentRepository.save(student);
@@ -151,6 +152,7 @@ public class AuthController {
     volunteer.setArea(volunteerSignupRequest.getArea());
     volunteer.setAddress(volunteerSignupRequest.getAddress());
     volunteer.setEducational_attainment(volunteerSignupRequest.getEducational_attainment());
+    volunteer.setStyle(volunteerSignupRequest.getStyle());
     volunteer.setUser(userWithId);
 
     Volunteer volunteerWithId = volunteerRepository.save(volunteer);

@@ -11,7 +11,7 @@ public class Volunteer {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -36,4 +36,6 @@ public class Volunteer {
   private String address;
 
   private String educational_attainment;
+
+  private String style;
 }

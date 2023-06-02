@@ -45,15 +45,11 @@ public class SchoolController {
   public ResponseEntity createSchool(@RequestBody School school) {
     schoolRepository.save(school);
     return ResponseEntity.status(HttpStatus.CREATED).body("Ok");
-
-
   }
 
   @PutMapping("/schoolupdate/{Id}")
   public ResponseEntity updateSchool(@PathVariable Integer Id, @RequestBody School school) {
      schoolRepository.setUserInfoById(school.getUser().getEmail(), school.getContactName(),school.getUser().getPassword(),Id);
-
-
     return ResponseEntity.status(HttpStatus.OK).body("ok");
   }
 

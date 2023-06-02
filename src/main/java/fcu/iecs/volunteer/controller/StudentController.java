@@ -27,6 +27,13 @@ public class StudentController {
     }
     return ResponseEntity.status(HttpStatus.CREATED).body(ID);
   }
+  @GetMapping("/API")
+  public ResponseEntity SellerGet(){
+    //SellerAndShoes seller = sellerRepository.findByNumber(number).get();
+    return ResponseEntity.status(HttpStatus.OK).body("123");
+
+  }
+
 
 
 }
