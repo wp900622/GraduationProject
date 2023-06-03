@@ -17,7 +17,7 @@ function initNews(newsobj){
                                     <p class="mx-5 fs-6">${content}</p><p class = "news-time right user-textlight" ><i class="fa-regular fa-calendar-days mx-2 fs-6"></i>${time}</span></p>
                                     </div>`);
         }
-        else if(type == '活動訊息'){ //activity
+        else if(type == '活動消息'){ //activity
             $("#activity-list").append(`<a type="button" class="list-group-item" onClick="showActDetail('#acts-list-${msgid}');"><i class="bi bi-dot"></i>&nbsp; ${title}</a>`);
             $(".acts-detail").append(`<div class="acts-list user-textdark mt-5" id="acts-list-${msgid}" >
                                         <p class="mx-4 fs-5 fw-bold user-textdark">${title}</p>
