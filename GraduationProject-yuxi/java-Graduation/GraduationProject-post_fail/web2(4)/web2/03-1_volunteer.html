@@ -394,6 +394,64 @@
             </div>
         </div>
     </div>
+    <div class="container rounded mt-3 div-block" id="vol-register-div">
+        <form class="card-body" id="studentregisterForm">
+            <h3 class="p-3" style="text-align: center ;">志工報名</h3>
+            <!--帳號輸入-->
+            <div class="row">
+                <div class=" col-12 col-md-5 col-xl-5 mx-auto">
+                    <label for="inputName" class="form-label">姓名</label>
+                    <input type="text" class="form-control" id="inputName" value="" required>
+                </div>
+                <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                    <label for="inputSchoolnameScore" class="form-label">信箱</label>
+                    <input type="text" class="form-control" id="inputEmail" required>
+                </div>
+                <div class="col-12 col-md-5 col-xl-5 mx-auto">
+                    <label for="inputMailScore" class="form-label">電話</label>
+                    <input type="text" class="form-control" id="inputTel" value="" required>
+                </div>
+                <div class="col-12 col-md-5 col-xl-5  mx-auto ">
+                    <label for="inputGradeScore" class="form-label">教育程度</label>
+                    <select class="form-select" id="inputEdu" required>
+                        <option selected disabled value="">選擇學歷</option>
+                        <option value="高中">高中</option>
+                        <option value="大學">大學</option>
+                        <option value="碩士">碩士</option>
+                        <option value="博士">博士</option>
+                        
+                    </select>
+                </div>
+                <div class="col-12 col-md-5 col-xl-11  mx-auto ">
+                    <label for="inputSubject" class="form-label">想輔導的科目</label>
+                    <select class="form-select" id="inputSubject" required>
+                        <option selected disabled value="">選擇科目</option>
+                        <option value="國文">國文</option>
+                        <option value="英文">英文</option>
+                        <option value="數學">數學</option>
+                        <option value="社會">社會</option>
+                        <option value="自然">自然</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-5 col-xl-11 mx-auto">
+                    <label for="inputPersonalityStd" class="form-label">本人教學風格</label>
+                    <div class="nav nav-tabs nav-justified mx-10 col-xl-11" id="inputPersonalityStd" required>
+                        <button type="button" class="nav-link active">溫柔</button>
+                        <button type="button" class="nav-link">嚴格</button>
+                        <button type="button" class="nav-link">創新</button>
+                        <button type="button" class="nav-link">有趣</button>
+                        <button type="button" class="nav-link">熱情</button>
+                    </div>
+                </div>
+
+            
+                <div class="col-12 mt-3 me-3" style="text-align: right;">
+                    <button class="btn btn-primary" type="button" onClick="Registerschool()">送出</button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
     <!--下方欄位-->
     <!-- 生成share_footer.js裡的內容 -->
     <script src="js/share/share_footer.js"></script>

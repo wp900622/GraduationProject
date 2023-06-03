@@ -28,6 +28,10 @@ function showHideDivVol(divId) { //根據點選的按鈕，顯示所選區塊、
             $(".div-block").hide();
             $("#vol-personal-div").show();
             break;
+        case 'bar-volunteer-register':
+            $(".div-block").hide();
+            $("#vol-register-div").show();
+            break;
         case 'edit-volbtn':
             $(".before-edit").hide();
             $(".after-edit").show();
@@ -58,3 +62,16 @@ function summitScore(){
 
 }
 
+function Registerschool(){
+    const input = {
+       username : $("#inputName").val(),
+       email    : $("#inputEmail").val(),
+       telno    :  $("#inputTel").val(),
+       eduattain : $("#inputEdu").val(),
+       subject   : $("#inputSubject").val(),
+       style: $("#inputPersonalityStd .active")[0].innerHTML,
+    }
+    const registerData = JSON.stringify(input);
+    console.log(registerData);
+    AjaxPost(matchUrl, '/post', registerData, token,{modalID:'success-modal'});
+}

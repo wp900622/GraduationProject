@@ -4,7 +4,6 @@ $(document).ready(() => {
     console.log(username,id);
     AjaxGet(ExamUrl, '/' + id, token, initScore,{academicyear:'111'});
     AjaxGet(NewsUrl, '/' + role.toLowerCase(), token, initNews,'');
-    AjaxGet(mateUrl, '/get/'+username , token, '');
 })
 
 function initShowHide(){
@@ -34,7 +33,6 @@ function showHideDivStd(divId) { //根據點選的按鈕，顯示所選區塊、
             $(".after-edit").hide();
             $(".before-edit").show();
             break;
-        case 'bar-volunteer-register':
-            break;
+        
     }
 }
