@@ -59,8 +59,16 @@
                             onClick="showHideDivSch(this.id);">發佈公告</a>
                     </li>
                     <li class="nav-item rounded mx-2">
-                        <a class="nav-link link-dark userItem" id="bar-school-match" type="button"
+                        <a class="nav-link link-dark userItem" id="bar-school-make-match" type="button"
                             onClick="showHideDivSch(this.id);">進行志工和學生配對</a>
+                    </li>
+                    <li class="nav-item rounded mx-2">
+                        <a class="nav-link link-dark userItem" id="bar-school-match" type="button"
+                            onClick="showHideDivSch(this.id);">當次志工和學生配對</a>
+                    </li>
+                    <li class="nav-item rounded mx-2">
+                        <a class="nav-link link-dark userItem" id="bar-school-match-all" type="button"
+                            onClick="showHideDivSch(this.id);">所有志工和學生配對結果</a>
                     </li>
                 </ul>
                 <!--icon-->
@@ -198,6 +206,23 @@
             </div>
             </div>
         </div>
+        <div class="container rounded p-5 div-block" id="sch-make-mate">
+            <h3 class="p-3" style="text-align: center ;">進行配對</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">志工名稱</th>
+                        <th scope="col">志工e-mail</th>
+                        <th scope="col">學生名稱</th>
+                        <th scope="col">學生e-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+
+            </table>
+        </div>
         <div class="container rounded p-5 div-block" id="sch-post-mate">
             <h3 class="p-3" style="text-align: center ;">配對結果</h3>
             <table class="table">
@@ -211,6 +236,23 @@
                 </thead>
                 <tbody>
                      
+                </tbody>
+
+            </table>
+        </div>
+        <div class="container rounded p-5 div-block" id="sch-all-mate">
+            <h3 class="p-3" style="text-align: center ;">所有配對結果</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">志工名稱</th>
+                        <th scope="col">志工e-mail</th>
+                        <th scope="col">學生名稱</th>
+                        <th scope="col">學生e-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+
                 </tbody>
 
             </table>

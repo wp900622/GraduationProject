@@ -3,11 +3,15 @@ $(document).ready(() => {
     checkAndBindUserStat();
     AjaxGet(schoolListUrl, '', token, getSchools,'');
     AjaxGet(NewsUrl, "/" + role, token, initNews,'');
+    AjaxGet(mateUrl, '/get/' + username, token, getmatch, '');
 })
 
 function initShowHide(){
     $(".div-block,#btn-return,.acts-list").hide();
     $("#sch-index-div").show();
+}
+function getmatch() {
+    console.log(2);
 }
 
 function getSchools(schools) {
@@ -32,9 +36,17 @@ function showHideDivSch(divId){ //根據點選的按鈕，顯示所選區塊、�
             $(".div-block").hide();
             $("#sch-list-div").show();
             break;
-        case 'bar-school-match':
+        case 'bar-school-make-match': //進行配對
+            $(".div-block").hide();
+            $("#sch-make-mate").show();
+            break;
+        case 'bar-school-match': //當次配對結果
             $(".div-block").hide();
             $("#sch-post-mate").show();
+            break;
+        case 'bar-school-match-all': //所有配對結果
+            $(".div-block").hide();
+            $("#sch-all-mate").show();
             break;
         case 'edit-stdbtn': //編輯個人資料
             $(".before-edit").hide();

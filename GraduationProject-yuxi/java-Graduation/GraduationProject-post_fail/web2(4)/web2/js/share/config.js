@@ -8,3 +8,4 @@ const token = $.cookie('token');
 const role = $.cookie('role');
 const username = $.cookie('username');
 const id = $.cookie('id');
+// const mail=
