@@ -1,6 +1,7 @@
 
 function initNews(newsobj){
     $("#newmsg-list,.news-detail,#activity-list,.acts-detail").empty();
+    console.log("123");
     newsobj.forEach(msg=>{
         let title = msg.title;
         let content = msg.content;
@@ -8,7 +9,7 @@ function initNews(newsobj){
         let type = msg.type;
         let time = moment(msg.newsTime).format("YYYY-MM-DD");
         let role = msg.role["name"];
-
+        
         //顯示標題
         if(type == '最新消息'){ //newmsg
             $("#newmsg-list").append(`<a data-bs-toggle="collapse" data-bs-target="#news-list-${msgid}" aria-controls="news-list-${msgid}" type="button" class="list-group-item "><i class="bi bi-dot"></i>&nbsp; ${title}</a>`);

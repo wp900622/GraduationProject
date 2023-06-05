@@ -21,6 +21,10 @@ function showHideDivStd(divId) { //根據點選的按鈕，顯示所選區塊、
             $(".div-block").hide();
             $("#std-subject-div").show();
             break;
+        case 'bar-student-match':
+            $(".div-block").hide();
+            $("#std-match-div").show();
+            break;
         case 'stdddl-personal':
             $(".div-block").hide();
             $("#std-personal-div").show();
